@@ -3,31 +3,38 @@
 # N Green
 
 
+rm(list = ls())
+
 library(readr)
 library(dplyr)
 library(reshape2)
 library(tidyr)
 
-setwd("C:/Users/ngreen1/Google Drive/R code/CEdecisiontreeR")
+# setwd("C:/Users/ngreen1/Google Drive/R code/CEdecisiontree")
+# probs <- read_csv("data/decision-tree-probs.csv", col_names = TRUE, col_types = cols('1' = 'd'))
+# cost  <- read_csv("data/decision-tree-costs.csv", col_names = TRUE, col_types = cols('1' = 'd'))
+# save(probs, file = "data/probs.RData")
+# save(cost, file = "data/cost.RData")
 
-probs <- read_csv("data/decision-tree-probs.csv", col_names = TRUE, col_types = cols('1' = 'd'))
-cost  <- read_csv("data/decision-tree-costs.csv", col_names = TRUE, col_types = cols('1' = 'd'))
+data("cost")
+data("probs")
 
 probs_long <-
   probs %>%
-  mutate('from' = rownames(.)) %>% 
+  mutate('from' = rownames(.)) %>%
   melt(variable.name = 'to',
-       value.name = 'prob') %>% 
+       value.name = 'prob') %>%
   na.omit()
 
-cost_long <- 
+cost_long <-
   cost %>%
-  mutate('from' = rownames(.)) %>% 
+  mutate('from' = rownames(.)) %>%
   melt(variable.name = 'to',
-       value.name = 'cost') %>% 
+       value.name = 'cost') %>%
   na.omit()
 
-dtr_data <- merge(probs_long, cost_long)
+dtr_data <- merge(probs_long,
+                  cost_long)
 
 
 #########
