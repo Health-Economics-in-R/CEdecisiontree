@@ -45,6 +45,15 @@ dtr_data <- merge(probs_long,
 dectree_expected_values(vals = cost,
                         p = probs)
 
+
+Cdectree_expected_values(vals = as.matrix(cost),
+                         p = as.matrix(probs))
+
+
+
+
+# branch probs ------------------------------------------------------------
+
 # contributing cost as weighted by likelihood
 # trade-off between original size and branch position
 branch_joint_probs(probs) * cost

@@ -15,3 +15,5 @@ Suggests: testthat,
     rmarkdown,
     covr
 VignetteBuilder: knitr
+LinkingTo: Rcpp
+Imports: Rcpp
