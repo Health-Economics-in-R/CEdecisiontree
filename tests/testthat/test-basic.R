@@ -19,4 +19,8 @@ test_that("basic", {
   expect_length(res, 7)
   expect_equivalent(res[[1]], 5.6)
 
+
+  expect_equivalent(res[[1]],
+                    0.8*((0.2*10 + 0.8*1) + 1) + 0.2*((0.2*10 + 0.8*1) + 10))
+
 })

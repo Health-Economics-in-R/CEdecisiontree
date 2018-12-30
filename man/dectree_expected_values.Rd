@@ -7,7 +7,7 @@
 dectree_expected_values(vals, p)
 }
 \arguments{
-\item{vals}{Values on each edge (array) e.g. costs or QALYs}
+\item{vals}{Values on each edge/branch e.g. costs or QALYs (array)}
 
 \item{p}{Transition probabilities (array)}
 }

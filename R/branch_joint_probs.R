@@ -1,3 +1,4 @@
+
 #' Branch Joint Probability
 #'
 #' @param probs Branch conditional probabilities (array)

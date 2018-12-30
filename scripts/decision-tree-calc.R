@@ -22,14 +22,16 @@ data("probs")
 probs_long <-
   probs %>%
   mutate('from' = rownames(.)) %>%
-  melt(variable.name = 'to',
+  melt(id.vars = "from",
+       variable.name = 'to',
        value.name = 'prob') %>%
   na.omit()
 
 cost_long <-
   cost %>%
   mutate('from' = rownames(.)) %>%
-  melt(variable.name = 'to',
+  melt(id.vars = "from",
+       variable.name = 'to',
        value.name = 'cost') %>%
   na.omit()
 
@@ -51,12 +53,14 @@ Cdectree_expected_values(vals = as.matrix(cost),
 
 
 
-
 # branch probs ------------------------------------------------------------
 
 # contributing cost as weighted by likelihood
 # trade-off between original size and branch position
-branch_joint_probs(probs) * cost
+wcost <- branch_joint_probs(probs) * cost
+wcost
+
+sum(wcost, na.rm = TRUE)
 
 # terminal state total probs
 terminal_states <- (nrow(probs) + 1):ncol(probs)

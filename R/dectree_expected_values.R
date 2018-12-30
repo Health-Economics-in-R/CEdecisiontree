@@ -3,7 +3,7 @@
 #'
 #' \deqn{C_i = \sum p_{ij} (C_{ij} + C_j)}
 #'
-#' @param vals Values on each edge (array) e.g. costs or QALYs
+#' @param vals Values on each edge/branch e.g. costs or QALYs (array)
 #' @param p Transition probabilities (array)
 #'
 #' @return expected value at each node (list)
@@ -12,19 +12,18 @@
 #' @examples
 #' dectree_expected_values(cost, probs)
 #'
-
 ## this is the list version which
 ## dosent assume a binary tree structure
 dectree_expected_values <- function(vals,
                                     p){
   rows_sum_to_one <-
-    apply(p, 1, function(x) sum(x, na.rm = TRUE)) == 1
+    apply(p, 1, function(x) sum(x, na.rm = TRUE)) %in% c(0, 1)
 
   if (!all(rows_sum_to_one)) {
     stop('rows must sum to 1')
   }
 
-  # if(#####){
+  # if(any(p>1) || any(p<0)) {
   #   stop('probabilities must be between 0 and 1')
   # }
 
