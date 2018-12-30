@@ -56,7 +56,7 @@ Full probabilty models could be fit using a Bayesian model with e.g. jags or Win
 
 ## Basic example
 
-Load libraries.
+Quietly load libraries.
 ```{r}
 suppressWarnings(suppressMessages(library(CEdecisiontree)))
 suppressWarnings(suppressMessages(library(readr)))
@@ -64,6 +64,13 @@ suppressWarnings(suppressMessages(library(dplyr)))
 suppressWarnings(suppressMessages(library(reshape2)))
 suppressWarnings(suppressMessages(library(tidyr)))
 ```
+
+We will consider a simple 7 node binary tree.
+
+```{r, echo=FALSE, out.width = "400px"}
+knitr::include_graphics("figures/README_decisiontree_silverdecisions.png")
+```
+
 
 Load example data from the package. 
 ```{r}
@@ -134,10 +141,11 @@ sum(wcost, na.rm = TRUE)
 ```
 
 We can also calculate the joint probabilities of traversing to each terminal state using `branch_joint_probs`.
+Here we assume node labelling order from root such that terminal nodes are last.
 
 ```{r}
-# terminal state total probs
-terminal_states <- (nrow(probs) + 1):ncol(probs)
+n_from_nodes <- nrow(probs)
+terminal_states <- (n_from_nodes + 1):n_from_nodes
 
 p_terminal_state <-
   branch_joint_probs(probs)[ ,terminal_states] %>%

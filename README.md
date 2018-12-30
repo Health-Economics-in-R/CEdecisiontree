@@ -49,7 +49,7 @@ is a analogue to these.
 
 ## Basic example
 
-Load libraries.
+Quietly load libraries.
 
 ``` r
 suppressWarnings(suppressMessages(library(CEdecisiontree)))
@@ -58,6 +58,11 @@ suppressWarnings(suppressMessages(library(dplyr)))
 suppressWarnings(suppressMessages(library(reshape2)))
 suppressWarnings(suppressMessages(library(tidyr)))
 ```
+
+We will consider a simple 7 node binary
+tree.
+
+<img src="figures/README_decisiontree_silverdecisions.png" width="400px" />
 
 Load example data from the package.
 
@@ -186,21 +191,22 @@ sum(wcost, na.rm = TRUE)
 ```
 
 We can also calculate the joint probabilities of traversing to each
-terminal state using `branch_joint_probs`.
+terminal state using `branch_joint_probs`. Here we assume node labelling
+order from root such that terminal nodes are last.
 
 ``` r
-# terminal state total probs
-terminal_states <- (nrow(probs) + 1):ncol(probs)
+n_from_nodes <- nrow(probs)
+terminal_states <- (n_from_nodes + 1):n_from_nodes
 
 p_terminal_state <-
   branch_joint_probs(probs)[ ,terminal_states] %>%
   colSums(na.rm = TRUE)
 
 p_terminal_state
-#>    4    5    6    7 
-#> 0.04 0.16 0.16 0.64
+#>    4    3 
+#> 0.04 0.80
 sum(p_terminal_state)
-#> [1] 1
+#> [1] 0.84
 ```
 
 See package
