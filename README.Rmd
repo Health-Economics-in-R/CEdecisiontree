@@ -58,23 +58,21 @@ Full probabilty models could be fit using a Bayesian model with e.g. jags or Win
 
 Load libraries.
 ```{r}
-suppressMessages(library(CEdecisiontree))
-library(readr)
-library(dplyr)
-library(reshape2)
-library(tidyr)
+suppressWarnings(suppressMessages(library(CEdecisiontree)))
+suppressWarnings(suppressMessages(library(readr)))
+suppressWarnings(suppressMessages(library(dplyr)))
+suppressWarnings(suppressMessages(library(reshape2)))
+suppressWarnings(suppressMessages(library(tidyr)))
 ```
 
-Load data.
+Load example data from the package. 
 ```{r}
 data("cost")
 data("probs")
 ```
 
-The cost and probability matrices are sparse arrays indicating the edge values (rows=from node, columns=to node).
+The cost and probability matrices we will use in this example are sparse arrays indicating the edge values (rows=from node, columns=to node).
 There are therefore the same dimensions and have the same entry pattern. Empty cells have `NA`.
-
-
 ```{r}
 cost
 ```
@@ -99,7 +97,6 @@ Cdectree_expected_values(vals = as.matrix(cost),
 ## Long arrays
 
 Clearly, as the size of the tree increased the sparse matrix become impractical. We can provide a long format array to address this. Let us transform the wide array used previously to demonstrate the structure and space saving.
-
 ```{r}
 probs_long <-
   probs %>%
@@ -136,7 +133,7 @@ We can check that this sums to the same total expected cost.
 sum(wcost, na.rm = TRUE)
 ```
 
-We can also calculate the joint probabilities of traversing to each terminal state.
+We can also calculate the joint probabilities of traversing to each terminal state using `branch_joint_probs`.
 
 ```{r}
 # terminal state total probs

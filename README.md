@@ -52,40 +52,24 @@ is a analogue to these.
 Load libraries.
 
 ``` r
-suppressMessages(library(CEdecisiontree))
-library(readr)
-#> Warning: package 'readr' was built under R version 3.4.4
-library(dplyr)
-#> Warning: package 'dplyr' was built under R version 3.4.4
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
-library(reshape2)
-#> Warning: package 'reshape2' was built under R version 3.4.4
-library(tidyr)
-#> Warning: package 'tidyr' was built under R version 3.4.4
-#> 
-#> Attaching package: 'tidyr'
-#> The following object is masked from 'package:reshape2':
-#> 
-#>     smiths
+suppressWarnings(suppressMessages(library(CEdecisiontree)))
+suppressWarnings(suppressMessages(library(readr)))
+suppressWarnings(suppressMessages(library(dplyr)))
+suppressWarnings(suppressMessages(library(reshape2)))
+suppressWarnings(suppressMessages(library(tidyr)))
 ```
 
-Load data.
+Load example data from the package.
 
 ``` r
 data("cost")
 data("probs")
 ```
 
-The cost and probability matrices are sparse arrays indicating the edge
-values (rows=from node, columns=to node). There are therefore the same
-dimensions and have the same entry pattern. Empty cells have `NA`.
+The cost and probability matrices we will use in this example are sparse
+arrays indicating the edge values (rows=from node, columns=to node).
+There are therefore the same dimensions and have the same entry pattern.
+Empty cells have `NA`.
 
 ``` r
 cost
@@ -202,7 +186,7 @@ sum(wcost, na.rm = TRUE)
 ```
 
 We can also calculate the joint probabilities of traversing to each
-terminal state.
+terminal state using `branch_joint_probs`.
 
 ``` r
 # terminal state total probs
