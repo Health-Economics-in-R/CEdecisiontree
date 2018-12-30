@@ -196,17 +196,18 @@ order from root such that terminal nodes are last.
 
 ``` r
 n_from_nodes <- nrow(probs)
-terminal_states <- (n_from_nodes + 1):n_from_nodes
+n_to_nodes <- ncol(probs)
+terminal_states <- (n_from_nodes + 1):n_to_nodes
 
 p_terminal_state <-
   branch_joint_probs(probs)[ ,terminal_states] %>%
   colSums(na.rm = TRUE)
 
 p_terminal_state
-#>    4    3 
-#> 0.04 0.80
+#>    4    5    6    7 
+#> 0.04 0.16 0.16 0.64
 sum(p_terminal_state)
-#> [1] 0.84
+#> [1] 1
 ```
 
 See package
