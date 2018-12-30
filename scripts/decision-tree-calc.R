@@ -55,7 +55,7 @@ Cdectree_expected_values(vals = as.matrix(cost),
 
 # branch probs ------------------------------------------------------------
 
-# contributing cost as weighted by likelihood
+# contributing cost as weighted by chance
 # trade-off between original size and branch position
 wcost <- branch_joint_probs(probs) * cost
 wcost
@@ -65,10 +65,11 @@ sum(wcost, na.rm = TRUE)
 # terminal state total probs
 terminal_states <- (nrow(probs) + 1):ncol(probs)
 
-branch_joint_probs(probs)[ ,terminal_states] %>%
+p_terminal_state <-
+  branch_joint_probs(probs)[ ,terminal_states] %>%
   colSums(na.rm = TRUE)
 
-
+sum(p_terminal_state)
 
 
 # prevalence <- 0.4

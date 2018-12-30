@@ -51,14 +51,105 @@ library(CEdecisiontree)
 
 
 ## Motivation
-xxx
+Full probabilty models could be fit using a Bayesian model with e.g. jags or WinBUGS but when all values are statistics from literature or expert knowledge a simple, direct model is often built in Excel. This is a analogue to these.
 
 
 ## Basic example
 
+Load libraries.
 ```{r}
 suppressMessages(library(CEdecisiontree))
+library(readr)
+library(dplyr)
+library(reshape2)
+library(tidyr)
 ```
+
+Load data.
+```{r}
+data("cost")
+data("probs")
+```
+
+The cost and probability matrices are sparse arrays indicating the edge values (rows=from node, columns=to node).
+There are therefore the same dimensions and have the same entry pattern. Empty cells have `NA`.
+
+
+```{r}
+cost
+```
+
+```{r}
+probs
+```
+
+The expected value at each node is calculate as follows.
+```{r}
+dectree_expected_values(vals = cost,
+                        p = probs)
+```
+
+There is also an Rcpp version of this function.
+```{r}
+Cdectree_expected_values(vals = as.matrix(cost),
+                         p = as.matrix(probs))
+```
+
+
+## Long arrays
+
+Clearly, as the size of the tree increased the sparse matrix become impractical. We can provide a long format array to address this. Let us transform the wide array used previously to demonstrate the structure and space saving.
+
+```{r}
+probs_long <-
+  probs %>%
+  mutate('from' = rownames(.)) %>%
+  melt(id.vars = "from",
+       variable.name = 'to',
+       value.name = 'prob') %>%
+  na.omit()
+
+cost_long <-
+  cost %>%
+  mutate('from' = rownames(.)) %>%
+  melt(id.vars = "from",
+       variable.name = 'to',
+       value.name = 'cost') %>%
+  na.omit()
+
+merge(probs_long,
+      cost_long)
+```
+
+
+## Other tree statistics
+For additional information, inclusing for the purposes of model checking we can calculate other tree statistics.
+We can obtain the contributing cost as weighted by the chance of occurrence. This can be thought of as a trade-off between the raw, original cost and branch position.
+
+```{r}
+wcost <- branch_joint_probs(probs) * cost
+wcost
+```
+
+We can check that this sums to the same total expected cost.
+```{r}
+sum(wcost, na.rm = TRUE)
+```
+
+We can also calculate the joint probabilities of traversing to each terminal state.
+
+```{r}
+# terminal state total probs
+terminal_states <- (nrow(probs) + 1):ncol(probs)
+
+p_terminal_state <-
+  branch_joint_probs(probs)[ ,terminal_states] %>%
+  colSums(na.rm = TRUE)
+
+p_terminal_state
+sum(p_terminal_state)
+```
+
 
 
 
