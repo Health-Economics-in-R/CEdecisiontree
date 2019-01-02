@@ -96,6 +96,20 @@ probs
 #> 3    NA  NA    NA    NA    NA     0.2   0.8
 ```
 
+`probs` is a probability transition matrix. This is like `pmatrix.msm`
+in the `msm` package, or `define_transition` in the `heemod` package.
+The `transMat()` function in the `mstate` package creates a closely
+related multi-state model transition matrix. Copying this, we can do
+
+``` r
+CEdecisiontree:::trans_binarytree(depth = 3)
+#>     to
+#> from  1  2  3  4  5  6  7
+#>    1 NA  1  2 NA NA NA NA
+#>    2 NA NA NA  3  4 NA NA
+#>    3 NA NA NA NA NA  5  6
+```
+
 The expected value at each node is calculate as follows.
 
 ``` r
@@ -208,6 +222,103 @@ p_terminal_state
 #> 0.04 0.16 0.16 0.64
 sum(p_terminal_state)
 #> [1] 1
+```
+
+## Comparison with `heemod`
+
+``` r
+library(heemod)
+#> Warning: package 'heemod' was built under R version 3.4.4
+
+mat_base <- define_transition(
+  state_names = as.character(1:8),
+  0, 0.2, 0.8,0,0,0,0,0, 
+  0,0,0, 0.2, 0.8,0,0,0,  
+  0,0,0,0,0, 0.2, 0.8,0,
+  0,0,0,0,0,0,0,1,
+  0,0,0,0,0,0,0,1,
+  0,0,0,0,0,0,0,1,
+  0,0,0,0,0,0,0,1,
+  0,0,0,0,0,0,0,1
+)
+```
+
+Define cost at each node:
+
+``` r
+state_1 <- define_state(
+  cost_total = 0,
+  qaly = 0)
+
+state_2 <- define_state(
+  cost_total = 10,
+  qaly = 1)
+
+state_3 <- define_state(
+  cost_total = 1,
+  qaly = 1)
+
+state_4 <- define_state(
+  cost_total = 10,
+  qaly = 1)
+
+state_5 <- define_state(
+  cost_total = 1,
+  qaly = 1)
+
+state_6 <- define_state(
+  cost_total = 10,
+  qaly = 1)
+
+state_7 <- define_state(
+  cost_total = 1,
+  qaly = 1)
+
+state_8 <- define_state(
+  cost_total = 0,
+  qaly = 0)
+
+strat_base <- define_strategy(
+  transition = mat_base,
+  "1" = state_1,
+  "2" = state_2,
+  "3" = state_3,
+  "4" = state_4,
+  "5" = state_5,
+  "6" = state_6,
+  "7" = state_7,
+  "8" = state_8
+)
+```
+
+Finally, we get the expected cost
+
+``` r
+run_model(
+  strat_base,
+  cycles = 100,
+  cost = cost_total,
+  effect = qaly)
+#> No named model -> generating names.
+#> 1 strategy run for 100 cycles.
+#> 
+#> Initial state counts:
+#> 
+#> 1 = 1000L
+#> 2 = 0L
+#> 3 = 0L
+#> 4 = 0L
+#> 5 = 0L
+#> 6 = 0L
+#> 7 = 0L
+#> 8 = 0L
+#> 
+#> Counting method: 'life-table'.
+#> 
+#> Values:
+#> 
+#>   cost_total qaly
+#> I       5600 2000
 ```
 
 See package
