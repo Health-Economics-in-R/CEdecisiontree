@@ -57,9 +57,13 @@ Quietly load libraries.
 ``` r
 suppressPackageStartupMessages(library(CEdecisiontree))
 suppressPackageStartupMessages(library(readr))
+#> Warning: package 'readr' was built under R version 3.4.4
 suppressPackageStartupMessages(library(dplyr))
+#> Warning: package 'dplyr' was built under R version 3.4.4
 suppressPackageStartupMessages(library(reshape2))
+#> Warning: package 'reshape2' was built under R version 3.4.4
 suppressPackageStartupMessages(library(tidyr))
+#> Warning: package 'tidyr' was built under R version 3.4.4
 ```
 
 We will consider a simple 7 node binary
@@ -165,6 +169,7 @@ probs_long <-
        variable.name = 'to',
        value.name = 'prob') %>%
   na.omit()
+#> Warning: package 'bindrcpp' was built under R version 3.4.4
 
 cost_long <-
   cost %>%
@@ -240,108 +245,6 @@ p_terminal_state
 #> 0.04 0.16 0.16 0.64
 sum(p_terminal_state)
 #> [1] 1
-```
-
-## Comparison with `heemod`
-
-The heemod package is designed to simulate more general models but let
-us perform the same analysis to compare. First, we need to define the
-transition matrix. This is essentially the same as above except because
-heemod simulates over a predefined number of iterations or `cycles` we
-need to add a final absorbing sink state with no associated costs.
-
-``` r
-library(heemod)
-
-mat_base <- define_transition(
-  state_names = as.character(1:8),
-  0, 0.2, 0.8,0,0,0,0,0, 
-  0,0,0, 0.2, 0.8,0,0,0,  
-  0,0,0,0,0, 0.2, 0.8,0,
-  0,0,0,0,0,0,0,1,
-  0,0,0,0,0,0,0,1,
-  0,0,0,0,0,0,0,1,
-  0,0,0,0,0,0,0,1,
-  0,0,0,0,0,0,0,1
-)
-```
-
-Define cost at each node:
-
-``` r
-state_1 <- define_state(
-  cost_total = 0,
-  qaly = 0)
-
-state_2 <- define_state(
-  cost_total = 10,
-  qaly = 1)
-
-state_3 <- define_state(
-  cost_total = 1,
-  qaly = 1)
-
-state_4 <- define_state(
-  cost_total = 10,
-  qaly = 1)
-
-state_5 <- define_state(
-  cost_total = 1,
-  qaly = 1)
-
-state_6 <- define_state(
-  cost_total = 10,
-  qaly = 1)
-
-state_7 <- define_state(
-  cost_total = 1,
-  qaly = 1)
-
-state_8 <- define_state(
-  cost_total = 0,
-  qaly = 0)
-
-strat_base <- define_strategy(
-  transition = mat_base,
-  "1" = state_1,
-  "2" = state_2,
-  "3" = state_3,
-  "4" = state_4,
-  "5" = state_5,
-  "6" = state_6,
-  "7" = state_7,
-  "8" = state_8
-)
-```
-
-Finally, we get the expected cost
-
-``` r
-run_model(
-  strat_base,
-  cycles = 100,
-  cost = cost_total,
-  effect = qaly)
-#> No named model -> generating names.
-#> 1 strategy run for 100 cycles.
-#> 
-#> Initial state counts:
-#> 
-#> 1 = 1000L
-#> 2 = 0L
-#> 3 = 0L
-#> 4 = 0L
-#> 5 = 0L
-#> 6 = 0L
-#> 7 = 0L
-#> 8 = 0L
-#> 
-#> Counting method: 'life-table'.
-#> 
-#> Values:
-#> 
-#>   cost_total qaly
-#> I       5600 2000
 ```
 
 See package
