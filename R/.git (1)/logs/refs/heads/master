@@ -1,0 +1,14 @@
+0000000000000000000000000000000000000000 fde53b03e0be9f5ff9495bb16cc4bcf4dc132a87 Nathan Green <n8thangreen@yahoo.co.uk> 1519732548 +0000	commit (initial): init
+fde53b03e0be9f5ff9495bb16cc4bcf4dc132a87 f4ae8e711c9aebb50e9cdaa640e0c43dc6b2b7a0 Nathan Green <n8thangreen@yahoo.co.uk> 1519732597 +0000	commit (amend): missed some
+f4ae8e711c9aebb50e9cdaa640e0c43dc6b2b7a0 3b55447cc103f14f6e872f28f5d02e9031110184 Nathan Green <n8thangreen@yahoo.co.uk> 1519828234 +0000	commit: included a new example for bcg tb where all the costs and uility are at the terminal node
+3b55447cc103f14f6e872f28f5d02e9031110184 786cb2d7a4be27b4b0fb91a18416fc4e654b77d8 Nathan Green <n8thangreen@yahoo.co.uk> 1545311325 +0000	commit: tests and C++
+786cb2d7a4be27b4b0fb91a18416fc4e654b77d8 b23c7f48c3ceb3dc260baf0fd1cc4fceb8494a29 Nathan Green <n8thangreen@yahoo.co.uk> 1545311339 +0000	commit: src
+b23c7f48c3ceb3dc260baf0fd1cc4fceb8494a29 684b328706d7414424539367a29869c2691758f3 Nathan Green <n8thangreen@yahoo.co.uk> 1546188241 +0000	commit: update to reproduce LTBI TB+IGRA Excel model
+684b328706d7414424539367a29869c2691758f3 2cb43bf177f0c681816993891b41f17d84c46cb3 Nathan Green <n8thangreen@yahoo.co.uk> 1546189606 +0000	commit: spacing
+2cb43bf177f0c681816993891b41f17d84c46cb3 26ca83642fe2409f409296a388023747080ba95b Nathan Green <n8thangreen@yahoo.co.uk> 1546190153 +0000	commit: update README
+26ca83642fe2409f409296a388023747080ba95b 6e0c139b2546d89f7a16a4072f80403011dde3ee Nathan Green <n8thangreen@yahoo.co.uk> 1546196369 +0000	commit (amend): update README
+6e0c139b2546d89f7a16a4072f80403011dde3ee bc8703d3269596319a34977e7b993c91286ae589 Nathan Green <n8thangreen@yahoo.co.uk> 1546197960 +0000	commit: Finish README example
+bc8703d3269596319a34977e7b993c91286ae589 38582893b5219dbbcd4764cf1905c49161ec63b0 Nathan Green <n8thangreen@yahoo.co.uk> 1546198318 +0000	commit: tidy README
+38582893b5219dbbcd4764cf1905c49161ec63b0 ba6e80ff48859fdde5386fc4dfff274fdd480c67 Nathan Green <n8thangreen@yahoo.co.uk> 1546199853 +0000	commit: include figure in README
+ba6e80ff48859fdde5386fc4dfff274fdd480c67 919a768f506275a7c80ec3fdcc3bd27a68ef050d Nathan Green <n8thangreen@yahoo.co.uk> 1546200118 +0000	commit: fix README typo
+919a768f506275a7c80ec3fdcc3bd27a68ef050d dd44cfa23d78322331d723c54a9b0df22456123c Nathan Green <n8thangreen@yahoo.co.uk> 1546462874 +0000	commit: add heemod example

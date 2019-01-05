@@ -14,8 +14,26 @@
 #'
 ## this is the list version which
 ## dosent assume a binary tree structure
+#' Title
+#'
+#' @param vals
+#' @param p
+#' @param dat default: NA
+#'
+#' @return
+#' @export
+#'
+#' @examples
 dectree_expected_values <- function(vals,
-                                    p){
+                                    p,
+                                    dat = NA){
+
+  if (!any(is.na(dat))) {
+
+    p <- long_to_transmat(dat[, c("from", "to", "prob")])
+    vals <- long_to_transmat(select(dat, -prob))
+  }
+
   rows_sum_to_one <-
     apply(p, 1, function(x) sum(x, na.rm = TRUE)) %in% c(0, 1)
 

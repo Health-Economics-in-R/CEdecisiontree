@@ -51,18 +51,18 @@ library(CEdecisiontree)
 
 
 ## Motivation
-Full probabilty models could be fit using a Bayesian model with e.g. jags or WinBUGS but when all values are statistics from literature or expert knowledge a simple, direct model is often built in Excel. This is a analogue to these.
+Decisions trees can be modelled as special cases of more general models using available packages in R e.g. heemod, mstate or msm. Further, full probabilty models could be fit using a Bayesian model with e.g. jags or WinBUGS. However, simple decision tree models are often built in Excel, using statistics from literature or expert knowledge. This package is a analogue to these, such that  models can be specified in a very similar and simple way.
 
 
 ## Basic example
 
 Quietly load libraries.
 ```{r}
-suppressWarnings(suppressMessages(library(CEdecisiontree)))
-suppressWarnings(suppressMessages(library(readr)))
-suppressWarnings(suppressMessages(library(dplyr)))
-suppressWarnings(suppressMessages(library(reshape2)))
-suppressWarnings(suppressMessages(library(tidyr)))
+suppressPackageStartupMessages(library(CEdecisiontree))
+suppressPackageStartupMessages(library(readr))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(reshape2))
+suppressPackageStartupMessages(library(tidyr))
 ```
 
 We will consider a simple 7 node binary tree.
@@ -90,7 +90,8 @@ probs
 
 `probs` is a probability transition matrix.
 This is like `pmatrix.msm` in the `msm` package, or `define_transition` in the `heemod` package.
-The `transMat()` function in the `mstate` package creates a closely related multi-state model transition matrix. Copying this, we can do
+
+The `transMat()` function in the `mstate` package creates a closely related multi-state model transition matrix. Copying this package, we can create a decision tree transition matrix to use with this.
 
 ```{r}
 CEdecisiontree:::trans_binarytree(depth = 3)
@@ -130,9 +131,19 @@ cost_long <-
        value.name = 'cost') %>%
   na.omit()
 
-merge(probs_long,
-      cost_long)
+dat_long <-
+  merge(probs_long,
+        cost_long)
+
+dat_long
 ```
+
+We can use the long array as the input argument instead of the separate transition matrices. Internally, we simple convert back to a matrix so for larger trees this may be inefficient.
+
+```{r}
+dectree_expected_values(dat = dat_long)
+```
+
 
 
 ## Other tree statistics
@@ -167,6 +178,8 @@ sum(p_terminal_state)
 
 ## Comparison with `heemod` 
 
+The heemod package is designed to simulate more general models but let us perform the same analysis to compare.
+First, we need to define the transition matrix. This is essentially the same as above except because heemod simulates over a predefined number of iterations or `cycles` we need to add a final absorbing sink state with no associated costs.
 ```{r}
 library(heemod)
 

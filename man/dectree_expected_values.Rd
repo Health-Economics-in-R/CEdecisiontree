@@ -4,12 +4,14 @@
 \alias{dectree_expected_values}
 \title{Decision Tree Expected Values}
 \usage{
-dectree_expected_values(vals, p)
+dectree_expected_values(vals, p, dat = NA)
 }
 \arguments{
 \item{vals}{Values on each edge/branch e.g. costs or QALYs (array)}
 
 \item{p}{Transition probabilities (array)}
+
+\item{dat}{default: NA}
 }
 \value{
 expected value at each node (list)
@@ -19,5 +21,7 @@ expected value at each node (list)
 }
 \examples{
 dectree_expected_values(cost, probs)
+
+Title
 
 }
