@@ -1,5 +1,7 @@
 ---
-output: github_document
+output:
+  github_document:
+    pandoc_args: --webtex
 ---
 
 [![Build Status](https://travis-ci.org/n8thangreen/QALY.svg?branch=master)](https://travis-ci.org/n8thangreen/CEdecisiontree)
@@ -26,14 +28,7 @@ knitr::opts_chunk$set(
 
 An R package for lightweight cost-effectiveness analysis using decision trees.
 
-Currently contains functions to:
-
-- matrix (wide, sparse) representation
-
-## To do
-Request welcome; please use [Issues](https://github.com/n8thangreen/CEdecisiontree/issues)
-
-- fully integrate src
+Requests and comments welcome; please use [Issues](https://github.com/n8thangreen/CEdecisiontree/issues).
 
 
 ## Installing CEdecisiontree
@@ -41,7 +36,7 @@ Request welcome; please use [Issues](https://github.com/n8thangreen/CEdecisiontr
 To install the development version from github:
 ```{r eval=FALSE}
 library(devtools)
-install_github("n8thangreen/CEdecisiontree")
+install_github("Health-Economics-in-R/CEdecisiontree")
 ```
 
 Then, to load the package, use:
@@ -52,6 +47,20 @@ library(CEdecisiontree)
 
 ## Motivation
 Decisions trees can be modelled as special cases of more general models using available packages in R e.g. heemod, mstate or msm. Further, full probabilty models could be fit using a Bayesian model with e.g. jags or WinBUGS. However, simple decision tree models are often built in Excel, using statistics from literature or expert knowledge. This package is a analogue to these, such that  models can be specified in a very similar and simple way.
+
+## Calculation
+
+The recursive formula
+
+$$
+Ec_i = c_i + \sum_{j \in child(i)} p_{ij} Ec_j
+$$
+
+with boundary values
+
+$$
+Ec_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}.
+$$
 
 
 ## Basic example
@@ -109,41 +118,6 @@ There is also an Rcpp version of this function.
 Cdectree_expected_values(vals = as.matrix(cost),
                          p = as.matrix(probs))
 ```
-
-
-## Long arrays
-
-Clearly, as the size of the tree increased the sparse matrix become impractical. We can provide a long format array to address this. Let us transform the wide array used previously to demonstrate the structure and space saving.
-```{r}
-probs_long <-
-  probs %>%
-  mutate('from' = rownames(.)) %>%
-  melt(id.vars = "from",
-       variable.name = 'to',
-       value.name = 'prob') %>%
-  na.omit()
-
-cost_long <-
-  cost %>%
-  mutate('from' = rownames(.)) %>%
-  melt(id.vars = "from",
-       variable.name = 'to',
-       value.name = 'cost') %>%
-  na.omit()
-
-dat_long <-
-  merge(probs_long,
-        cost_long)
-
-dat_long
-```
-
-We can use the long array as the input argument instead of the separate transition matrices. Internally, we simple convert back to a matrix so for larger trees this may be inefficient.
-
-```{r}
-dectree_expected_values(dat = dat_long)
-```
-
 
 
 ## Other tree statistics

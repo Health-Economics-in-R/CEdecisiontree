@@ -3,5 +3,6 @@ pkgdown: 1.3.0
 pkgdown_sha: ~
 articles:
   comparison-with-other-packages: comparison-with-other-packages.html
+  other-input-formats: other-input-formats.html
   simple_example: simple_example.html
 

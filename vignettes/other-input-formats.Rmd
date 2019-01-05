@@ -1,0 +1,102 @@
+---
+title: "Using other input formats"
+author: "Nathan Green"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The main aim of the CEdecisiontree package is to provide a bridge to models that would be otherwise build in Excel.
+Because of this the transition matrix format for input arguments is the primary format.
+However, this is not necessarily the easiest to define, manipulate or compute with.
+Here we give some examples alternative formats.
+
+## Setup
+
+Quietly load libraries.
+```{r}
+suppressPackageStartupMessages(library(CEdecisiontree))
+suppressPackageStartupMessages(library(readr))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(reshape2))
+suppressPackageStartupMessages(library(tidyr))
+```
+
+Load example data from the package. 
+```{r}
+data("cost")
+data("probs")
+```
+
+## Tree structure
+
+Generally, we can specify a tree by who the children are for each parent node.
+This can be more compuationally efficient.
+```{r}
+tree <-
+ list("1" = c(2,3),
+      "2" =  c(4,5),
+      "3" =  c(6,7),
+      "4" =  c(),
+      "5" =  c(),
+      "6" =  c(),
+      "7" =  c())
+vals <-
+ data.frame(node = 1:7,
+            probs = c(NA, 0.2, 0.8, 0.2, 0.8, 0.2, 0.8),
+            cost = c(0,10,1,10,1,10,1))
+tree
+vals
+
+CEdecisiontree_recursive(tree, vals)
+```
+
+We can obtain the list of children from the probability matrix (or any other structure defining transition matrix).
+```{r}
+get_children_list(probs)
+```
+
+
+
+## Single long array
+
+If we keep with flat arrays then clearly, as the size of the tree increased the sparse matrices become impractical. We can provide a long format array to address this. Let us transform the wide array used previously to demonstrate the structure and space saving.
+```{r}
+probs_long <-
+  probs %>%
+  mutate('from' = rownames(.)) %>%
+  melt(id.vars = "from",
+       variable.name = 'to',
+       value.name = 'prob') %>%
+  na.omit()
+
+cost_long <-
+  cost %>%
+  mutate('from' = rownames(.)) %>%
+  melt(id.vars = "from",
+       variable.name = 'to',
+       value.name = 'cost') %>%
+  na.omit()
+
+dat_long <-
+  merge(probs_long,
+        cost_long)
+
+dat_long
+```
+
+We can use the long array as the input argument instead of the separate transition matrices. Internally, we simple convert back to a matrix using `long_to_transmat()` so for larger trees this may be inefficient.
+
+```{r}
+dectree_expected_values(dat = dat_long)
+```

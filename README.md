@@ -14,16 +14,8 @@ status](https://codecov.io/gh/n8thangreen/QALY/branch/master/graph/badge.svg)](h
 An R package for lightweight cost-effectiveness analysis using decision
 trees.
 
-Currently contains functions to:
-
-  - matrix (wide, sparse) representation
-
-## To do
-
-Request welcome; please use
-[Issues](https://github.com/n8thangreen/CEdecisiontree/issues)
-
-  - fully integrate src
+Requests and comments welcome; please use
+[Issues](https://github.com/n8thangreen/CEdecisiontree/issues).
 
 ## Installing CEdecisiontree
 
@@ -31,7 +23,7 @@ To install the development version from github:
 
 ``` r
 library(devtools)
-install_github("n8thangreen/CEdecisiontree")
+install_github("Health-Economics-in-R/CEdecisiontree")
 ```
 
 Then, to load the package, use:
@@ -49,6 +41,28 @@ WinBUGS. However, simple decision tree models are often built in Excel,
 using statistics from literature or expert knowledge. This package is a
 analogue to these, such that models can be specified in a very similar
 and simple way.
+
+## Calculation
+
+The recursive formula
+
+  
+![
+Ec\_i = c\_i + \\sum\_{j \\in child(i)} p\_{ij} Ec\_j
+](https://latex.codecogs.com/png.latex?%0AEc_i%20%3D%20c_i%20%2B%20%5Csum_%7Bj%20%5Cin%20child%28i%29%7D%20p_%7Bij%7D%20Ec_j%0A
+"
+Ec_i = c_i + \\sum_{j \\in child(i)} p_{ij} Ec_j
+")  
+
+with boundary values
+
+  
+![
+Ec\_i = c\_i \\mbox{ for } i = \\{ S: child(s) = \\emptyset \\}.
+](https://latex.codecogs.com/png.latex?%0AEc_i%20%3D%20c_i%20%5Cmbox%7B%20for%20%7D%20i%20%3D%20%5C%7B%20S%3A%20child%28s%29%20%3D%20%5Cemptyset%20%5C%7D.%0A
+"
+Ec_i = c_i \\mbox{ for } i = \\{ S: child(s) = \\emptyset \\}.
+")  
 
 ## Basic example
 
@@ -151,56 +165,6 @@ There is also an Rcpp version of this function.
 ``` r
 Cdectree_expected_values(vals = as.matrix(cost),
                          p = as.matrix(probs))
-#> [1] 5.6 2.8 2.8 0.0 0.0 0.0 0.0
-```
-
-## Long arrays
-
-Clearly, as the size of the tree increased the sparse matrix become
-impractical. We can provide a long format array to address this. Let us
-transform the wide array used previously to demonstrate the structure
-and space saving.
-
-``` r
-probs_long <-
-  probs %>%
-  mutate('from' = rownames(.)) %>%
-  melt(id.vars = "from",
-       variable.name = 'to',
-       value.name = 'prob') %>%
-  na.omit()
-#> Warning: package 'bindrcpp' was built under R version 3.4.4
-
-cost_long <-
-  cost %>%
-  mutate('from' = rownames(.)) %>%
-  melt(id.vars = "from",
-       variable.name = 'to',
-       value.name = 'cost') %>%
-  na.omit()
-
-dat_long <-
-  merge(probs_long,
-        cost_long)
-
-dat_long
-#>   from to prob cost
-#> 1    1  2  0.2   10
-#> 2    1  3  0.8    1
-#> 3    2  4  0.2   10
-#> 4    2  5  0.8    1
-#> 5    3  6  0.2   10
-#> 6    3  7  0.8    1
-```
-
-We can use the long array as the input argument instead of the separate
-transition matrices. Internally, we simple convert back to a matrix so
-for larger trees this may be inefficient.
-
-``` r
-dectree_expected_values(dat = dat_long)
-#> Using prob as value column: use value.var to override.
-#> Using cost as value column: use value.var to override.
 #> [1] 5.6 2.8 2.8 0.0 0.0 0.0 0.0
 ```
 
