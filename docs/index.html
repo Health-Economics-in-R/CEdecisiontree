@@ -60,7 +60,13 @@
       <a href="articles/other-input-formats.html">Using other input formats</a>
     </li>
     <li>
-      <a href="articles/simple_example.html">A simple example</a>
+      <a href="articles/probabilistic-sensitivity-analysis.html">Probabilistic Sensitivity Analysis</a>
+    </li>
+    <li>
+      <a href="articles/scenario-sensitivity-analysis.html">Scenario Sensitivity Analysis</a>
+    </li>
+    <li>
+      <a href="articles/Using_function_dispatch.html">Using function dispatch</a>
     </li>
   </ul>
 </li>
@@ -109,11 +115,11 @@
 <a href="#calculation" class="anchor"></a>Calculation</h2>
 <p>The recursive formula</p>
 <p><span class="math display">\[
-Ec_i = c_i + \sum_{j \in child(i)} p_{ij} Ec_j
+\hat{c}_i = c_i + \sum_{j \in child(i)} p_{ij} \hat{c}_j
 \]</span></p>
 <p>with boundary values</p>
 <p><span class="math display">\[
-Ec_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}.
+\hat{c}_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}.
 \]</span></p>
 </div>
 <div id="basic-example" class="section level2">
@@ -130,7 +136,7 @@ Ec_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}.
 <a class="sourceLine" id="cb3-8" title="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyr))</a>
 <a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt; Warning: package 'tidyr' was built under R version 3.4.4</span></a></code></pre></div>
 <p>We will consider a simple 7 node binary tree.</p>
-<p><img src="../../../Google%20Drive/R%20code/CEdecisiontree/figures/README_decisiontree_silverdecisions.png" width="400px"></p>
+<p><img src="../../../Google%20Drive/R%20code/CEdecisiontree/man/figures/README_decisiontree_silverdecisions.png" width="400px"></p>
 <p>Load example data from the package.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(<span class="st">"cost"</span>)</a>
 <a class="sourceLine" id="cb4-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(<span class="st">"probs"</span>)</a></code></pre></div>
@@ -158,7 +164,7 @@ Ec_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}.
 <a class="sourceLine" id="cb7-5" title="5"><span class="co">#&gt;    2 NA NA NA  3  4 NA NA</span></a>
 <a class="sourceLine" id="cb7-6" title="6"><span class="co">#&gt;    3 NA NA NA NA NA  5  6</span></a></code></pre></div>
 <p>The expected value at each node is calculate as follows.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="reference/dectree_expected_values.html">dectree_expected_values</a></span>(<span class="dt">vals =</span> cost,</a>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="reference/dectree_expected_values.default.html">dectree_expected_values</a></span>(<span class="dt">vals =</span> cost,</a>
 <a class="sourceLine" id="cb8-2" title="2">                        <span class="dt">p =</span> probs)</a>
 <a class="sourceLine" id="cb8-3" title="3"><span class="co">#&gt; [[1]]</span></a>
 <a class="sourceLine" id="cb8-4" title="4"><span class="co">#&gt; [1] 5.6</span></a>
@@ -182,8 +188,7 @@ Ec_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}.
 <a class="sourceLine" id="cb8-22" title="22"><span class="co">#&gt; [1] 0</span></a></code></pre></div>
 <p>There is also an Rcpp version of this function.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw"><a href="reference/Cdectree_expected_values.html">Cdectree_expected_values</a></span>(<span class="dt">vals =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">as.matrix</a></span>(cost),</a>
-<a class="sourceLine" id="cb9-2" title="2">                         <span class="dt">p =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">as.matrix</a></span>(probs))</a>
-<a class="sourceLine" id="cb9-3" title="3"><span class="co">#&gt; [1] 5.6 2.8 2.8 0.0 0.0 0.0 0.0</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-2" title="2">                         <span class="dt">p =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">as.matrix</a></span>(probs))</a></code></pre></div>
 </div>
 <div id="other-tree-statistics" class="section level2">
 <h2 class="hasAnchor">

@@ -92,7 +92,13 @@
       <a href="../articles/other-input-formats.html">Using other input formats</a>
     </li>
     <li>
-      <a href="../articles/simple_example.html">A simple example</a>
+      <a href="../articles/probabilistic-sensitivity-analysis.html">Probabilistic Sensitivity Analysis</a>
+    </li>
+    <li>
+      <a href="../articles/scenario-sensitivity-analysis.html">Scenario Sensitivity Analysis</a>
+    </li>
+    <li>
+      <a href="../articles/Using_function_dispatch.html">Using function dispatch</a>
     </li>
   </ul>
 </li>
@@ -126,7 +132,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>CEdecisiontree_recursive</span>(<span class='no'>tree</span>, <span class='no'>vals</span>)</pre>
+    <pre class="usage"><span class='fu'>CEdecisiontree_recursive</span>(<span class='no'>tree</span>, <span class='no'>dat</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,12 +167,12 @@
        <span class='st'>"6"</span> <span class='kw'>=</span>  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(),
        <span class='st'>"7"</span> <span class='kw'>=</span>  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>())
 
-<span class='no'>vals</span> <span class='kw'>&lt;-</span>
+<span class='no'>dat</span> <span class='kw'>&lt;-</span>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>node</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>7</span>,
-             <span class='kw'>probs</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>NA</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>0.5</span>, <span class='fl'>6</span>)),
-             <span class='kw'>cost</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>10</span>,<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>16</span>,<span class='fl'>5</span>,<span class='fl'>6</span>,<span class='fl'>7</span>))
+             <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>NA</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>0.5</span>, <span class='fl'>6</span>)),
+             <span class='kw'>vals</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>10</span>,<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>16</span>,<span class='fl'>5</span>,<span class='fl'>6</span>,<span class='fl'>7</span>))
 
- <span class='fu'>CEdecisiontree_recursive</span>(<span class='no'>tree</span>, <span class='no'>vals</span>)</div><div class='output co'>#&gt; [1] 21</div><div class='input'>
+ <span class='fu'>CEdecisiontree_recursive</span>(<span class='no'>tree</span>, <span class='no'>dat</span>)</div><div class='output co'>#&gt; [1] 21</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

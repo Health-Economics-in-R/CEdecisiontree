@@ -59,7 +59,13 @@
       <a href="../articles/other-input-formats.html">Using other input formats</a>
     </li>
     <li>
-      <a href="../articles/simple_example.html">A simple example</a>
+      <a href="../articles/probabilistic-sensitivity-analysis.html">Probabilistic Sensitivity Analysis</a>
+    </li>
+    <li>
+      <a href="../articles/scenario-sensitivity-analysis.html">Scenario Sensitivity Analysis</a>
+    </li>
+    <li>
+      <a href="../articles/Using_function_dispatch.html">Using function dispatch</a>
     </li>
   </ul>
 </li>
@@ -82,7 +88,7 @@
       <h1>Using other input formats</h1>
                         <h4 class="author">Nathan Green</h4>
             
-            <h4 class="date">2019-01-05</h4>
+            <h4 class="date">2019-01-06</h4>
       
       
       <div class="hidden name"><code>other-input-formats.Rmd</code></div>
@@ -157,7 +163,7 @@
 <a class="sourceLine" id="cb3-42" title="42"><span class="co">#&gt; 7    7   0.8    1</span></a>
 <a class="sourceLine" id="cb3-43" title="43"></a>
 <a class="sourceLine" id="cb3-44" title="44"><span class="kw"><a href="../reference/CEdecisiontree_recursive.html">CEdecisiontree_recursive</a></span>(tree, vals)</a>
-<a class="sourceLine" id="cb3-45" title="45"><span class="co">#&gt; [1] 5.6</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-45" title="45"><span class="co">#&gt; numeric(0)</span></a></code></pre></div>
 <p>We can obtain the list of children from the probability matrix (or any other structure defining transition matrix).</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="../reference/get_children_list.html">get_children_list</a></span>(probs)</a>
 <a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt; $`1`</span></a>
@@ -215,7 +221,7 @@
 <a class="sourceLine" id="cb5-28" title="28"><span class="co">#&gt; 5    3  6  0.2   10</span></a>
 <a class="sourceLine" id="cb5-29" title="29"><span class="co">#&gt; 6    3  7  0.8    1</span></a></code></pre></div>
 <p>We can use the long array as the input argument instead of the separate transition matrices. Internally, we simple convert back to a matrix using <code><a href="../reference/long_to_transmat.html">long_to_transmat()</a></code> so for larger trees this may be inefficient.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw"><a href="../reference/dectree_expected_values.html">dectree_expected_values</a></span>(<span class="dt">dat =</span> dat_long)</a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw"><a href="../reference/dectree_expected_values.default.html">dectree_expected_values</a></span>(<span class="dt">dat =</span> dat_long)</a>
 <a class="sourceLine" id="cb6-2" title="2"><span class="co">#&gt; Using prob as value column: use value.var to override.</span></a>
 <a class="sourceLine" id="cb6-3" title="3"><span class="co">#&gt; Using cost as value column: use value.var to override.</span></a>
 <a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt; [1] 5.6 2.8 2.8 0.0 0.0 0.0 0.0</span></a></code></pre></div>

@@ -1,29 +1,27 @@
 
 #' Decision Tree Expected Values
 #'
+#' Root node expected value as the weighted mean of
+#' probability and edge/node values e.g. costs or QALYS.
+#'
+#' At the moment, the default calculation assumes
+#' that the costs are associated with the edges and not
+#' the 'to' node.
+#' For total expected cost this doesnt matter but for
+#' the other nodes this is different to assuming the
+#' costs are assigned to the nodes.
+#'
 #' \deqn{C_i = \sum p_{ij} (C_{ij} + C_j)}
 #'
 #' @param vals Values on each edge/branch e.g. costs or QALYs (array)
 #' @param p Transition probabilities (array)
+#' @param dat default: NA
 #'
 #' @return expected value at each node (list)
 #' @export
 #'
 #' @examples
-#' dectree_expected_values(cost, probs)
 #'
-## this is the list version which
-## dosent assume a binary tree structure
-#' Title
-#'
-#' @param vals
-#' @param p
-#' @param dat default: NA
-#'
-#' @return
-#' @export
-#'
-#' @examples
 dectree_expected_values.default <- function(vals,
                                             p,
                                             dat = NA){

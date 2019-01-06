@@ -53,13 +53,13 @@ Decisions trees can be modelled as special cases of more general models using av
 The recursive formula
 
 $$
-Ec_i = c_i + \sum_{j \in child(i)} p_{ij} Ec_j
+\hat{c}_i = c_i + \sum_{j \in child(i)} p_{ij} \hat{c}_j
 $$
 
 with boundary values
 
 $$
-Ec_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}.
+\hat{c}_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}.
 $$
 
 
@@ -77,7 +77,7 @@ suppressPackageStartupMessages(library(tidyr))
 We will consider a simple 7 node binary tree.
 
 ```{r, echo=FALSE, out.width = "400px"}
-knitr::include_graphics("figures/README_decisiontree_silverdecisions.png")
+knitr::include_graphics("man/figures/README_decisiontree_silverdecisions.png")
 ```
 
 
@@ -114,7 +114,7 @@ dectree_expected_values(vals = cost,
 ```
 
 There is also an Rcpp version of this function.
-```{r}
+```{r eval = FALSE}
 Cdectree_expected_values(vals = as.matrix(cost),
                          p = as.matrix(probs))
 ```

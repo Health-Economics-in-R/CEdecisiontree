@@ -7,7 +7,9 @@
 trans_binarytree(names, depth = 2)
 }
 \arguments{
-\item{depth}{}
+\item{names}{Node names}
+
+\item{depth}{Depth of tree}
 }
 \description{
 This is adapted from mstate::trans.illness

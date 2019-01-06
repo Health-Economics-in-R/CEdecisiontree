@@ -19,18 +19,18 @@
 #'        "6" =  c(),
 #'        "7" =  c())
 #'
-#' vals <-
+#' dat <-
 #'   data.frame(node = 1:7,
-#'              probs = c(NA, rep(0.5, 6)),
-#'              cost = c(10,2,3,16,5,6,7))
+#'              prob = c(NA, rep(0.5, 6)),
+#'              vals = c(10,2,3,16,5,6,7))
 #'
-#'  CEdecisiontree_recursive(tree, vals)
+#'  CEdecisiontree_recursive(tree, dat)
 #'
 CEdecisiontree_recursive <- function(tree,
-                                     vals) {
+                                     dat) {
 
   parent <- names(tree)[1]
-  c_node <- vals$cost[vals$node == parent]
+  c_node <- dat$vals[dat$node == parent]
   child <- tree[[1]]
 
   if (is.null(child)) {
@@ -42,12 +42,12 @@ CEdecisiontree_recursive <- function(tree,
     subtreeL <- c(tree[as.character(child[1])], subtree)
     subtreeR <- c(tree[as.character(child[2])], subtree)
 
-    pL <- vals$probs[vals$node == child[1]]
-    pR <- vals$probs[vals$node == child[2]]
+    pL <- dat$prob[dat$node == child[1]]
+    pR <- dat$prob[dat$node == child[2]]
 
     return(c_node +
-             pL*CEdecisiontree_recursive(subtreeL, vals) +
-             pR*CEdecisiontree_recursive(subtreeR, vals))
+             pL*CEdecisiontree_recursive(subtreeL, dat) +
+             pR*CEdecisiontree_recursive(subtreeR, dat))
   }
 }
 

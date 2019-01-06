@@ -4,8 +4,8 @@
 #' This is adapted from mstate::trans.illness
 #' Create a complete binary tree transition matrix.
 #'
-#' @param names
-#' @param depth
+#' @param names Node names
+#' @param depth Depth of tree
 #'
 #' @return
 #' @export

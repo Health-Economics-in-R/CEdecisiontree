@@ -4,7 +4,7 @@
 \alias{CEdecisiontree_recursive}
 \title{CEdecisiontree_recursive}
 \usage{
-CEdecisiontree_recursive(tree, vals)
+CEdecisiontree_recursive(tree, dat)
 }
 \arguments{
 \item{tree}{List of children by parents}
@@ -28,12 +28,12 @@ tree <-
        "6" =  c(),
        "7" =  c())
 
-vals <-
+dat <-
   data.frame(node = 1:7,
-             probs = c(NA, rep(0.5, 6)),
-             cost = c(10,2,3,16,5,6,7))
+             prob = c(NA, rep(0.5, 6)),
+             vals = c(10,2,3,16,5,6,7))
 
- CEdecisiontree_recursive(tree, vals)
+ CEdecisiontree_recursive(tree, dat)
 
 }
 \seealso{

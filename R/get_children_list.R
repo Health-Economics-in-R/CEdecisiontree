@@ -1,7 +1,7 @@
 
 #' get_children_list
 #'
-#' @param transmat from-to matrix with NA for missing values.
+#' @param transmat from-to matrix with \code{NA} for missing values.
 #'
 #' @return
 #' @export

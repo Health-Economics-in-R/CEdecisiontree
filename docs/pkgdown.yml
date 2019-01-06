@@ -4,5 +4,7 @@ pkgdown_sha: ~
 articles:
   comparison-with-other-packages: comparison-with-other-packages.html
   other-input-formats: other-input-formats.html
+  probabilistic-sensitivity-analysis: probabilistic-sensitivity-analysis.html
+  scenario-sensitivity-analysis: scenario-sensitivity-analysis.html
   Using_function_dispatch: Using_function_dispatch.html
 

@@ -48,20 +48,20 @@ The recursive formula
 
   
 ![
-Ec\_i = c\_i + \\sum\_{j \\in child(i)} p\_{ij} Ec\_j
-](https://latex.codecogs.com/png.latex?%0AEc_i%20%3D%20c_i%20%2B%20%5Csum_%7Bj%20%5Cin%20child%28i%29%7D%20p_%7Bij%7D%20Ec_j%0A
+\\hat{c}\_i = c\_i + \\sum\_{j \\in child(i)} p\_{ij} \\hat{c}\_j
+](https://latex.codecogs.com/png.latex?%0A%5Chat%7Bc%7D_i%20%3D%20c_i%20%2B%20%5Csum_%7Bj%20%5Cin%20child%28i%29%7D%20p_%7Bij%7D%20%5Chat%7Bc%7D_j%0A
 "
-Ec_i = c_i + \\sum_{j \\in child(i)} p_{ij} Ec_j
+\\hat{c}_i = c_i + \\sum_{j \\in child(i)} p_{ij} \\hat{c}_j
 ")  
 
 with boundary values
 
   
 ![
-Ec\_i = c\_i \\mbox{ for } i = \\{ S: child(s) = \\emptyset \\}.
-](https://latex.codecogs.com/png.latex?%0AEc_i%20%3D%20c_i%20%5Cmbox%7B%20for%20%7D%20i%20%3D%20%5C%7B%20S%3A%20child%28s%29%20%3D%20%5Cemptyset%20%5C%7D.%0A
+\\hat{c}\_i = c\_i \\mbox{ for } i = \\{ S: child(s) = \\emptyset \\}.
+](https://latex.codecogs.com/png.latex?%0A%5Chat%7Bc%7D_i%20%3D%20c_i%20%5Cmbox%7B%20for%20%7D%20i%20%3D%20%5C%7B%20S%3A%20child%28s%29%20%3D%20%5Cemptyset%20%5C%7D.%0A
 "
-Ec_i = c_i \\mbox{ for } i = \\{ S: child(s) = \\emptyset \\}.
+\\hat{c}_i = c_i \\mbox{ for } i = \\{ S: child(s) = \\emptyset \\}.
 ")  
 
 ## Basic example
@@ -83,7 +83,7 @@ suppressPackageStartupMessages(library(tidyr))
 We will consider a simple 7 node binary
 tree.
 
-<img src="figures/README_decisiontree_silverdecisions.png" width="400px" />
+<img src="man/figures/README_decisiontree_silverdecisions.png" width="400px" />
 
 Load example data from the package.
 
@@ -165,7 +165,6 @@ There is also an Rcpp version of this function.
 ``` r
 Cdectree_expected_values(vals = as.matrix(cost),
                          p = as.matrix(probs))
-#> [1] 5.6 2.8 2.8 0.0 0.0 0.0 0.0
 ```
 
 ## Other tree statistics

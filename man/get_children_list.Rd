@@ -7,7 +7,7 @@
 get_children_list(transmat)
 }
 \arguments{
-\item{transmat}{from-to matrix with NA for missing values.}
+\item{transmat}{from-to matrix with \code{NA} for missing values.}
 }
 \description{
 get_children_list
