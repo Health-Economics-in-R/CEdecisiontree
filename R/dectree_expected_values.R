@@ -24,9 +24,9 @@
 #' @export
 #'
 #' @examples
-dectree_expected_values <- function(vals,
-                                    p,
-                                    dat = NA){
+dectree_expected_values.default <- function(vals,
+                                            p,
+                                            dat = NA){
 
   if (!any(is.na(dat))) {
 

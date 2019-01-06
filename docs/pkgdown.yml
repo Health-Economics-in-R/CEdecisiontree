@@ -4,5 +4,5 @@ pkgdown_sha: ~
 articles:
   comparison-with-other-packages: comparison-with-other-packages.html
   other-input-formats: other-input-formats.html
-  simple_example: simple_example.html
+  Using_function_dispatch: Using_function_dispatch.html
 
