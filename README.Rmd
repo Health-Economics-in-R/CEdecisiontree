@@ -77,7 +77,8 @@ suppressPackageStartupMessages(library(tidyr))
 We will consider a simple 7 node binary tree.
 
 ```{r, echo=FALSE, out.width = "400px"}
-knitr::include_graphics("man/figures/README_decisiontree_silverdecisions.png")
+# knitr::include_graphics("man/figures/README_decisiontree_silverdecisions.png")
+knitr::include_graphics("https://raw.githubusercontent.com/Health-Economics-in-R/CEdecisiontree/master/man/figures/README_decisiontree_silverdecisions.png")
 ```
 
 
