@@ -132,11 +132,15 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>CEdecisiontree_recursive</span>(<span class='no'>tree</span>, <span class='no'>dat</span>)</pre>
+    <pre class="usage"><span class='fu'>CEdecisiontree_recursive</span>(<span class='no'>node</span>, <span class='no'>tree</span>, <span class='no'>dat</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>node</th>
+      <td><p>Node at which total expected value is to be calculate at</p></td>
+    </tr>
     <tr>
       <th>tree</th>
       <td><p>List of children by parents</p></td>
@@ -166,13 +170,13 @@
        <span class='st'>"5"</span> <span class='kw'>=</span>  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(),
        <span class='st'>"6"</span> <span class='kw'>=</span>  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(),
        <span class='st'>"7"</span> <span class='kw'>=</span>  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>())
-
 <span class='no'>dat</span> <span class='kw'>&lt;-</span>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>node</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>7</span>,
              <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>NA</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>0.5</span>, <span class='fl'>6</span>)),
              <span class='kw'>vals</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>10</span>,<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>16</span>,<span class='fl'>5</span>,<span class='fl'>6</span>,<span class='fl'>7</span>))
 
- <span class='fu'>CEdecisiontree_recursive</span>(<span class='no'>tree</span>, <span class='no'>dat</span>)</div><div class='output co'>#&gt; [1] 21</div><div class='input'>
+<span class='no'>root</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>tree</span>)[<span class='fl'>1</span>]
+<span class='fu'>CEdecisiontree_recursive</span>(<span class='kw'>node</span> <span class='kw'>=</span> <span class='no'>root</span>, <span class='no'>tree</span>, <span class='no'>dat</span>)</div><div class='output co'>#&gt; [1] 21</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

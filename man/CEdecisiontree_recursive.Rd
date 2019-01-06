@@ -4,9 +4,11 @@
 \alias{CEdecisiontree_recursive}
 \title{CEdecisiontree_recursive}
 \usage{
-CEdecisiontree_recursive(tree, dat)
+CEdecisiontree_recursive(node, tree, dat)
 }
 \arguments{
+\item{node}{Node at which total expected value is to be calculate at}
+
 \item{tree}{List of children by parents}
 
 \item{vals}{Node labels, probabililities and costs; dataframe}
@@ -27,13 +29,13 @@ tree <-
        "5" =  c(),
        "6" =  c(),
        "7" =  c())
-
 dat <-
   data.frame(node = 1:7,
              prob = c(NA, rep(0.5, 6)),
              vals = c(10,2,3,16,5,6,7))
 
- CEdecisiontree_recursive(tree, dat)
+root <- names(tree)[1]
+CEdecisiontree_recursive(node = root, tree, dat)
 
 }
 \seealso{

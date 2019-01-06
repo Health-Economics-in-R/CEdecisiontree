@@ -127,10 +127,10 @@
 <a class="sourceLine" id="cb3-6" title="6">      <span class="st">"5"</span> =<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(),</a>
 <a class="sourceLine" id="cb3-7" title="7">      <span class="st">"6"</span> =<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(),</a>
 <a class="sourceLine" id="cb3-8" title="8">      <span class="st">"7"</span> =<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>())</a>
-<a class="sourceLine" id="cb3-9" title="9">vals &lt;-</a>
+<a class="sourceLine" id="cb3-9" title="9">dat &lt;-</a>
 <a class="sourceLine" id="cb3-10" title="10"><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">node =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>,</a>
-<a class="sourceLine" id="cb3-11" title="11">            <span class="dt">probs =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="ot">NA</span>, <span class="fl">0.2</span>, <span class="fl">0.8</span>, <span class="fl">0.2</span>, <span class="fl">0.8</span>, <span class="fl">0.2</span>, <span class="fl">0.8</span>),</a>
-<a class="sourceLine" id="cb3-12" title="12">            <span class="dt">cost =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb3-11" title="11">            <span class="dt">prob =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="ot">NA</span>, <span class="fl">0.2</span>, <span class="fl">0.8</span>, <span class="fl">0.2</span>, <span class="fl">0.8</span>, <span class="fl">0.2</span>, <span class="fl">0.8</span>),</a>
+<a class="sourceLine" id="cb3-12" title="12">            <span class="dt">vals =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">1</span>))</a>
 <a class="sourceLine" id="cb3-13" title="13">tree</a>
 <a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt; $`1`</span></a>
 <a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt; [1] 2 3</span></a>
@@ -152,18 +152,18 @@
 <a class="sourceLine" id="cb3-31" title="31"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb3-32" title="32"><span class="co">#&gt; $`7`</span></a>
 <a class="sourceLine" id="cb3-33" title="33"><span class="co">#&gt; NULL</span></a>
-<a class="sourceLine" id="cb3-34" title="34">vals</a>
-<a class="sourceLine" id="cb3-35" title="35"><span class="co">#&gt;   node probs cost</span></a>
-<a class="sourceLine" id="cb3-36" title="36"><span class="co">#&gt; 1    1    NA    0</span></a>
-<a class="sourceLine" id="cb3-37" title="37"><span class="co">#&gt; 2    2   0.2   10</span></a>
-<a class="sourceLine" id="cb3-38" title="38"><span class="co">#&gt; 3    3   0.8    1</span></a>
-<a class="sourceLine" id="cb3-39" title="39"><span class="co">#&gt; 4    4   0.2   10</span></a>
-<a class="sourceLine" id="cb3-40" title="40"><span class="co">#&gt; 5    5   0.8    1</span></a>
-<a class="sourceLine" id="cb3-41" title="41"><span class="co">#&gt; 6    6   0.2   10</span></a>
-<a class="sourceLine" id="cb3-42" title="42"><span class="co">#&gt; 7    7   0.8    1</span></a>
+<a class="sourceLine" id="cb3-34" title="34">dat</a>
+<a class="sourceLine" id="cb3-35" title="35"><span class="co">#&gt;   node prob vals</span></a>
+<a class="sourceLine" id="cb3-36" title="36"><span class="co">#&gt; 1    1   NA    0</span></a>
+<a class="sourceLine" id="cb3-37" title="37"><span class="co">#&gt; 2    2  0.2   10</span></a>
+<a class="sourceLine" id="cb3-38" title="38"><span class="co">#&gt; 3    3  0.8    1</span></a>
+<a class="sourceLine" id="cb3-39" title="39"><span class="co">#&gt; 4    4  0.2   10</span></a>
+<a class="sourceLine" id="cb3-40" title="40"><span class="co">#&gt; 5    5  0.8    1</span></a>
+<a class="sourceLine" id="cb3-41" title="41"><span class="co">#&gt; 6    6  0.2   10</span></a>
+<a class="sourceLine" id="cb3-42" title="42"><span class="co">#&gt; 7    7  0.8    1</span></a>
 <a class="sourceLine" id="cb3-43" title="43"></a>
-<a class="sourceLine" id="cb3-44" title="44"><span class="kw"><a href="../reference/CEdecisiontree_recursive.html">CEdecisiontree_recursive</a></span>(tree, vals)</a>
-<a class="sourceLine" id="cb3-45" title="45"><span class="co">#&gt; numeric(0)</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-44" title="44"><span class="kw"><a href="../reference/CEdecisiontree_recursive.html">CEdecisiontree_recursive</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(tree)[<span class="dv">1</span>], tree, dat)</a>
+<a class="sourceLine" id="cb3-45" title="45"><span class="co">#&gt; [1] 5.6</span></a></code></pre></div>
 <p>We can obtain the list of children from the probability matrix (or any other structure defining transition matrix).</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="../reference/get_children_list.html">get_children_list</a></span>(probs)</a>
 <a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt; $`1`</span></a>

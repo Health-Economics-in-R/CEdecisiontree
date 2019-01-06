@@ -51,14 +51,14 @@ tree <-
       "5" =  c(),
       "6" =  c(),
       "7" =  c())
-vals <-
+dat <-
  data.frame(node = 1:7,
-            probs = c(NA, 0.2, 0.8, 0.2, 0.8, 0.2, 0.8),
-            cost = c(0,10,1,10,1,10,1))
+            prob = c(NA, 0.2, 0.8, 0.2, 0.8, 0.2, 0.8),
+            vals = c(0,10,1,10,1,10,1))
 tree
-vals
+dat
 
-CEdecisiontree_recursive(tree, vals)
+CEdecisiontree_recursive(names(tree)[1], tree, dat)
 ```
 
 We can obtain the list of children from the probability matrix (or any other structure defining transition matrix).

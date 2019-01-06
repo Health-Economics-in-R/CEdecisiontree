@@ -11,7 +11,8 @@ dectree_expected_values <- function(model, ...)
 #' @export
 dectree_expected_values.tree_dat <- function(model) {
 
-  CEdecisiontree_recursive(model$child,
+  CEdecisiontree_recursive(names(model$child)[1],
+                           model$child,
                            model$dat)
 }
 
