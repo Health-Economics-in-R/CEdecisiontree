@@ -19,6 +19,7 @@
 #'
 #' @return expected value at each node (list)
 #' @export
+#' @family CEdecisiontree
 #'
 #' @examples
 #'
@@ -31,6 +32,8 @@ dectree_expected_values.default <- function(vals,
     p <- long_to_transmat(dat[, c("from", "to", "prob")])
     vals <- long_to_transmat(select(dat, -prob))
   }
+
+  assert_that(is_prob_matrix(p))
 
   rows_sum_to_one <-
     apply(p, 1, function(x) sum(x, na.rm = TRUE)) %in% c(0, 1)
@@ -66,6 +69,8 @@ dectree_expected_values.default <- function(vals,
 # C++ structure
 dectree_expected_values_C <- function(vals,
                                       p){
+
+  assert_that(is_prob_matrix(p))
 
   num_from_nodes <- nrow(vals)
   num_to_nodes <- ncol(vals)

@@ -1,5 +1,5 @@
 
-#' long_to_transmat
+#' Long format to transition matrix
 #'
 #' @param dat
 #'

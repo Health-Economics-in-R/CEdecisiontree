@@ -1,5 +1,5 @@
 
-#' CEdecisiontree_recursive
+#' Cost-effectiveness decision tree using recursive approach
 #'
 #' @param node Node at which total expected value is to be calculate at
 #' @param tree List of children by parents
@@ -8,6 +8,7 @@
 #' @return Expected cost at root node
 #' @export
 #' @seealso CEdecisiontree
+#' @family CEdecisiontree
 #'
 #' @examples
 #'

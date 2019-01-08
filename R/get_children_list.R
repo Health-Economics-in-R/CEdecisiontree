@@ -1,5 +1,5 @@
 
-#' get_children_list
+#' Get tree children list
 #'
 #' @param transmat from-to matrix with \code{NA} for missing values.
 #'

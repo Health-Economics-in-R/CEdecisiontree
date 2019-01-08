@@ -1,11 +1,11 @@
 
-#' define_model
+#' Define model
 #'
-#' @param transmat Transition matrix from-to
+#' @param transmat Transition probability matrix (from-to node)
 #' @param tree_dat Hierarchical tree structure of parents and children
 #' @param dat_long Long dataframe with from, to, prob, vals columns
 #'
-#' @return
+#' @return transmat, tree_dat or dat_long
 #' @export
 #'
 #' @examples
@@ -38,6 +38,7 @@ define_model <- function(transmat,
     if (length(transmat) != 2) stop("transmat must be length 2")
     if (!("prob" %in% names(transmat))) stop("Require prob")
     if (!("vals" %in% names(transmat))) stop("Require vals")
+    assert_that(is_prob_matrix(transmat$prob))
 
     class(transmat) <- append("transmat", class(transmat))
     return(transmat)

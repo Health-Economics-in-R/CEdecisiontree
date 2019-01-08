@@ -1,5 +1,5 @@
 
-#' trans_binarytree
+#' Transition matrix to binary tree
 #'
 #' This is adapted from mstate::trans.illness
 #' Create a complete binary tree transition matrix.
@@ -7,7 +7,7 @@
 #' @param names Node names
 #' @param depth Depth of tree
 #'
-#' @return
+#' @return Matrix of TRUE and FALSE
 #' @export
 #'
 #' @examples
