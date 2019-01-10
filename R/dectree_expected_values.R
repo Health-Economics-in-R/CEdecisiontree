@@ -4,6 +4,9 @@
 #' Root node expected value as the weighted mean of
 #' probability and edge/node values e.g. costs or QALYS.
 #'
+#' \deqn{\hat{C}_i = C_i + \sum p_{ij} \hat{C}_j}
+#'
+#'
 #' At the moment, the default calculation assumes
 #' that the costs are associated with the edges and not
 #' the 'to' node.
@@ -14,10 +17,10 @@
 #' \deqn{C_i = \sum p_{ij} (C_{ij} + C_j)}
 #'
 #' @param vals Values on each edge/branch e.g. costs or QALYs (array)
-#' @param p Transition probabilities (array)
+#' @param p Transition probabilities matrix
 #' @param dat default: NA
 #'
-#' @return expected value at each node (list)
+#' @return Expected value at each node (list)
 #' @export
 #' @family CEdecisiontree
 #'
@@ -33,39 +36,34 @@ dectree_expected_values.default <- function(vals,
     vals <- long_to_transmat(select(dat, -prob))
   }
 
+
   assert_that(is_prob_matrix(p))
 
-  rows_sum_to_one <-
-    apply(p, 1, function(x) sum(x, na.rm = TRUE)) %in% c(0, 1)
+  num_from_nodes <- nrow(vals)
+  num_to_nodes <- ncol(vals)
 
-  if (!all(rows_sum_to_one)) {
-    stop('rows must sum to 1')
-  }
+  p <- as.matrix(p)
+  vals <- as.matrix(vals)
 
-  # if(any(p>1) || any(p<0)) {
-  #   stop('probabilities must be between 0 and 1')
-  # }
+  c_hat <- colSums(vals, na.rm = TRUE)
 
-  struct <- !is.na(vals)
+  for (i in num_from_nodes:1) {
 
-  num_from_nodes <- nrow(struct)
-  num_to_nodes <- ncol(struct)
+    total <- 0
+    for (j in 1:num_to_nodes) {
 
-  c_hat <- rep(0, num_to_nodes)
+      if (!is.na(p[i,j])) {
 
-  for (i in rev(seq_len(num_from_nodes))) {
-
-    J <- which(struct[i,])
-
-    for (j in J) {
-
-      c_hat[i] <- c_hat[i] + p[i,j]*(vals[i,j] + c_hat[j])
+        total <- total + p[i,j]*c_hat[j]
+      }
     }
+    c_hat[i] <- total + c_hat[i]
   }
 
   return(c_hat)
 }
 
+# edge costs
 # C++ structure
 dectree_expected_values_C <- function(vals,
                                       p){
