@@ -17,8 +17,8 @@
 #' }
 is_prob_matrix <- function(probs) {
 
-  sum_to_one <- all(rowSums(probs) == 1)
-  zero_to_one <- all(0 <= probs & probs <= 1)
+  sum_to_one <- all(rowSums(probs, na.rm = TRUE) == 1)
+  zero_to_one <- all(0 <= probs & probs <= 1 | is.na(probs))
   sum_to_one && zero_to_one
 }
 assertthat::on_failure(is_prob_matrix) <- function(call, env = parent.env) {
