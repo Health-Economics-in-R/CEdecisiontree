@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_children_list.R
 \name{get_children_list}
 \alias{get_children_list}
-\title{get_children_list}
+\title{Get tree children list}
 \usage{
 get_children_list(transmat)
 }
@@ -10,5 +10,5 @@ get_children_list(transmat)
 \item{transmat}{from-to matrix with \code{NA} for missing values.}
 }
 \description{
-get_children_list
+Get tree children list
 }

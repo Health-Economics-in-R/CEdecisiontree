@@ -2,7 +2,7 @@
 % Please edit documentation in R/trans_binarytree.R
 \name{trans_binarytree}
 \alias{trans_binarytree}
-\title{trans_binarytree}
+\title{Transition matrix to binary tree}
 \usage{
 trans_binarytree(names, depth = 2)
 }
@@ -10,6 +10,9 @@ trans_binarytree(names, depth = 2)
 \item{names}{Node names}
 
 \item{depth}{Depth of tree}
+}
+\value{
+Matrix of TRUE and FALSE
 }
 \description{
 This is adapted from mstate::trans.illness

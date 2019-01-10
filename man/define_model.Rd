@@ -2,19 +2,22 @@
 % Please edit documentation in R/define_model.R
 \name{define_model}
 \alias{define_model}
-\title{define_model}
+\title{Define model}
 \usage{
 define_model(transmat, tree_dat, dat_long)
 }
 \arguments{
-\item{transmat}{Transition matrix from-to}
+\item{transmat}{Transition probability matrix (from-to node)}
 
 \item{tree_dat}{Hierarchical tree structure of parents and children}
 
 \item{dat_long}{Long dataframe with from, to, prob, vals columns}
 }
+\value{
+transmat, tree_dat or dat_long
+}
 \description{
-define_model
+Define model
 }
 \examples{
 

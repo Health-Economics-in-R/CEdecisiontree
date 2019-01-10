@@ -4,25 +4,24 @@
 #' Root node expected value as the weighted mean of
 #' probability and edge/node values e.g. costs or QALYS.
 #'
+#' The expected value at each node is calculate by
+#'
 #' \deqn{\hat{C}_i = C_i + \sum p_{ij} \hat{C}_j}
 #'
-#'
-#' At the moment, the default calculation assumes
-#' that the costs are associated with the edges and not
-#' the 'to' node.
+#' The default calculation assumes that the costs are associated with the nodes.
+#' An alternative would be to associated them with the edges.
 #' For total expected cost this doesnt matter but for
 #' the other nodes this is different to assuming the
-#' costs are assigned to the nodes.
+#' costs are assigned to the nodes. The expected value would then be
 #'
-#' \deqn{C_i = \sum p_{ij} (C_{ij} + C_j)}
+#' \deqn{\hat{C}_i = \sum p_{ij} (C_{ij} + \hat{C}_j)}
 #'
 #' @param vals Values on each edge/branch e.g. costs or QALYs (array)
 #' @param p Transition probabilities matrix
-#' @param dat default: NA
+#' @param dat Long node-edge value array; default: \code{NA}
 #'
-#' @return Expected value at each node (list)
+#' @return Expected value at each node (vector)
 #' @export
-#' @family CEdecisiontree
 #'
 #' @examples
 #'
@@ -35,7 +34,6 @@ dectree_expected_values.default <- function(vals,
     p <- long_to_transmat(dat[, c("from", "to", "prob")])
     vals <- long_to_transmat(select(dat, -prob))
   }
-
 
   assert_that(is_prob_matrix(p))
 

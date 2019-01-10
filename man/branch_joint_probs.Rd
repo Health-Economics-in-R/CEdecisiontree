@@ -2,17 +2,26 @@
 % Please edit documentation in R/branch_joint_probs.R
 \name{branch_joint_probs}
 \alias{branch_joint_probs}
-\title{Branch Joint Probability}
+\title{Branch Joint Probabilities}
 \usage{
 branch_joint_probs(probs)
 }
 \arguments{
-\item{probs}{Branch conditional probabilities (array)}
+\item{probs}{Branch conditional probabilities (matrix)}
+}
+\value{
+transition matrix with joint probabilities
 }
 \description{
-Branch Joint Probability
+This porvide a measure of the chances of following
+particular paths.
+These probabilities could be used to weight branch cost
+or QALYs to indicate the relative contribution to the
+total expected value.
 }
 \examples{
+data(probs)
+data(cost)
 branch_joint_probs(probs) * cost
 
 }

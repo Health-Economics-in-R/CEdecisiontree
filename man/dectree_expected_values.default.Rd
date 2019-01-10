@@ -13,28 +13,31 @@ dectree_expected_values(model, ...)
 \arguments{
 \item{vals}{Values on each edge/branch e.g. costs or QALYs (array)}
 
-\item{p}{Transition probabilities (array)}
+\item{p}{Transition probabilities matrix}
 
-\item{dat}{default: NA}
+\item{dat}{Long node-edge value array; default: \code{NA}}
 
-\item{model}{\code{define_model} output of type \code{tree_dat}, \code{transmat} or \code{dat_long}}
+\item{model}{List as \code{define_model()} output of type \code{tree_dat}, \code{transmat} or \code{dat_long}}
 }
 \value{
-expected value at each node (list)
+Expected value at each node (vector)
 }
 \description{
 Root node expected value as the weighted mean of
 probability and edge/node values e.g. costs or QALYS.
 }
 \details{
-At the moment, the default calculation assumes
-that the costs are associated with the edges and not
-the 'to' node.
+The expected value at each node is calculate by
+
+\deqn{\hat{C}_i = C_i + \sum p_{ij} \hat{C}_j}
+
+The default calculation assumes that the costs are associated with the nodes.
+An alternative would be to associated them with the edges.
 For total expected cost this doesnt matter but for
 the other nodes this is different to assuming the
-costs are assigned to the nodes.
+costs are assigned to the nodes. The expected value would then be
 
-\deqn{C_i = \sum p_{ij} (C_{ij} + C_j)}
+\deqn{\hat{C}_i = \sum p_{ij} (C_{ij} + \hat{C}_j)}
 }
 \examples{
 

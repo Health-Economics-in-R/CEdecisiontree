@@ -2,7 +2,7 @@
 % Please edit documentation in R/CEdecisiontree_recursive.R
 \name{CEdecisiontree_recursive}
 \alias{CEdecisiontree_recursive}
-\title{CEdecisiontree_recursive}
+\title{Cost-effectiveness decision tree using recursive approach}
 \usage{
 CEdecisiontree_recursive(node, tree, dat)
 }
@@ -17,7 +17,7 @@ CEdecisiontree_recursive(node, tree, dat)
 Expected cost at root node
 }
 \description{
-CEdecisiontree_recursive
+Cost-effectiveness decision tree using recursive approach
 }
 \examples{
 
@@ -41,3 +41,4 @@ CEdecisiontree_recursive(node = root, tree, dat)
 \seealso{
 CEdecisiontree
 }
+\concept{CEdecisiontree}

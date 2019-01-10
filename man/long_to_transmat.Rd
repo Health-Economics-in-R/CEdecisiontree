@@ -2,7 +2,7 @@
 % Please edit documentation in R/long_to_transmat.R
 \name{long_to_transmat}
 \alias{long_to_transmat}
-\title{long_to_transmat}
+\title{Long format to transition matrix}
 \usage{
 long_to_transmat(dat)
 }
@@ -10,5 +10,5 @@ long_to_transmat(dat)
 \item{dat}{}
 }
 \description{
-long_to_transmat
+Long format to transition matrix
 }
