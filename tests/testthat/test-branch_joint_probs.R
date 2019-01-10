@@ -4,6 +4,7 @@ library(readr)
 library(dplyr)
 library(reshape2)
 library(tidyr)
+library(assertthat)
 
 data("bcg_probs", package = 'CEdecisiontree')
 
