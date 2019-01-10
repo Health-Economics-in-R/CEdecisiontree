@@ -30,6 +30,7 @@ suppressPackageStartupMessages(library(readr))
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(reshape2))
 suppressPackageStartupMessages(library(tidyr))
+suppressPackageStartupMessages(library(assertthat))
 ```
 
 Load example data from the package. 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>define_model — define_model • CEdecisiontree</title>
+<title>Define model — define_model • CEdecisiontree</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="define_model — define_model" />
+<meta property="og:title" content="Define model — define_model" />
 
-<meta property="og:description" content="define_model" />
+<meta property="og:description" content="Define model" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -121,14 +121,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>define_model</h1>
+    <h1>Define model</h1>
     
     <div class="hidden name"><code>define_model.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>define_model</p>
+    <p>Define model</p>
     
     </div>
 
@@ -139,7 +139,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>transmat</th>
-      <td><p>Transition matrix from-to</p></td>
+      <td><p>Transition probability matrix (from-to node)</p></td>
     </tr>
     <tr>
       <th>tree_dat</th>
@@ -151,22 +151,17 @@
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>transmat, tree_dat or dat_long</p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='fu'>define_model</span>(<span class='kw'>transmat</span> <span class='kw'>=</span>
               <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>NA</span>, <span class='fl'>0.5</span>, <span class='fl'>0.5</span>), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>1</span>),
                    <span class='kw'>vals</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>NA</span>, <span class='fl'>1</span>, <span class='fl'>2</span>), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-              ))</div><div class='output co'>#&gt; $prob
-#&gt;      [,1] [,2] [,3]
-#&gt; [1,]   NA  0.5  0.5
-#&gt; 
-#&gt; $vals
-#&gt;      [,1] [,2] [,3]
-#&gt; [1,]   NA    1    2
-#&gt; 
-#&gt; attr(,"class")
-#&gt; [1] "transmat" "list"    </div><div class='input'>
+              ))</div><div class='output co'>#&gt; <span class='error'>Error in assert_that(is_prob_matrix(transmat$prob)): could not find function "assert_that"</span></div><div class='input'>
 <span class='fu'>define_model</span>(<span class='kw'>tree_dat</span> <span class='kw'>=</span>
               <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>child</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='st'>"1"</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>3</span>),
                                 <span class='st'>"2"</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -205,7 +200,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#value">Value</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

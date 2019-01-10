@@ -44,7 +44,31 @@ and simple way.
 
 ## Calculation
 
-The recursive formula
+A decision tree is defined by parent-child pairs, i.e. from-to
+connections, and the probability and associated value (e.g. cost) of
+traversing each of the connections. Denote the probability of
+transitioning from node ![i](https://latex.codecogs.com/png.latex?i "i")
+to ![j](https://latex.codecogs.com/png.latex?j "j") as
+![p\_{ij}](https://latex.codecogs.com/png.latex?p_%7Bij%7D "p_{ij}") and
+the cost attributable to node
+![i](https://latex.codecogs.com/png.latex?i "i") as
+![c\_i](https://latex.codecogs.com/png.latex?c_i "c_i"). Where no
+connection exists between two nodes we shall say that the parent’s set
+of children is the empty set
+![\\emptyset](https://latex.codecogs.com/png.latex?%5Cemptyset
+"\\emptyset"). Denote the set of children by
+![child(\\cdot)](https://latex.codecogs.com/png.latex?child%28%5Ccdot%29
+"child(\\cdot)"). Clearly, there are no
+![p\_{ij}](https://latex.codecogs.com/png.latex?p_%7Bij%7D "p_{ij}") or
+![c\_j](https://latex.codecogs.com/png.latex?c_j "c_j") in this case but
+for computational purposed we will assume that ![p\_{ij} =
+NA](https://latex.codecogs.com/png.latex?p_%7Bij%7D%20%3D%20NA
+"p_{ij} = NA") and ![c\_j
+= 0](https://latex.codecogs.com/png.latex?c_j%20%3D%200 "c_j = 0").
+
+The expected value at each node ![i \\in
+S](https://latex.codecogs.com/png.latex?i%20%5Cin%20S "i \\in S") is
+calculated by ‘folding back’ using the recursive formula
 
   
 ![
@@ -54,7 +78,7 @@ The recursive formula
 \\hat{c}_i = c_i + \\sum_{j \\in child(i)} p_{ij} \\hat{c}_j
 ")  
 
-with boundary values
+with boundary values at the terminal nodes
 
   
 ![
@@ -71,13 +95,10 @@ Quietly load libraries.
 ``` r
 suppressPackageStartupMessages(library(CEdecisiontree))
 suppressPackageStartupMessages(library(readr))
-#> Warning: package 'readr' was built under R version 3.4.4
 suppressPackageStartupMessages(library(dplyr))
-#> Warning: package 'dplyr' was built under R version 3.4.4
 suppressPackageStartupMessages(library(reshape2))
-#> Warning: package 'reshape2' was built under R version 3.4.4
 suppressPackageStartupMessages(library(tidyr))
-#> Warning: package 'tidyr' was built under R version 3.4.4
+suppressPackageStartupMessages(library(assertthat))
 ```
 
 We will consider a simple 7 node binary
@@ -138,26 +159,8 @@ The expected value at each node is calculate as follows.
 ``` r
 dectree_expected_values(vals = cost,
                         p = probs)
-#> [[1]]
-#> [1] 5.6
-#> 
-#> [[2]]
-#> [1] 2.8
-#> 
-#> [[3]]
-#> [1] 2.8
-#> 
-#> [[4]]
-#> [1] 0
-#> 
-#> [[5]]
-#> [1] 0
-#> 
-#> [[6]]
-#> [1] 0
-#> 
-#> [[7]]
-#> [1] 0
+#>    1    2    3    4    5    6    7 
+#>  5.6 12.8  3.8 10.0  1.0 10.0  1.0
 ```
 
 There is also an Rcpp version of this function.

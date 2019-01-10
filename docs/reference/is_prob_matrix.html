@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Decision Tree Expected Values — dectree_expected_values • CEdecisiontree</title>
+<title>Is object a transition probability matrix? — is_prob_matrix • CEdecisiontree</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,9 @@
 
 
 
-<meta property="og:title" content="Decision Tree Expected Values — dectree_expected_values" />
+<meta property="og:title" content="Is object a transition probability matrix? — is_prob_matrix" />
 
-<meta property="og:description" content="Root node expected value as the weighted mean of
-probability and edge/node values e.g. costs or QALYS." />
+<meta property="og:description" content="Is object a transition probability matrix?" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -122,73 +121,43 @@ probability and edge/node values e.g. costs or QALYS." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Decision Tree Expected Values</h1>
+    <h1>Is object a transition probability matrix?</h1>
     
-    <div class="hidden name"><code>dectree_expected_values.default.Rd</code></div>
+    <div class="hidden name"><code>is_prob_matrix.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Root node expected value as the weighted mean of
-probability and edge/node values e.g. costs or QALYS.</p>
+    <p>Is object a transition probability matrix?</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>dectree_expected_values</span>(<span class='no'>model</span>, <span class='no'>...</span>)
-
-<span class='co'># S3 method for default</span>
-<span class='fu'>dectree_expected_values</span>(<span class='no'>vals</span>, <span class='no'>p</span>, <span class='kw'>dat</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
+    <pre class="usage"><span class='fu'>is_prob_matrix</span>(<span class='no'>probs</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>model</th>
-      <td><p>List as <code><a href='define_model.html'>define_model()</a></code> output of type <code>tree_dat</code>, <code>transmat</code> or <code>dat_long</code></p></td>
-    </tr>
-    <tr>
-      <th>vals</th>
-      <td><p>Values on each edge/branch e.g. costs or QALYs (array)</p></td>
-    </tr>
-    <tr>
-      <th>p</th>
-      <td><p>Transition probabilities matrix</p></td>
-    </tr>
-    <tr>
-      <th>dat</th>
-      <td><p>Long node-edge value array; default: <code>NA</code></p></td>
+      <th>probs</th>
+      <td><p>matrix</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Expected value at each node (vector)</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The expected value at each node is calculate by</p>
-<p>$$\hat{C}_i = C_i + \sum p_{ij} \hat{C}_j$$</p>
-<p>The default calculation assumes that the costs are associated with the nodes.
-An alternative would be to associated them with the edges.
-For total expected cost this doesnt matter but for
-the other nodes this is different to assuming the
-costs are assigned to the nodes. The expected value would then be</p>
-<p>$$\hat{C}_i = \sum p_{ij} (C_{ij} + \hat{C}_j)$$</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='no'>probs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>0</span>,<span class='fl'>0</span>,<span class='fl'>1</span>), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='fu'>is_prob_matrix</span>(<span class='no'>probs</span>)
+
+<span class='no'>probs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>2</span>,<span class='fl'>0</span>,-<span class='fl'>1</span>,<span class='fl'>1</span>), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='fu'>assert_that</span>(<span class='fu'>is_prob_matrix</span>(<span class='no'>probs</span>))
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 

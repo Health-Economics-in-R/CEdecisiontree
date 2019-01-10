@@ -26,6 +26,7 @@ Alternatively, we can define the model upfront and then pass this object to `dec
 ```{r}
 suppressPackageStartupMessages(library(CEdecisiontree))
 suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(assertthat))
 ```
 
 Let us create 3 input variables, in line with the 3 formats we have met already, using the `define_model` function.

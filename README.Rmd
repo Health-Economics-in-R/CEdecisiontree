@@ -50,13 +50,19 @@ Decisions trees can be modelled as special cases of more general models using av
 
 ## Calculation
 
-The recursive formula
+A decision tree is defined by parent-child pairs, i.e. from-to connections, and the probability and associated value (e.g. cost) of traversing each of the connections.
+Denote the probability of transitioning from node $i$ to $j$ as $p_{ij}$ and the cost attributable to node $i$ as $c_i$.
+Where no connection exists between two nodes we shall say that the parent's set of children is the empty set $\emptyset$.
+Denote the set of children by $child(\cdot)$.
+Clearly, there are no $p_{ij}$ or $c_j$ in this case but for computational purposes we will assume that $p_{ij} = NA$ and $c_j = 0$.
+
+The expected value at each node $i \in S$ is calculated by 'folding back' using the recursive formula
 
 $$
 \hat{c}_i = c_i + \sum_{j \in child(i)} p_{ij} \hat{c}_j
 $$
 
-with boundary values
+with boundary values at the terminal nodes
 
 $$
 \hat{c}_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}.
@@ -72,6 +78,7 @@ suppressPackageStartupMessages(library(readr))
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(reshape2))
 suppressPackageStartupMessages(library(tidyr))
+suppressPackageStartupMessages(library(assertthat))
 ```
 
 We will consider a simple 7 node binary tree.
