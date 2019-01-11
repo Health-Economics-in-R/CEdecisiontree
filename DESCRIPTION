@@ -12,7 +12,8 @@ LazyData: true
 RoxygenNote: 6.1.1
 Imports:
     assertthat,
-    Rcpp
+    Rcpp,
+    heemod
 Suggests:
     testthat,
     knitr,
