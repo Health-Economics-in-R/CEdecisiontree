@@ -13,7 +13,8 @@ RoxygenNote: 6.1.1
 Imports:
     assertthat,
     Rcpp,
-    heemod
+    heemod,
+    readr
 Suggests:
     testthat,
     knitr,
