@@ -14,7 +14,10 @@ Imports:
     assertthat,
     Rcpp,
     heemod,
-    readr
+    readr,
+    dplyr,
+    reshape2,
+    tidyr
 Suggests:
     testthat,
     knitr,
