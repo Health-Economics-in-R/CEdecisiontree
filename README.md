@@ -1,8 +1,8 @@
 
 [![Build
-Status](https://travis-ci.org/Health-Economics-in-R/QALY.svg?branch=master)](https://travis-ci.org/Health-Economics-in-R/CEdecisiontree)
+Status](https://travis-ci.org/Health-Economics-in-R/CEdecisiontree.svg?branch=master)](https://travis-ci.org/Health-Economics-in-R/CEdecisiontree)
 [![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/Health-Economics-in-R/QALY?branch=master&svg=true)](https://ci.appveyor.com/project/Health-Economics-in-R/CEdecisiontree)
+status](https://ci.appveyor.com/api/projects/status/github/Health-Economics-in-R/CEdecisiontree?branch=master&svg=true)](https://ci.appveyor.com/project/Health-Economics-in-R/CEdecisiontree)
 [![Coverage
 status](https://codecov.io/gh/Health-Economics-in-R/CEdecisiontree/branch/master/graph/badge.svg)](https://codecov.io/github/Health-Economics-in-R/CEdecisiontree?branch=master)
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
