@@ -1,10 +1,10 @@
 
 [![Build
-Status](https://travis-ci.org/n8thangreen/QALY.svg?branch=master)](https://travis-ci.org/n8thangreen/CEdecisiontree)
+Status](https://travis-ci.org/Health-Economics-in-R/QALY.svg?branch=master)](https://travis-ci.org/Health-Economics-in-R/CEdecisiontree)
 [![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/n8thangreen/QALY?branch=master&svg=true)](https://ci.appveyor.com/project/n8thangreen/CEdecisiontree)
+status](https://ci.appveyor.com/api/projects/status/github/Health-Economics-in-R/QALY?branch=master&svg=true)](https://ci.appveyor.com/project/Health-Economics-in-R/CEdecisiontree)
 [![Coverage
-status](https://codecov.io/gh/n8thangreen/QALY/branch/master/graph/badge.svg)](https://codecov.io/github/n8thangreen/CEdecisiontree?branch=master)
+status](https://codecov.io/gh/Health-Economics-in-R/CEdecisiontree/branch/master/graph/badge.svg)](https://codecov.io/github/Health-Economics-in-R/CEdecisiontree?branch=master)
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -61,7 +61,7 @@ of children is the empty set
 "child(\\cdot)"). Clearly, there are no
 ![p\_{ij}](https://latex.codecogs.com/png.latex?p_%7Bij%7D "p_{ij}") or
 ![c\_j](https://latex.codecogs.com/png.latex?c_j "c_j") in this case but
-for computational purposed we will assume that ![p\_{ij} =
+for computational purposes we will assume that ![p\_{ij} =
 NA](https://latex.codecogs.com/png.latex?p_%7Bij%7D%20%3D%20NA
 "p_{ij} = NA") and ![c\_j
 = 0](https://latex.codecogs.com/png.latex?c_j%20%3D%200 "c_j = 0").
@@ -95,10 +95,15 @@ Quietly load libraries.
 ``` r
 suppressPackageStartupMessages(library(CEdecisiontree))
 suppressPackageStartupMessages(library(readr))
+#> Warning: package 'readr' was built under R version 3.4.4
 suppressPackageStartupMessages(library(dplyr))
+#> Warning: package 'dplyr' was built under R version 3.4.4
 suppressPackageStartupMessages(library(reshape2))
+#> Warning: package 'reshape2' was built under R version 3.4.4
 suppressPackageStartupMessages(library(tidyr))
+#> Warning: package 'tidyr' was built under R version 3.4.4
 suppressPackageStartupMessages(library(assertthat))
+#> Warning: package 'assertthat' was built under R version 3.4.4
 ```
 
 We will consider a simple 7 node binary
