@@ -4,9 +4,9 @@ output:
     pandoc_args: --webtex
 ---
 
-[![Build Status](https://travis-ci.org/n8thangreen/QALY.svg?branch=master)](https://travis-ci.org/n8thangreen/CEdecisiontree)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/n8thangreen/QALY?branch=master&svg=true)](https://ci.appveyor.com/project/n8thangreen/CEdecisiontree)
-[![Coverage status](https://codecov.io/gh/n8thangreen/QALY/branch/master/graph/badge.svg)](https://codecov.io/github/n8thangreen/CEdecisiontree?branch=master)
+[![Build Status](https://travis-ci.org/Health-Economics-in-R/QALY.svg?branch=master)](https://travis-ci.org/Health-Economics-in-R/CEdecisiontree)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/Health-Economics-in-R/QALY?branch=master&svg=true)](https://ci.appveyor.com/project/Health-Economics-in-R/CEdecisiontree)
+[![Coverage status](https://codecov.io/gh/Health-Economics-in-R/CEdecisiontree/branch/master/graph/badge.svg)](https://codecov.io/github/Health-Economics-in-R/CEdecisiontree?branch=master)
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
 
