@@ -7,8 +7,14 @@
 long_to_transmat(dat)
 }
 \arguments{
-\item{dat}{}
+\item{dat}{array of from, to, prob, vals}
+}
+\value{
+transition matrix
 }
 \description{
 Long format to transition matrix
+}
+\examples{
+
 }

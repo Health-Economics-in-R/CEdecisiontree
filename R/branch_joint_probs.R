@@ -1,9 +1,10 @@
 
 #' Branch Joint Probabilities
 #'
-#' This porvide a measure of the chances of following
+#' Provides a measure of the chances of following
 #' particular paths.
-#' These probabilities could be used to weight branch cost
+#'
+#' These probabilities could be used to weight branch costs
 #' or QALYs to indicate the relative contribution to the
 #' total expected value.
 #'

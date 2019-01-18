@@ -1,7 +1,7 @@
 
 #' Transition matrix to binary tree
 #'
-#' This is adapted from mstate::trans.illness
+#' This is adapted from \code{mstate::trans.illness}.
 #' Create a complete binary tree transition matrix.
 #'
 #' @param names Node names

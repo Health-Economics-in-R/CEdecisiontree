@@ -4,7 +4,7 @@
 #' @family assertions
 #' @param probs matrix
 #'
-#' @return
+#' @return logical
 #' @export
 #'
 #' @examples

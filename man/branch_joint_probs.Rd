@@ -13,9 +13,11 @@ branch_joint_probs(probs)
 transition matrix with joint probabilities
 }
 \description{
-This porvide a measure of the chances of following
+Provides a measure of the chances of following
 particular paths.
-These probabilities could be used to weight branch cost
+}
+\details{
+These probabilities could be used to weight branch costs
 or QALYs to indicate the relative contribution to the
 total expected value.
 }

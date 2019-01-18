@@ -1,12 +1,13 @@
 
 #' Long format to transition matrix
 #'
-#' @param dat
+#' @param dat array of from, to, prob, vals
 #'
-#' @return
+#' @return transition matrix
 #' @export
 #'
 #' @examples
+#'
 long_to_transmat <- function(dat){
 
   reshape2::dcast(formula = from ~ to,

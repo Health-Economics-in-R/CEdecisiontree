@@ -1,12 +1,15 @@
 
 #' Get tree children list
 #'
+#' Get tree children list by parents from a transition matrix.
+#'
 #' @param transmat from-to matrix with \code{NA} for missing values.
 #'
-#' @return
+#' @return list
 #' @export
 #'
 #' @examples
+#'
 get_children_list <- function(transmat) {
 
   empty_rows <-

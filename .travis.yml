@@ -24,5 +24,5 @@ r_github_packages:
 after_success:
   - tar -C .. --xf $PKG_TARBALL
   - Rscript -e 'covr::codecov()'
-  - rm -rf RTest.Rcheck
+  - rm -rf CEdecisiontree.Rcheck
   - Rscript -e 'pkgdown::build_site()'
