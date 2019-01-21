@@ -1,6 +1,4 @@
 
-
-
 #' match_branch_to_label
 #'
 #' @param probs_long
@@ -37,7 +35,8 @@ match_branchlabel_to_prob <- function(probs_names,
            to = as.numeric(as.character(to)))
 }
 
-#' fill_complementary_branch_probs
+
+#' fill_complementary_probs
 #'
 #' @param probs_names
 #'

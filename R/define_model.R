@@ -60,6 +60,14 @@ define_model <- function(transmat,
     if (!("prob" %in% names(dat_long))) stop("Require prob column")
     if (!("vals" %in% names(dat_long))) stop("Require vals column")
 
+    dat_long$vals[is.na(dat_long$vals)] <- 0
+    missing_from <- which(!seq_len(max(all_long$to)) %in% dat_long$from)
+    dat_long <- rbind.data.frame(dat_long,
+                                 data.frame(from = missing_from,
+                                            to = max(dat_long$to),
+                                            vals = NA,
+                                            prob = NA))
+
     class(dat_long) <- append("dat_long", class(dat_long))
     return(dat_long)
   }
