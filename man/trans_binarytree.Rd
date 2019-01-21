@@ -15,6 +15,6 @@ trans_binarytree(names, depth = 2)
 Matrix of TRUE and FALSE
 }
 \description{
-This is adapted from mstate::trans.illness
+This is adapted from \code{mstate::trans.illness}.
 Create a complete binary tree transition matrix.
 }

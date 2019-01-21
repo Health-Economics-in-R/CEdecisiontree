@@ -1,20 +1,20 @@
 
-#' Decision Tree Expected Values
+#' Cost-effectiveness decision tree expected values
 #'
 #' Root node expected value as the weighted mean of
 #' probability and edge/node values e.g. costs or QALYS.
 #'
 #' The expected value at each node is calculate by
 #'
-#' \deqn{\hat{C}_i = C_i + \sum p_{ij} \hat{C}_j}
+#' \deqn{\hat{c}_i = c_i + \sum p_{ij} \hat{c}_j}
 #'
 #' The default calculation assumes that the costs are associated with the nodes.
-#' An alternative would be to associated them with the edges.
-#' For total expected cost this doesnt matter but for
+#' An alternative would be to associate them with the edges.
+#' For total expected cost this doesn't matter but for
 #' the other nodes this is different to assuming the
 #' costs are assigned to the nodes. The expected value would then be
 #'
-#' \deqn{\hat{C}_i = \sum p_{ij} (C_{ij} + \hat{C}_j)}
+#' \deqn{\hat{c}_i = \sum p_{ij} (c_{ij} + \hat{c}_j)}
 #'
 #' @param vals Values on each edge/branch e.g. costs or QALYs (array)
 #' @param p Transition probabilities matrix
@@ -56,36 +56,6 @@ dectree_expected_values.default <- function(vals,
       }
     }
     c_hat[i] <- total + c_hat[i]
-  }
-
-  return(c_hat)
-}
-
-# edge costs
-# C++ structure
-dectree_expected_values_C <- function(vals,
-                                      p){
-
-  assert_that(is_prob_matrix(p))
-
-  num_from_nodes <- nrow(vals)
-  num_to_nodes <- ncol(vals)
-
-  c_hat <- rep(0, num_to_nodes)
-
-  for (i in num_from_nodes:1) {
-
-    total <- 0
-
-    for (j in 1:num_to_nodes) {
-
-      if (!is.na(vals[i,j])) {
-
-        total <- total + p[i,j]*(vals[i,j] + c_hat[j])
-      }
-    }
-
-    c_hat[i] <- total
   }
 
   return(c_hat)

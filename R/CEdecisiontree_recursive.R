@@ -3,9 +3,9 @@
 #'
 #' @param node Node at which total expected value is to be calculate at
 #' @param tree List of children by parents
-#' @param vals Node labels, probabililities and costs; dataframe
+#' @param vals Node labels, branch probabililities and value; dataframe
 #'
-#' @return Expected cost at root node
+#' @return Expected value at root node
 #' @export
 #' @seealso CEdecisiontree
 #' @family CEdecisiontree
@@ -26,11 +26,11 @@
 #'              vals = c(10,2,3,16,5,6,7))
 #'
 #' root <- names(tree)[1]
-#' CEdecisiontree_recursive(node = root, tree, dat)
+#' dectree_expected_recursive(node = root, tree, dat)
 #'
-CEdecisiontree_recursive <- function(node,
-                                     tree,
-                                     dat) {
+dectree_expected_recursive <- function(node,
+                                       tree,
+                                       dat) {
 
   c_node <- dat$vals[dat$node == node]
 
@@ -44,8 +44,8 @@ CEdecisiontree_recursive <- function(node,
     pR <- dat$prob[dat$node == child[2]]
 
     return(c_node +
-             pL*CEdecisiontree_recursive(child[1], tree, dat) +
-             pR*CEdecisiontree_recursive(child[2], tree, dat))
+             pL*dectree_expected_recursive(child[1], tree, dat) +
+             pR*dectree_expected_recursive(child[2], tree, dat))
   }
 }
 

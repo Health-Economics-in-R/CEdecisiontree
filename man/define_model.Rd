@@ -14,10 +14,10 @@ define_model(transmat, tree_dat, dat_long)
 \item{dat_long}{Long dataframe with from, to, prob, vals columns}
 }
 \value{
-transmat, tree_dat or dat_long
+transmat, tree_dat or dat_long class object
 }
 \description{
-Define model
+Basic constructor for decision tree classes for different data formats.
 }
 \examples{
 

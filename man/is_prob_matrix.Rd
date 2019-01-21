@@ -9,6 +9,9 @@ is_prob_matrix(probs)
 \arguments{
 \item{probs}{matrix}
 }
+\value{
+logical
+}
 \description{
 Is object a transition probability matrix?
 }

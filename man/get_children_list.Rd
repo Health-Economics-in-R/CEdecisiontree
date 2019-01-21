@@ -9,6 +9,12 @@ get_children_list(transmat)
 \arguments{
 \item{transmat}{from-to matrix with \code{NA} for missing values.}
 }
+\value{
+list
+}
 \description{
-Get tree children list
+Get tree children list by parents from a transition matrix.
+}
+\examples{
+
 }
