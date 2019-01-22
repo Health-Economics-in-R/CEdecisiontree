@@ -1,10 +1,10 @@
 
-#' match_branch_to_label
+#' Match branch to label
 #'
 #' @param probs_long
 #' @param probs_from_to_lookup
 #'
-#' @return
+#' @return dataframe
 #' @export
 #'
 #' @examples
@@ -17,12 +17,12 @@ match_branch_to_label <- function(probs_long,
 }
 
 
-#' match_branchlabel_to_prob
+#' Match branch label to probabilities
 #'
 #' @param probs_names
 #' @param branch_probs_long
 #'
-#' @return
+#' @return dataframe
 #' @export
 #'
 #' @examples
@@ -36,11 +36,11 @@ match_branchlabel_to_prob <- function(probs_names,
 }
 
 
-#' fill_complementary_probs
+#' Fill complementary probabilities
 #'
 #' @param probs_names
 #'
-#' @return
+#' @return dataframe
 #' @export
 #'
 #' @examples

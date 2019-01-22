@@ -1,7 +1,10 @@
 
 #' insert_to_transmat
 #'
-#' @param dat long from-to array
+#' Insert values into a transition matrix
+#' from a long array of \code{from}, \code{to} values
+#'
+#' @param dat long from-to-vals array. Either cost or prob.
 #' @param mat transition matrix
 #'
 #' @return matrix
