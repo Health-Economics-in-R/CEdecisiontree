@@ -1,5 +1,5 @@
 
-#' Get tree children list
+#' Get tree children list from transition matrix
 #'
 #' Get tree children list by parents from a transition matrix.
 #'
@@ -10,7 +10,7 @@
 #'
 #' @examples
 #'
-get_children_list <- function(transmat) {
+transmat_to_child_list <- function(transmat) {
 
   empty_rows <-
     matrix(NA,
