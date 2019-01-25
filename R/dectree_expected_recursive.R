@@ -32,6 +32,10 @@ dectree_expected_recursive <- function(node,
                                        tree,
                                        dat) {
 
+  if (is.na(node)) {
+    return(0)
+  }
+
   c_node <- dat$vals[dat$node == node]
 
   child <- tree[[node]]
@@ -42,6 +46,9 @@ dectree_expected_recursive <- function(node,
 
     pL <- dat$prob[dat$node == child[1]]
     pR <- dat$prob[dat$node == child[2]]
+
+    if (any(is.na(pL))) pL <- 0
+    if (any(is.na(pR))) pR <- 0
 
     return(c_node +
              pL*dectree_expected_recursive(child[1], tree, dat) +
