@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get tree children list — get_children_list • CEdecisiontree</title>
+<title>Cost-effectiveness decision tree using recursive approach — dectree_expected_recursive • CEdecisiontree</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Get tree children list — get_children_list" />
+<meta property="og:title" content="Cost-effectiveness decision tree using recursive approach — dectree_expected_recursive" />
 
-<meta property="og:description" content="Get tree children list by parents from a transition matrix." />
+<meta property="og:description" content="Cost-effectiveness decision tree using recursive approach" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -121,35 +121,62 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get tree children list</h1>
+    <h1>Cost-effectiveness decision tree using recursive approach</h1>
     
-    <div class="hidden name"><code>get_children_list.Rd</code></div>
+    <div class="hidden name"><code>dectree_expected_recursive.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Get tree children list by parents from a transition matrix.</p>
+    <p>Cost-effectiveness decision tree using recursive approach</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_children_list</span>(<span class='no'>transmat</span>)</pre>
+    <pre class="usage"><span class='fu'>dectree_expected_recursive</span>(<span class='no'>node</span>, <span class='no'>tree</span>, <span class='no'>dat</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>transmat</th>
-      <td><p>from-to matrix with <code>NA</code> for missing values.</p></td>
+      <th>node</th>
+      <td><p>Node at which total expected value is to be calculate at</p></td>
+    </tr>
+    <tr>
+      <th>tree</th>
+      <td><p>List of children by parents</p></td>
+    </tr>
+    <tr>
+      <th>vals</th>
+      <td><p>Node labels, branch probabililities and value; dataframe</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list</p>
+    <p>Expected value at root node</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>CEdecisiontree</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
+<span class='no'>tree</span> <span class='kw'>&lt;-</span>
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='st'>"1"</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>2</span>,<span class='fl'>3</span>),
+       <span class='st'>"2"</span> <span class='kw'>=</span>  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>4</span>,<span class='fl'>5</span>),
+       <span class='st'>"3"</span> <span class='kw'>=</span>  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>6</span>,<span class='fl'>7</span>),
+       <span class='st'>"4"</span> <span class='kw'>=</span>  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(),
+       <span class='st'>"5"</span> <span class='kw'>=</span>  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(),
+       <span class='st'>"6"</span> <span class='kw'>=</span>  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(),
+       <span class='st'>"7"</span> <span class='kw'>=</span>  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>())
+<span class='no'>dat</span> <span class='kw'>&lt;-</span>
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>node</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>7</span>,
+             <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>NA</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>0.5</span>, <span class='fl'>6</span>)),
+             <span class='kw'>vals</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>10</span>,<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>16</span>,<span class='fl'>5</span>,<span class='fl'>6</span>,<span class='fl'>7</span>))
+
+<span class='no'>root</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>tree</span>)[<span class='fl'>1</span>]
+<span class='fu'>dectree_expected_recursive</span>(<span class='kw'>node</span> <span class='kw'>=</span> <span class='no'>root</span>, <span class='no'>tree</span>, <span class='no'>dat</span>)</div><div class='output co'>#&gt; [1] 21</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -158,6 +185,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

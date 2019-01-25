@@ -13,7 +13,7 @@ insert_to_costmat(dat, mat)
 insert_to_probmat(dat, mat)
 }
 \arguments{
-\item{dat}{long from-to array}
+\item{dat}{long from-to-vals array. Either cost or prob.}
 
 \item{mat}{transition matrix}
 }
@@ -21,7 +21,8 @@ insert_to_probmat(dat, mat)
 matrix
 }
 \description{
-insert_to_transmat
+Insert values into a transition matrix
+from a long array of \code{from}, \code{to} values
 }
 \examples{
 

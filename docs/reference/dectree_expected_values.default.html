@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Decision Tree Expected Values — dectree_expected_values • CEdecisiontree</title>
+<title>Cost-effectiveness decision tree expected values — dectree_expected_values • CEdecisiontree</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="Decision Tree Expected Values — dectree_expected_values" />
+<meta property="og:title" content="Cost-effectiveness decision tree expected values — dectree_expected_values" />
 
 <meta property="og:description" content="Root node expected value as the weighted mean of
 probability and edge/node values e.g. costs or QALYS." />
@@ -93,7 +93,7 @@ probability and edge/node values e.g. costs or QALYS." />
       <a href="../articles/other-input-formats.html">Using other input formats</a>
     </li>
     <li>
-      <a href="../articles/probabilistic-sensitivity-analysis.html">Probabilistic Sensitivity Analysis</a>
+      <a href="../articles/probabilistic-sensitivity-analysis.html">Probability Sensitivity Analysis (PSA)</a>
     </li>
     <li>
       <a href="../articles/scenario-sensitivity-analysis.html">Scenario Sensitivity Analysis</a>
@@ -122,7 +122,7 @@ probability and edge/node values e.g. costs or QALYS." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Decision Tree Expected Values</h1>
+    <h1>Cost-effectiveness decision tree expected values</h1>
     
     <div class="hidden name"><code>dectree_expected_values.default.Rd</code></div>
     </div>
@@ -167,13 +167,13 @@ probability and edge/node values e.g. costs or QALYS.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The expected value at each node is calculate by</p>
-<p>$$\hat{C}_i = C_i + \sum p_{ij} \hat{C}_j$$</p>
+<p>$$\hat{c}_i = c_i + \sum p_{ij} \hat{c}_j$$</p>
 <p>The default calculation assumes that the costs are associated with the nodes.
-An alternative would be to associated them with the edges.
-For total expected cost this doesnt matter but for
+An alternative would be to associate them with the edges.
+For total expected cost this doesn't matter but for
 the other nodes this is different to assuming the
 costs are assigned to the nodes. The expected value would then be</p>
-<p>$$\hat{C}_i = \sum p_{ij} (C_{ij} + \hat{C}_j)$$</p>
+<p>$$\hat{c}_i = \sum p_{ij} (c_{ij} + \hat{c}_j)$$</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

@@ -59,12 +59,12 @@ dat <-
 tree
 dat
 
-CEdecisiontree_recursive(names(tree)[1], tree, dat)
+dectree_expected_recursive(names(tree)[1], tree, dat)
 ```
 
 We can obtain the list of children from the probability matrix (or any other structure defining transition matrix).
 ```{r}
-get_children_list(probs)
+transmat_to_child_list(probs)
 ```
 
 
@@ -100,4 +100,22 @@ We can use the long array as the input argument instead of the separate transiti
 
 ```{r}
 dectree_expected_values(dat = dat_long)
+```
+
+
+## Computation speed
+
+We can compare the computation times for the recursive and non-recursive formulations.
+
+```{r}
+suppressMessages(
+microbenchmark::microbenchmark(dectree_expected_values(dat = dat_long),
+                               dectree_expected_recursive(names(tree)[1], tree, dat), times = 100L))
+```
+
+For this example the recursive forumulation is much quicker.
+Change in memory before and after running the functions.
+```{r}
+pryr::mem_change(dectree_expected_values(dat = dat_long))
+pryr::mem_change(dectree_expected_recursive(names(tree)[1], tree, dat))
 ```

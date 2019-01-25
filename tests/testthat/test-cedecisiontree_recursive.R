@@ -1,4 +1,4 @@
-context("test-cedecisiontree_recursive")
+context("test-dectree_expectedrecursive")
 
 test_that("multiplication works", {
 })

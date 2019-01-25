@@ -59,7 +59,7 @@
       <a href="../articles/other-input-formats.html">Using other input formats</a>
     </li>
     <li>
-      <a href="../articles/probabilistic-sensitivity-analysis.html">Probabilistic Sensitivity Analysis</a>
+      <a href="../articles/probabilistic-sensitivity-analysis.html">Probability Sensitivity Analysis (PSA)</a>
     </li>
     <li>
       <a href="../articles/scenario-sensitivity-analysis.html">Scenario Sensitivity Analysis</a>
@@ -88,7 +88,7 @@
       <h1>Using other input formats</h1>
                         <h4 class="author">Nathan Green</h4>
             
-            <h4 class="date">2019-01-10</h4>
+            <h4 class="date">2019-01-24</h4>
       
       
       <div class="hidden name"><code>other-input-formats.Rmd</code></div>
@@ -159,10 +159,10 @@
 <a class="sourceLine" id="cb3-41" data-line-number="41"><span class="co">#&gt; 6    6  0.2   10</span></a>
 <a class="sourceLine" id="cb3-42" data-line-number="42"><span class="co">#&gt; 7    7  0.8    1</span></a>
 <a class="sourceLine" id="cb3-43" data-line-number="43"></a>
-<a class="sourceLine" id="cb3-44" data-line-number="44"><span class="kw"><a href="../reference/CEdecisiontree_recursive.html">CEdecisiontree_recursive</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(tree)[<span class="dv">1</span>], tree, dat)</a>
+<a class="sourceLine" id="cb3-44" data-line-number="44"><span class="kw"><a href="../reference/dectree_expected_recursive.html">dectree_expected_recursive</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(tree)[<span class="dv">1</span>], tree, dat)</a>
 <a class="sourceLine" id="cb3-45" data-line-number="45"><span class="co">#&gt; [1] 5.6</span></a></code></pre></div>
 <p>We can obtain the list of children from the probability matrix (or any other structure defining transition matrix).</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/get_children_list.html">get_children_list</a></span>(probs)</a>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/transmat_to_child_list.html">transmat_to_child_list</a></span>(probs)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; $`1`</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; [1] 2 3</span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; </span></a>

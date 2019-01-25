@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get tree children list — get_children_list • CEdecisiontree</title>
+<title>insert_to_transmat — insert_to_transmat • CEdecisiontree</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,10 @@
 
 
 
-<meta property="og:title" content="Get tree children list — get_children_list" />
+<meta property="og:title" content="insert_to_transmat — insert_to_transmat" />
 
-<meta property="og:description" content="Get tree children list by parents from a transition matrix." />
+<meta property="og:description" content="Insert values into a transition matrix
+from a long array of from, to values" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -121,31 +122,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get tree children list</h1>
+    <h1>insert_to_transmat</h1>
     
-    <div class="hidden name"><code>get_children_list.Rd</code></div>
+    <div class="hidden name"><code>insert_to_transmat.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Get tree children list by parents from a transition matrix.</p>
+    <p>Insert values into a transition matrix
+from a long array of <code>from</code>, <code>to</code> values</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_children_list</span>(<span class='no'>transmat</span>)</pre>
+    <pre class="usage"><span class='fu'>insert_to_transmat</span>(<span class='no'>dat</span>, <span class='no'>mat</span>)
+
+<span class='fu'>insert_to_costmat</span>(<span class='no'>dat</span>, <span class='no'>mat</span>)
+
+<span class='fu'>insert_to_probmat</span>(<span class='no'>dat</span>, <span class='no'>mat</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>transmat</th>
-      <td><p>from-to matrix with <code>NA</code> for missing values.</p></td>
+      <th>dat</th>
+      <td><p>long from-to-vals array. Either cost or prob.</p></td>
+    </tr>
+    <tr>
+      <th>mat</th>
+      <td><p>transition matrix</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list</p>
+    <p>matrix</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

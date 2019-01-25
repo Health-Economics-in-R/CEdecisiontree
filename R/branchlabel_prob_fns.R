@@ -29,8 +29,8 @@ match_branch_to_label <- function(probs_long,
 match_branchlabel_to_prob <- function(probs_names,
                                       branch_probs_long) {
 
-  merge(probs_names, branch_probs_long,
-        by = "name", all.x = TRUE) %>%
+  dplyr::left_join(probs_names, branch_probs_long,
+        by = "name") %>%
     mutate(from = as.numeric(as.character(from)),
            to = as.numeric(as.character(to)))
 }

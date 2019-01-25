@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get tree children list — get_children_list • CEdecisiontree</title>
+<title>Transition matrix to long format — transmat_to_long • CEdecisiontree</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Get tree children list — get_children_list" />
+<meta property="og:title" content="Transition matrix to long format — transmat_to_long" />
 
-<meta property="og:description" content="Get tree children list by parents from a transition matrix." />
+<meta property="og:description" content="Transition matrix to long format" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -121,31 +121,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get tree children list</h1>
+    <h1>Transition matrix to long format</h1>
     
-    <div class="hidden name"><code>get_children_list.Rd</code></div>
+    <div class="hidden name"><code>transmat_to_long.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Get tree children list by parents from a transition matrix.</p>
+    <p>Transition matrix to long format</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_children_list</span>(<span class='no'>transmat</span>)</pre>
+    <pre class="usage"><span class='fu'>transmat_to_long</span>(<span class='no'>probs</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>transmat</th>
-      <td><p>from-to matrix with <code>NA</code> for missing values.</p></td>
+      <th>probs</th>
+      <td><p>probability transition matrix</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list</p>
+    <p>array of from, to, prob</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

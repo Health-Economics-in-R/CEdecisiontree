@@ -2,13 +2,16 @@
 % Please edit documentation in R/branchlabel_prob_fns.R
 \name{match_branch_to_label}
 \alias{match_branch_to_label}
-\title{match_branch_to_label}
+\title{Match branch to label}
 \usage{
 match_branch_to_label(probs_long, probs_from_to_lookup)
 }
 \arguments{
 \item{probs_from_to_lookup}{}
 }
+\value{
+dataframe
+}
 \description{
-match_branch_to_label
+Match branch to label
 }

@@ -2,13 +2,16 @@
 % Please edit documentation in R/branchlabel_prob_fns.R
 \name{fill_complementary_probs}
 \alias{fill_complementary_probs}
-\title{fill_complementary_probs}
+\title{Fill complementary probabilities}
 \usage{
 fill_complementary_probs(probs_names)
 }
 \arguments{
 \item{probs_names}{}
 }
+\value{
+dataframe
+}
 \description{
-fill_complementary_probs
+Fill complementary probabilities
 }

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get tree children list — get_children_list • CEdecisiontree</title>
+<title>Get transition matrix from tree children list — child_list_to_transmat • CEdecisiontree</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Get tree children list — get_children_list" />
+<meta property="og:title" content="Get transition matrix from tree children list — child_list_to_transmat" />
 
-<meta property="og:description" content="Get tree children list by parents from a transition matrix." />
+<meta property="og:description" content="Get transition matrix from tree children list by parents." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -121,35 +121,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get tree children list</h1>
+    <h1>Get transition matrix from tree children list</h1>
     
-    <div class="hidden name"><code>get_children_list.Rd</code></div>
+    <div class="hidden name"><code>child_list_to_transmat.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Get tree children list by parents from a transition matrix.</p>
+    <p>Get transition matrix from tree children list by parents.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_children_list</span>(<span class='no'>transmat</span>)</pre>
+    <pre class="usage"><span class='fu'>child_list_to_transmat</span>(<span class='no'>tree</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>transmat</th>
-      <td><p>from-to matrix with <code>NA</code> for missing values.</p></td>
+      <th>tree</th>
+      <td><p>list.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list</p>
+    <p>matrix</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
+<span class='fu'>child_list_to_transmat</span>(<span class='kw'>tree</span> <span class='kw'>=</span>
+                         <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='st'>'1'</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>3</span>),
+                              <span class='st'>'2'</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>4</span>),
+                              <span class='st'>'3'</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>6</span>, <span class='fl'>7</span>)))</div><div class='output co'>#&gt;    1   2   3  4  5   6   7
+#&gt; 1 NA 0.5 0.5 NA NA  NA  NA
+#&gt; 2 NA  NA  NA  1 NA  NA  NA
+#&gt; 3 NA  NA  NA NA NA 0.5 0.5
+#&gt; 4 NA  NA  NA NA NA  NA  NA
+#&gt; 5 NA  NA  NA NA NA  NA  NA
+#&gt; 6 NA  NA  NA NA NA  NA  NA
+#&gt; 7 NA  NA  NA NA NA  NA  NA</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

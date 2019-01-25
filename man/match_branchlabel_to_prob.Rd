@@ -2,13 +2,16 @@
 % Please edit documentation in R/branchlabel_prob_fns.R
 \name{match_branchlabel_to_prob}
 \alias{match_branchlabel_to_prob}
-\title{match_branchlabel_to_prob}
+\title{Match branch label to probabilities}
 \usage{
 match_branchlabel_to_prob(probs_names, branch_probs_long)
 }
 \arguments{
 \item{branch_probs_long}{}
 }
+\value{
+dataframe
+}
 \description{
-match_branchlabel_to_prob
+Match branch label to probabilities
 }
