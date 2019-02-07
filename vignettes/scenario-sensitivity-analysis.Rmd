@@ -5,8 +5,10 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
@@ -16,4 +18,79 @@ knitr::opts_chunk$set(
 )
 ```
 
-lapply(costs, CEdecisiontree, probs)
+## Introduction
+
+Deterministic or scenario sensitivity analysis is a common part of any cost-effectiveness analysis [@Briggs2012].
+Here we will carry this out for a simple decision tree.
+This involves explicity specifying values for each branch probability and cost and calculating the total expected value for each set.
+
+## Example
+
+```{r}
+suppressPackageStartupMessages(library(CEdecisiontree, quietly = TRUE))
+suppressPackageStartupMessages(library(assertthat, quietly = TRUE))
+suppressPackageStartupMessages(library(treeSimR, quietly = TRUE))
+suppressPackageStartupMessages(library(tibble, quietly = TRUE))
+suppressPackageStartupMessages(library(tidyverse, quietly = TRUE))
+suppressPackageStartupMessages(library(purrr, quietly = TRUE))
+```
+
+We first define the decision tree.
+We create a complete design meaning all combinations on the grid of input values.
+We may alternatively only want to do a one-way analysis and so would set the non-varied term to some baseline distribution or fixed value.
+We can think of this as a worst-, most likely and best-case scenario.
+
+```{r}
+p <- c(NA_real_, 0.4, 0.6)
+
+c2 <- c(10, 50, 100)
+c3 <- c(5, 40, 150)
+
+c_grid <-
+  expand.grid(c2 = c2,
+              c3 = c3) %>% 
+  cbind(c1 = 0L, .) %>% 
+  t() %>% 
+  as.data.frame()
+
+c_grid
+```
+
+```{r}
+child <- list("1" = c(2, 3),
+              "2" = NULL,
+              "3" = NULL)
+```
+
+We can now loop over the inputs and generate a tree object for each cost combination.
+
+```{r warning=FALSE}
+tree_dat_sa <- list()
+
+for (i in seq_along(c_grid)) {
+  
+  tree_dat_sa[[i]] <-
+    define_model(
+      tree_dat =
+        list(child = child,
+             dat = data.frame(
+               node = names(child),
+               prob = p,
+               vals = c_grid[, i])
+        ))
+}
+```
+
+This results in a list of trees.
+```{r}
+str(tree_dat_sa, 1)
+```
+
+Now it is straightforward to map over each of these trees to obtain the total expected values
+
+```{r}
+res <- map_dbl(tree_dat_sa, dectree_expected_values)
+res
+```
+
+### Tornado plot
