@@ -59,7 +59,7 @@
       <a href="../articles/other-input-formats.html">Using other input formats</a>
     </li>
     <li>
-      <a href="../articles/probabilistic-sensitivity-analysis.html">Probability Sensitivity Analysis (PSA)</a>
+      <a href="../articles/probability-sensitivity-analysis.html">Probability Sensitivity Analysis (PSA)</a>
     </li>
     <li>
       <a href="../articles/scenario-sensitivity-analysis.html">Scenario Sensitivity Analysis</a>
@@ -88,7 +88,7 @@
       <h1>Using other input formats</h1>
                         <h4 class="author">Nathan Green</h4>
             
-            <h4 class="date">2019-01-24</h4>
+            <h4 class="date">2019-02-15</h4>
       
       
       <div class="hidden name"><code>other-input-formats.Rmd</code></div>
@@ -223,6 +223,28 @@
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;    1    2    3    4    5    6    7 </span></a>
 <a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;  5.6 12.8  3.8 10.0  1.0 10.0  1.0</span></a></code></pre></div>
 </div>
+<div id="computation-speed" class="section level2">
+<h2 class="hasAnchor">
+<a href="#computation-speed" class="anchor"></a>Computation speed</h2>
+<p>We can compare the computation times for the recursive and non-recursive formulations.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressMessages</a></span>(</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">microbenchmark<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw"><a href="../reference/dectree_expected_values.default.html">dectree_expected_values</a></span>(<span class="dt">dat =</span> dat_long),</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">                               <span class="kw"><a href="../reference/dectree_expected_recursive.html">dectree_expected_recursive</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(tree)[<span class="dv">1</span>], tree, dat), <span class="dt">times =</span> 100L))</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; Unit: microseconds</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt;                                                   expr      min       lq</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt;                dectree_expected_values(dat = dat_long) 4596.156 4963.347</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt;  dectree_expected_recursive(names(tree)[1], tree, dat)  169.056  189.297</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt;       mean   median        uq       max neval cld</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt;  5589.7005 5230.187 5795.5130 21477.236   100   b</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt;   229.9504  202.554  229.0665  2018.124   100  a</span></a></code></pre></div>
+<p>For this example the recursive forumulation is much quicker. Change in memory before and after running the functions.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">pryr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/pryr/topics/mem_change">mem_change</a></span>(<span class="kw"><a href="../reference/dectree_expected_values.default.html">dectree_expected_values</a></span>(<span class="dt">dat =</span> dat_long))</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; Using prob as value column: use value.var to override.</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; Using cost as value column: use value.var to override.</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; 12.6 kB</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">pryr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/pryr/topics/mem_change">mem_change</a></span>(<span class="kw"><a href="../reference/dectree_expected_recursive.html">dectree_expected_recursive</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(tree)[<span class="dv">1</span>], tree, dat))</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; 656 B</span></a></code></pre></div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -233,6 +255,7 @@
 <li><a href="#setup">Setup</a></li>
       <li><a href="#tree-structure">Tree structure</a></li>
       <li><a href="#single-long-array">Single long array</a></li>
+      <li><a href="#computation-speed">Computation speed</a></li>
       </ul>
 </div>
       </div>

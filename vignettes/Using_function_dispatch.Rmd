@@ -5,8 +5,10 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
@@ -50,10 +52,10 @@ model_tree <-
 model_tree
 
 model_long <- 
-  define_model(dat_long = data.frame(from = c(1, 1),
-                                     to = c(2, 3),
-                                     prob = c(0.5, 0.5),
-                                     vals = c(1, 2)))
+  define_model(dat_long = data.frame(from = c(NA,1, 1),
+                                     to = c(1, 2, 3),
+                                     prob = c(NA, 0.5, 0.5),
+                                     vals = c(0, 1, 2)))
 model_long
 ```
 

@@ -59,7 +59,7 @@
       <a href="../articles/other-input-formats.html">Using other input formats</a>
     </li>
     <li>
-      <a href="../articles/probabilistic-sensitivity-analysis.html">Probability Sensitivity Analysis (PSA)</a>
+      <a href="../articles/probability-sensitivity-analysis.html">Probability Sensitivity Analysis (PSA)</a>
     </li>
     <li>
       <a href="../articles/scenario-sensitivity-analysis.html">Scenario Sensitivity Analysis</a>
@@ -88,7 +88,7 @@
       <h1>Scenario Sensitivity Analysis</h1>
                         <h4 class="author">Nathan Green</h4>
             
-            <h4 class="date">2019-01-24</h4>
+            <h4 class="date">2019-02-15</h4>
       
       
       <div class="hidden name"><code>scenario-sensitivity-analysis.Rmd</code></div>
@@ -97,10 +97,117 @@
 
     
     
-<p>lapply(costs, CEdecisiontree, probs)</p>
+<div id="introduction" class="section level2">
+<h2 class="hasAnchor">
+<a href="#introduction" class="anchor"></a>Introduction</h2>
+<p>Deterministic or scenario sensitivity analysis is a common part of any cost-effectiveness analysis <span class="citation">[@Briggs2012]</span>. Here we will carry this out for a simple decision tree. This involves explicity specifying values for particular branch probability and/or values and calculating the total expected value.</p>
+</div>
+<div id="example" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example" class="anchor"></a>Example</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(CEdecisiontree, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(assertthat, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(treeSimR, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tibble, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyverse, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(purrr, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<p>We create a complete design meaning all combinations on the grid of input values. Alternatively, we may only want to do a one-way analysis and so would set the non-varied term to some common baseline distribution or fixed value. In our example, we will choose three values for each parameter. We can think of this as a worst-, most likely and best-case scenario.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="ot">NA_real_</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">c2 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">c3 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">5</span>, <span class="dv">40</span>, <span class="dv">150</span>)</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">c_grid &lt;-</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/expand.grid">expand.grid</a></span>(<span class="dt">c2 =</span> c2,</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">              <span class="dt">c3 =</span> c3) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">cbind</a></span>(<span class="dt">c1 =</span> 0L, .) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/t">t</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>()</a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13">c_grid</a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt;    V1 V2  V3 V4 V5  V6  V7  V8  V9</span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; c1  0  0   0  0  0   0   0   0   0</span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt; c2 10 50 100 10 50 100  10  50 100</span></a>
+<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt; c3  5  5   5 40 40  40 150 150 150</span></a></code></pre></div>
+<p>Then define the decision tree structure.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">child &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"1"</span> =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2</span>, <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">              <span class="st">"2"</span> =<span class="st"> </span><span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">              <span class="st">"3"</span> =<span class="st"> </span><span class="ot">NULL</span>)</a></code></pre></div>
+<p>We can now loop over the inputs and generate a complete tree object for each cost combination.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">tree_dat_sa &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>()</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq_along</a></span>(c_grid)) {</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">  </a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">  tree_dat_sa[[i]] &lt;-</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">    </span><span class="kw"><a href="../reference/define_model.html">define_model</a></span>(</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">      <span class="dt">tree_dat =</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">        <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">child =</span> child,</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">             <span class="dt">dat =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">               <span class="dt">node =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(child),</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">               <span class="dt">prob =</span> p,</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">               <span class="dt">vals =</span> c_grid[[i]])</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">        ))</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">}</a></code></pre></div>
+<p>This results in a list of trees.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(tree_dat_sa, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; List of 9</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;  $ :List of 2</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;  $ :List of 2</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;  $ :List of 2</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt;  $ :List of 2</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;  $ :List of 2</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;  $ :List of 2</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt;  $ :List of 2</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt;  $ :List of 2</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt;  $ :List of 2</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a></code></pre></div>
+<p>Now it is straightforward to map over each of these trees to obtain the total expected values.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw">map_dbl</span>(tree_dat_sa, dectree_expected_values)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">res</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; [1]   7  23  43  28  44  64  94 110 130</span></a></code></pre></div>
+<div id="tornado-plot" class="section level3">
+<h3 class="hasAnchor">
+<a href="#tornado-plot" class="anchor"></a>Tornado plot</h3>
+<p>Lets create a tornado plot showing a one-way sensitivity analysis. We’ll use my <code>plotCostEffectiveness</code> package to easily produce a ggplot version. By sepcifying the output data as a model frame it is handled appropriately.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(plotCostEffectiveness))</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(magrittr))</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(reshape2))</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(plyr))</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(purrr))</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr))</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2))</a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9">sa_dat &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">cbind</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/t">t</a></span>(c_grid), res))</a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11">sa_model_dat &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/model.frame">model.frame</a></span>(<span class="dt">formula =</span> res <span class="op">~</span><span class="st"> </span>c1 <span class="op">+</span><span class="st"> </span>c2 <span class="op">+</span><span class="st"> </span>c3,</a>
+<a class="sourceLine" id="cb7-12" data-line-number="12">                            <span class="dt">data =</span> sa_dat)</a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14">sa_model_dat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="st">  </span>s_analysis_to_tornado_plot_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="st">  </span><span class="kw">ggplot_tornado</span>() </a>
+<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="co">#&gt; [1] "baseline values estimated as: 0 50 40 44"</span></a></code></pre></div>
+<p><img src="scenario-sensitivity-analysis_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#introduction">Introduction</a></li>
+      <li><a href="#example">Example</a></li>
+      </ul>
+</div>
       </div>
 
 </div>

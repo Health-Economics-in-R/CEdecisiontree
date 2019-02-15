@@ -1,0 +1,62 @@
+
+reference:
+- title: Total expected values
+  desc: Functions for calculating the weighted mean values at decision tree nodes.
+  contents:
+  - '`Cdectree_expected_values`'
+  - '`dectree_expected_recursive`'
+  - '`dectree_expected_values`'
+- title: Transform between formats
+  desc: Functions for switching between matrix, long or tree representations of a decision tree.
+  contents:
+  - '`child_list_to_transmat`'
+  - '`long_to_transmat`'
+  - '`transmat_to_child_list`'
+  - '`transmat_to_long`'
+- title: All other functions
+  desc: Miscellaneous tools for manipulating tree values and probabilities.
+  contents:
+  - '`branch_joint_probs`'
+  - '`define_model`'
+  - '`fill_complementary_probs`'
+  - '`insert_to_transmat`'
+  - '`is_prob_matrix`'
+  - '`match_branchlabel_to_prob`'
+  - '`match_branch_to_label`'
+  - '`trans_binarytree`'
+
+navbar:
+  structure:
+    left:
+    - home
+    - intro
+    - reference
+    - articles
+    - tutorials
+    - news
+    right: github
+  components:
+    home:
+      icon: fa-home fa-lg
+      href: index.html
+    reference:
+      text: Reference
+      href: reference/index.html
+    articles:
+      text: Articles
+      menu:
+      - text: Using function dispatch
+        href: articles/Using_function_dispatch.html
+      - text: Using other input formats
+        href: articles/other-input-formats.html
+      - text: "-------"
+      - text: Probability Sensitivity Analysis (PSA)
+        href: articles/probability-sensitivity-analysis.html
+      - text: Scenario Sensitivity Analysis
+        href: articles/scenario-sensitivity-analysis.html
+      - text: "-------"
+      - text: Comparison with other packages
+        href: articles/comparison-with-other-packages.html
+    news:
+      text: Changelog
+      href: news/index.html

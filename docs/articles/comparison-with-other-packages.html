@@ -59,7 +59,7 @@
       <a href="../articles/other-input-formats.html">Using other input formats</a>
     </li>
     <li>
-      <a href="../articles/probabilistic-sensitivity-analysis.html">Probability Sensitivity Analysis (PSA)</a>
+      <a href="../articles/probability-sensitivity-analysis.html">Probability Sensitivity Analysis (PSA)</a>
     </li>
     <li>
       <a href="../articles/scenario-sensitivity-analysis.html">Scenario Sensitivity Analysis</a>
@@ -88,7 +88,7 @@
       <h1>Comparison with other packages</h1>
                         <h4 class="author">Nathan Green</h4>
             
-            <h4 class="date">2019-01-24</h4>
+            <h4 class="date">2019-02-15</h4>
       
       
       <div class="hidden name"><code>comparison-with-other-packages.Rmd</code></div>
@@ -100,7 +100,7 @@
 <div id="comparison-with-heemod" class="section level2">
 <h2 class="hasAnchor">
 <a href="#comparison-with-heemod" class="anchor"></a>Comparison with heemod</h2>
-<p>The heemod package is designed to simulate more general models but let us perform the same analysis to compare. First, we need to define the transition matrix. This is essentially the same as above except because heemod simulates over a predefined number of iterations or <code>cycles</code> we need to add a final absorbing sink state with no associated costs.</p>
+<p>The heemod package is designed to simulate more general models but let us perform the same analysis to compare. First, we need to define the transition matrix. This is essentially the same as above except because heemod simulates over a predefined number of iterations or <em>cycles</em> we need to add a final absorbing sink state (i.e. <span class="math inline">\(p_{ii} = 1\)</span>) with no associated costs.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(heemod))</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb1-3" data-line-number="3">mat_base &lt;-<span class="st"> </span><span class="kw">define_transition</span>(</a>
@@ -158,7 +158,7 @@
 <a class="sourceLine" id="cb2-41" data-line-number="41">  <span class="st">"7"</span> =<span class="st"> </span>state_<span class="dv">7</span>,</a>
 <a class="sourceLine" id="cb2-42" data-line-number="42">  <span class="st">"8"</span> =<span class="st"> </span>state_<span class="dv">8</span></a>
 <a class="sourceLine" id="cb2-43" data-line-number="43">)</a></code></pre></div>
-<p>Finally, we get the expected cost</p>
+<p>Finally, we get the expected cost £5600 for 100 cycles which is equivalent to £5.6 in our previous analysis.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">run_model</span>(</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">  strat_base,</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3">  <span class="dt">cycles =</span> <span class="dv">100</span>,</a>
