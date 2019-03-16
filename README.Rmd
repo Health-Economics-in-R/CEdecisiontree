@@ -4,6 +4,8 @@ output:
     pandoc_args: --webtex
 ---
 
+# CEdecisiontree <img src="imgfile.png" height="139" align="right"/>
+
 [![Build Status](https://travis-ci.org/Health-Economics-in-R/CEdecisiontree.svg?branch=master)](https://travis-ci.org/Health-Economics-in-R/CEdecisiontree)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/Health-Economics-in-R/CEdecisiontree?branch=master&svg=true)](https://ci.appveyor.com/project/Health-Economics-in-R/CEdecisiontree)
 [![Coverage status](https://codecov.io/gh/Health-Economics-in-R/CEdecisiontree/branch/master/graph/badge.svg)](https://codecov.io/github/Health-Economics-in-R/CEdecisiontree?branch=master)
@@ -24,7 +26,6 @@ knitr::opts_chunk$set(
   fig.height = 5
 )
 ```
-# CEdecisiontree
 
 An R package for lightweight cost-effectiveness analysis using decision trees.
 

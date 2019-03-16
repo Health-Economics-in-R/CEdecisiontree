@@ -1,4 +1,7 @@
 #
+# Economic Evaluation of an Active TB Diagnostic
+# Test using Decision Trees: A Decision Analytic Approach
+#
 # bcg-calc.R
 # N Green
 
@@ -9,6 +12,7 @@ library(readr)
 library(dplyr)
 library(reshape2)
 library(tidyr)
+library(assertthat)
 
 # bcg_probs <- read_csv("data-raw/bcg-probs.csv", col_names = TRUE, col_types = cols('1' = 'd'))
 # bcg_cost  <- read_csv("data-raw/bcg-costs.csv", col_names = TRUE, col_types = cols('1' = 'd'))
@@ -49,6 +53,8 @@ dtr_data <-
   merge(probs_long,
         cost_long) %>%
   merge(utility_long)
+
+View(dtr_data)
 
 
 #########

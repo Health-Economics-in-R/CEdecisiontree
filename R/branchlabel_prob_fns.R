@@ -1,13 +1,23 @@
 
 #' Match branch to label
 #'
-#' @param probs_long
-#' @param probs_from_to_lookup
+#' Assume that there are node labels and these may be non-unique.
+#' We assign these labels by joining a lookup table of labels and edges
+#' with the tree object, in this case the long array format.
+#'
+#' Separating the tree structure and labelling means that we can
+#' reuse the same tree with different labels
+#' e.g. another test or treatment
+#'
+#' @param probs_long Long format array tree object
+#' @param probs_from_to_lookup edge-label look-up table
 #'
 #' @return dataframe
 #' @export
+#' @seealso \link{match_branchlabel_to_prob}
 #'
 #' @examples
+#'
 match_branch_to_label <- function(probs_long,
                                   probs_from_to_lookup) {
 
@@ -19,13 +29,18 @@ match_branch_to_label <- function(probs_long,
 
 #' Match branch label to probabilities
 #'
-#' @param probs_names
-#' @param branch_probs_long
+#' We have a look-up table of labels and values.
+#' We can join the values to nodes/edges via their labels.
+#'
+#' @param probs_names label-probability look-up
+#' @param branch_probs_long long format tree object with labels
 #'
 #' @return dataframe
 #' @export
+#' @seealso \link{match_branch_to_label}
 #'
 #' @examples
+#'
 match_branchlabel_to_prob <- function(probs_names,
                                       branch_probs_long) {
 
@@ -38,7 +53,13 @@ match_branchlabel_to_prob <- function(probs_names,
 
 #' Fill complementary probabilities
 #'
-#' @param probs_names
+#' Only one of each pair of branches is assigned a probability
+#' and then the other event probability is filled-in afterwards.
+#' This is good because specify fewer input vallues and
+#' if sampling probabilities we don't know the complementary
+#' probability.
+#'
+#' @param probs_names long format tree object
 #'
 #' @return dataframe
 #' @export
