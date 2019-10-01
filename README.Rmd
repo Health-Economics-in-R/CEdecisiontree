@@ -2,6 +2,7 @@
 output:
   github_document:
     pandoc_args: --webtex
+  md_document: default
 ---
 
 # CEdecisiontree <img src="imgfile.png" height="139" align="right"/>

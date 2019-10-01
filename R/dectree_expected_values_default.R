@@ -47,7 +47,6 @@ dectree_expected_values.default <- function(vals,
 
   for (i in num_from_nodes:1) {
 
-
     total <- 0
     for (j in 1:num_to_nodes) {
 

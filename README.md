@@ -95,19 +95,13 @@ Quietly load libraries.
 ``` r
 suppressPackageStartupMessages(library(CEdecisiontree))
 suppressPackageStartupMessages(library(readr))
-#> Warning: package 'readr' was built under R version 3.4.4
 suppressPackageStartupMessages(library(dplyr))
-#> Warning: package 'dplyr' was built under R version 3.4.4
 suppressPackageStartupMessages(library(reshape2))
-#> Warning: package 'reshape2' was built under R version 3.4.4
 suppressPackageStartupMessages(library(tidyr))
-#> Warning: package 'tidyr' was built under R version 3.4.4
 suppressPackageStartupMessages(library(assertthat))
-#> Warning: package 'assertthat' was built under R version 3.4.4
 ```
 
-We will consider a simple 7 node binary
-tree.
+We will consider a simple 7 node binary tree.
 
 <img src="https://raw.githubusercontent.com/Health-Economics-in-R/CEdecisiontree/master/man/figures/README_decisiontree_silverdecisions.png" width="400px" />
 
