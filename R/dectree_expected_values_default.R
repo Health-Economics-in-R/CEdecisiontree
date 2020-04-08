@@ -25,6 +25,8 @@
 #'
 #' @examples
 #'
+#' dectree_expected_values.default(vals, p)
+#'
 dectree_expected_values.default <- function(vals,
                                             p,
                                             dat = NA){

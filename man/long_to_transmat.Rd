@@ -17,4 +17,10 @@ Long format to transition matrix
 }
 \examples{
 
+data <- data.frame(from = c(NA,1, 1),
+                  to = c(1, 2, 3),
+                  prob = c(NA, 0.5, 0.5),
+                  vals = c(0, 1, 2))
+long_to_transmat(dat)
+
 }

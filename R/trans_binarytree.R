@@ -11,6 +11,9 @@
 #' @export
 #'
 #' @examples
+#'
+#' trans_binarytree(c("A", "B"), depth = 2)
+#'
 trans_binarytree <- function(names,
                              depth = 2)
 {

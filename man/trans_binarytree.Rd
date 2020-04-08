@@ -18,3 +18,8 @@ Matrix of TRUE and FALSE
 This is adapted from \code{mstate::trans.illness}.
 Create a complete binary tree transition matrix.
 }
+\examples{
+
+trans_binarytree(c("A", "B"), depth = 2)
+
+}

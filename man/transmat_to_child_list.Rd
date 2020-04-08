@@ -2,7 +2,7 @@
 % Please edit documentation in R/transmat_to_child_list.R
 \name{transmat_to_child_list}
 \alias{transmat_to_child_list}
-\title{Get tree children list from transition matrix}
+\title{Create tree children list from transition matrix}
 \usage{
 transmat_to_child_list(transmat)
 }
@@ -13,8 +13,14 @@ transmat_to_child_list(transmat)
 list
 }
 \description{
-Get tree children list by parents from a transition matrix.
+Create tree children list by parents from a transition matrix.
 }
 \examples{
+
+transmat <-
+  list(prob = matrix(data = c(NA, 0.5, 0.5), nrow = 1),
+         vals = matrix(data = c(NA, 1, 2), nrow = 1)
+       )
+transmat_to_child_list(transmat)
 
 }

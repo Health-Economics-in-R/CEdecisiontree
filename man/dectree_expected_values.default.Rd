@@ -4,7 +4,7 @@
 \name{dectree_expected_values}
 \alias{dectree_expected_values}
 \alias{dectree_expected_values.default}
-\title{Cost-effectiveness decision tree expected values}
+\title{dectree_expected_values}
 \usage{
 dectree_expected_values(model, ...)
 
@@ -40,5 +40,7 @@ costs are assigned to the nodes. The expected value would then be
 \deqn{\hat{c}_i = \sum p_{ij} (c_{ij} + \hat{c}_j)}
 }
 \examples{
+
+dectree_expected_values.default(vals, p)
 
 }

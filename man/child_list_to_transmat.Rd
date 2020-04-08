@@ -2,18 +2,18 @@
 % Please edit documentation in R/child_list_to_transmat.R
 \name{child_list_to_transmat}
 \alias{child_list_to_transmat}
-\title{Get transition matrix from tree children list}
+\title{Create transition matrix from tree children list}
 \usage{
 child_list_to_transmat(tree)
 }
 \arguments{
-\item{tree}{list.}
+\item{tree}{parent-child node list.}
 }
 \value{
 matrix
 }
 \description{
-Get transition matrix from tree children list by parents.
+Create transition matrix from tree children list by parents.
 }
 \examples{
 

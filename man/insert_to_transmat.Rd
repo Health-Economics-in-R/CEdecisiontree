@@ -4,7 +4,7 @@
 \alias{insert_to_transmat}
 \alias{insert_to_costmat}
 \alias{insert_to_probmat}
-\title{insert_to_transmat}
+\title{Insert to transition matrix}
 \usage{
 insert_to_transmat(dat, mat)
 
@@ -23,7 +23,15 @@ matrix
 \description{
 Insert values into a transition matrix
 from a long array of \code{from}, \code{to} values
+
+Insert values into a cost matrix
+from a long array of \code{from}, \code{to} values
+
+Insert values into a probability matrix
+from a long array of \code{from}, \code{to} values
 }
 \examples{
+
+#insert_to_transmat(dat, mat)
 
 }

@@ -1,4 +1,6 @@
 
+#' dectree_expected_values
+#'
 #' @param model List as \code{define_model()} output of type \code{tree_dat}, \code{transmat} or \code{dat_long}
 #' @rdname dectree_expected_values.default
 #' @export dectree_expected_values
@@ -6,6 +8,8 @@
 dectree_expected_values <- function(model, ...)
   UseMethod("dectree_expected_values")
 
+#' dectree_expected_values.tree_dat
+#'
 #' @rdname dectree_expected_values
 #' @export dectree_expected_values.tree_dat
 #' @export
@@ -16,6 +20,8 @@ dectree_expected_values.tree_dat <- function(model) {
                              model$dat)
 }
 
+#' dectree_expected_values.transmat
+#'
 #' @rdname dectree_expected_values
 #' @export dectree_expected_values.transmat
 #' @export
@@ -25,6 +31,8 @@ dectree_expected_values.transmat <- function(model){
                           model$prob)
 }
 
+#' dectree_expected_values.dat_long
+#'
 #' @rdname dectree_expected_values
 #' @export dectree_expected_values.dat_long
 #' @export

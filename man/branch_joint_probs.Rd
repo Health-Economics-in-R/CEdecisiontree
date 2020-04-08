@@ -10,7 +10,7 @@ branch_joint_probs(probs)
 \item{probs}{Branch conditional probabilities (matrix)}
 }
 \value{
-transition matrix with joint probabilities
+Transition matrix with joint probabilities
 }
 \description{
 Provides a measure of the chances of following
