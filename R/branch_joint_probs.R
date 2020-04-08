@@ -10,7 +10,7 @@
 #'
 #' @param probs Branch conditional probabilities (matrix)
 #'
-#' @return transition matrix with joint probabilities
+#' @return Transition matrix with joint probabilities
 #' @export
 #'
 #' @examples

@@ -1,7 +1,7 @@
 
-#' Get tree children list from transition matrix
+#' Create tree children list from transition matrix
 #'
-#' Get tree children list by parents from a transition matrix.
+#' Create tree children list by parents from a transition matrix.
 #'
 #' @param transmat from-to matrix with \code{NA} for missing values.
 #'

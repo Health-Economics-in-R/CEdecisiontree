@@ -1,9 +1,9 @@
 
-#' Get transition matrix from tree children list
+#' Create transition matrix from tree children list
 #'
-#' Get transition matrix from tree children list by parents.
+#' Create transition matrix from tree children list by parents.
 #'
-#' @param tree list.
+#' @param tree parent-child node list.
 #'
 #' @return matrix
 #' @export

@@ -1,5 +1,5 @@
 
-#' insert_to_transmat
+#' Insert to transition matrix
 #'
 #' Insert values into a transition matrix
 #' from a long array of \code{from}, \code{to} values
@@ -11,6 +11,8 @@
 #' @export
 #'
 #' @examples
+#'
+#' #insert_to_transmat(dat, mat)
 #'
 insert_to_transmat <- function(dat,
                                mat) {
@@ -30,6 +32,11 @@ insert_to_transmat <- function(dat,
   mat
 }
 
+#' Insert to cost matrix
+#'
+#' Insert values into a cost matrix
+#' from a long array of \code{from}, \code{to} values
+#'
 #' @rdname insert_to_transmat
 #'
 insert_to_costmat <- function(dat,
@@ -38,6 +45,11 @@ insert_to_costmat <- function(dat,
   insert_to_transmat(dat, mat)
 }
 
+#' Insert to probability matrix
+#'
+#' Insert values into a probability matrix
+#' from a long array of \code{from}, \code{to} values
+#'
 #' @rdname insert_to_transmat
 #'
 insert_to_probmat <- function(dat,
