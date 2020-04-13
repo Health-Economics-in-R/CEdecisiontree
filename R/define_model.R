@@ -36,39 +36,65 @@ define_model <- function(transmat,
 
   if (!missing(transmat)) {
 
-    if (!is.list(transmat)) stop("transmat must be a list")
-    if (length(transmat) != 2) stop("transmat must be length 2")
-    if (!("prob" %in% names(transmat))) stop("Require prob")
-    if (!("vals" %in% names(transmat))) stop("Require vals")
-    assert_that(is_prob_matrix(transmat$prob))
-
-    class(transmat) <- append("transmat", class(transmat))
-    return(transmat)
+    transmat %>%
+      validate_transmat() %>%
+      return()
   }
   if (!missing(tree_dat)) {
 
-    if (!is.list(tree_dat)) stop("tree must be a list")
-    if (length(tree_dat) != 2) stop("tree must be length 2")
-    if (!is.list(tree_dat$child)) stop("child must be a list")
-
-    class(tree_dat) <- c("tree_dat", class(tree_dat))
-    return(tree_dat)
+    tree_dat %>%
+      validate_tree_dat() %>%
+      return()
   }
   if (!missing(dat_long)) {
 
-    if (!is.data.frame(dat_long)) stop("dat_long must be a dataframe")
-    if (!("prob" %in% names(dat_long))) stop("Require prob column")
-    if (!("vals" %in% names(dat_long))) stop("Require vals column")
-
-    dat_long$vals[is.na(dat_long$vals)] <- 0
-    missing_from <- which(!seq_len(max(dat_long$to)) %in% dat_long$from)
-    dat_long <- rbind.data.frame(dat_long,
-                                 data.frame(from = missing_from,
-                                            to = max(dat_long$to),
-                                            vals = NA,
-                                            prob = NA))
-
-    class(dat_long) <- append("dat_long", class(dat_long))
-    return(dat_long)
+    dat_long %>%
+      validate_dat_long() %>%
+      return()
   }
+
+  stop("All tree data inputs are missing.")
+}
+
+#
+validate_transmat <- function(transmat) {
+
+  if (!is.list(transmat)) stop("transmat must be a list")
+  if (length(transmat) != 2) stop("transmat must be length 2")
+  if (!("prob" %in% names(transmat))) stop("Require prob")
+  if (!("vals" %in% names(transmat))) stop("Require vals")
+  assert_that(is_prob_matrix(transmat$prob))
+  class(transmat) <- append("transmat", class(transmat))
+
+  transmat
+}
+
+#
+validate_tree_dat <- function(tree_dat) {
+
+  if (!is.list(tree_dat)) stop("tree must be a list")
+  if (length(tree_dat) != 2) stop("tree must be length 2")
+  if (!is.list(tree_dat$child)) stop("child must be a list")
+  class(tree_dat) <- c("tree_dat", class(tree_dat))
+
+  tree_dat
+}
+
+#
+validate_dat_long <- function(dat_long) {
+
+  if (!is.data.frame(dat_long)) stop("dat_long must be a dataframe")
+  if (!("prob" %in% names(dat_long))) stop("Require prob column")
+  if (!("vals" %in% names(dat_long))) stop("Require vals column")
+
+  dat_long$vals[is.na(dat_long$vals)] <- 0
+  missing_from <- which(!seq_len(max(dat_long$to)) %in% dat_long$from)
+  dat_long <- rbind.data.frame(dat_long,
+                               data.frame(from = missing_from,
+                                          to = max(dat_long$to),
+                                          vals = NA,
+                                          prob = NA))
+  class(dat_long) <- append("dat_long", class(dat_long))
+
+  dat_long
 }
