@@ -37,19 +37,19 @@ define_model <- function(transmat,
   if (!missing(transmat)) {
 
     transmat %>%
-      validate_transmat() %>%
+      new_transmat() %>%
       return()
   }
   if (!missing(tree_dat)) {
 
     tree_dat %>%
-      validate_tree_dat() %>%
+      new_tree_dat() %>%
       return()
   }
   if (!missing(dat_long)) {
 
     dat_long %>%
-      validate_dat_long() %>%
+      new_dat_long() %>%
       return()
   }
 

@@ -9,19 +9,21 @@ validate_transmat <- function(transmat) {
   if (dim(transmat$prob != dim(transmat$vals))) stop("Dimensions of probs and vals don't match")
   assert_that(is_prob_matrix(transmat$prob))
 
-  class(transmat) <- append("transmat", class(transmat))
-
   transmat
 }
 
-# helper function
-transmat <- function(transmat) {
+#
+new_transmat <- function(transmat) {
 
   if (length(transmat) != 2 & all(c("prob", "vals") %in% names(transmat))) {
     transmat[c("prob", "vals")]
   }
 
   validate_transmat(transmat)
+
+  class(transmat) <- append("transmat", class(transmat))
+
+  transmat
 }
 
 #
@@ -41,13 +43,11 @@ validate_tree_dat <- function(tree_dat) {
   }
   if (all(tree_dat$dat$node != 1)) stop("Require root node 1")
 
-  class(tree_dat) <- c("tree_dat", class(tree_dat))
-
   tree_dat
 }
 
-# helper function
-tree_dat <- function(tree_dat) {
+#
+new_tree_dat <- function(tree_dat) {
 
   if (length(tree_dat) != 2 & all(c("child", "dat") %in% names(tree_dat))) {
     tree_dat[c("child", "dat")]
@@ -59,6 +59,8 @@ tree_dat <- function(tree_dat) {
   }
 
   validate_tree_dat(tree_dat)
+
+  class(tree_dat) <- c("tree_dat", class(tree_dat))
 }
 
 #
@@ -68,14 +70,12 @@ validate_dat_long <- function(dat_long) {
   if (!("prob" %in% names(dat_long))) stop("Require prob column")
   if (!("vals" %in% names(dat_long))) stop("Require vals column")
 
-  class(dat_long) <- append("dat_long", class(dat_long))
-
   dat_long
 }
 
-# helper function
 ##TODO...
-dat_long <- function(dat_long) {
+#
+new_dat_long <- function(dat_long) {
 
   dat_long$vals[is.na(dat_long$vals)] <- 0
   missing_from <- which(!seq_len(max(dat_long$to)) %in% dat_long$from)
@@ -86,4 +86,6 @@ dat_long <- function(dat_long) {
                                           prob = NA))
 
   validate_dat_long(dat_long)
+
+  class(dat_long) <- append("dat_long", class(dat_long))
 }
