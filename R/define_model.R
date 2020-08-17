@@ -8,6 +8,8 @@
 #' @param dat_long Long dataframe with from, to, prob, vals columns
 #'
 #' @return transmat, tree_dat or dat_long class object
+#' @import dplyr
+#'
 #' @export
 #'
 #' @examples
@@ -34,24 +36,24 @@ define_model <- function(transmat,
                          tree_dat,
                          dat_long) {
 
+  if (missing(transmat) &&
+      missing(tree_dat) &&
+      missing(dat_long))
+    stop("All tree data inputs are missing.")
+
   if (!missing(transmat)) {
 
-    transmat %>%
-      new_transmat() %>%
-      return()
+    return(
+      new_transmat(transmat))
   }
   if (!missing(tree_dat)) {
 
-    tree_dat %>%
-      new_tree_dat() %>%
-      return()
+     return(
+      new_tree_dat(tree_dat))
   }
   if (!missing(dat_long)) {
 
-    dat_long %>%
-      new_dat_long() %>%
-      return()
+    return(
+      new_dat_long(dat_long))
   }
-
-  stop("All tree data inputs are missing.")
 }
