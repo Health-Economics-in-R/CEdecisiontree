@@ -6,7 +6,7 @@
 #' @export dectree_expected_values
 #'
 dectree_expected_values <- function(model, ...)
-  UseMethod("dectree_expected_values")
+  UseMethod("dectree_expected_values", model)
 
 #' dectree_expected_values.tree_dat
 #'
