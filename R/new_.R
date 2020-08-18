@@ -35,15 +35,16 @@ new_tree_dat <- function(tree_dat) {
 #
 new_dat_long <- function(dat_long) {
 
+  validate_dat_long(dat_long)
+
   dat_long$vals[is.na(dat_long$vals)] <- 0
   missing_from <- which(!seq_len(max(dat_long$to)) %in% dat_long$from)
-  dat_long <- rbind.data.frame(dat_long,
-                               data.frame(from = missing_from,
-                                          to = max(dat_long$to),
-                                          vals = NA,
-                                          prob = NA))
-
-  validate_dat_long(dat_long)
+  dat_long <-
+    rbind.data.frame(dat_long,
+                     data.frame(from = missing_from,
+                                to = max(dat_long$to),
+                                vals = NA,
+                                prob = NA))
 
   structure(dat_long, class = c("dat_long", class(dat_long)))
 }

@@ -47,6 +47,10 @@ validate_dat_long <- function(dat_long) {
   if (!("prob" %in% names(dat_long))) stop("Require prob column")
   if (!("vals" %in% names(dat_long))) stop("Require vals column")
 
+  keep_cols <- names(dat_long) %in% c("from", "to", "vals", "prob")
+  dat_long <- dat_long[, keep_cols]
+  message(paste("removing columns", names(dat_long)[!keep_cols]))
+
   dat_long
 }
 
