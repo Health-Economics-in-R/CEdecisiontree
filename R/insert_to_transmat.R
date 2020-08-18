@@ -38,6 +38,7 @@ insert_to_transmat <- function(dat,
 #' from a long array of \code{from}, \code{to} values
 #'
 #' @rdname insert_to_transmat
+#' @export
 #'
 insert_to_costmat <- function(dat,
                               mat) {
@@ -51,6 +52,7 @@ insert_to_costmat <- function(dat,
 #' from a long array of \code{from}, \code{to} values
 #'
 #' @rdname insert_to_transmat
+#' @export
 #'
 insert_to_probmat <- function(dat,
                               mat) {

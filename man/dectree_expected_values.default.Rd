@@ -11,7 +11,8 @@ dectree_expected_values(model, ...)
 \method{dectree_expected_values}{default}(vals, p, dat = NA)
 }
 \arguments{
-\item{model}{List as \code{define_model()} output of type \code{tree_dat}, \code{transmat} or \code{dat_long}}
+\item{model}{List as \code{define_model()} output of type
+\code{tree_dat}, \code{transmat} or \code{dat_long}}
 
 \item{vals}{Values on each edge/branch e.g. costs or QALYs (array)}
 

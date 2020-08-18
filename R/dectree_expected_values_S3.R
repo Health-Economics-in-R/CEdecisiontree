@@ -1,7 +1,8 @@
 
 #' dectree_expected_values
 #'
-#' @param model List as \code{define_model()} output of type \code{tree_dat}, \code{transmat} or \code{dat_long}
+#' @param model List as \code{define_model()} output of type
+#'             \code{tree_dat}, \code{transmat} or \code{dat_long}
 #' @rdname dectree_expected_values.default
 #' @export dectree_expected_values
 #'

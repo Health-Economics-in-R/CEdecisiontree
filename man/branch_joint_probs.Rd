@@ -4,13 +4,7 @@
 \alias{branch_joint_probs}
 \title{Branch Joint Probabilities}
 \usage{
-branch_joint_probs(probs)
-}
-\arguments{
-\item{probs}{Branch conditional probabilities (matrix)}
-}
-\value{
-Transition matrix with joint probabilities
+branch_joint_probs(model, ...)
 }
 \description{
 Provides a measure of the chances of following
@@ -20,10 +14,4 @@ particular paths.
 These probabilities could be used to weight branch costs
 or QALYs to indicate the relative contribution to the
 total expected value.
-}
-\examples{
-data(probs)
-data(cost)
-branch_joint_probs(probs) * cost
-
 }
