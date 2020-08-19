@@ -32,19 +32,32 @@ new_tree_dat <- function(tree_dat) {
 }
 
 ##TODO...
-#
-new_dat_long <- function(dat_long) {
+#'
+#' @param fill_edges If need missing edges to connect to a sink state
+#'
+new_dat_long <- function(dat_long,
+                         fill_edges = TRUE) {
 
   validate_dat_long(dat_long)
 
+  keep_cols <- names(dat_long) %in% c("from", "to", "vals", "prob")
+
+  if (any(!keep_cols))
+    message(c("Removing column(s) ", names(dat_long)[!keep_cols]))
+  dat_long <- dat_long[, keep_cols]
+
+  if (fill_edges) {
+    missing_from <-
+      which(!seq_len(max(dat_long$to)) %in% dat_long$from)
+    dat_long <-
+      rbind.data.frame(dat_long,
+                       data.frame(from = missing_from,
+                                  to = max(dat_long$to),
+                                  vals = NA,
+                                  prob = NA))
+  }
+
   dat_long$vals[is.na(dat_long$vals)] <- 0
-  missing_from <- which(!seq_len(max(dat_long$to)) %in% dat_long$from)
-  dat_long <-
-    rbind.data.frame(dat_long,
-                     data.frame(from = missing_from,
-                                to = max(dat_long$to),
-                                vals = NA,
-                                prob = NA))
 
   structure(dat_long, class = c("dat_long", class(dat_long)))
 }
