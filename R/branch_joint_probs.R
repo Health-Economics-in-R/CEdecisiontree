@@ -112,3 +112,9 @@ branch_joint_probs.dat_long <- function(model,
   return(out)
 }
 
+#'
+branch_joint_probs.default <- function(model,
+                                       nodes){
+  message("No method for this type.")
+}
+

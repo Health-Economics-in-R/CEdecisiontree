@@ -39,10 +39,13 @@ dectree_expected_values.transmat <- function(model){
 #' @export
 dectree_expected_values.dat_long <- function(model) {
 
+  val_name <-
+    names(model)[!names(model) %in% c("from", "to", "prob")][1]
+  message(paste(val_name, "used for calculation."))
+
   model <-
-    list(probs = long_to_transmat(model[, c("from", "to", "prob")]),
-         vals = long_to_transmat(dplyr::select(model, -prob))
-    )
+    list(probs = long_to_transmat(model, "prob"),
+         vals = long_to_transmat(model, val_name))
 
   class(model) <- append("transmat", class(model))
 

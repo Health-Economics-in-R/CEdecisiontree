@@ -23,3 +23,43 @@ test_that("probability matrices", {
   expect_error(assert_that(is_prob_matrix(long_to_transmat(dat))),
                "probs is not a probability matrix")
 })
+
+xx <-
+  define_model(dat_long =
+                 data.frame(from = c(NA, 1, 1),
+                            to = 1:3,
+                            prob = c(NA, NA, 0.5),
+                            vals = c(0, 1, 2)),
+               fill_prob = TRUE,
+               fill_edges = TRUE)
+# from    to  prob  vals
+# * <dbl> <int> <dbl> <dbl>
+#   1    NA     1   1       0
+# 2     1     2   0.5     1
+# 3     1     3   0.5     2
+# 4     2     3   1       0
+# 5     3     3   1       0
+
+long_to_transmat(xx)
+# 1   2   3
+# 1 NA 0.5 0.5
+# 2 NA  NA 1.0
+# 3 NA  NA 1.0
+
+long_to_transmat(xx, val_col = "vals")
+# 1  2 3
+# 1 NA  1 2
+# 2 NA NA 0
+
+xx <-
+  define_model(dat_long =
+                 data.frame(from = c(NA, 1, 1),
+                            to = 1:3,
+                            prob = c(NA, NA, 0.5),
+                            vals = c(0, 1, 2)),
+               fill_prob = TRUE,
+               fill_edges = FALSE)
+
+long_to_transmat(xx)
+# 1   2   3
+# 1 NA 0.5 0.5

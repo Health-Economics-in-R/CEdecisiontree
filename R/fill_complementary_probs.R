@@ -1,5 +1,5 @@
 
-#' Fill complementary probabilities
+#' Fill Complementary Probabilities
 #'
 #' Only one of each pair of branches is assigned a probability
 #' and then the other event probability is filled-in afterwards.
@@ -7,16 +7,18 @@
 #' if sampling probabilities we don't know the complementary
 #' probability.
 #'
-#' @param probs_names long format tree object
+#' Only works for binary trees or when one of n is missing.
 #'
-#' @return dataframe
+#' @param dat_tree Long format tree object
+#'
+#' @return Long format tree object
 #' @export
 #'
 #' @examples
 #'
-fill_complementary_probs <- function(probs_names) {
+fill_complementary_probs <- function(dat_tree) {
 
-  probs_names %>%
+  dat_tree %>%
     group_by(from) %>%
     mutate(prob = ifelse(is.na(prob),
                          1 - sum(prob, na.rm = TRUE),

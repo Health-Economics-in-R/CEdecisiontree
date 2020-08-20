@@ -2,6 +2,7 @@
 #' Long format to transition matrix
 #'
 #' @param dat array of from, to, prob, vals
+#' @param val_col default prob
 #'
 #' @return transition matrix
 #' @export
@@ -14,9 +15,11 @@
 #'                   vals = c(0, 1, 2))
 #' long_to_transmat(dat)
 #'
-long_to_transmat <- function(dat){
+long_to_transmat <- function(dat,
+                             val_col = "prob"){
 
   dat <- dat[!is.na(dat$from), ]
+  dat <- dat[, c("from", "to", val_col)]
 
   suppressMessages(
     reshape2::dcast(formula = from ~ to,

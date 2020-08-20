@@ -1,11 +1,12 @@
 
-#' Define model
+#' Define Model
 #'
 #' Basic constructor for decision tree classes for different data formats.
 #'
 #' @param transmat Transition probability matrix (from-to node)
 #' @param tree_dat Hierarchical tree structure of parents and children
 #' @param dat_long Long dataframe with from, to, prob, vals columns
+#' @param ... additional arguments
 #'
 #' @return transmat, tree_dat or dat_long class object
 #' @import dplyr
@@ -34,7 +35,7 @@
 #'                                    vals = c(0, 1, 2)))
 define_model <- function(transmat,
                          tree_dat,
-                         dat_long) {
+                         dat_long, ...) {
 
   if (missing(transmat) &&
       missing(tree_dat) &&
@@ -44,16 +45,16 @@ define_model <- function(transmat,
   if (!missing(transmat)) {
 
     return(
-      new_transmat(transmat))
+      new_transmat(transmat, ...))
   }
   if (!missing(tree_dat)) {
 
      return(
-      new_tree_dat(tree_dat))
+      new_tree_dat(tree_dat, ...))
   }
   if (!missing(dat_long)) {
 
     return(
-      new_dat_long(dat_long))
+      new_dat_long(dat_long, ...))
   }
 }
