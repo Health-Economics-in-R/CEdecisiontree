@@ -27,9 +27,9 @@
 #'
 #' dectree_expected_values.default(vals, p)
 #'
-dectree_expected_values.default <- function(vals,
-                                            p,
-                                            dat = NA){
+dectree_expected_default <- function(vals,
+                                     p,
+                                     dat = NA){
 
   if (!any(is.na(dat))) {
 
@@ -64,3 +64,4 @@ dectree_expected_values.default <- function(vals,
 
   return(c_hat)
 }
+

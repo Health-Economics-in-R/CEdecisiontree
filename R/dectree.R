@@ -1,11 +1,11 @@
-#
-#' dectree
+
+#' Decision Tree
 #'
-#' @param tree_dat
-#' @param label_probs_distns
-#' @param label_costs_distns
-#' @param state_list
-#' @param n
+#' @param tree_dat decision tree data
+#' @param label_probs_distns probability distribution names
+#' @param label_costs_distns cost distribution names
+#' @param state_list State list
+#' @param n default 100
 #'
 #' @return
 #' @export

@@ -3,8 +3,6 @@ using namespace Rcpp;
 
 //' Cdectree_expected_values
 //'
-//' @para vals eg cost or QALY
-//' @para p probabilities
 //' @export
 // [[Rcpp::export]]
 NumericVector Cdectree_expected_values(NumericMatrix vals,

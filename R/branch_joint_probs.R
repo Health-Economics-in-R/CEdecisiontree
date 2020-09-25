@@ -13,6 +13,8 @@ branch_joint_probs <- function(model, ...)
   UseMethod("branch_joint_probs", model)
 
 
+#' branch_joint_probs.transmat
+#'
 #' @param model Branch conditional probabilities (matrix)
 #' @param nodes Which nodes to return; default to all
 #'
@@ -66,6 +68,8 @@ branch_joint_probs.transmat <- function(model,
 }
 
 
+#' branch_joint_probs.dat_long
+#'
 #' @param model Long format decision tree from define_model()
 #' @param nodes Subset of nodes; vector of integers
 #'

@@ -4,10 +4,12 @@
 \alias{long_to_transmat}
 \title{Long format to transition matrix}
 \usage{
-long_to_transmat(dat)
+long_to_transmat(dat, val_col = "prob")
 }
 \arguments{
 \item{dat}{array of from, to, prob, vals}
+
+\item{val_col}{default prob}
 }
 \value{
 transition matrix

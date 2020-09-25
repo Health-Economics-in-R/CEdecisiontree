@@ -2,15 +2,15 @@
 % Please edit documentation in R/fill_complementary_probs.R
 \name{fill_complementary_probs}
 \alias{fill_complementary_probs}
-\title{Fill complementary probabilities}
+\title{Fill Complementary Probabilities}
 \usage{
-fill_complementary_probs(probs_names)
+fill_complementary_probs(dat_tree)
 }
 \arguments{
-\item{probs_names}{long format tree object}
+\item{dat_tree}{Long format tree object}
 }
 \value{
-dataframe
+Long format tree object
 }
 \description{
 Only one of each pair of branches is assigned a probability
@@ -18,6 +18,9 @@ and then the other event probability is filled-in afterwards.
 This is good because specify fewer input values and
 if sampling probabilities we don't know the complementary
 probability.
+}
+\details{
+Only works for binary trees or when one of n is missing.
 }
 \examples{
 

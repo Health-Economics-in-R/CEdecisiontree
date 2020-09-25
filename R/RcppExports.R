@@ -3,8 +3,6 @@
 
 #' Cdectree_expected_values
 #'
-#' @para vals eg cost or QALY
-#' @para p probabilities
 #' @export
 Cdectree_expected_values <- function(vals, p) {
     .Call('_CEdecisiontree_Cdectree_expected_values', PACKAGE = 'CEdecisiontree', vals, p)
