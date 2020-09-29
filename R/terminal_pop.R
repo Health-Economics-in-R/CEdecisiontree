@@ -1,16 +1,22 @@
 
 #' terminal_pop
 #'
-#' @param model long format
-#' @param state_list
+#' Joint probabilities of sets of nodes.
+#' This is useful to then provide starting state
+#' populations to a Markov model.
 #'
-#' @return
+#' @param model dat_long format
+#' @param state_list Groups of usually terminal nodes
+#'
+#' @return Vector of probabilities
 #' @export
 #'
 #' @examples
 #'
 terminal_pop <- function(model,
                          state_list) {
+
+  if (is.null(state_list)) return(NULL)
 
   res <- list()
   state_names <- names(state_list)
