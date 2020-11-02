@@ -46,7 +46,7 @@ dectree <- function(tree_dat,
       dplyr::left_join(label_probs_distns,
                        by = "name.prob") %>%
       dplyr::left_join(label_vals_distns,
-                       by = "name.cost") %>%
+                       by = "name.vals") %>%
       as_tibble()
 
     model_sa <- list()
