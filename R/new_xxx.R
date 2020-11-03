@@ -58,10 +58,11 @@ new_dat_long <- function(dat_long,
   if (fill_edges) {
     missing_from <-
       which(!seq_len(max(dat_long$to)) %in% dat_long$from)
+
     dat_long <-
       rbind.data.frame(dat_long,
                        data.frame(from = missing_from,
-                                  to = max(dat_long$to),
+                                  to = max(dat_long$to) + 1,
                                   vals = NA,
                                   prob = NA))
   }

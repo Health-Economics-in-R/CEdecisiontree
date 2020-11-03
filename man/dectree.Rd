@@ -4,24 +4,32 @@
 \alias{dectree}
 \title{Decision Tree}
 \usage{
-dectree(tree_dat, label_probs_distns, label_costs_distns, state_list, n = 100)
+dectree(
+  tree_dat,
+  label_probs_distns = NULL,
+  label_vals_distns = NULL,
+  state_list = NULL,
+  n = 100
+)
 }
 \arguments{
-\item{tree_dat}{decision tree data}
+\item{tree_dat}{Decision tree data in `dat_long` format}
 
-\item{label_probs_distns}{probability distribution names}
+\item{label_probs_distns}{Probability distribution names}
 
-\item{label_costs_distns}{cost distribution names}
+\item{label_vals_distns}{Value distribution names}
 
-\item{state_list}{State list}
+\item{state_list}{State list sets, usually terminal nodes}
 
-\item{n}{default 100}
+\item{n}{Number of PSA samples; default 100}
 }
 \value{
-
+List of expected values at each node,
+        joint probabilities at terminal state set
+        and PSA samples of these if distributions provided.
 }
 \description{
-Decision Tree
+Single edge value (e.g. cost or QALY) wrapper.
 }
 \examples{
 

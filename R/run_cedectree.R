@@ -23,7 +23,7 @@ run_cedectree <- function(tree_dat,
 
   cost <-
     tree_dat %>%
-    rename(val = cost) %>%
+    rename(vals = cost) %>%
     select(-name.health, -health) %>%
     dectree(label_probs_distns,
             label_costs_distns,
@@ -32,7 +32,7 @@ run_cedectree <- function(tree_dat,
 
   health <-
     tree_dat %>%
-    rename(val = health) %>%
+    rename(vals = health) %>%
     select(-name.cost, -cost) %>%
     dectree(label_probs_distns,
             label_health_distns,

@@ -11,16 +11,18 @@
 #' @param label_costs List
 #' @param pname_from_to Dataframe name, from, to
 #' @param cname_from_to Dataframe name, from, to
+#' @param label_health
+#' @param hname_from_to
 #'
 #' @return Long format dataframe for input to `define_model()`
 #'         or `dectree()`. Note this is for a single edge value
 #'         type (e.g. cost or QALY). Use `run_cedectree()` for
 #'         cost and health.
-#' @import dplyr reshape2 CEdecisiontree
+#' @import dplyr reshape2
 #' @export
-#' @seealso [define_model][CEdecisiontree::define_model]
-#'          [dectree][CEdecisiontree::dectree]
-#'          [run_cedectree][CEdecisiontree::run_cedectree]
+#' @seealso [CEdecisiontree::define_model()]
+#'          [CEdecisiontree::dectree()]
+#'          [CEdecisiontree::run_cedectree()]
 #'
 create_ce_tree_long_df <- function(tree_list = NA,
                                    tree_mat = NA,

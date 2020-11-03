@@ -40,14 +40,17 @@ dectree <- function(tree_dat,
   if (!is.null(label_probs_distns) &&
       !is.null(label_vals_distns)) {
 
+    name_vals <- intersect(names(label_vals_distns),
+                           c("name.cost", "name.health"))
+
     tree_dat_sa <-
       tree_dat %>%
+      as_tibble() %>%
       select(-prob, -vals) %>%
       dplyr::left_join(label_probs_distns,
                        by = "name.prob") %>%
       dplyr::left_join(label_vals_distns,
-                       by = "name.vals") %>%
-      as_tibble()
+                       by = name_vals)
 
     model_sa <- list()
 
@@ -63,7 +66,8 @@ dectree <- function(tree_dat,
                 lapply(tree_dat_sa$prob, sample_distributions)),
               vals = unlist(
                 lapply(tree_dat_sa$vals, sample_distributions))),
-          fill_probs = TRUE)
+          fill_probs = TRUE,
+          fill_edges = FALSE)
     }
 
     ev_sa <- map_df(model_sa, dectree_expected_values)

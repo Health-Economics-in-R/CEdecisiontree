@@ -7,15 +7,17 @@
 terminal_pop(model, state_list)
 }
 \arguments{
-\item{model}{long format}
+\item{model}{dat_long format}
 
-\item{state_list}{}
+\item{state_list}{Groups of usually terminal nodes}
 }
 \value{
-
+Vector of probabilities
 }
 \description{
-terminal_pop
+Joint probabilities of sets of nodes.
+This is useful to then provide starting state
+populations to a Markov model.
 }
 \examples{
 

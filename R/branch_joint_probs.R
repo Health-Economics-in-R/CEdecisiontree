@@ -70,7 +70,7 @@ branch_joint_probs.transmat <- function(model,
 
 #' branch_joint_probs.dat_long
 #'
-#' @param model Long format decision tree from define_model()
+#' @param model Long format decision tree from [define_model()]
 #' @param nodes Subset of nodes; vector of integers
 #'
 #' @return
@@ -95,9 +95,15 @@ branch_joint_probs.transmat <- function(model,
 #' branch_joint_probs(mod, 3)[[1]] %>% cumprod()
 #'
 branch_joint_probs.dat_long <- function(model,
-                                        nodes){
+                                        nodes) {
 
   out <- list()
+
+  if (!all(nodes %in% model$to))
+    stop("Node not present in model", call. = FALSE)
+
+  # remove NULL terminal nodes
+  model <- model[!is.null(model$to), ]
 
   for (i in seq_along(nodes)) {
 
