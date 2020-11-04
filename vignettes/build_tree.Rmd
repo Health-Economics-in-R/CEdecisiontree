@@ -1,0 +1,108 @@
+---
+title: "Build decision tree from components"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{build_tree}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+For small decision trees it is simple to directly write down the path through the tree. For larger trees this may become unwieldy and error prone. We can take advantage of some of the characteristics:
+
+-   Sections of the tree are repeated
+
+-   A unit cost or health measure is used on multiple edges
+
+-   Multiple trees use the same cost and health values
+
+-   Tree structure and labelling remain the same but values assigned change e.g. in sensitivity analysis or alternative interventions
+
+Thus, we separate the structure of the tree, the labelling of edges and the values assigned to those labels. In this way we have flexibility in modify any one of these and better adhere to the DRY principle and the benefits it offers.
+
+## Example
+
+```{r setup, message=FALSE, warning=FALSE}
+library(CEdecisiontree)
+library(dplyr)
+```
+
+First, we define the structure of the tree without any additional information.
+
+```{r}
+tree_struc <-
+  list(
+    '1' = c(2,3),
+    '2' = c(4,5),
+    '3' = c(6,7))
+```
+
+Now we can add labels and values.
+Define the set of cost, health values and probabilities, independent of the tree.
+
+```{r}
+label_cost <-
+  list(
+    "vaccinate" = 10,
+    "disease" = 100)
+
+label_probs <- 
+  list(
+    "vaccinate" = 0.7,
+    "vacc_disease" = 0.1,
+    "disease" = 0.9)
+
+label_health <- 
+  list(
+    "disease" = 0.5)
+```
+
+Next, assign labels to particular branches.
+
+```{r}
+cost_label_branch <- 
+  rbind.data.frame(
+    c("vaccinate", 1, 2),
+    c("disease", 2, 4),
+    c("disease", 3, 6)) %>%
+    setNames(c("name", "from", "to"))
+
+prob_label_branch <- 
+    rbind.data.frame(
+      c("vaccinate", 1 , 2),
+      c("vacc_disease", 2, 4),
+      c("disease", 3, 6)) %>%
+    setNames(c("name", "from", "to"))
+
+health_label_branch <- 
+  rbind.data.frame(
+    c("disease", 2, 4),
+    c("disease", 3, 6)) %>%
+    setNames(c("name", "from", "to"))
+
+```
+
+Finally, we can pull it all together and create a single decision tree long format data frame.
+
+```{r message=FALSE, warning=FALSE}
+
+tree_dat <-
+  create_ce_tree_long_df(
+    tree_list = tree_struc,
+    label_probs = label_probs,
+    label_costs = label_cost,
+    label_health = label_health,
+    pname_from_to = prob_label_branch,
+    cname_from_to = cost_label_branch,
+    hname_from_to = health_label_branch)
+
+tree_dat
+```
