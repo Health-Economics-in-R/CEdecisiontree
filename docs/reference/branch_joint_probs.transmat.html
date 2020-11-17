@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cost-effectiveness decision tree using recursive approach — dectree_expected_recursive • CEdecisiontree</title>
+<title>branch_joint_probs.transmat — branch_joint_probs.transmat • CEdecisiontree</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Cost-effectiveness decision tree using recursive approach — dectree_expected_recursive" />
-<meta property="og:description" content="Cost-effectiveness decision tree using recursive approach" />
+<meta property="og:title" content="branch_joint_probs.transmat — branch_joint_probs.transmat" />
+<meta property="og:description" content="branch_joint_probs.transmat" />
 
 
 
@@ -137,59 +137,76 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Cost-effectiveness decision tree using recursive approach</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Health-Economics-in-R/CEdecisiontree/blob/master/R/dectree_expected_recursive.R'><code>R/dectree_expected_recursive.R</code></a></small>
-    <div class="hidden name"><code>dectree_expected_recursive.Rd</code></div>
+    <h1>branch_joint_probs.transmat</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Health-Economics-in-R/CEdecisiontree/blob/master/R/branch_joint_probs.R'><code>R/branch_joint_probs.R</code></a></small>
+    <div class="hidden name"><code>branch_joint_probs.transmat.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Cost-effectiveness decision tree using recursive approach</p>
+    <p>branch_joint_probs.transmat</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dectree_expected_recursive</span><span class='op'>(</span><span class='va'>node</span>, <span class='va'>tree</span>, <span class='va'>dat</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='co'># S3 method for transmat</span>
+<span class='fu'><a href='branch_joint_probs.html'>branch_joint_probs</a></span><span class='op'>(</span><span class='va'>model</span>, nodes <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>node</th>
-      <td><p>Node at which total expected value is to be calculate at</p></td>
+      <th>model</th>
+      <td><p>Branch conditional probabilities (matrix)</p></td>
     </tr>
     <tr>
-      <th>tree</th>
-      <td><p>List of children by parents</p></td>
-    </tr>
-    <tr>
-      <th>vals</th>
-      <td><p>Node labels, branch probabililities and value; dataframe</p></td>
+      <th>nodes</th>
+      <td><p>Which nodes to return; default to all</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Expected value at root node</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>CEdecisiontree</p></div>
+    <p>Transition matrix with joint probabilities</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='va'>tree</span> <span class='op'>&lt;-</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"1"</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>3</span><span class='op'>)</span>,
-       <span class='st'>"2"</span> <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>,<span class='fl'>5</span><span class='op'>)</span>,
-       <span class='st'>"3"</span> <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>6</span>,<span class='fl'>7</span><span class='op'>)</span>,
-       <span class='st'>"4"</span> <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>)</span>,
-       <span class='st'>"5"</span> <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>)</span>,
-       <span class='st'>"6"</span> <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>)</span>,
-       <span class='st'>"7"</span> <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>dat</span> <span class='op'>&lt;-</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>node <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span>,
-             prob <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>0.5</span>, <span class='fl'>6</span><span class='op'>)</span><span class='op'>)</span>,
-             vals <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10</span>,<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>16</span>,<span class='fl'>5</span>,<span class='fl'>6</span>,<span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='va'>root</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>tree</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>
-<span class='fu'>dectree_expected_recursive</span><span class='op'>(</span>node <span class='op'>=</span> <span class='va'>root</span>, <span class='va'>tree</span>, <span class='va'>dat</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 21</div><div class='input'>
+<span class='va'>model</span> <span class='op'>&lt;-</span>
+  <span class='fu'><a href='define_model.html'>define_model</a></span><span class='op'>(</span>
+    transmat <span class='op'>=</span>
+      <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>prob <span class='op'>=</span>
+             <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='fl'>0.5</span>, <span class='fl'>0.5</span>, <span class='cn'>NA</span>,  <span class='cn'>NA</span>,  <span class='cn'>NA</span>,  <span class='cn'>NA</span>,
+                             <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>,   <span class='fl'>0.1</span>, <span class='fl'>0.9</span>, <span class='cn'>NA</span>,  <span class='cn'>NA</span>,
+                             <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>,   <span class='cn'>NA</span>,  <span class='cn'>NA</span>,  <span class='fl'>0.9</span>, <span class='fl'>0.1</span><span class='op'>)</span>,
+                    nrow <span class='op'>=</span> <span class='fl'>3</span>,
+                    byrow <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+           vals <span class='op'>=</span>
+             <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='fl'>1</span>,  <span class='fl'>5</span>,  <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>,
+                             <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='fl'>1</span>,  <span class='fl'>9</span>,  <span class='cn'>NA</span>, <span class='cn'>NA</span>,
+                             <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='fl'>9</span>,  <span class='fl'>1</span><span class='op'>)</span>,
+                    nrow <span class='op'>=</span> <span class='fl'>3</span>,
+                    byrow <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>model</span>
+</div><div class='output co'>#&gt; $prob
+#&gt;      [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+#&gt; [1,]   NA  0.5  0.5   NA   NA   NA   NA
+#&gt; [2,]   NA   NA   NA  0.1  0.9   NA   NA
+#&gt; [3,]   NA   NA   NA   NA   NA  0.9  0.1
+#&gt; 
+#&gt; $vals
+#&gt;      [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+#&gt; [1,]   NA    1    5   NA   NA   NA   NA
+#&gt; [2,]   NA   NA   NA    1    9   NA   NA
+#&gt; [3,]   NA   NA   NA   NA   NA    9    1
+#&gt; 
+#&gt; attr(,"class")
+#&gt; [1] "transmat" "list"    </div><div class='input'>
+<span class='fu'><a href='branch_joint_probs.html'>branch_joint_probs</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;      [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+#&gt; [1,]   NA  0.5  0.5   NA   NA   NA   NA
+#&gt; [2,]   NA   NA   NA 0.05 0.45   NA   NA
+#&gt; [3,]   NA   NA   NA   NA   NA 0.45 0.05</div><div class='input'><span class='fu'><a href='branch_joint_probs.html'>branch_joint_probs</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span><span class='op'>*</span><span class='va'>model</span><span class='op'>$</span><span class='va'>vals</span>
+</div><div class='output co'>#&gt;      [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+#&gt; [1,]   NA  0.5  2.5   NA   NA   NA   NA
+#&gt; [2,]   NA   NA   NA 0.05 4.05   NA   NA
+#&gt; [3,]   NA   NA   NA   NA   NA 4.05 0.05</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

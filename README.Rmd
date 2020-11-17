@@ -73,7 +73,7 @@ $$
 ## Basic example
 
 Quietly load libraries.
-```{r}
+```{r message=FALSE, warning=FALSE}
 suppressPackageStartupMessages(library(CEdecisiontree))
 suppressPackageStartupMessages(library(readr))
 suppressPackageStartupMessages(library(dplyr))
@@ -89,6 +89,10 @@ We will consider a simple 7 node binary tree.
 knitr::include_graphics("https://raw.githubusercontent.com/Health-Economics-in-R/CEdecisiontree/master/man/figures/README_decisiontree_silverdecisions.png")
 ```
 
+So if we were to write out the expected cost in full this would give
+$$
+p_{12}(c_{12} + p_{24}c_{24} + p_{25}c_{25}) + p_{13}(c_{13} + p_{36}c_{36} + p_{37}c_{37}) 
+$$
 
 Load example data from the package. 
 ```{r}
@@ -109,7 +113,8 @@ probs
 `probs` is a probability transition matrix.
 This is like `pmatrix.msm` in the `msm` package, or `define_transition` in the `heemod` package.
 
-The `transMat()` function in the `mstate` package creates a closely related multi-state model transition matrix. Copying this package, we can create a decision tree transition matrix to use with this.
+The `transMat()` function in the `mstate` package creates a closely related multi-state model transition matrix.
+Copying this package, we can create a decision tree transition matrix to use with this.
 
 ```{r}
 CEdecisiontree:::trans_binarytree(depth = 3)
@@ -118,8 +123,12 @@ CEdecisiontree:::trans_binarytree(depth = 3)
 
 The expected value at each node is calculate as follows.
 ```{r}
-dectree_expected_values(vals = cost,
-                        p = probs)
+my_model <-
+  define_model(
+    transmat = list(vals = cost,
+                    prob = probs))
+
+dectree_expected_values(model = my_model)
 ```
 
 There is also an Rcpp version of this function.
@@ -130,11 +139,13 @@ Cdectree_expected_values(vals = as.matrix(cost),
 
 
 ## Other tree statistics
-For additional information, inclusing for the purposes of model checking we can calculate other tree statistics.
-We can obtain the contributing cost as weighted by the chance of occurrence. This can be thought of as a trade-off between the raw, original cost and branch position.
+
+For additional information, including for the purposes of model checking we can calculate other tree statistics.
+We can obtain the contributing cost as weighted by the chance of occurrence.
+This can be thought of as a trade-off between the raw, original cost and branch position.
 
 ```{r}
-wcost <- branch_joint_probs(probs) * cost
+wcost <- branch_joint_probs(my_model) * cost
 wcost
 ```
 
@@ -152,7 +163,7 @@ n_to_nodes <- ncol(probs)
 terminal_states <- (n_from_nodes + 1):n_to_nodes
 
 p_terminal_state <-
-  branch_joint_probs(probs)[ ,terminal_states] %>%
+  branch_joint_probs(my_model)[ ,terminal_states] %>%
   colSums(na.rm = TRUE)
 
 p_terminal_state

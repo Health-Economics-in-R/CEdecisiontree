@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cost-effectiveness decision tree using recursive approach — dectree_expected_recursive • CEdecisiontree</title>
+<title>terminal_pop — terminal_pop • CEdecisiontree</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Cost-effectiveness decision tree using recursive approach — dectree_expected_recursive" />
-<meta property="og:description" content="Cost-effectiveness decision tree using recursive approach" />
+<meta property="og:title" content="terminal_pop — terminal_pop" />
+<meta property="og:description" content="Joint probabilities of sets of nodes.
+This is useful to then provide starting state
+populations to a Markov model." />
 
 
 
@@ -137,59 +139,38 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Cost-effectiveness decision tree using recursive approach</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Health-Economics-in-R/CEdecisiontree/blob/master/R/dectree_expected_recursive.R'><code>R/dectree_expected_recursive.R</code></a></small>
-    <div class="hidden name"><code>dectree_expected_recursive.Rd</code></div>
+    <h1>terminal_pop</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Health-Economics-in-R/CEdecisiontree/blob/master/R/terminal_pop.R'><code>R/terminal_pop.R</code></a></small>
+    <div class="hidden name"><code>terminal_pop.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Cost-effectiveness decision tree using recursive approach</p>
+    <p>Joint probabilities of sets of nodes.
+This is useful to then provide starting state
+populations to a Markov model.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dectree_expected_recursive</span><span class='op'>(</span><span class='va'>node</span>, <span class='va'>tree</span>, <span class='va'>dat</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>terminal_pop</span><span class='op'>(</span><span class='va'>model</span>, <span class='va'>state_list</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>node</th>
-      <td><p>Node at which total expected value is to be calculate at</p></td>
+      <th>model</th>
+      <td><p>dat_long format</p></td>
     </tr>
     <tr>
-      <th>tree</th>
-      <td><p>List of children by parents</p></td>
-    </tr>
-    <tr>
-      <th>vals</th>
-      <td><p>Node labels, branch probabililities and value; dataframe</p></td>
+      <th>state_list</th>
+      <td><p>Groups of usually terminal nodes</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Expected value at root node</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>CEdecisiontree</p></div>
+    <p>Vector of probabilities</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='va'>tree</span> <span class='op'>&lt;-</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"1"</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>3</span><span class='op'>)</span>,
-       <span class='st'>"2"</span> <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>,<span class='fl'>5</span><span class='op'>)</span>,
-       <span class='st'>"3"</span> <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>6</span>,<span class='fl'>7</span><span class='op'>)</span>,
-       <span class='st'>"4"</span> <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>)</span>,
-       <span class='st'>"5"</span> <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>)</span>,
-       <span class='st'>"6"</span> <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>)</span>,
-       <span class='st'>"7"</span> <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>dat</span> <span class='op'>&lt;-</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>node <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span>,
-             prob <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>0.5</span>, <span class='fl'>6</span><span class='op'>)</span><span class='op'>)</span>,
-             vals <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10</span>,<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>16</span>,<span class='fl'>5</span>,<span class='fl'>6</span>,<span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='va'>root</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>tree</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>
-<span class='fu'>dectree_expected_recursive</span><span class='op'>(</span>node <span class='op'>=</span> <span class='va'>root</span>, <span class='va'>tree</span>, <span class='va'>dat</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 21</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

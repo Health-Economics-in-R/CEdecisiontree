@@ -1,10 +1,12 @@
-pandoc: 2.3.1
-pkgdown: 1.3.0
+pandoc: 2.11.0.4
+pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
+  build_tree: build_tree.html
   comparison-with-other-packages: comparison-with-other-packages.html
   other-input-formats: other-input-formats.html
   probability-sensitivity-analysis: probability-sensitivity-analysis.html
   scenario-sensitivity-analysis: scenario-sensitivity-analysis.html
   Using_function_dispatch: Using_function_dispatch.html
+last_built: 2020-11-04T09:58Z
 

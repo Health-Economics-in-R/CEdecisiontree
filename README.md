@@ -55,38 +55,34 @@ the cost attributable to node
 ![c\_i](https://latex.codecogs.com/png.latex?c_i "c_i"). Where no
 connection exists between two nodes we shall say that the parent’s set
 of children is the empty set
-![\\emptyset](https://latex.codecogs.com/png.latex?%5Cemptyset
-"\\emptyset"). Denote the set of children by
-![child(\\cdot)](https://latex.codecogs.com/png.latex?child%28%5Ccdot%29
-"child(\\cdot)"). Clearly, there are no
+![\\emptyset](https://latex.codecogs.com/png.latex?%5Cemptyset "\emptyset").
+Denote the set of children by
+![child(\\cdot)](https://latex.codecogs.com/png.latex?child%28%5Ccdot%29 "child(\cdot)").
+Clearly, there are no
 ![p\_{ij}](https://latex.codecogs.com/png.latex?p_%7Bij%7D "p_{ij}") or
 ![c\_j](https://latex.codecogs.com/png.latex?c_j "c_j") in this case but
-for computational purposes we will assume that ![p\_{ij} =
-NA](https://latex.codecogs.com/png.latex?p_%7Bij%7D%20%3D%20NA
-"p_{ij} = NA") and ![c\_j
-= 0](https://latex.codecogs.com/png.latex?c_j%20%3D%200 "c_j = 0").
+for computational purposes we will assume that
+![p\_{ij} = NA](https://latex.codecogs.com/png.latex?p_%7Bij%7D%20%3D%20NA "p_{ij} = NA")
+and
+![c\_j = 0](https://latex.codecogs.com/png.latex?c_j%20%3D%200 "c_j = 0").
 
-The expected value at each node ![i \\in
-S](https://latex.codecogs.com/png.latex?i%20%5Cin%20S "i \\in S") is
-calculated by ‘folding back’ using the recursive formula
+The expected value at each node
+![i \\in S](https://latex.codecogs.com/png.latex?i%20%5Cin%20S "i \in S")
+is calculated by ‘folding back’ using the recursive formula
 
-  
 ![
 \\hat{c}\_i = c\_i + \\sum\_{j \\in child(i)} p\_{ij} \\hat{c}\_j
-](https://latex.codecogs.com/png.latex?%0A%5Chat%7Bc%7D_i%20%3D%20c_i%20%2B%20%5Csum_%7Bj%20%5Cin%20child%28i%29%7D%20p_%7Bij%7D%20%5Chat%7Bc%7D_j%0A
-"
-\\hat{c}_i = c_i + \\sum_{j \\in child(i)} p_{ij} \\hat{c}_j
-")  
+](https://latex.codecogs.com/png.latex?%0A%5Chat%7Bc%7D_i%20%3D%20c_i%20%2B%20%5Csum_%7Bj%20%5Cin%20child%28i%29%7D%20p_%7Bij%7D%20%5Chat%7Bc%7D_j%0A "
+\hat{c}_i = c_i + \sum_{j \in child(i)} p_{ij} \hat{c}_j
+")
 
 with boundary values at the terminal nodes
 
-  
 ![
 \\hat{c}\_i = c\_i \\mbox{ for } i = \\{ S: child(s) = \\emptyset \\}.
-](https://latex.codecogs.com/png.latex?%0A%5Chat%7Bc%7D_i%20%3D%20c_i%20%5Cmbox%7B%20for%20%7D%20i%20%3D%20%5C%7B%20S%3A%20child%28s%29%20%3D%20%5Cemptyset%20%5C%7D.%0A
-"
-\\hat{c}_i = c_i \\mbox{ for } i = \\{ S: child(s) = \\emptyset \\}.
-")  
+](https://latex.codecogs.com/png.latex?%0A%5Chat%7Bc%7D_i%20%3D%20c_i%20%5Cmbox%7B%20for%20%7D%20i%20%3D%20%5C%7B%20S%3A%20child%28s%29%20%3D%20%5Cemptyset%20%5C%7D.%0A "
+\hat{c}_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}.
+")
 
 ## Basic example
 
@@ -95,21 +91,23 @@ Quietly load libraries.
 ``` r
 suppressPackageStartupMessages(library(CEdecisiontree))
 suppressPackageStartupMessages(library(readr))
-#> Warning: package 'readr' was built under R version 3.4.4
 suppressPackageStartupMessages(library(dplyr))
-#> Warning: package 'dplyr' was built under R version 3.4.4
 suppressPackageStartupMessages(library(reshape2))
-#> Warning: package 'reshape2' was built under R version 3.4.4
 suppressPackageStartupMessages(library(tidyr))
-#> Warning: package 'tidyr' was built under R version 3.4.4
 suppressPackageStartupMessages(library(assertthat))
-#> Warning: package 'assertthat' was built under R version 3.4.4
 ```
 
-We will consider a simple 7 node binary
-tree.
+We will consider a simple 7 node binary tree.
 
 <img src="https://raw.githubusercontent.com/Health-Economics-in-R/CEdecisiontree/master/man/figures/README_decisiontree_silverdecisions.png" width="400px" />
+
+So if we were to write out the expected cost in full this would give
+
+![
+p\_{12}(c\_{12} + p\_{24}c\_{24} + p\_{25}c\_{25}) + p\_{13}(c\_{13} + p\_{36}c\_{36} + p\_{37}c\_{37}) 
+](https://latex.codecogs.com/png.latex?%0Ap_%7B12%7D%28c_%7B12%7D%20%2B%20p_%7B24%7Dc_%7B24%7D%20%2B%20p_%7B25%7Dc_%7B25%7D%29%20%2B%20p_%7B13%7D%28c_%7B13%7D%20%2B%20p_%7B36%7Dc_%7B36%7D%20%2B%20p_%7B37%7Dc_%7B37%7D%29%20%0A "
+p_{12}(c_{12} + p_{24}c_{24} + p_{25}c_{25}) + p_{13}(c_{13} + p_{36}c_{36} + p_{37}c_{37}) 
+")
 
 Load example data from the package.
 
@@ -162,8 +160,12 @@ CEdecisiontree:::trans_binarytree(depth = 3)
 The expected value at each node is calculate as follows.
 
 ``` r
-dectree_expected_values(vals = cost,
-                        p = probs)
+my_model <-
+  define_model(
+    transmat = list(vals = cost,
+                    prob = probs))
+
+dectree_expected_values(model = my_model)
 #>    1    2    3    4    5    6    7 
 #>  5.6 12.8  3.8 10.0  1.0 10.0  1.0
 ```
@@ -177,13 +179,13 @@ Cdectree_expected_values(vals = as.matrix(cost),
 
 ## Other tree statistics
 
-For additional information, inclusing for the purposes of model checking
+For additional information, including for the purposes of model checking
 we can calculate other tree statistics. We can obtain the contributing
 cost as weighted by the chance of occurrence. This can be thought of as
 a trade-off between the raw, original cost and branch position.
 
 ``` r
-wcost <- branch_joint_probs(probs) * cost
+wcost <- branch_joint_probs(my_model) * cost
 wcost
 #>    1  2   3   4    5   6    7
 #> 1 NA  2 0.8  NA   NA  NA   NA
@@ -208,7 +210,7 @@ n_to_nodes <- ncol(probs)
 terminal_states <- (n_from_nodes + 1):n_to_nodes
 
 p_terminal_state <-
-  branch_joint_probs(probs)[ ,terminal_states] %>%
+  branch_joint_probs(my_model)[ ,terminal_states] %>%
   colSums(na.rm = TRUE)
 
 p_terminal_state
