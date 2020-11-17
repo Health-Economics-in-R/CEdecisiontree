@@ -20,7 +20,7 @@ NumericVector Cdectree_expected_values(NumericMatrix vals,
 
     for (int j = 0; j < num_to_nodes; j++) {
 
-      if(!NumericVector::is_na(vals(k,j))) {
+      if (!NumericVector::is_na(vals(k,j))) {
 
         total += p(k,j)*(vals(k,j) + c_hat[j]);
       }

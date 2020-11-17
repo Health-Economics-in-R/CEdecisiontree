@@ -36,11 +36,11 @@ library(CEdecisiontree)
 
 Decisions trees can be modelled as special cases of more general models
 using available packages in R e.g. heemod, mstate or msm. Further, full
-probabilty models could be fit using a Bayesian model with e.g. jags or
-WinBUGS. However, simple decision tree models are often built in Excel,
-using statistics from literature or expert knowledge. This package is a
-analogue to these, such that models can be specified in a very similar
-and simple way.
+probability models could be fit using a Bayesian model with e.g. Stan,
+jags or WinBUGS. However, simple decision tree models are often built in
+Excel, using statistics from literature or expert knowledge. This
+package is a analogue to these, such that models can be specified in a
+very similar and simple way.
 
 ## Calculation
 
@@ -97,7 +97,9 @@ suppressPackageStartupMessages(library(tidyr))
 suppressPackageStartupMessages(library(assertthat))
 ```
 
-We will consider a simple 7 node binary tree.
+We will consider a simple 7 node binary tree. Numeric labels are shown
+above each node. Probabilities and costs are show above and below each
+branch, respectively.
 
 <img src="https://raw.githubusercontent.com/Health-Economics-in-R/CEdecisiontree/dev/man/figures/README_decisiontree_silverdecisions.png" width="400px" />
 
@@ -201,7 +203,9 @@ sum(wcost, na.rm = TRUE)
 ```
 
 We can also calculate the joint probabilities of traversing to each
-terminal state using `branch_joint_probs`. Here we assume node labelling
+terminal state using `branch_joint_probs`. This is useful when an
+alternative model set-up is used such that total costs and health values
+are assigned to these terminal nodes only. Here we assume node labelling
 order from root such that terminal nodes are last.
 
 ``` r
@@ -221,7 +225,7 @@ sum(p_terminal_state)
 ```
 
 See package
-[vignette](http://htmlpreview.github.io/?https://github.com/n8thangreen/CEdecisiontree/blob/master/inst/doc/vignette_main.html)
+[vignettes](https://health-economics-in-r.github.io/CEdecisiontree/articles/)
 for more details and examples.
 
 ## License

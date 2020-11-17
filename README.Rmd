@@ -47,7 +47,11 @@ library(CEdecisiontree)
 
 
 ## Motivation
-Decisions trees can be modelled as special cases of more general models using available packages in R e.g. heemod, mstate or msm. Further, full probabilty models could be fit using a Bayesian model with e.g. jags or WinBUGS. However, simple decision tree models are often built in Excel, using statistics from literature or expert knowledge. This package is a analogue to these, such that  models can be specified in a very similar and simple way.
+
+Decisions trees can be modelled as special cases of more general models using available packages in R e.g. heemod, mstate or msm.
+Further, full probability models could be fit using a Bayesian model with e.g. Stan, jags or WinBUGS.
+However, simple decision tree models are often built in Excel, using statistics from literature or expert knowledge. 
+This package is a analogue to these, such that  models can be specified in a very similar and simple way.
 
 ## Calculation
 
@@ -83,6 +87,8 @@ suppressPackageStartupMessages(library(assertthat))
 ```
 
 We will consider a simple 7 node binary tree.
+Numeric labels are shown above each node.
+Probabilities and costs are show above and below each branch, respectively.
 
 ```{r, echo=FALSE, out.width = "400px"}
 # knitr::include_graphics("man/figures/README_decisiontree_silverdecisions.png")
@@ -155,6 +161,7 @@ sum(wcost, na.rm = TRUE)
 ```
 
 We can also calculate the joint probabilities of traversing to each terminal state using `branch_joint_probs`.
+This is useful when an alternative model set-up is used such that total costs and health values are assigned to these terminal nodes only.
 Here we assume node labelling order from root such that terminal nodes are last.
 
 ```{r}
@@ -170,7 +177,7 @@ p_terminal_state
 sum(p_terminal_state)
 ```
 
-See package [vignette](http://htmlpreview.github.io/?https://github.com/n8thangreen/CEdecisiontree/blob/master/inst/doc/vignette_main.html) for more details and examples.
+See package [vignettes](https://health-economics-in-r.github.io/CEdecisiontree/articles/) for more details and examples.
 
 ## License
 
