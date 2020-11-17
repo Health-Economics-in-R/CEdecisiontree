@@ -99,7 +99,7 @@ suppressPackageStartupMessages(library(assertthat))
 
 We will consider a simple 7 node binary tree.
 
-<img src="https://raw.githubusercontent.com/Health-Economics-in-R/CEdecisiontree/master/man/figures/README_decisiontree_silverdecisions.png" width="400px" />
+<img src="https://raw.githubusercontent.com/Health-Economics-in-R/CEdecisiontree/dev/man/figures/README_decisiontree_silverdecisions.png" width="400px" />
 
 So if we were to write out the expected cost in full this would give
 
