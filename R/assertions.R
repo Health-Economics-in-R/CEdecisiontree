@@ -2,7 +2,8 @@
 #' Is object a transition probability matrix?
 #'
 #' @family assertions
-#' @param probs matrix
+#' @param probs matrix of transition probabilities
+#' @param dp Decimal places; Tolerance for equivalence
 #'
 #' @return logical
 #' @export
@@ -15,9 +16,13 @@
 #' probs <- matrix(c(2,0,-1,1), nrow = 2)
 #' assert_that(is_prob_matrix(probs))
 #' }
-is_prob_matrix <- function(probs) {
+#'
+is_prob_matrix <- function(probs,
+                           dp = 5) {
 
-  sum_to_one <- all(rowSums(probs, na.rm = TRUE) %in% c(0,1))
+  total_probs <- round(rowSums(probs, na.rm = TRUE),
+                       digits = dp)
+  sum_to_one <- all(total_probs %in% c(0,1))
   zero_to_one <- all(0 <= probs & probs <= 1 | is.na(probs))
   sum_to_one && zero_to_one
 }
