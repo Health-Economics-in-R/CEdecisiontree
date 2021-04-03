@@ -6,7 +6,7 @@
 #' populations to a Markov model.
 #'
 #' @param model dat_long format
-#' @param state_list Groups of usually terminal nodes
+#' @param state_list Groups of (usually) terminal nodes; List of vectors
 #'
 #' @return Vector of probabilities
 #' @export
@@ -18,12 +18,12 @@ terminal_pop <- function(model,
 
   if (is.null(state_list)) return(NULL)
 
-  res <- list()
-  state_names <- names(state_list)
+  res <- vector("list", length(state_list))
+  names(res) <- names(state_list)
 
   for (i in seq_along(state_list)) {
 
-    res[[state_names[i]]] <-
+    res[[i]] <-
       branch_joint_probs(
         model,
         nodes = state_list[[i]]) %>%

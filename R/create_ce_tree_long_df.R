@@ -23,6 +23,7 @@
 #' @seealso [CEdecisiontree::define_model()]
 #'          [CEdecisiontree::dectree()]
 #'          [CEdecisiontree::run_cedectree()]
+#' @examples
 #'
 create_ce_tree_long_df <- function(tree_list = NA,
                                    tree_mat = NA,

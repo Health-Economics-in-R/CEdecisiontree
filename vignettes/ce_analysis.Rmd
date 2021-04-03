@@ -1,0 +1,61 @@
+---
+title: "A simple cost-effectiveness analysis"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ce_analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+Although the `CEdecisiontree` package allows us to do calculations using different values separately, the main purpose is to carry out cost-effectiveness analyses.
+This is performed calling the `dectree()` function for cost and health inputs using the wrapper `run_cedectree()`.
+
+## Example
+
+```{r warning=FALSE, message=FALSE}
+library(CEdecisiontree)
+library(purrr)
+library(tibble)
+```
+
+For a single outcome type
+
+```{r}
+tree_dat <- 
+  tribble(
+    ~from, ~to, ~vals, ~prob, 
+    1,  2,   10,   0.7, 
+    1,  3,   NA,   0.3, 
+    2,  4,  100,   0.1, 
+    2,  5,   NA,   0.9, 
+    3,  6,  100,   0.9, 
+    3,  7,   NA,   0.1)
+```
+
+The function `dectree()` requires the dataframe defining the tree above.
+Optionally, it can also take PSA distributions on probabilities and values, a PSA sample size `n`, and a list of groups of nodes `state_list`.
+It then returns expected values for point estimates, and for PSA if supplied.
+Also, pathway joint probabilities are returned if states are provided.
+
+```{r}
+dectree(tree_dat,
+        state_list = list(all = c(4,5,6,7)))
+```
+
+
+For cost-effectiveness analysis including PSA
+
+```{r}
+# run_cedectree(tree_dat)
+```
+
+

@@ -12,6 +12,7 @@
 #' @return List of expected values at each node,
 #'         joint probabilities at terminal state set
 #'         and PSA samples of these if distributions provided.
+#' @import purrr
 #' @export
 #'
 #' @examples
@@ -34,6 +35,12 @@ dectree <- function(tree_dat,
     define_model(dat_long = .,
                  fill_edges = FALSE) %>%
     terminal_pop(state_list)
+
+  point_params <-
+    list(ev_point = ev_point,
+         term_pop_point = term_pop_point)
+
+  psa_params <- NULL
 
   # PSA ----
 
@@ -74,11 +81,12 @@ dectree <- function(tree_dat,
 
     term_pop_sa <-
       map_df(model_sa, terminal_pop, state_list)
+
+    psa_params <-
+      list(ev_sa = ev_sa,
+           term_pop_sa = term_pop_sa)
   }
 
-  list(ev_point = ev_point,
-       ev_sa = ev_sa,
-       term_pop_point = term_pop_point,
-       term_pop_sa = term_pop_sa)
+  c(point_params, psa_params)
 }
 

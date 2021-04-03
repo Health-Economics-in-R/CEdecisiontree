@@ -1,5 +1,5 @@
 ---
-title: "Build decision tree from components"
+title: "Building a decision tree from components"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{build_tree}
@@ -26,7 +26,25 @@ For small decision trees it is simple to directly write down the path through th
 
 -   Tree structure and labelling remain the same but values assigned change e.g. in sensitivity analysis or alternative interventions
 
-Thus, we separate the structure of the tree, the labelling of edges and the values assigned to those labels. In this way we have flexibility in modify any one of these and better adhere to the DRY principle and the benefits it offers.
+Thus, we separate the *structure* of the tree, the *labelling* of edges and the *values* assigned to those labels. In this way we have flexibility in modify any one of these and better adhere to the DRY principle and the benefits it offers.
+
+We could think of the value assignment like a relational table where the key is `Label`.
+For the cost tree, edges are labelled as follows:
+
+| Label     | From node | To node |
+|-----------|-----------|---------|
+| vaccinate | 1         | 2       |
+| disease   | 2         | 4       |
+| disease   | 3         | 6       |
+
+and joined with the values table:
+
+| Label        | Cost | Prob | Health |
+|--------------|------|------|--------|
+| vaccinate    | 10   | 0.7  | 0      |
+| vacc_disease | -    | 0.1  | -      |
+| disease      | 100  | 0.9  | 0.5    |
+
 
 ## Example
 
@@ -35,7 +53,7 @@ library(CEdecisiontree)
 library(dplyr)
 ```
 
-First, we define the structure of the tree without any additional information.
+First, we define the structure of the tree without any additional information. Let's make a simple, two-step binary tree.
 
 ```{r}
 tree_struc <-
@@ -45,8 +63,7 @@ tree_struc <-
     '3' = c(6,7))
 ```
 
-Now we can add labels and values.
-Define the set of cost, health values and probabilities, independent of the tree.
+Now we can add labels and values to this tree. Define the set of cost, health values and probabilities, independent of the tree.
 
 ```{r}
 label_cost <-
@@ -106,3 +123,5 @@ tree_dat <-
 
 tree_dat
 ```
+
+This dataframe can now be used in the main cost-effectiveness analysis.
