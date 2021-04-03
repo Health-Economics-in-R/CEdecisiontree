@@ -1,6 +1,13 @@
-# new model validation  ---------------------------------------------------
 
+#' New Model Validation
+#' @name validation
+#' @export
+NULL
+
+
+#' @rdname validation
 #' @importFrom assertthat assert_that
+#' @export
 #'
 validate_transmat <- function(transmat) {
 
@@ -17,7 +24,10 @@ validate_transmat <- function(transmat) {
   transmat
 }
 
-#
+
+#' @rdname validation
+#' @export
+#'
 validate_tree_dat <- function(tree_dat) {
 
   if (!is.list(tree_dat)) stop("tree must be a list")
@@ -40,7 +50,10 @@ validate_tree_dat <- function(tree_dat) {
   tree_dat
 }
 
-#
+
+#' @rdname validation
+#' @export
+#'
 validate_dat_long <- function(dat_long) {
 
   if (!is.data.frame(dat_long)) stop("dat_long must be a dataframe")

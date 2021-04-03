@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Is object a transition probability matrix? — is_prob_matrix • CEdecisiontree</title>
+<title>New Model Constructors — new_models • CEdecisiontree</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,11 @@
 
 
 
-<meta property="og:title" content="Is object a transition probability matrix? — is_prob_matrix" />
-<meta property="og:description" content="Is object a transition probability matrix?" />
+<meta property="og:title" content="New Model Constructors — new_models" />
+<meta property="og:description" content="New Model Constructors
+new_transmat
+new_tree_dat
+new_dat_long" />
 
 
 
@@ -137,44 +140,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Is object a transition probability matrix?</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Health-Economics-in-R/CEdecisiontree/blob/master/R/assertions.R'><code>R/assertions.R</code></a></small>
-    <div class="hidden name"><code>is_prob_matrix.Rd</code></div>
+    <h1>New Model Constructors</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Health-Economics-in-R/CEdecisiontree/blob/master/R/new_xxx.R'><code>R/new_xxx.R</code></a></small>
+    <div class="hidden name"><code>new_models.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Is object a transition probability matrix?</p>
+    <p>New Model Constructors</p>
+<p>new_transmat</p>
+<p>new_tree_dat</p>
+<p>new_dat_long</p>
     </div>
 
-    <pre class="usage"><span class='fu'>is_prob_matrix</span><span class='op'>(</span><span class='va'>probs</span>, dp <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>new_transmat</span><span class='op'>(</span><span class='va'>transmat</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>new_tree_dat</span><span class='op'>(</span><span class='va'>tree_dat</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>new_dat_long</span><span class='op'>(</span><span class='va'>dat_long</span>, fill_edges <span class='op'>=</span> <span class='cn'>TRUE</span>, fill_probs <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>probs</th>
-      <td><p>matrix of transition probabilities</p></td>
+      <th>dat_long</th>
+      <td><p>Long format tree data</p></td>
     </tr>
     <tr>
-      <th>dp</th>
-      <td><p>Decimal places; Tolerance for equivalence</p></td>
+      <th>fill_edges</th>
+      <td><p>If need missing edges to connect to a sink state; logical</p></td>
+    </tr>
+    <tr>
+      <th>fill_probs</th>
+      <td><p>Fill in missing probabilities; logical</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>logical</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>probs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>0</span>,<span class='fl'>0</span>,<span class='fl'>1</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-<span class='fu'>is_prob_matrix</span><span class='op'>(</span><span class='va'>probs</span><span class='op'>)</span>
-
-<span class='va'>probs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>0</span>,<span class='op'>-</span><span class='fl'>1</span>,<span class='fl'>1</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/pkg/assertthat/man/assert_that.html'>assert_that</a></span><span class='op'>(</span><span class='fu'>is_prob_matrix</span><span class='op'>(</span><span class='va'>probs</span><span class='op'>)</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

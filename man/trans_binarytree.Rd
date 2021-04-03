@@ -9,7 +9,7 @@ trans_binarytree(names, depth = 2)
 \arguments{
 \item{names}{Node names}
 
-\item{depth}{Depth of tree}
+\item{depth}{Depth of tree; integer}
 }
 \value{
 Matrix of TRUE and FALSE

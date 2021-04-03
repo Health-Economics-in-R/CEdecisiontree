@@ -1,5 +1,5 @@
 
-#' terminal_pop
+#' Terminal Leaf Node Populations
 #'
 #' Joint probabilities of sets of nodes.
 #' This is useful to then provide starting state

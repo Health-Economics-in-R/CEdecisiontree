@@ -1,7 +1,14 @@
-# new model constructors --------------------------------------------------
+
+#' New Model Constructors
+#' @name new_models
+#' @export
+NULL
+
 
 #' new_transmat
-#'
+#' @param transmat
+#' @rdname new_models
+#' @export
 new_transmat <- function(transmat, ...) {
 
   if (length(transmat) != 2 &&
@@ -16,6 +23,9 @@ new_transmat <- function(transmat, ...) {
 
 
 #' new_tree_dat
+#' @param tree_dat
+#' @rdname new_models
+#' @export
 #'
 new_tree_dat <- function(tree_dat, ...) {
 
@@ -34,11 +44,13 @@ new_tree_dat <- function(tree_dat, ...) {
   structure(tree_dat, class = c("tree_dat", class(tree_dat)))
 }
 
+
 #' new_dat_long
+#' @rdname new_models
 #'
 #' @param dat_long Long format tree data
-#' @param fill_edges If need missing edges to connect to a sink state
-#' @param fill_probs Fill in missing probabilities
+#' @param fill_edges If need missing edges to connect to a sink state; logical
+#' @param fill_probs Fill in missing probabilities; logical
 #'
 #' @export
 #'

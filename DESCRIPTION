@@ -17,7 +17,8 @@ Imports:
     readr,
     dplyr,
     reshape2,
-    tidyr
+    tidyr,
+    magrittr
 Suggests:
     testthat,
     knitr,

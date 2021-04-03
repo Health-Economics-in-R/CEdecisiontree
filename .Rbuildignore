@@ -8,3 +8,4 @@
 ^codecov\.yml$
 ^inst$
 ^README\.Rmd$
+^CODE_OF_CONDUCT\.md$

@@ -2,7 +2,7 @@
 % Please edit documentation in R/run_cedectree.R
 \name{run_cedectree}
 \alias{run_cedectree}
-\title{run_cedectree}
+\title{Run Cost-effectiveness Decision Tree}
 \usage{
 run_cedectree(
   tree_dat,
@@ -30,7 +30,7 @@ run_cedectree(
 List of cost, health `dectree()` output
 }
 \description{
-Wrapper for `dectree()` for costs and health value.
+Wrapper for `dectree()` for both costs and health value.
 }
 \seealso{
 dectree

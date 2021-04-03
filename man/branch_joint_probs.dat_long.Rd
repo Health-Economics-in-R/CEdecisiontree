@@ -7,7 +7,7 @@
 \method{branch_joint_probs}{dat_long}(model, nodes)
 }
 \arguments{
-\item{model}{Long format decision tree from define_model()}
+\item{model}{Long format decision tree from [define_model()]}
 
 \item{nodes}{Subset of nodes; vector of integers}
 }

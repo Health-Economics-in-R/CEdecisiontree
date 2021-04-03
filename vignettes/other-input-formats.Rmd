@@ -24,13 +24,13 @@ Here we give some examples alternative formats.
 ## Setup
 
 Quietly load libraries.
-```{r}
-suppressPackageStartupMessages(library(CEdecisiontree))
-suppressPackageStartupMessages(library(readr))
-suppressPackageStartupMessages(library(dplyr))
-suppressPackageStartupMessages(library(reshape2))
-suppressPackageStartupMessages(library(tidyr))
-suppressPackageStartupMessages(library(assertthat))
+```{r warning=FALSE, message=FALSE}
+library(CEdecisiontree)
+library(readr)
+library(dplyr)
+library(reshape2)
+library(tidyr)
+library(assertthat)
 ```
 
 Load example data from the package. 
@@ -63,15 +63,16 @@ dectree_expected_recursive(names(tree)[1], tree, dat)
 ```
 
 We can obtain the list of children from the probability matrix (or any other structure defining transition matrix).
+
 ```{r}
 transmat_to_child_list(probs)
 ```
 
 
-
 ## Single long array
 
 If we keep with flat arrays then clearly, as the size of the tree increased the sparse matrices become impractical. We can provide a long format array to address this. Let us transform the wide array used previously to demonstrate the structure and space saving.
+
 ```{r}
 probs_long <-
   probs %>%
@@ -79,6 +80,7 @@ probs_long <-
   melt(id.vars = "from",
        variable.name = 'to',
        value.name = 'prob') %>%
+  mutate(to = as.numeric(to)) %>% 
   na.omit()
 
 cost_long <-
@@ -86,7 +88,8 @@ cost_long <-
   mutate('from' = rownames(.)) %>%
   melt(id.vars = "from",
        variable.name = 'to',
-       value.name = 'cost') %>%
+       value.name = 'vals') %>%
+  mutate(to = as.numeric(to)) %>% 
   na.omit()
 
 dat_long <-
@@ -99,7 +102,8 @@ dat_long
 We can use the long array as the input argument instead of the separate transition matrices. Internally, we simple convert back to a matrix using `long_to_transmat()` so for larger trees this may be inefficient.
 
 ```{r}
-dectree_expected_values(dat = dat_long)
+dectree_expected_values(
+  define_model(dat_long = dat_long))
 ```
 
 
@@ -107,15 +111,16 @@ dectree_expected_values(dat = dat_long)
 
 We can compare the computation times for the recursive and non-recursive formulations.
 
-```{r}
-suppressMessages(
-microbenchmark::microbenchmark(dectree_expected_values(dat = dat_long),
-                               dectree_expected_recursive(names(tree)[1], tree, dat), times = 100L))
+```{r message=FALSE, warning=FALSE}
+microbenchmark::microbenchmark(dectree_expected_values(define_model(dat_long = dat_long)),
+                               dectree_expected_recursive(names(tree)[1], tree, dat), times = 100L)
 ```
 
-For this example the recursive forumulation is much quicker.
+For this example the recursive formulation is much quicker.
 Change in memory before and after running the functions.
+
 ```{r}
-pryr::mem_change(dectree_expected_values(dat = dat_long))
+pryr::mem_change(dectree_expected_values(  define_model(dat_long = dat_long)))
 pryr::mem_change(dectree_expected_recursive(names(tree)[1], tree, dat))
 ```
+

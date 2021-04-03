@@ -20,7 +20,7 @@
 #'             \code{tree_dat}, \code{transmat} or \code{dat_long}
 #'
 #' @return Expected value at each node
-#' @seealso define_model
+#' @seealso \code{\link{define_model}}
 #'
 #' @export
 #' @examples

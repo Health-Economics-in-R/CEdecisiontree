@@ -5,7 +5,7 @@
 #' Create a complete binary tree transition matrix.
 #'
 #' @param names Node names
-#' @param depth Depth of tree
+#' @param depth Depth of tree; integer
 #'
 #' @return Matrix of TRUE and FALSE
 #' @export

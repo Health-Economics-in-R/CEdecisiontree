@@ -1,7 +1,7 @@
 
-#' run_cedectree
+#' Run Cost-effectiveness Decision Tree
 #'
-#' Wrapper for `dectree()` for costs and health value.
+#' Wrapper for `dectree()` for both costs and health value.
 #'
 #' @param tree_dat Decision tree data in `dat_long` format
 #' @param label_probs_distns Probability distribution names

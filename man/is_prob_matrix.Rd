@@ -4,10 +4,12 @@
 \alias{is_prob_matrix}
 \title{Is object a transition probability matrix?}
 \usage{
-is_prob_matrix(probs)
+is_prob_matrix(probs, dp = 5)
 }
 \arguments{
-\item{probs}{matrix}
+\item{probs}{matrix of transition probabilities}
+
+\item{dp}{Decimal places; Tolerance for equivalence}
 }
 \value{
 logical
@@ -23,5 +25,6 @@ is_prob_matrix(probs)
 probs <- matrix(c(2,0,-1,1), nrow = 2)
 assert_that(is_prob_matrix(probs))
 }
+
 }
 \concept{assertions}

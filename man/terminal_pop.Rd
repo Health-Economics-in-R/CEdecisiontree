@@ -2,7 +2,7 @@
 % Please edit documentation in R/terminal_pop.R
 \name{terminal_pop}
 \alias{terminal_pop}
-\title{terminal_pop}
+\title{Terminal Leaf Node Populations}
 \usage{
 terminal_pop(model, state_list)
 }

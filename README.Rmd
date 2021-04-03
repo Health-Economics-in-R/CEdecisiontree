@@ -179,6 +179,11 @@ sum(p_terminal_state)
 
 See package [vignettes](https://health-economics-in-r.github.io/CEdecisiontree/articles/) for more details and examples.
 
+## Code of Conduct
+
+Please note that the CEdecisiontree project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
+
 ## License
 
 GPL-3 © 
