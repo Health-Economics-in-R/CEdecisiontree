@@ -252,11 +252,11 @@
                                <span class="fu"><a href="../reference/dectree_expected_recursive.html">dectree_expected_recursive</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">tree</span>, <span class="va">dat</span><span class="op">)</span>, times <span class="op">=</span> <span class="fl">100L</span><span class="op">)</span>
 <span class="co">#&gt; Unit: microseconds</span>
 <span class="co">#&gt;                                                        expr    min      lq</span>
-<span class="co">#&gt;  dectree_expected_values(define_model(dat_long = dat_long)) 6346.7 6657.95</span>
-<span class="co">#&gt;       dectree_expected_recursive(names(tree)[1], tree, dat)   58.6   61.35</span>
+<span class="co">#&gt;  dectree_expected_values(define_model(dat_long = dat_long)) 6294.1 6626.25</span>
+<span class="co">#&gt;       dectree_expected_recursive(names(tree)[1], tree, dat)   59.4   62.10</span>
 <span class="co">#&gt;      mean  median      uq     max neval cld</span>
-<span class="co">#&gt;  7292.557 7027.65 7556.95 10555.3   100   b</span>
-<span class="co">#&gt;    75.811   75.10   80.45   230.6   100  a</span></pre></div>
+<span class="co">#&gt;  7175.504 6952.35 7275.50 10739.1   100   b</span>
+<span class="co">#&gt;    72.836   73.10   80.75   118.4   100  a</span></pre></div>
 <p>For this example the recursive formulation is much quicker. Change in memory before and after running the functions.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit">
 <span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/mem_change.html">mem_change</a></span><span class="op">(</span><span class="fu"><a href="../reference/dectree_expected_values.html">dectree_expected_values</a></span><span class="op">(</span>  <span class="fu"><a href="../reference/define_model.html">define_model</a></span><span class="op">(</span>dat_long <span class="op">=</span> <span class="va">dat_long</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>

@@ -6,37 +6,6 @@
 \usage{
 \method{branch_joint_probs}{transmat}(model, nodes = NA)
 }
-\arguments{
-\item{model}{Branch conditional probabilities (matrix)}
-
-\item{nodes}{Which nodes to return; default to all}
-}
-\value{
-Transition matrix with joint probabilities
-}
 \description{
 branch_joint_probs.transmat
-}
-\examples{
-
-model <-
-  define_model(
-    transmat =
-      list(prob =
-             matrix(data = c(NA, 0.5, 0.5, NA,  NA,  NA,  NA,
-                             NA, NA, NA,   0.1, 0.9, NA,  NA,
-                             NA, NA, NA,   NA,  NA,  0.9, 0.1),
-                    nrow = 3,
-                    byrow = TRUE),
-           vals =
-             matrix(data = c(NA, 1,  5,  NA, NA, NA, NA,
-                             NA, NA, NA, 1,  9,  NA, NA,
-                             NA, NA, NA, NA, NA, 9,  1),
-                    nrow = 3,
-                    byrow = TRUE)))
-model
-
-branch_joint_probs(model)
-branch_joint_probs(model)*model$vals
-
 }

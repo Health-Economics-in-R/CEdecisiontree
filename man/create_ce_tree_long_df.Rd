@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_ce_tree_long_df.R
 \name{create_ce_tree_long_df}
 \alias{create_ce_tree_long_df}
-\title{create_ce_tree_long_df}
+\title{Create Cost-Effectiveness Tree For Long Dataframe}
 \usage{
 create_ce_tree_long_df(
   tree_list = NA,
@@ -24,11 +24,13 @@ create_ce_tree_long_df(
 
 \item{label_costs}{List}
 
+\item{label_health}{Health labels}
+
 \item{pname_from_to}{Dataframe name, from, to}
 
 \item{cname_from_to}{Dataframe name, from, to}
 
-\item{hname_from_to}{}
+\item{hname_from_to}{Health names for from-to edges}
 }
 \value{
 Long format dataframe for input to `define_model()`

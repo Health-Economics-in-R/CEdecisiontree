@@ -6,33 +6,6 @@
 \usage{
 \method{branch_joint_probs}{dat_long}(model, nodes)
 }
-\arguments{
-\item{model}{Long format decision tree from [define_model()]}
-
-\item{nodes}{Subset of nodes; vector of integers}
-}
-\value{
-
-}
 \description{
 branch_joint_probs.dat_long
-}
-\examples{
-df <-
-  data.frame(
-    from = c(1,2,1),
-    to = c(2,3,4),
-    prob = c(0.1,0.5,0.9),
-    vals = c(1,2,3))
-
-branch_joint_probs.dat_long(df, 4)
-#0.9
-
-branch_joint_probs.dat_long(df, 3)
-#0.1*0.5
-
-mod <- define_model(dat_long = df)
-branch_joint_probs(mod, 3)
-branch_joint_probs(mod, 3)[[1]] \%>\% cumprod()
-
 }

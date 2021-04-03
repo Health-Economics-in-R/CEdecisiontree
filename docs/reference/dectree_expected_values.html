@@ -148,23 +148,14 @@ probability and edge/node values e.g. costs or QALYS." />
 probability and edge/node values e.g. costs or QALYS.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dectree_expected_values</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
-
-<span class='co'># S3 method for tree_dat</span>
-<span class='fu'>dectree_expected_values</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
-
-<span class='co'># S3 method for transmat</span>
-<span class='fu'>dectree_expected_values</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
-
-<span class='co'># S3 method for dat_long</span>
-<span class='fu'>dectree_expected_values</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>dectree_expected_values</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>model</th>
-      <td><p>Object of <code><a href='define_model.html'>define_model()</a></code> output of type
+      <td><p>Object of <code><a href='define_model.html'>define_model()</a></code> consisting of output of type
 <code>tree_dat</code>, <code>transmat</code> or <code>dat_long</code></p></td>
     </tr>
     </table>
@@ -184,7 +175,7 @@ costs are assigned to the nodes. The expected value would then be</p>
 <p>$$\hat{c}_i = \sum p_{ij} (c_{ij} + \hat{c}_j)$$</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>define_model</p></div>
+    <div class='dont-index'><p><code><a href='define_model.html'>define_model</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>

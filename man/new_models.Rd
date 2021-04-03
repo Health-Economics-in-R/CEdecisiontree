@@ -14,6 +14,10 @@ new_tree_dat(tree_dat, ...)
 new_dat_long(dat_long, fill_edges = TRUE, fill_probs = FALSE)
 }
 \arguments{
+\item{transmat}{Transition matrix}
+
+\item{tree_dat}{Tree dataframe}
+
 \item{dat_long}{Long format tree data}
 
 \item{fill_edges}{If need missing edges to connect to a sink state; logical}

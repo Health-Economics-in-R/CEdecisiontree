@@ -4,7 +4,7 @@ author: "Nathan Green"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Using function dispatch}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -25,10 +25,10 @@ Alternatively, we can define the model upfront and then pass this object to `dec
 
 ## Example
 
-```{r}
-suppressPackageStartupMessages(library(CEdecisiontree))
-suppressPackageStartupMessages(library(dplyr))
-suppressPackageStartupMessages(library(assertthat))
+```{r warning=FALSE, message=FALSE}
+library(CEdecisiontree)
+library(dplyr)
+library(assertthat)
 ```
 
 Let us create 3 input variables, in line with the 3 formats we have met already, using the `define_model` function.

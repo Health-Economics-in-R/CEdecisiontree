@@ -1,5 +1,5 @@
 
-#' create_ce_tree_long_df
+#' Create Cost-Effectiveness Tree For Long Dataframe
 #'
 #' Completely specifying cost-effectiveness decision tree.
 #' Matches labels on branches to the corresponding
@@ -11,8 +11,8 @@
 #' @param label_costs List
 #' @param pname_from_to Dataframe name, from, to
 #' @param cname_from_to Dataframe name, from, to
-#' @param label_health
-#' @param hname_from_to
+#' @param label_health Health labels
+#' @param hname_from_to Health names for from-to edges
 #'
 #' @return Long format dataframe for input to `define_model()`
 #'         or `dectree()`. Note this is for a single edge value

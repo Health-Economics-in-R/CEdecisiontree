@@ -1,12 +1,11 @@
 
 #' New Model Constructors
 #' @name new_models
-#' @export
 NULL
 
 
 #' new_transmat
-#' @param transmat
+#' @param transmat Transition matrix
 #' @rdname new_models
 #' @export
 new_transmat <- function(transmat, ...) {
@@ -23,7 +22,7 @@ new_transmat <- function(transmat, ...) {
 
 
 #' new_tree_dat
-#' @param tree_dat
+#' @param tree_dat Tree dataframe
 #' @rdname new_models
 #' @export
 #'

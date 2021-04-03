@@ -4,7 +4,7 @@ author: "Nathan Green"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Scenario Sensitivity Analysis}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -26,13 +26,13 @@ This involves explicity specifying values for particular branch probability and/
 
 ## Example
 
-```{r}
-suppressPackageStartupMessages(library(CEdecisiontree, quietly = TRUE))
-suppressPackageStartupMessages(library(assertthat, quietly = TRUE))
-suppressPackageStartupMessages(library(treeSimR, quietly = TRUE))
-suppressPackageStartupMessages(library(tibble, quietly = TRUE))
-suppressPackageStartupMessages(library(tidyverse, quietly = TRUE))
-suppressPackageStartupMessages(library(purrr, quietly = TRUE))
+```{r warning=FALSE, message=FALSE}
+library(CEdecisiontree, quietly = TRUE)
+library(assertthat, quietly = TRUE)
+library(treeSimR, quietly = TRUE)
+library(tibble, quietly = TRUE)
+library(tidyverse, quietly = TRUE)
+library(purrr, quietly = TRUE)
 ```
 
 We create a complete design meaning all combinations on the grid of input values.
@@ -97,17 +97,17 @@ res
 ### Tornado plot
 
 Lets create a tornado plot showing a one-way sensitivity analysis.
-We'll use my `plotCostEffectiveness` package to easily produce a ggplot version.
-By sepcifying the output data as a model frame it is handled appropriately.
+We'll use my `ceplot`.
+By specifying the output data as a model frame it is handled appropriately.
 
-```{r}
-suppressPackageStartupMessages(library(plotCostEffectiveness))
-suppressPackageStartupMessages(library(magrittr))
-suppressPackageStartupMessages(library(reshape2))
-suppressPackageStartupMessages(library(plyr))
-suppressPackageStartupMessages(library(purrr))
-suppressPackageStartupMessages(library(dplyr))
-suppressPackageStartupMessages(library(ggplot2))
+```{r warning=FALSE, message=FALSE}
+library(ceplot)
+library(magrittr)
+library(reshape2)
+library(plyr)
+library(purrr)
+library(dplyr)
+library(ggplot2)
 
 sa_dat <- as.data.frame(cbind(t(c_grid), res))
 

@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 bibliography: bibliography.bib
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Probability Sensitivity Analysis (PSA)}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -27,13 +27,13 @@ This involves repeatedly sampling from a distribution for each branch probabilit
 
 ## Example
 
-```{r}
-suppressPackageStartupMessages(library(CEdecisiontree, quietly = TRUE))
-suppressPackageStartupMessages(library(assertthat, quietly = TRUE))
-suppressPackageStartupMessages(library(treeSimR, quietly = TRUE))
-suppressPackageStartupMessages(library(tibble, quietly = TRUE))
-suppressPackageStartupMessages(library(tidyverse, quietly = TRUE))
-suppressPackageStartupMessages(library(purrr, quietly = TRUE))
+```{r warning=FALSE, message=FALSE}
+library(CEdecisiontree, quietly = TRUE)
+library(assertthat, quietly = TRUE)
+library(treeSimR, quietly = TRUE)
+library(tibble, quietly = TRUE)
+library(tidyverse, quietly = TRUE)
+library(purrr, quietly = TRUE)
 ```
 
 We first define the decision tree.

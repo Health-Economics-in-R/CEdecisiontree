@@ -16,7 +16,7 @@
 #'
 #' \deqn{\hat{c}_i = \sum p_{ij} (c_{ij} + \hat{c}_j)}
 #'
-#' @param model  Object of \code{define_model()} output of type
+#' @param model Object of \code{define_model()} consisting of output of type
 #'             \code{tree_dat}, \code{transmat} or \code{dat_long}
 #'
 #' @return Expected value at each node
@@ -31,7 +31,6 @@ dectree_expected_values <- function(model)
 
 #' dectree_expected_values.tree_dat
 #'
-#' @rdname dectree_expected_values
 #' @export
 #'
 dectree_expected_values.tree_dat <- function(model) {
@@ -43,7 +42,6 @@ dectree_expected_values.tree_dat <- function(model) {
 
 #' dectree_expected_values.transmat
 #'
-#' @rdname dectree_expected_values
 #' @export
 #'
 dectree_expected_values.transmat <- function(model){
@@ -54,7 +52,6 @@ dectree_expected_values.transmat <- function(model){
 
 #' dectree_expected_values.dat_long
 #'
-#' @rdname dectree_expected_values
 #' @export
 #'
 dectree_expected_values.dat_long <- function(model) {

@@ -167,8 +167,16 @@
   <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>prob <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='fl'>0.5</span>, <span class='fl'>0.5</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>,
          vals <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
        <span class='op'>)</span>
-<span class='fu'>transmat_to_child_list</span><span class='op'>(</span><span class='va'>transmat</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in matrix(NA, ncol = ncol(transmat), nrow = ncol(transmat) - nrow(transmat)): invalid 'nrow' value (too large or NA)</span></div><div class='input'>
+<span class='fu'>transmat_to_child_list</span><span class='op'>(</span><span class='va'>transmat</span><span class='op'>$</span><span class='va'>prob</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $`1`
+#&gt; [1] 2 3
+#&gt; 
+#&gt; $`2`
+#&gt; integer(0)
+#&gt; 
+#&gt; $`3`
+#&gt; integer(0)
+#&gt; </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

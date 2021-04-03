@@ -38,11 +38,10 @@ long_to_transmat <- function(dat,
 #'
 #' @examples
 #'
-#' probs <- list(prob = matrix(data = c(NA, 0.5, 0.5), nrow = 1),
-#'               vals = matrix(data = c(NA, 1, 2), nrow = 1)
-#'               )
+#' tree <- list(prob = matrix(data = c(NA, 0.5, 0.5), nrow = 1),
+#'               vals = matrix(data = c(NA, 1, 2), nrow = 1)#'               )
 #'
-#'transmat_to_long(probs)
+#' transmat_to_long(tree$prob)
 #'
 transmat_to_long <- function(probs) {
 

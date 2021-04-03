@@ -8,17 +8,10 @@
 #' or QALYs to indicate the relative contribution to the
 #' total expected value.
 #'
-#' @export
-branch_joint_probs <- function(model, ...)
-  UseMethod("branch_joint_probs", model)
-
-
-#' branch_joint_probs.transmat
-#'
 #' @param model Branch conditional probabilities (matrix)
 #' @param nodes Which nodes to return; default to all
-#'
 #' @return Transition matrix with joint probabilities
+#'
 #' @export
 #'
 #' @examples
@@ -42,6 +35,29 @@ branch_joint_probs <- function(model, ...)
 #'
 #' branch_joint_probs(model)
 #' branch_joint_probs(model)*model$vals
+#'
+#' df <-
+#'   data.frame(
+#'     from = c(1,2,1),
+#'     to = c(2,3,4),
+#'     prob = c(0.1,0.5,0.9),
+#'     vals = c(1,2,3))
+#'
+#' branch_joint_probs.dat_long(df, 4)
+#' #0.9
+#'
+#' branch_joint_probs.dat_long(df, 3)
+#' #0.1*0.5
+#'
+#' mod <- define_model(dat_long = df)
+#' branch_joint_probs(mod, 3)
+#' branch_joint_probs(mod, 3)[[1]] %>% cumprod()
+#'
+branch_joint_probs <- function(model, ...)
+  UseMethod("branch_joint_probs", model)
+
+
+#' branch_joint_probs.transmat
 #'
 branch_joint_probs.transmat <- function(model,
                                         nodes = NA) {
@@ -70,30 +86,6 @@ branch_joint_probs.transmat <- function(model,
 
 #' branch_joint_probs.dat_long
 #'
-#' @param model Long format decision tree from [define_model()]
-#' @param nodes Subset of nodes; vector of integers
-#'
-#' @return
-#' @export
-#'
-#' @examples
-#' df <-
-#'   data.frame(
-#'     from = c(1,2,1),
-#'     to = c(2,3,4),
-#'     prob = c(0.1,0.5,0.9),
-#'     vals = c(1,2,3))
-#'
-#' branch_joint_probs.dat_long(df, 4)
-#' #0.9
-#'
-#' branch_joint_probs.dat_long(df, 3)
-#' #0.1*0.5
-#'
-#' mod <- define_model(dat_long = df)
-#' branch_joint_probs(mod, 3)
-#' branch_joint_probs(mod, 3)[[1]] %>% cumprod()
-#'
 branch_joint_probs.dat_long <- function(model,
                                         nodes) {
 
@@ -121,6 +113,7 @@ branch_joint_probs.dat_long <- function(model,
 
   return(out)
 }
+
 
 #'
 branch_joint_probs.default <- function(model,

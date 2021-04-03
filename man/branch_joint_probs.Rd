@@ -6,6 +6,14 @@
 \usage{
 branch_joint_probs(model, ...)
 }
+\arguments{
+\item{model}{Branch conditional probabilities (matrix)}
+
+\item{nodes}{Which nodes to return; default to all}
+}
+\value{
+Transition matrix with joint probabilities
+}
 \description{
 Provides a measure of the chances of following
 particular paths.
@@ -14,4 +22,44 @@ particular paths.
 These probabilities could be used to weight branch costs
 or QALYs to indicate the relative contribution to the
 total expected value.
+}
+\examples{
+
+model <-
+  define_model(
+    transmat =
+      list(prob =
+             matrix(data = c(NA, 0.5, 0.5, NA,  NA,  NA,  NA,
+                             NA, NA, NA,   0.1, 0.9, NA,  NA,
+                             NA, NA, NA,   NA,  NA,  0.9, 0.1),
+                    nrow = 3,
+                    byrow = TRUE),
+           vals =
+             matrix(data = c(NA, 1,  5,  NA, NA, NA, NA,
+                             NA, NA, NA, 1,  9,  NA, NA,
+                             NA, NA, NA, NA, NA, 9,  1),
+                    nrow = 3,
+                    byrow = TRUE)))
+model
+
+branch_joint_probs(model)
+branch_joint_probs(model)*model$vals
+
+df <-
+  data.frame(
+    from = c(1,2,1),
+    to = c(2,3,4),
+    prob = c(0.1,0.5,0.9),
+    vals = c(1,2,3))
+
+branch_joint_probs.dat_long(df, 4)
+#0.9
+
+branch_joint_probs.dat_long(df, 3)
+#0.1*0.5
+
+mod <- define_model(dat_long = df)
+branch_joint_probs(mod, 3)
+branch_joint_probs(mod, 3)[[1]] \%>\% cumprod()
+
 }

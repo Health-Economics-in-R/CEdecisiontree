@@ -6,18 +6,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Scenario Sensitivity Analysis • CEdecisiontree</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Scenario Sensitivity Analysis">
-<meta property="og:description" content="">
-<meta name="twitter:card" content="summary">
+<meta property="og:description" content="CEdecisiontree">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -53,19 +54,21 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/comparison-with-other-packages.html">Comparison with other packages</a>
+      <a href="../articles/Using_function_dispatch.html">Using function dispatch</a>
     </li>
     <li>
       <a href="../articles/other-input-formats.html">Using other input formats</a>
     </li>
+    <li class="divider">
     <li>
       <a href="../articles/probability-sensitivity-analysis.html">Probability Sensitivity Analysis (PSA)</a>
     </li>
     <li>
       <a href="../articles/scenario-sensitivity-analysis.html">Scenario Sensitivity Analysis</a>
     </li>
+    <li class="divider">
     <li>
-      <a href="../articles/Using_function_dispatch.html">Using function dispatch</a>
+      <a href="../articles/comparison-with-other-packages.html">Comparison with other packages</a>
     </li>
   </ul>
 </li>
@@ -73,7 +76,14 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/Health-Economics-in-R/CEdecisiontree/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -82,15 +92,17 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
+
+      </header><script src="scenario-sensitivity-analysis_files/header-attrs-2.5/header-attrs.js"></script><link href="scenario-sensitivity-analysis_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="scenario-sensitivity-analysis_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Scenario Sensitivity Analysis</h1>
+      <h1 data-toc-skip>Scenario Sensitivity Analysis</h1>
                         <h4 class="author">Nathan Green</h4>
             
-            <h4 class="date">2019-02-15</h4>
+            <h4 class="date">2021-04-03</h4>
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/Health-Economics-in-R/CEdecisiontree/blob/master/vignettes/scenario-sensitivity-analysis.Rmd"><code>vignettes/scenario-sensitivity-analysis.Rmd</code></a></small>
       <div class="hidden name"><code>scenario-sensitivity-analysis.Rmd</code></div>
 
     </div>
@@ -105,112 +117,115 @@
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(CEdecisiontree, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(assertthat, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(treeSimR, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tibble, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyverse, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(purrr, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">CEdecisiontree</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">assertthat</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/n8thangreen/treeSimR">treeSimR</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org">purrr</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></pre></div>
 <p>We create a complete design meaning all combinations on the grid of input values. Alternatively, we may only want to do a one-way analysis and so would set the non-varied term to some common baseline distribution or fixed value. In our example, we will choose three values for each parameter. We can think of this as a worst-, most likely and best-case scenario.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="ot">NA_real_</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">c2 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">c3 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">5</span>, <span class="dv">40</span>, <span class="dv">150</span>)</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">c_grid &lt;-</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/expand.grid">expand.grid</a></span>(<span class="dt">c2 =</span> c2,</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">              <span class="dt">c3 =</span> c3) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">cbind</a></span>(<span class="dt">c1 =</span> 0L, .) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/t">t</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>()</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13">c_grid</a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt;    V1 V2  V3 V4 V5  V6  V7  V8  V9</span></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; c1  0  0   0  0  0   0   0   0   0</span></a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt; c2 10 50 100 10 50 100  10  50 100</span></a>
-<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt; c3  5  5   5 40 40  40 150 150 150</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA_real_</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span><span class="op">)</span>
+
+<span class="va">c2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">50</span>, <span class="fl">100</span><span class="op">)</span>
+<span class="va">c3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">40</span>, <span class="fl">150</span><span class="op">)</span>
+
+<span class="va">c_grid</span> <span class="op">&lt;-</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span>c2 <span class="op">=</span> <span class="va">c2</span>,
+              c3 <span class="op">=</span> <span class="va">c3</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span>c1 <span class="op">=</span> <span class="fl">0L</span>, <span class="va">.</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span>
+
+<span class="va">c_grid</span>
+<span class="co">#&gt;    V1 V2  V3 V4 V5  V6  V7  V8  V9</span>
+<span class="co">#&gt; c1  0  0   0  0  0   0   0   0   0</span>
+<span class="co">#&gt; c2 10 50 100 10 50 100  10  50 100</span>
+<span class="co">#&gt; c3  5  5   5 40 40  40 150 150 150</span></pre></div>
 <p>Then define the decision tree structure.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">child &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"1"</span> =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2</span>, <span class="dv">3</span>),</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">              <span class="st">"2"</span> =<span class="st"> </span><span class="ot">NULL</span>,</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">              <span class="st">"3"</span> =<span class="st"> </span><span class="ot">NULL</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="va">child</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"1"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>,
+              <span class="st">"2"</span> <span class="op">=</span> <span class="cn">NULL</span>,
+              <span class="st">"3"</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></pre></div>
 <p>We can now loop over the inputs and generate a complete tree object for each cost combination.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">tree_dat_sa &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>()</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq_along</a></span>(c_grid)) {</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">  </a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">  tree_dat_sa[[i]] &lt;-</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">    </span><span class="kw"><a href="../reference/define_model.html">define_model</a></span>(</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">      <span class="dt">tree_dat =</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">        <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">child =</span> child,</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">             <span class="dt">dat =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">               <span class="dt">node =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(child),</a>
-<a class="sourceLine" id="cb4-11" data-line-number="11">               <span class="dt">prob =</span> p,</a>
-<a class="sourceLine" id="cb4-12" data-line-number="12">               <span class="dt">vals =</span> c_grid[[i]])</a>
-<a class="sourceLine" id="cb4-13" data-line-number="13">        ))</a>
-<a class="sourceLine" id="cb4-14" data-line-number="14">}</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="va">tree_dat_sa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>
+
+<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">c_grid</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="va">tree_dat_sa</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span>
+    <span class="fu"><a href="../reference/define_model.html">define_model</a></span><span class="op">(</span>
+      tree_dat <span class="op">=</span>
+        <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>child <span class="op">=</span> <span class="va">child</span>,
+             dat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
+               node <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">child</span><span class="op">)</span>,
+               prob <span class="op">=</span> <span class="va">p</span>,
+               vals <span class="op">=</span> <span class="va">c_grid</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
+        <span class="op">)</span><span class="op">)</span>
+<span class="op">}</span></pre></div>
 <p>This results in a list of trees.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(tree_dat_sa, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; List of 9</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;  $ :List of 2</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;  $ :List of 2</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;  $ :List of 2</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt;  $ :List of 2</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;  $ :List of 2</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;  $ :List of 2</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt;  $ :List of 2</span></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt;  $ :List of 2</span></a>
-<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a>
-<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt;  $ :List of 2</span></a>
-<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">tree_dat_sa</span>, <span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; List of 9</span>
+<span class="co">#&gt;  $ :List of 2</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span>
+<span class="co">#&gt;  $ :List of 2</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span>
+<span class="co">#&gt;  $ :List of 2</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span>
+<span class="co">#&gt;  $ :List of 2</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span>
+<span class="co">#&gt;  $ :List of 2</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span>
+<span class="co">#&gt;  $ :List of 2</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span>
+<span class="co">#&gt;  $ :List of 2</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span>
+<span class="co">#&gt;  $ :List of 2</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span>
+<span class="co">#&gt;  $ :List of 2</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "tree_dat" "list"</span></pre></div>
 <p>Now it is straightforward to map over each of these trees to obtain the total expected values.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw">map_dbl</span>(tree_dat_sa, dectree_expected_values)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">res</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; [1]   7  23  43  28  44  64  94 110 130</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span><span class="va">tree_dat_sa</span>, <span class="va">dectree_expected_values</span><span class="op">)</span>
+<span class="va">res</span>
+<span class="co">#&gt; [1]   7  23  43  28  44  64  94 110 130</span></pre></div>
 <div id="tornado-plot" class="section level3">
 <h3 class="hasAnchor">
 <a href="#tornado-plot" class="anchor"></a>Tornado plot</h3>
-<p>Lets create a tornado plot showing a one-way sensitivity analysis. We’ll use my <code>plotCostEffectiveness</code> package to easily produce a ggplot version. By sepcifying the output data as a model frame it is handled appropriately.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(plotCostEffectiveness))</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(magrittr))</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(reshape2))</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(plyr))</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(purrr))</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr))</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2))</a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9">sa_dat &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">cbind</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/t">t</a></span>(c_grid), res))</a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11">sa_model_dat &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/model.frame">model.frame</a></span>(<span class="dt">formula =</span> res <span class="op">~</span><span class="st"> </span>c1 <span class="op">+</span><span class="st"> </span>c2 <span class="op">+</span><span class="st"> </span>c3,</a>
-<a class="sourceLine" id="cb7-12" data-line-number="12">                            <span class="dt">data =</span> sa_dat)</a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14">sa_model_dat <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="st">  </span>s_analysis_to_tornado_plot_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="st">  </span><span class="kw">ggplot_tornado</span>() </a>
-<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="co">#&gt; [1] "baseline values estimated as: 0 50 40 44"</span></a></code></pre></div>
+<p>Lets create a tornado plot showing a one-way sensitivity analysis. We’ll use my <code>ceplot</code>. By specifying the output data as a model frame it is handled appropriately.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ceplot</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/reshape">reshape2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://had.co.nz/plyr">plyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org">purrr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+
+<span class="va">sa_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">c_grid</span><span class="op">)</span>, <span class="va">res</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">sa_model_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/model.frame.html">model.frame</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">res</span> <span class="op">~</span> <span class="va">c1</span> <span class="op">+</span> <span class="va">c2</span> <span class="op">+</span> <span class="va">c3</span>,
+                            data <span class="op">=</span> <span class="va">sa_dat</span><span class="op">)</span>
+
+<span class="va">sa_model_dat</span> <span class="op">%&gt;%</span>
+  <span class="va">s_analysis_to_tornado_plot_data</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ceplot/man/ggplot_tornado.html">ggplot_tornado</a></span><span class="op">(</span><span class="op">)</span> 
+<span class="co">#&gt; [1] "baseline values estimated as: 0 50 40 44"</span></pre></div>
 <p><img src="scenario-sensitivity-analysis_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 </div>
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#introduction">Introduction</a></li>
-      <li><a href="#example">Example</a></li>
-      </ul>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
 </div>
-      </div>
 
 </div>
+
 
 
       <footer><div class="copyright">
@@ -218,12 +233,14 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>

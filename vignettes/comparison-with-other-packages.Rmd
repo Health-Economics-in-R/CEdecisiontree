@@ -20,8 +20,8 @@ knitr::opts_chunk$set(
 
 The heemod package is designed to simulate more general models but let us perform the same analysis to compare.
 First, we need to define the transition matrix. This is essentially the same as above except because heemod simulates over a predefined number of iterations or _cycles_ we need to add a final absorbing sink state (i.e. $p_{ii} = 1$) with no associated costs.
-```{r}
-suppressPackageStartupMessages(library(heemod))
+```{r warning=FALSE, message=FALSE}
+library(heemod)
 
 mat_base <- define_transition(
   state_names = as.character(1:8),

@@ -47,54 +47,46 @@ very similar and simple way.
 A decision tree is defined by parent-child pairs, i.e. from-to
 connections, and the probability and associated value (e.g. cost) of
 traversing each of the connections. Denote the probability of
-transitioning from node ![i](https://latex.codecogs.com/png.latex?i "i")
-to ![j](https://latex.codecogs.com/png.latex?j "j") as
-![p\_{ij}](https://latex.codecogs.com/png.latex?p_%7Bij%7D "p_{ij}") and
+transitioning from node ![i](https://ibm.codecogs.com/png.latex?i "i")
+to ![j](https://ibm.codecogs.com/png.latex?j "j") as
+![p\_{ij}](https://ibm.codecogs.com/png.latex?p_%7Bij%7D "p_{ij}") and
 the cost attributable to node
-![i](https://latex.codecogs.com/png.latex?i "i") as
-![c\_i](https://latex.codecogs.com/png.latex?c_i "c_i"). Where no
+![i](https://ibm.codecogs.com/png.latex?i "i") as
+![c\_i](https://ibm.codecogs.com/png.latex?c_i "c_i"). Where no
 connection exists between two nodes we shall say that the parent’s set
 of children is the empty set
-![\\emptyset](https://latex.codecogs.com/png.latex?%5Cemptyset "\emptyset").
+![\\emptyset](https://ibm.codecogs.com/png.latex?%5Cemptyset "\emptyset").
 Denote the set of children by
-![child(\\cdot)](https://latex.codecogs.com/png.latex?child%28%5Ccdot%29 "child(\cdot)").
+![child(\\cdot)](https://ibm.codecogs.com/png.latex?child%28%5Ccdot%29 "child(\cdot)").
 Clearly, there are no
-![p\_{ij}](https://latex.codecogs.com/png.latex?p_%7Bij%7D "p_{ij}") or
-![c\_j](https://latex.codecogs.com/png.latex?c_j "c_j") in this case but
+![p\_{ij}](https://ibm.codecogs.com/png.latex?p_%7Bij%7D "p_{ij}") or
+![c\_j](https://ibm.codecogs.com/png.latex?c_j "c_j") in this case but
 for computational purposes we will assume that
-![p\_{ij} = NA](https://latex.codecogs.com/png.latex?p_%7Bij%7D%20%3D%20NA "p_{ij} = NA")
+![p\_{ij} = NA](https://ibm.codecogs.com/png.latex?p_%7Bij%7D%20%3D%20NA "p_{ij} = NA")
 and
-![c\_j = 0](https://latex.codecogs.com/png.latex?c_j%20%3D%200 "c_j = 0").
+![c\_j = 0](https://ibm.codecogs.com/png.latex?c_j%20%3D%200 "c_j = 0").
 
 The expected value at each node
-![i \\in S](https://latex.codecogs.com/png.latex?i%20%5Cin%20S "i \in S")
+![i \\in S](https://ibm.codecogs.com/png.latex?i%20%5Cin%20S "i \in S")
 is calculated by ‘folding back’ using the recursive formula
 
-![
-\\hat{c}\_i = c\_i + \\sum\_{j \\in child(i)} p\_{ij} \\hat{c}\_j
-](https://latex.codecogs.com/png.latex?%0A%5Chat%7Bc%7D_i%20%3D%20c_i%20%2B%20%5Csum_%7Bj%20%5Cin%20child%28i%29%7D%20p_%7Bij%7D%20%5Chat%7Bc%7D_j%0A "
-\hat{c}_i = c_i + \sum_{j \in child(i)} p_{ij} \hat{c}_j
-")
+![\\hat{c}\_i = c\_i + \\sum\_{j \\in child(i)} p\_{ij} \\hat{c}\_j](https://ibm.codecogs.com/png.latex?%5Chat%7Bc%7D_i%20%3D%20c_i%20%2B%20%5Csum_%7Bj%20%5Cin%20child%28i%29%7D%20p_%7Bij%7D%20%5Chat%7Bc%7D_j "\hat{c}_i = c_i + \sum_{j \in child(i)} p_{ij} \hat{c}_j")
 
 with boundary values at the terminal nodes
 
-![
-\\hat{c}\_i = c\_i \\mbox{ for } i = \\{ S: child(s) = \\emptyset \\}.
-](https://latex.codecogs.com/png.latex?%0A%5Chat%7Bc%7D_i%20%3D%20c_i%20%5Cmbox%7B%20for%20%7D%20i%20%3D%20%5C%7B%20S%3A%20child%28s%29%20%3D%20%5Cemptyset%20%5C%7D.%0A "
-\hat{c}_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}.
-")
+![\\hat{c}\_i = c\_i \\mbox{ for } i = \\{ S: child(s) = \\emptyset \\}.](https://ibm.codecogs.com/png.latex?%5Chat%7Bc%7D_i%20%3D%20c_i%20%5Cmbox%7B%20for%20%7D%20i%20%3D%20%5C%7B%20S%3A%20child%28s%29%20%3D%20%5Cemptyset%20%5C%7D. "\hat{c}_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}.")
 
 ## Basic example
 
 Quietly load libraries.
 
 ``` r
-suppressPackageStartupMessages(library(CEdecisiontree))
-suppressPackageStartupMessages(library(readr))
-suppressPackageStartupMessages(library(dplyr))
-suppressPackageStartupMessages(library(reshape2))
-suppressPackageStartupMessages(library(tidyr))
-suppressPackageStartupMessages(library(assertthat))
+library(CEdecisiontree)
+library(readr)
+library(dplyr)
+library(reshape2)
+library(tidyr)
+library(assertthat)
 ```
 
 We will consider a simple 7 node binary tree. Numeric labels are shown
@@ -105,11 +97,7 @@ branch, respectively.
 
 So if we were to write out the expected cost in full this would give
 
-![
-p\_{12}(c\_{12} + p\_{24}c\_{24} + p\_{25}c\_{25}) + p\_{13}(c\_{13} + p\_{36}c\_{36} + p\_{37}c\_{37}) 
-](https://latex.codecogs.com/png.latex?%0Ap_%7B12%7D%28c_%7B12%7D%20%2B%20p_%7B24%7Dc_%7B24%7D%20%2B%20p_%7B25%7Dc_%7B25%7D%29%20%2B%20p_%7B13%7D%28c_%7B13%7D%20%2B%20p_%7B36%7Dc_%7B36%7D%20%2B%20p_%7B37%7Dc_%7B37%7D%29%20%0A "
-p_{12}(c_{12} + p_{24}c_{24} + p_{25}c_{25}) + p_{13}(c_{13} + p_{36}c_{36} + p_{37}c_{37}) 
-")
+![p\_{12}(c\_{12} + p\_{24}c\_{24} + p\_{25}c\_{25}) + p\_{13}(c\_{13} + p\_{36}c\_{36} + p\_{37}c\_{37})](https://ibm.codecogs.com/png.latex?p_%7B12%7D%28c_%7B12%7D%20%2B%20p_%7B24%7Dc_%7B24%7D%20%2B%20p_%7B25%7Dc_%7B25%7D%29%20%2B%20p_%7B13%7D%28c_%7B13%7D%20%2B%20p_%7B36%7Dc_%7B36%7D%20%2B%20p_%7B37%7Dc_%7B37%7D%29 "p_{12}(c_{12} + p_{24}c_{24} + p_{25}c_{25}) + p_{13}(c_{13} + p_{36}c_{36} + p_{37}c_{37})")
 
 Load example data from the package.
 
@@ -227,6 +215,13 @@ sum(p_terminal_state)
 See package
 [vignettes](https://health-economics-in-r.github.io/CEdecisiontree/articles/)
 for more details and examples.
+
+## Code of Conduct
+
+Please note that the CEdecisiontree project is released with a
+[Contributor Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
 
 ## License
 
