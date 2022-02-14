@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // Cdectree_expected_values
 NumericVector Cdectree_expected_values(NumericMatrix vals, NumericMatrix p);
 RcppExport SEXP _CEdecisiontree_Cdectree_expected_values(SEXP valsSEXP, SEXP pSEXP) {

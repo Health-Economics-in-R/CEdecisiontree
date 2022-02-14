@@ -7,10 +7,11 @@ always_allow_html: yes
 
 # CEdecisiontree <img src="imgfile.png" height="139" align="right"/>
 
-[![Build Status](https://travis-ci.org/Health-Economics-in-R/CEdecisiontree.svg?branch=master)](https://travis-ci.org/Health-Economics-in-R/CEdecisiontree)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/Health-Economics-in-R/CEdecisiontree?branch=master&svg=true)](https://ci.appveyor.com/project/Health-Economics-in-R/CEdecisiontree)
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/Health-Economics-in-R/CEdecisiontree/workflows/R-CMD-check/badge.svg)](https://github.com/Health-Economics-in-R/CEdecisiontree/actions)
 [![Coverage status](https://codecov.io/gh/Health-Economics-in-R/CEdecisiontree/branch/master/graph/badge.svg)](https://codecov.io/github/Health-Economics-in-R/CEdecisiontree?branch=master)
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
+<!-- badges: end -->
 
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -28,7 +29,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-An R package for lightweight cost-effectiveness analysis using decision trees.
+> An R package for lightweight cost-effectiveness analysis using decision trees.
 
 Requests and comments welcome; please use [Issues](https://github.com/n8thangreen/CEdecisiontree/issues).
 
@@ -37,7 +38,7 @@ Requests and comments welcome; please use [Issues](https://github.com/n8thangree
 
 To install the development version from github:
 ```{r eval=FALSE}
-library(devtools)
+library(remotes)
 install_github("Health-Economics-in-R/CEdecisiontree")
 ```
 
