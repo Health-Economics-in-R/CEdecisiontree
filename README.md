@@ -62,7 +62,7 @@ back’ using the recursive formula
 
 with boundary values at the terminal nodes
 
-*ĉ*<sub>*i*</sub> = *c*<sub>*i*</sub> for *i* = {*S* : *c**h**i**l**d*(*s*) = ∅}.
+<img src="https://latex.codecogs.com/svg.image?\hat{c}_i&space;=&space;c_i&space;\mbox{&space;for&space;}&space;i&space;=&space;\{&space;S:&space;child(s)&space;=&space;\emptyset&space;\}" title="\hat{c}_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}" />
 
 ## Basic example
 
@@ -84,7 +84,8 @@ branch, respectively.
 <img src="https://raw.githubusercontent.com/Health-Economics-in-R/CEdecisiontree/dev/man/figures/README_decisiontree_silverdecisions.png" width="400px" />
 
 So if we were to write out the expected cost in full this would give
-*p*<sub>12</sub>(*c*<sub>12</sub>+*p*<sub>24</sub>*c*<sub>24</sub>+*p*<sub>25</sub>*c*<sub>25</sub>) + *p*<sub>13</sub>(*c*<sub>13</sub>+*p*<sub>36</sub>*c*<sub>36</sub>+*p*<sub>37</sub>*c*<sub>37</sub>)
+
+<img src="https://latex.codecogs.com/svg.image?\hat{c}_i&space;=&space;c_i&space;\mbox{&space;for&space;}&space;i&space;=&space;\{&space;S:&space;child(s)&space;=&space;\emptyset&space;\}p_{12}(c_{12}&space;&plus;&space;p_{24}c_{24}&space;&plus;&space;p_{25}c_{25})&space;&plus;&space;p_{13}(c_{13}&space;&plus;&space;p_{36}c_{36}&space;&plus;&space;p_{37}c_{37})" title="\hat{c}_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}p_{12}(c_{12} + p_{24}c_{24} + p_{25}c_{25}) + p_{13}(c_{13} + p_{36}c_{36} + p_{37}c_{37})" />
 
 Load example data from the package.
 
