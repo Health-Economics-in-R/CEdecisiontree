@@ -59,6 +59,8 @@ branch_joint_probs <- function(model, ...)
 
 #' branch_joint_probs.transmat
 #'
+#' @export
+#'
 branch_joint_probs.transmat <- function(model,
                                         nodes = NA) {
 
@@ -85,6 +87,8 @@ branch_joint_probs.transmat <- function(model,
 
 
 #' branch_joint_probs.dat_long
+#'
+#' @export
 #'
 branch_joint_probs.dat_long <- function(model,
                                         nodes) {
@@ -115,6 +119,8 @@ branch_joint_probs.dat_long <- function(model,
 }
 
 
+#'
+#' @export
 #'
 branch_joint_probs.default <- function(model,
                                        nodes){
