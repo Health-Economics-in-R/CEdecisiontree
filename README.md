@@ -11,7 +11,7 @@ status](https://codecov.io/gh/Health-Economics-in-R/CEdecisiontree/branch/master
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-An R package for lightweight cost-effectiveness analysis using decision
+> An R package for lightweight cost-effectiveness analysis using decision
 trees.
 
 Requests and comments welcome; please use
@@ -22,7 +22,7 @@ Requests and comments welcome; please use
 To install the development version from github:
 
 ``` r
-library(devtools)
+library(remotes)
 install_github("Health-Economics-in-R/CEdecisiontree")
 ```
 
