@@ -1,8 +1,7 @@
 ---
+output:
+  github_document
 always_allow_html: yes
-output: 
-  html_document: 
-    keep_md: yes
 ---
 
 # CEdecisiontree <img src="imgfile.png" height="139" align="right"/>
@@ -65,9 +64,7 @@ Clearly, there are no $p_{ij}$ or $c_j$ in this case but for computational purpo
 
 The expected value at each node $i \in S$ is calculated by 'folding back' using the recursive formula
 
-$$
-\hat{c}_i = c_i + \sum_{j \in child(i)} p_{ij} \hat{c}_j
-$$
+<img src="https://latex.codecogs.com/svg.image?\hat{c}_i&space;=&space;c_i&space;&plus;&space;\sum_{j&space;\in&space;child(i)}&space;p_{ij}&space;\hat{c}_j" title="\hat{c}_i = c_i + \sum_{j \in child(i)} p_{ij} \hat{c}_j" />
 
 with boundary values at the terminal nodes
 
