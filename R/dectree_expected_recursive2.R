@@ -34,6 +34,8 @@ dectree_expected_recursive2 <- function(node, tree, dat) {
     return(0)
   }
 
+  dat$prob[is.na(dat$prob)] <- 0
+
   c_node <- dat$vals[dat$node == node]
 
   child_idx <- tree[[node]]
@@ -41,9 +43,6 @@ dectree_expected_recursive2 <- function(node, tree, dat) {
   if (is.null(child_idx)) {
     return(c_node)
   } else {
-
-    if (any(is.na(probs))) probs <- 0
-
     Ec <-
       purrr::map_dbl(
         child_idx,
