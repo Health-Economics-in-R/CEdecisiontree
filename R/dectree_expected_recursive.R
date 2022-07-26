@@ -57,6 +57,6 @@ dectree_expected_recursive <- function(node,
 }
 
 #
-rm_node_from_tree <- function(tree,
-                              node)
+rm_node_from_tree <- function(tree, node)
   tree[setdiff(names(tree), node)]
+
