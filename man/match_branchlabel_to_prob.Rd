@@ -18,9 +18,6 @@ dataframe
 We have a look-up table of labels and values.
 We can join the values to nodes/edges via their labels.
 }
-\examples{
-
-}
 \seealso{
 \link{match_branch_to_label}
 }

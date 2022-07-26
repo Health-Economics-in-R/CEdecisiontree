@@ -19,6 +19,3 @@ Joint probabilities of sets of nodes.
 This is useful to then provide starting state
 populations to a Markov model.
 }
-\examples{
-
-}

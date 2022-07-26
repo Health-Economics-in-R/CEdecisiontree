@@ -24,9 +24,6 @@ Separating the tree structure and labelling means that we can
 reuse the same tree with different labels
 e.g. another test or treatment
 }
-\examples{
-
-}
 \seealso{
 \link{match_branchlabel_to_prob}
 }

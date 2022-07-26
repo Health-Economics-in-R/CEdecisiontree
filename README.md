@@ -85,7 +85,7 @@ branch, respectively.
 
 So if we were to write out the expected cost in full this would give
 
-<img src="https://latex.codecogs.com/svg.image?\hat{c}_i&space;=&space;c_i&space;\mbox{&space;for&space;}&space;i&space;=&space;\{&space;S:&space;child(s)&space;=&space;\emptyset&space;\}p_{12}(c_{12}&space;&plus;&space;p_{24}c_{24}&space;&plus;&space;p_{25}c_{25})&space;&plus;&space;p_{13}(c_{13}&space;&plus;&space;p_{36}c_{36}&space;&plus;&space;p_{37}c_{37})" title="\hat{c}_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}p_{12}(c_{12} + p_{24}c_{24} + p_{25}c_{25}) + p_{13}(c_{13} + p_{36}c_{36} + p_{37}c_{37})" />
+<img src="https://latex.codecogs.com/svg.image?p_{12}(c_{12}&space;&plus;&space;p_{24}c_{24}&space;&plus;&space;p_{25}c_{25})&space;&plus;&space;p_{13}(c_{13}&space;&plus;&space;p_{36}c_{36}&space;&plus;&space;p_{37}c_{37})" title="p_{12}(c_{12} + p_{24}c_{24} + p_{25}c_{25}) + p_{13}(c_{13} + p_{36}c_{36} + p_{37}c_{37})" />
 
 Load example data from the package.
 

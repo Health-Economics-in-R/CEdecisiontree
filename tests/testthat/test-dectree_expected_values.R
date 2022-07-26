@@ -11,8 +11,11 @@ library(assertthat)
 data(cost, package = 'CEdecisiontree')
 data(probs, package = 'CEdecisiontree')
 
-res <- dectree_expected_values(vals = cost,
-                               p = probs)
+mod <- define_model(transmat =
+                      list(prob = probs,
+                           vals = cost))
+
+res <- dectree_expected_values(mod)
 
 test_that("dectree_expected_values structure", {
 

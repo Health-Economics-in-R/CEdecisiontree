@@ -22,6 +22,3 @@ probability.
 \details{
 Only works for binary trees or when one of n is missing.
 }
-\examples{
-
-}

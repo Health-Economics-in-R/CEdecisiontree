@@ -21,9 +21,21 @@ long_to_transmat <- function(dat,
   dat <- dat[!is.na(dat$from), ]
   dat <- dat[, c("from", "to", val_col)]
 
+  # include missing from nodes so that transmat
+  # has the right number of rows/square
+  missing_nodes <- setdiff(1:max(dat$to), dat$from)
+  missing_rows <-
+    setNames(data.frame(missing_nodes, 2, NA),
+             names(dat))
+
+  dat <-
+    dat %>%
+    rbind(missing_rows) %>%
+    dplyr::arrange(from)
+
   suppressMessages(
     reshape2::dcast(formula = from ~ to,
-                    data = dat)[, -1] %>%
+                    data = dat)[, -1] %>%  # remove from column
       data.frame("1" = NA, .,
                  check.names = FALSE))
 }

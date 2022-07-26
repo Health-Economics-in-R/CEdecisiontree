@@ -31,6 +31,3 @@ List of expected values at each node,
 \description{
 Single edge value (e.g. cost or QALY) wrapper.
 }
-\examples{
-
-}

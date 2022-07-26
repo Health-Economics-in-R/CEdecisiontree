@@ -43,9 +43,6 @@ Completely specifying cost-effectiveness decision tree.
 Matches labels on branches to the corresponding
 probabilities and cost/utility values.
 }
-\examples{
-
-}
 \seealso{
 [CEdecisiontree::define_model()]
          [CEdecisiontree::dectree()]
