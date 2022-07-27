@@ -7,7 +7,7 @@
 transmat_to_long(probs)
 }
 \arguments{
-\item{probs}{probability transition matrix}
+\item{probs}{Probability transition matrix}
 }
 \value{
 array of from, to, prob
@@ -17,8 +17,9 @@ Transition matrix to long format
 }
 \examples{
 
-tree <- list(prob = matrix(data = c(NA, 0.5, 0.5), nrow = 1),
-              vals = matrix(data = c(NA, 1, 2), nrow = 1)#'               )
+tree <- list(
+   prob = matrix(data = c(NA, 0.5, 0.5), nrow = 1),
+   vals = matrix(data = c(NA, 1, 2), nrow = 1))
 
 transmat_to_long(tree$prob)
 

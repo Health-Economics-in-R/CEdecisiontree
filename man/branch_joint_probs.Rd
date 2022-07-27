@@ -43,8 +43,11 @@ model <-
 model
 
 branch_joint_probs(model)
+
+# weighted vals
 branch_joint_probs(model)*model$vals
 
+# long data format
 df <-
   data.frame(
     from = c(1,2,1),
@@ -52,14 +55,14 @@ df <-
     prob = c(0.1,0.5,0.9),
     vals = c(1,2,3))
 
-branch_joint_probs.dat_long(df, 4)
+mod <- define_model(dat_long = df)
+
+branch_joint_probs(mod, nodes = 4)
 #0.9
 
-branch_joint_probs.dat_long(df, 3)
+branch_joint_probs(mod, nodes = 3)
 #0.1*0.5
 
-mod <- define_model(dat_long = df)
-branch_joint_probs(mod, 3)
-branch_joint_probs(mod, 3)[[1]] \%>\% cumprod()
+branch_joint_probs(mod, nodes = 3)[[1]] |> cumprod()
 
 }

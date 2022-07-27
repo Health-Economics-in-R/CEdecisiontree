@@ -35,6 +35,6 @@ costs are assigned to the nodes. The expected value would then be
 }
 \examples{
 
-dectree_expected_values.default(vals, p)
+# dectree_expected_default(vals, p)
 
 }

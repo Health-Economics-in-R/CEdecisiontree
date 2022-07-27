@@ -24,6 +24,15 @@
 #'
 #' @export
 #' @examples
+#' data("cost")
+#' data("probs")
+#'
+#' my_model <-
+#'   define_model(
+#'     transmat = list(vals = cost,
+#'                     prob = probs))
+#'
+#' dectree_expected_values(model = my_model)
 #'
 dectree_expected_values <- function(model)
   UseMethod("dectree_expected_values", model)

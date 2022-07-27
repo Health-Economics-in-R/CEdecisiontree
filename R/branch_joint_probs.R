@@ -34,8 +34,11 @@
 #' model
 #'
 #' branch_joint_probs(model)
+#'
+#' # weighted vals
 #' branch_joint_probs(model)*model$vals
 #'
+#' # long data format
 #' df <-
 #'   data.frame(
 #'     from = c(1,2,1),
@@ -43,15 +46,15 @@
 #'     prob = c(0.1,0.5,0.9),
 #'     vals = c(1,2,3))
 #'
-#' branch_joint_probs.dat_long(df, 4)
+#' mod <- define_model(dat_long = df)
+#'
+#' branch_joint_probs(mod, nodes = 4)
 #' #0.9
 #'
-#' branch_joint_probs.dat_long(df, 3)
+#' branch_joint_probs(mod, nodes = 3)
 #' #0.1*0.5
 #'
-#' mod <- define_model(dat_long = df)
-#' branch_joint_probs(mod, 3)
-#' branch_joint_probs(mod, 3)[[1]] %>% cumprod()
+#' branch_joint_probs(mod, nodes = 3)[[1]] |> cumprod()
 #'
 branch_joint_probs <- function(model, ...)
   UseMethod("branch_joint_probs", model)
@@ -62,7 +65,7 @@ branch_joint_probs <- function(model, ...)
 #' @export
 #'
 branch_joint_probs.transmat <- function(model,
-                                        nodes = NA) {
+                                        nodes = NA, ...) {
 
   probs <- as.matrix(model$prob)
   assert_that(is_prob_matrix(probs))
@@ -91,7 +94,7 @@ branch_joint_probs.transmat <- function(model,
 #' @export
 #'
 branch_joint_probs.dat_long <- function(model,
-                                        nodes) {
+                                        nodes, ...) {
 
   out <- list()
 
@@ -123,7 +126,7 @@ branch_joint_probs.dat_long <- function(model,
 #' @export
 #'
 branch_joint_probs.default <- function(model,
-                                       nodes){
+                                       nodes, ...){
   message("No method for this type.")
 }
 

@@ -30,6 +30,18 @@ costs are assigned to the nodes. The expected value would then be
 
 \deqn{\hat{c}_i = \sum p_{ij} (c_{ij} + \hat{c}_j)}
 }
+\examples{
+data("cost")
+data("probs")
+
+my_model <-
+  define_model(
+    transmat = list(vals = cost,
+                    prob = probs))
+
+dectree_expected_values(model = my_model)
+
+}
 \seealso{
 \code{\link{define_model}}
 }

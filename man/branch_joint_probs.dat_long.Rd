@@ -4,7 +4,7 @@
 \alias{branch_joint_probs.dat_long}
 \title{branch_joint_probs.dat_long}
 \usage{
-\method{branch_joint_probs}{dat_long}(model, nodes)
+\method{branch_joint_probs}{dat_long}(model, nodes, ...)
 }
 \description{
 branch_joint_probs.dat_long

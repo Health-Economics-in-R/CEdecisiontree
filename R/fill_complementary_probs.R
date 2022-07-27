@@ -15,6 +15,14 @@
 #' @export
 #'
 #' @examples
+#' dat <- tibble::tribble(~from, ~to, ~prob, ~vals,
+#'                        1,  2,  NA,    10,
+#'                        1,  3,  0.8,    1,
+#'                        2,  4,  0.2,   10,
+#'                        2,  5,  NA,     1,
+#'                        3,  6,  0.2,   10,
+#'                        3,  7,  0.8,    1)
+#' fill_complementary_probs(dat)
 #'
 fill_complementary_probs <- function(dat_tree) {
 

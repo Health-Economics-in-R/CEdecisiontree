@@ -25,7 +25,7 @@
 #'
 #' @examples
 #'
-#' dectree_expected_values.default(vals, p)
+#' # dectree_expected_default(vals, p)
 #'
 dectree_expected_default <- function(vals,
                                      p,

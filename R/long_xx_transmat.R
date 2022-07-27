@@ -43,24 +43,29 @@ long_to_transmat <- function(dat,
 
 #' Transition matrix to long format
 #'
-#' @param probs probability transition matrix
+#' @param probs Probability transition matrix
 #'
 #' @return array of from, to, prob
+#' @importFrom reshape2 melt
+#' @importFrom dplyr mutate
 #' @export
 #'
 #' @examples
 #'
-#' tree <- list(prob = matrix(data = c(NA, 0.5, 0.5), nrow = 1),
-#'               vals = matrix(data = c(NA, 1, 2), nrow = 1)#'               )
+#' tree <- list(
+#'    prob = matrix(data = c(NA, 0.5, 0.5), nrow = 1),
+#'    vals = matrix(data = c(NA, 1, 2), nrow = 1))
 #'
 #' transmat_to_long(tree$prob)
 #'
 transmat_to_long <- function(probs) {
 
-  probs %>%
-    mutate('from' = rownames(.)) %>%
+  probs |>
+    as_tibble(.name_repair = "unique") |>
+    dplyr::mutate('from' = row_number()) |>
     reshape2::melt(id.vars = "from",
                    variable.name = 'to',
-                   value.name = 'prob') %>%
+                   value.name = 'prob') |>
+    mutate(to = gsub("...", "", to)) |>
     na.omit()
 }

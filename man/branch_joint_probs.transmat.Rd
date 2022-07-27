@@ -4,7 +4,7 @@
 \alias{branch_joint_probs.transmat}
 \title{branch_joint_probs.transmat}
 \usage{
-\method{branch_joint_probs}{transmat}(model, nodes = NA)
+\method{branch_joint_probs}{transmat}(model, nodes = NA, ...)
 }
 \description{
 branch_joint_probs.transmat

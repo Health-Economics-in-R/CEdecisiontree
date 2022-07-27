@@ -16,6 +16,21 @@
 #' @export
 #'
 #' @examples
+#' library(purrr)
+#' library(tibble)
+#'
+#' tree_dat <-
+#'  tribble(
+#'    ~from, ~to, ~vals, ~prob,
+#'    1,  2,   10,   0.7,
+#'    1,  3,   NA,   0.3,
+#'    2,  4,  100,   0.1,
+#'    2,  5,   NA,   0.9,
+#'    3,  6,  100,   0.9,
+#'    3,  7,   NA,   0.1)
+#'
+#' dectree(tree_dat,
+#'    state_list = list(all = c(4,5,6,7)))
 #'
 dectree <- function(tree_dat,
                     label_probs_distns = NULL,

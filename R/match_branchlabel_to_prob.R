@@ -12,6 +12,16 @@
 #' @seealso \link{match_branch_to_label}
 #'
 #' @examples
+#' probs_long <-
+#'   tibble::tribble(~from, ~to, ~name,
+#'                   1, 2, "pos",
+#'                   1, 3, "neg")
+#' probs_names <-
+#'   tibble::tribble(~prob, ~name,
+#'                   0.4, "pos",
+#'                   0.6, "neg")
+#'
+#' match_branchlabel_to_prob(probs_names, probs_long)
 #'
 match_branchlabel_to_prob <- function(probs_names,
                                       branch_probs_long) {

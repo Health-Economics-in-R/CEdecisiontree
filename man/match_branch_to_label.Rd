@@ -24,6 +24,19 @@ Separating the tree structure and labelling means that we can
 reuse the same tree with different labels
 e.g. another test or treatment
 }
+\examples{
+probs_long <-
+  tibble::tribble(~from, ~to, ~prob,
+                  1, 2, 0.5,
+                  1, 3, 0.5)
+pname_from_to <-
+  tibble::tribble(~from, ~to, ~name,
+                  1, 2, "pos",
+                  1, 3, "neg")
+
+match_branch_to_label(probs_long, pname_from_to)
+
+}
 \seealso{
 \link{match_branchlabel_to_prob}
 }
