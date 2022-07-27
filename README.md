@@ -1,5 +1,5 @@
 
-# CEdecisiontree <img src="imgfile.png" height="139" align="right"/>
+# CEdecisiontree <img src="man/figures/hexbadge.png" height="139" align="right"/>
 
 <!-- badges: start -->
 
@@ -7,6 +7,7 @@
 [![Coverage
 status](https://codecov.io/gh/Health-Economics-in-R/CEdecisiontree/branch/master/graph/badge.svg)](https://codecov.io/github/Health-Economics-in-R/CEdecisiontree?branch=master)
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
+[![R-CMD-check](https://github.com/Health-Economics-in-R/CEdecisiontree/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Health-Economics-in-R/CEdecisiontree/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -47,16 +48,33 @@ very similar and simple way.
 A decision tree is defined by parent-child pairs, i.e. from-to
 connections, and the probability and associated value (e.g. cost) of
 traversing each of the connections. Denote the probability of
-transitioning from node *i* to *j* as *p*<sub>*i**j*</sub> and the cost
-attributable to node *i* as *c*<sub>*i*</sub>. Where no connection
-exists between two nodes we shall say that the parent’s set of children
-is the empty set ∅. Denote the set of children by *c**h**i**l**d*(⋅).
-Clearly, there are no *p*<sub>*i**j*</sub> or *c*<sub>*j*</sub> in this
-case but for computational purposes we will assume that
-*p*<sub>*i**j*</sub> = *N**A* and *c*<sub>*j*</sub> = 0.
+transitioning from node
+![i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;i "i")
+to
+![j](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;j "j")
+as
+![p\_{ij}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p_%7Bij%7D "p_{ij}")
+and the cost attributable to node
+![i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;i "i")
+as
+![c_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;c_i "c_i").
+Where no connection exists between two nodes we shall say that the
+parent’s set of children is the empty set
+![\emptyset](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cemptyset "\emptyset").
+Denote the set of children by
+![child(\cdot)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;child%28%5Ccdot%29 "child(\cdot)").
+Clearly, there are no
+![p\_{ij}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p_%7Bij%7D "p_{ij}")
+or
+![c_j](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;c_j "c_j")
+in this case but for computational purposes we will assume that
+![p\_{ij} = NA](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p_%7Bij%7D%20%3D%20NA "p_{ij} = NA")
+and
+![c_j = 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;c_j%20%3D%200 "c_j = 0").
 
-The expected value at each node *i* ∈ *S* is calculated by ‘folding
-back’ using the recursive formula
+The expected value at each node
+![i \in S](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;i%20%5Cin%20S "i \in S")
+is calculated by ‘folding back’ using the recursive formula
 
 <img src="https://latex.codecogs.com/svg.image?\hat{c}_i&space;=&space;c_i&space;&plus;&space;\sum_{j&space;\in&space;child(i)}&space;p_{ij}&space;\hat{c}_j" title="\hat{c}_i = c_i + \sum_{j \in child(i)} p_{ij} \hat{c}_j" />
 
@@ -101,7 +119,7 @@ Empty cells have `NA`.
 
 ``` r
 cost
-#> # A tibble: 3 x 7
+#> # A tibble: 3 × 7
 #>     `1`   `2`   `3`   `4`   `5`   `6`   `7`
 #>   <dbl> <int> <int> <int> <int> <int> <int>
 #> 1    NA    10     1    NA    NA    NA    NA
@@ -111,7 +129,7 @@ cost
 
 ``` r
 probs
-#> # A tibble: 3 x 7
+#> # A tibble: 3 × 7
 #>     `1`   `2`   `3`   `4`   `5`   `6`   `7`
 #>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #> 1    NA   0.2   0.8  NA    NA    NA    NA  
