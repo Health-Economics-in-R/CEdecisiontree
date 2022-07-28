@@ -1,0 +1,7 @@
+unit,label,val
+cost,vaccinate,10
+cost,disease,100
+prob,vaccinate,0.7
+prob,vacc_disease,0.1
+prob,disease,0.9
+health,disease,0.5

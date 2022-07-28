@@ -24,7 +24,7 @@ run_cedectree <- function(tree_dat,
   cost <-
     tree_dat %>%
     rename(vals = cost) %>%
-    select(-name.health, -health) %>%
+    select(!contains("health")) %>%
     dectree(label_probs_distns,
             label_costs_distns,
             state_list,
@@ -33,7 +33,7 @@ run_cedectree <- function(tree_dat,
   health <-
     tree_dat %>%
     rename(vals = health) %>%
-    select(-name.cost, -cost) %>%
+    select(!contains("cost")) %>%
     dectree(label_probs_distns,
             label_health_distns,
             state_list,

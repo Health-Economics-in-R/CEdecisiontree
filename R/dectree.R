@@ -7,6 +7,7 @@
 #' @param label_probs_distns Probability distribution names
 #' @param label_vals_distns Value distribution names
 #' @param state_list State list sets, usually terminal nodes
+#' @param vals_col Name of values column; defaults to vals
 #' @param n Number of PSA samples; default 100
 #'
 #' @return List of expected values at each node,
@@ -36,7 +37,11 @@ dectree <- function(tree_dat,
                     label_probs_distns = NULL,
                     label_vals_distns = NULL,
                     state_list = NULL,
+                    vals_col = NA,
                     n = 100) {
+
+  if (!is.na(vals_col))
+    names(tree_dat)[names(tree_dat) == vals_col] <- "vals"
 
   # expected values
   ev_point <-

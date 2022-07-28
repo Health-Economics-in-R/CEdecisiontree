@@ -9,6 +9,7 @@ dectree(
   label_probs_distns = NULL,
   label_vals_distns = NULL,
   state_list = NULL,
+  vals_col = NA,
   n = 100
 )
 }
@@ -20,6 +21,8 @@ dectree(
 \item{label_vals_distns}{Value distribution names}
 
 \item{state_list}{State list sets, usually terminal nodes}
+
+\item{vals_col}{Name of values column; defaults to vals}
 
 \item{n}{Number of PSA samples; default 100}
 }

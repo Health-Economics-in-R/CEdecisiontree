@@ -49,6 +49,8 @@ navbar:
         href: articles/Using_function_dispatch.html
       - text: Using other input formats
         href: articles/other-input-formats.html
+      - text: Building a decision tree from components
+        href: articles/building-a-decision-tree-from-components.html
       - text: "-------"
       - text: Probability Sensitivity Analysis (PSA)
         href: articles/probability-sensitivity-analysis.html

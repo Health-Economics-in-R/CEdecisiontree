@@ -2,12 +2,23 @@
 % Please edit documentation in R/branch_joint_probs.R
 \name{branch_joint_probs}
 \alias{branch_joint_probs}
+\alias{branch_joint_probs.transmat}
+\alias{branch_joint_probs.dat_long}
+\alias{branch_joint_probs.default}
 \title{Branch Joint Probabilities}
 \usage{
 branch_joint_probs(model, ...)
+
+\method{branch_joint_probs}{transmat}(model, nodes = NA, ...)
+
+\method{branch_joint_probs}{dat_long}(model, nodes, ...)
+
+\method{branch_joint_probs}{default}(model, nodes, ...)
 }
 \arguments{
 \item{model}{Branch conditional probabilities (matrix)}
+
+\item{...}{Additional parameters}
 
 \item{nodes}{Which nodes to return; default to all}
 }
@@ -16,7 +27,7 @@ Transition matrix with joint probabilities
 }
 \description{
 Provides a measure of the chances of following
-particular paths.
+particular paths through the decision tree.
 }
 \details{
 These probabilities could be used to weight branch costs

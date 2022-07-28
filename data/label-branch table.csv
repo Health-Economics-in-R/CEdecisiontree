@@ -1,0 +1,9 @@
+unit,label,from,to
+cost,vaccinate,1,2
+cost,disease,2,4
+cost,disease,3,6
+prob,vaccinate,1,2
+prob,vacc_disease,2,4
+prob,disease,3,6
+health,disease,2,4
+health,disease,3,6

@@ -2,7 +2,7 @@
 #' Branch Joint Probabilities
 #'
 #' Provides a measure of the chances of following
-#' particular paths.
+#' particular paths through the decision tree.
 #'
 #' These probabilities could be used to weight branch costs
 #' or QALYs to indicate the relative contribution to the
@@ -10,6 +10,8 @@
 #'
 #' @param model Branch conditional probabilities (matrix)
 #' @param nodes Which nodes to return; default to all
+#' @param ... Additional parameters
+#'
 #' @return Transition matrix with joint probabilities
 #'
 #' @export
@@ -60,7 +62,7 @@ branch_joint_probs <- function(model, ...)
   UseMethod("branch_joint_probs", model)
 
 
-#' branch_joint_probs.transmat
+#' @rdname branch_joint_probs
 #'
 #' @export
 #'
@@ -89,7 +91,7 @@ branch_joint_probs.transmat <- function(model,
 }
 
 
-#' branch_joint_probs.dat_long
+#' @rdname branch_joint_probs
 #'
 #' @export
 #'
@@ -122,7 +124,7 @@ branch_joint_probs.dat_long <- function(model,
 }
 
 
-#'
+#' @rdname branch_joint_probs
 #' @export
 #'
 branch_joint_probs.default <- function(model,

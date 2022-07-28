@@ -3,8 +3,10 @@ title: "Building a decision tree from components"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{build_tree}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r, include = FALSE}
@@ -16,20 +18,22 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-For small decision trees it is simple to directly write down the path through the tree. For larger trees this may become unwieldy and error prone. We can take advantage of some of the characteristics:
+For small decision trees it is simple to directly write down structure of the tree and its values.
 
--   Sections of the tree are repeated
+However, for larger trees this may become unwieldy and error prone. We can take advantage of some of the tree characteristics though:
 
--   A unit cost or health measure is used on multiple edges
+- Sections of the tree may be repeated
 
--   Multiple trees use the same cost and health values
+- A particular unit cost or health measure may be used on multiple edges
 
--   Tree structure and labelling remain the same but values assigned change e.g. in sensitivity analysis or alternative interventions
+- Multiple trees may use the same cost and health values
 
-Thus, we separate the *structure* of the tree, the *labelling* of edges and the *values* assigned to those labels. In this way we have flexibility in modify any one of these and better adhere to the DRY principle and the benefits it offers.
+- Tree structure and labeling may remain the same but values assigned change e.g. in sensitivity analysis or alternative interventions
 
-We could think of the value assignment like a relational table where the key is `Label`.
-For the cost tree, edges are labelled as follows:
+Thus, we can separate the *structure* of the tree, the *labeling* of edges and the *values* assigned to those labels. In this way we have flexibility in modify any one of these and better adhere to the DRY principle and the benefits it offers.
+
+For instance, we can think of the value assignment like a relational table with key-value pairs where the key is `Label`.
+For the decision tree tree with cost values, edges are labeled as follows:
 
 | Label     | From node | To node |
 |-----------|-----------|---------|
@@ -48,14 +52,16 @@ and joined with the values table:
 
 ## Example
 
+Let us demonstrate this approach using a simple tree.
+
 ```{r setup, message=FALSE, warning=FALSE}
 library(CEdecisiontree)
 library(dplyr)
 ```
 
-First, we define the structure of the tree without any additional information. Let's make a simple, two-step binary tree.
+First, we define the structure of the tree in list format without any additional information. Let's make a two-step binary tree.
 
-```{r}
+```{r tree-def}
 tree_struc <-
   list(
     '1' = c(2,3),
@@ -63,9 +69,9 @@ tree_struc <-
     '3' = c(6,7))
 ```
 
-Now we can add labels and values to this tree. Define the set of cost, health values and probabilities, independent of the tree.
+Now we can add labels and values to this tree. Define the set of cost, health values and probabilities, independent of the tree structure.
 
-```{r}
+```{r vals-def}
 label_cost <-
   list(
     "vaccinate" = 10,
@@ -82,34 +88,32 @@ label_health <-
     "disease" = 0.5)
 ```
 
-Next, assign labels to particular branches.
+Next, assign cost, probability and health labels to particular branches.
 
-```{r}
+```{r labels-def}
+library(tibble)
+
 cost_label_branch <- 
-  rbind.data.frame(
-    c("vaccinate", 1, 2),
-    c("disease", 2, 4),
-    c("disease", 3, 6)) %>%
-    setNames(c("name", "from", "to"))
+  tribble(~name,      ~from, ~to,
+          "vaccinate", 1,    2,
+          "disease",   2,    4,
+          "disease",   3,    6)
 
 prob_label_branch <- 
-    rbind.data.frame(
-      c("vaccinate", 1 , 2),
-      c("vacc_disease", 2, 4),
-      c("disease", 3, 6)) %>%
-    setNames(c("name", "from", "to"))
+  tribble(~name,      ~from, ~to,
+          "vaccinate",    1,  2,
+          "vacc_disease", 2,  4,
+          "disease",      3,  6)
 
 health_label_branch <- 
-  rbind.data.frame(
-    c("disease", 2, 4),
-    c("disease", 3, 6)) %>%
-    setNames(c("name", "from", "to"))
-
+  tribble(~name,     ~from, ~to,
+          "disease", 2,     4,
+          "disease", 3,     6)
 ```
 
 Finally, we can pull it all together and create a single decision tree long format data frame.
 
-```{r message=FALSE, warning=FALSE}
+```{r create_ce_tree_long_df, message=FALSE, warning=FALSE}
 
 tree_dat <-
   create_ce_tree_long_df(
@@ -124,4 +128,40 @@ tree_dat <-
 tree_dat
 ```
 
-This dataframe can now be used in the main cost-effectiveness analysis.
+The above example may seem a little over-elaborate. This demonstrates an example where all of the components are defined separately and then combined to obtain a single object with all the input values.
+Alternatively, we could define the label look up table and the values look up table outside of R and simply read this in and join to obtain an equivalent object.
+
+```{r}
+library(reshape2)
+
+label_branch_tab <- read.csv(here::here("data/label-branch table.csv"))
+label_branch_tab
+
+label_val_tab <- read.csv(here::here("data/label-val table.csv"))
+label_val_tab
+
+tree_dat2 <-
+  create_ce_tree_df(label_branch_tab,
+                    label_val_tab,
+                    tree_struc)
+tree_dat2
+```
+
+
+This data frame can now be used in the main cost-effectiveness analysis.
+
+```{r}
+tree_costs <- tree_dat2
+names(tree_costs)[names(tree_costs) == "cost"] <- "vals"
+
+treemod <- define_model(dat_long = tree_costs)
+
+dectree_expected_values(model = treemod)
+```
+
+We can run both the cost and health analyses together.
+
+```{r cedectree}
+run_cedectree(tree_dat2)
+```
+
