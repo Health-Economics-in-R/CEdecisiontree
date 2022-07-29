@@ -7,7 +7,7 @@
 terminal_pop(model, state_list)
 }
 \arguments{
-\item{model}{dat_long format}
+\item{model}{dat_long class}
 
 \item{state_list}{Groups of (usually) terminal nodes; List of vectors}
 }

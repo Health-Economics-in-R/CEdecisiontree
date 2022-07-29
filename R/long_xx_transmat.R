@@ -2,9 +2,9 @@
 #' Long format to transition matrix
 #'
 #' @param dat array of from, to, prob, vals
-#' @param val_col default prob
+#' @param val_col Name of value column; default prob (string)
 #'
-#' @return transition matrix
+#' @return Transition matrix
 #' @import dplyr
 #' @importFrom reshape2 dcast
 #' @importFrom stats setNames

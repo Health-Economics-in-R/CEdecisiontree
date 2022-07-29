@@ -4,10 +4,10 @@
 \alias{fill_complementary_probs}
 \title{Fill Complementary Probabilities}
 \usage{
-fill_complementary_probs(dat_tree)
+fill_complementary_probs(dat_long)
 }
 \arguments{
-\item{dat_tree}{Long format tree object}
+\item{dat_long}{Long format data frame with from, to, prob, vals columns.}
 }
 \value{
 Long format tree object

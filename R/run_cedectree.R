@@ -3,7 +3,7 @@
 #'
 #' Wrapper for `dectree()` for both costs and health value.
 #'
-#' @param tree_dat Decision tree data in `dat_long` format
+#' @template args-dat_long
 #' @param label_probs_distns Probability distribution names
 #' @param label_costs_distns Cost distribution names
 #' @param label_health_distns Health value distribution names
@@ -14,7 +14,7 @@
 #' @return List of cost, health `dectree()` output
 #' @export
 #'
-run_cedectree <- function(tree_dat,
+run_cedectree <- function(dat_long,
                           label_probs_distns = NULL,
                           label_costs_distns = NULL,
                           label_health_distns = NULL,
@@ -22,7 +22,7 @@ run_cedectree <- function(tree_dat,
                           n = 100) {
 
   cost <-
-    tree_dat %>%
+    dat_long %>%
     rename(vals = cost) %>%
     select(!contains("health")) %>%
     dectree(label_probs_distns,
@@ -31,7 +31,7 @@ run_cedectree <- function(tree_dat,
             n = n)
 
   health <-
-    tree_dat %>%
+    dat_long %>%
     rename(vals = health) %>%
     select(!contains("cost")) %>%
     dectree(label_probs_distns,

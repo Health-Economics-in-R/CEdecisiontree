@@ -5,7 +5,7 @@
 #' This is useful to then provide starting state
 #' populations to a Markov model.
 #'
-#' @param model dat_long format
+#' @param model dat_long class
 #' @param state_list Groups of (usually) terminal nodes; List of vectors
 #'
 #' @return Vector of probabilities

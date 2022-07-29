@@ -13,12 +13,16 @@ insert_to_costmat(dat, mat)
 insert_to_probmat(dat, mat)
 }
 \arguments{
-\item{dat}{long from-to-vals array. Either cost or prob.}
+\item{dat}{Long from-to-vals array. Either cost or prob.}
 
-\item{mat}{transition matrix}
+\item{mat}{Transition matrix}
 }
 \value{
 matrix
+
+transition matrix
+
+Probability matrix
 }
 \description{
 Insert values into a transition matrix

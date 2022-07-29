@@ -9,10 +9,10 @@ long_to_transmat(dat, val_col = "prob")
 \arguments{
 \item{dat}{array of from, to, prob, vals}
 
-\item{val_col}{default prob}
+\item{val_col}{Name of value column; default prob (string)}
 }
 \value{
-transition matrix
+Transition matrix
 }
 \description{
 Long format to transition matrix

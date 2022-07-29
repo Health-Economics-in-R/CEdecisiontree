@@ -3,7 +3,7 @@
 #'
 #' Create tree children list by parents from a transition matrix.
 #'
-#' @param transmat from-to matrix with \code{NA} for missing values.
+#' @template args-transmat
 #'
 #' @return list
 #' @export
@@ -12,7 +12,7 @@
 #'
 #' transmat <-
 #'   list(prob = matrix(data = c(NA, 0.5, 0.5), nrow = 1),
-#'          vals = matrix(data = c(NA, 1, 2), nrow = 1)
+#'        vals = matrix(data = c(NA, 1, 2), nrow = 1)
 #'        )
 #' transmat_to_child_list(transmat$prob)
 #'

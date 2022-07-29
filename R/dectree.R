@@ -1,9 +1,9 @@
 
-#' Decision Tree
+#' Decision tree estimation
 #'
 #' Single edge value (e.g. cost or QALY) wrapper.
 #'
-#' @param tree_dat Decision tree data in `dat_long` format
+#' @template args-dat_long
 #' @param label_probs_distns Probability distribution names
 #' @param label_vals_distns Value distribution names
 #' @param state_list State list sets, usually terminal nodes
@@ -21,7 +21,7 @@
 #' library(purrr)
 #' library(tibble)
 #'
-#' tree_dat <-
+#' dat_long <-
 #'  tribble(
 #'    ~from, ~to, ~vals, ~prob,
 #'    1,  2,   10,   0.7,
@@ -31,10 +31,10 @@
 #'    3,  6,  100,   0.9,
 #'    3,  7,   NA,   0.1)
 #'
-#' dectree(tree_dat,
+#' dectree(dat_long,
 #'    state_list = list(all = c(4,5,6,7)))
 #'
-dectree <- function(tree_dat,
+dectree <- function(dat_long,
                     label_probs_distns = NULL,
                     label_vals_distns = NULL,
                     state_list = NULL,
@@ -42,16 +42,16 @@ dectree <- function(tree_dat,
                     n = 100) {
 
   if (!is.na(vals_col))
-    names(tree_dat)[names(tree_dat) == vals_col] <- "vals"
+    names(dat_long)[names(dat_long) == vals_col] <- "vals"
 
   # expected values
   ev_point <-
-    define_model(dat_long = tree_dat) |>
+    define_model(dat_long = dat_long) |>
     dectree_expected_values()
 
   # pathway joint probabilities
   term_pop_point <-
-    define_model(dat_long = tree_dat,
+    define_model(dat_long = dat_long,
                  fill_edges = FALSE) |>
     terminal_pop(state_list)
 
@@ -69,8 +69,8 @@ dectree <- function(tree_dat,
     name_vals <- intersect(names(label_vals_distns),
                            c("name.cost", "name.health"))
 
-    tree_dat_sa <-
-      tree_dat |>
+    dat_long_sa <-
+      dat_long |>
       as_tibble() |>
       select(-.data$prob, -.data$vals) |>
       dplyr::left_join(label_probs_distns,
@@ -86,10 +86,10 @@ dectree <- function(tree_dat,
         define_model(
           dat_long =
             data.frame(
-              from = tree_dat_sa$from,
-              to   = tree_dat_sa$to,
-              prob = map_dbl(tree_dat_sa$prob, ~sample_distributions),
-              vals = map_dbl(tree_dat_sa$vals, ~sample_distributions)),
+              from = dat_long_sa$from,
+              to   = dat_long_sa$to,
+              prob = map_dbl(dat_long_sa$prob, ~sample_distributions),
+              vals = map_dbl(dat_long_sa$vals, ~sample_distributions)),
           fill_probs = TRUE,
           fill_edges = FALSE)
     }

@@ -1,5 +1,5 @@
 
-#' create_ce_tree_df
+#' Create cost-effectiveness decision tree data frame input
 #'
 #' Using look up table, rather than separate lists,
 #' of values and labels.

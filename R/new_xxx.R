@@ -7,7 +7,7 @@ NULL
 #' New transition matrix
 #' @rdname new_models
 #'
-#' @param transmat Transition matrix
+#' @template args-transmat
 #' @param ... Additional arguments
 #' @export
 #'
@@ -27,7 +27,7 @@ new_transmat <- function(transmat, ...) {
 #' New tree data
 #' @rdname new_models
 #'
-#' @param tree_dat Tree dataframe
+#' @template args-tree_dat
 #' @param ... Additional arguments
 #' @export
 #'
@@ -52,7 +52,7 @@ new_tree_dat <- function(tree_dat, ...) {
 #' New long data
 #' @rdname new_models
 #'
-#' @param dat_long Long format tree data
+#' @template args-dat_long
 #' @param fill_edges If need missing edges to connect to a sink state; logical
 #' @param fill_probs Fill in missing probabilities; logical
 #'

@@ -14,13 +14,13 @@ new_tree_dat(tree_dat, ...)
 new_dat_long(dat_long, fill_edges = TRUE, fill_probs = FALSE)
 }
 \arguments{
-\item{transmat}{Transition matrix}
+\item{transmat}{Transition probability matrix. Rows are from nodes and columns are to nodes.}
 
 \item{...}{Additional arguments}
 
-\item{tree_dat}{Tree dataframe}
+\item{tree_dat}{Hierarchical tree structure of parents and children in a list of vectors with integer values.}
 
-\item{dat_long}{Long format tree data}
+\item{dat_long}{Long format data frame with from, to, prob, vals columns.}
 
 \item{fill_edges}{If need missing edges to connect to a sink state; logical}
 

@@ -28,6 +28,7 @@ trans_binarytree <- function(names,
     if (length(names) != depth)
       stop("incorrect length of \"names\" argument")
 
-  dimnames(tmat) <- list(from = seq_len(depth), to = seq_len(2*depth + 1))
+  dimnames(tmat) <- list(from = seq_len(depth),
+                         to = seq_len(2*depth + 1))
   return(tmat)
 }
