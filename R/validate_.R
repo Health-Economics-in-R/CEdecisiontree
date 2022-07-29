@@ -5,6 +5,7 @@ NULL
 
 
 #' @rdname validation
+#' @param transmat Transition probability matrix
 #' @importFrom assertthat assert_that
 #' @export
 #'
@@ -25,6 +26,7 @@ validate_transmat <- function(transmat) {
 
 
 #' @rdname validation
+#' @param tree_dat Tree data
 #' @export
 #'
 validate_tree_dat <- function(tree_dat) {
@@ -51,6 +53,7 @@ validate_tree_dat <- function(tree_dat) {
 
 
 #' @rdname validation
+#' @param dat_long Long format data
 #' @export
 #'
 validate_dat_long <- function(dat_long) {

@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 
 Deterministic or scenario sensitivity analysis is a common part of any cost-effectiveness analysis [@Briggs2012].
 Here we will carry this out for a simple decision tree.
-This involves explicity specifying values for particular branch probability and/or values and calculating the total expected value.
+This involves explicitly specifying values for particular branch probability and/or values and calculating the total expected value.
 
 ## Example
 
@@ -55,7 +55,7 @@ c_grid <-
 c_grid
 ```
 
-Then define the decision tree structure.
+Then define the decision tree structure as just a basic binary tree.
 
 ```{r}
 child <- list("1" = c(2, 3),
@@ -84,10 +84,10 @@ for (i in seq_along(c_grid)) {
 
 This results in a list of trees.
 ```{r}
-str(tree_dat_sa, 1)
+tree_dat_sa[[1]]
 ```
 
-Now it is straightforward to map over each of these trees to obtain the total expected values.
+Now, it is straightforward to map over each of these trees to obtain the total expected values.
 
 ```{r}
 res <- map_dbl(tree_dat_sa, dectree_expected_values)
@@ -102,8 +102,8 @@ By specifying the output data as a model frame it is handled appropriately.
 
 ```{r warning=FALSE, message=FALSE}
 library(ceplot)
-library(magrittr)
 library(reshape2)
+library(magrittr)
 library(plyr)
 library(purrr)
 library(dplyr)
@@ -114,8 +114,9 @@ sa_dat <- as.data.frame(cbind(t(c_grid), res))
 sa_model_dat <- model.frame(formula = res ~ c1 + c2 + c3,
                             data = sa_dat)
 
-sa_model_dat %>%
-  s_analysis_to_tornado_plot_data %>%
-  ggplot_tornado() 
+##TODO: ceplot package build error
+# sa_model_dat %>%
+#   ceplot::create_tornado_data() %>%
+#   ceplot::ggplot_tornado() 
 ```
 

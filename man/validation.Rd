@@ -13,6 +13,13 @@ validate_tree_dat(tree_dat)
 
 validate_dat_long(dat_long)
 }
+\arguments{
+\item{transmat}{Transition probability matrix}
+
+\item{tree_dat}{Tree data}
+
+\item{dat_long}{Long format data}
+}
 \description{
 New Model Validation
 }

@@ -2,7 +2,7 @@
 title: "Building a decision tree from components"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{build_tree}
+  %\VignetteIndexEntry{Building a decision tree from components}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -113,7 +113,7 @@ health_label_branch <-
 
 Finally, we can pull it all together and create a single decision tree long format data frame.
 
-```{r create_ce_tree_long_df, message=FALSE, warning=FALSE}
+```{r create_ce_tree_long_df, message=FALSE, warning=FALSE, comment=FALSE}
 
 tree_dat <-
   create_ce_tree_long_df(
@@ -134,10 +134,10 @@ Alternatively, we could define the label look up table and the values look up ta
 ```{r}
 library(reshape2)
 
-label_branch_tab <- read.csv(here::here("data/label-branch table.csv"))
+label_branch_tab <- read.csv(here::here("data-raw/label-branch table.csv"))
 label_branch_tab
 
-label_val_tab <- read.csv(here::here("data/label-val table.csv"))
+label_val_tab <- read.csv(here::here("data-raw/label-val table.csv"))
 label_val_tab
 
 tree_dat2 <-

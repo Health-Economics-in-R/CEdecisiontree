@@ -26,10 +26,10 @@
 #'
 fill_complementary_probs <- function(dat_tree) {
 
-  dat_tree %>%
-    group_by(from) %>%
+  dat_tree |>
+    group_by(.data$from) |>
     mutate(prob = ifelse(is.na(prob),
                          1 - sum(prob, na.rm = TRUE),
-                         prob)) %>%
+                         prob)) |>
     ungroup()
 }

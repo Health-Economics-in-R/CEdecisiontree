@@ -18,6 +18,7 @@
 #'
 #' @param model Object of \code{define_model()} consisting of output of type
 #'             \code{tree_dat}, \code{transmat} or \code{dat_long}
+#' @param ... Additional parameters
 #'
 #' @return Expected value at each node
 #' @seealso \code{\link{define_model}}
@@ -34,36 +35,34 @@
 #'
 #' dectree_expected_values(model = my_model)
 #'
-dectree_expected_values <- function(model)
+dectree_expected_values <- function(model, ...)
   UseMethod("dectree_expected_values", model)
 
 
-#' dectree_expected_values.tree_dat
+#' @rdname dectree_expected_values
 #'
 #' @export
 #'
-dectree_expected_values.tree_dat <- function(model) {
+dectree_expected_values.tree_dat <- function(model, ...) {
 
   dectree_expected_recursive(names(model$child)[1],
                              model$child,
                              model$dat)
 }
 
-#' dectree_expected_values.transmat
-#'
+#' @rdname dectree_expected_values
 #' @export
 #'
-dectree_expected_values.transmat <- function(model){
+dectree_expected_values.transmat <- function(model, ...){
 
   dectree_expected_default(model$vals,
                            model$prob)
 }
 
-#' dectree_expected_values.dat_long
-#'
+#' @rdname dectree_expected_values
 #' @export
 #'
-dectree_expected_values.dat_long <- function(model) {
+dectree_expected_values.dat_long <- function(model, ...) {
 
   val_name <-
     names(model)[!names(model) %in% c("from", "to", "prob")][1]

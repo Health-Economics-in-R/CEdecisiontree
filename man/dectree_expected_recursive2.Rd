@@ -11,7 +11,7 @@ dectree_expected_recursive2(node, tree, dat)
 
 \item{tree}{List of children by parents}
 
-\item{vals}{Node labels, branch probabililities and value; dataframe}
+\item{dat}{Node labels, branch probabilities and value; data frame}
 }
 \value{
 Expected value at root node

@@ -16,6 +16,8 @@ new_dat_long(dat_long, fill_edges = TRUE, fill_probs = FALSE)
 \arguments{
 \item{transmat}{Transition matrix}
 
+\item{...}{Additional arguments}
+
 \item{tree_dat}{Tree dataframe}
 
 \item{dat_long}{Long format tree data}
@@ -27,9 +29,9 @@ new_dat_long(dat_long, fill_edges = TRUE, fill_probs = FALSE)
 \description{
 New Model Constructors
 
-new_transmat
+New transition matrix
 
-new_tree_dat
+New tree data
 
-new_dat_long
+New long data
 }

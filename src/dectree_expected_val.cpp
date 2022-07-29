@@ -4,6 +4,8 @@ using namespace Rcpp;
 //' Cdectree_expected_values
 //'
 //' @export
+//' @param vals Values
+//' @param p Probabilities
 // [[Rcpp::export]]
 NumericVector Cdectree_expected_values(NumericMatrix vals,
                                        NumericMatrix p){

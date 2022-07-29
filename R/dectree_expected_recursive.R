@@ -3,7 +3,7 @@
 #'
 #' @param node Node at which total expected value is to be calculate at
 #' @param tree List of children by parents
-#' @param vals Node labels, branch probabililities and value; dataframe
+#' @param dat Node labels, branch probabilities and value; data frame
 #'
 #' @return Expected value at root node
 #' @export

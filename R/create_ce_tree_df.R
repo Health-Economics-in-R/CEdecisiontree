@@ -10,6 +10,8 @@
 #' @param tree_struc List of parent child branches
 #'
 #' @return tibble in long format
+#' @importFrom stats setNames
+#' @import dplyr
 #' @export
 #'
 create_ce_tree_df <- function(label_branch_tab,

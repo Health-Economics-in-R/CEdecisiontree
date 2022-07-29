@@ -19,6 +19,7 @@
 #'         type (e.g. cost or QALY). Use `run_cedectree()` for
 #'         cost and health.
 #' @import dplyr reshape2
+#' @importFrom tibble as_tibble
 #' @export
 #' @seealso [CEdecisiontree::define_model()]
 #'          [CEdecisiontree::dectree()]

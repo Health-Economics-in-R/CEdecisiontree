@@ -13,18 +13,17 @@ RoxygenNote: 7.2.1
 Imports:
     assertthat,
     dplyr,
-    heemod,
     purrr,
-    readr,
     Rcpp,
     reshape2,
-    tibble,
-    tidyr,
+    tibble
 Suggests:
     covr,
     knitr,
+    readr,
     rmarkdown,
     testthat,
+    tidyr
 VignetteBuilder: knitr
 LinkingTo: Rcpp
 BugReports: https://github.com/Health-Economics-in-R/CEdecisiontree/issues

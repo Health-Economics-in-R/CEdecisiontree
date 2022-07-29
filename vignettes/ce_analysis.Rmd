@@ -2,7 +2,7 @@
 title: "A simple cost-effectiveness analysis"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{ce_analysis}
+  %\VignetteIndexEntry{A simple cost-effectiveness analysis}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

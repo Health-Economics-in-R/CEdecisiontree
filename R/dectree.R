@@ -14,6 +14,7 @@
 #'         joint probabilities at terminal state set
 #'         and PSA samples of these if distributions provided.
 #' @import purrr
+#' @import dplyr
 #' @export
 #'
 #' @examples
@@ -45,15 +46,13 @@ dectree <- function(tree_dat,
 
   # expected values
   ev_point <-
-    tree_dat %>%
-    define_model(dat_long = .) %>%
+    define_model(dat_long = tree_dat) |>
     dectree_expected_values()
 
   # pathway joint probabilities
   term_pop_point <-
-    tree_dat %>%
-    define_model(dat_long = .,
-                 fill_edges = FALSE) %>%
+    define_model(dat_long = tree_dat,
+                 fill_edges = FALSE) |>
     terminal_pop(state_list)
 
   point_params <-
@@ -71,11 +70,11 @@ dectree <- function(tree_dat,
                            c("name.cost", "name.health"))
 
     tree_dat_sa <-
-      tree_dat %>%
-      as_tibble() %>%
-      select(-prob, -vals) %>%
+      tree_dat |>
+      as_tibble() |>
+      select(-.data$prob, -.data$vals) |>
       dplyr::left_join(label_probs_distns,
-                       by = "name.prob") %>%
+                       by = "name.prob") |>
       dplyr::left_join(label_vals_distns,
                        by = name_vals)
 
@@ -89,10 +88,8 @@ dectree <- function(tree_dat,
             data.frame(
               from = tree_dat_sa$from,
               to   = tree_dat_sa$to,
-              prob = unlist(
-                lapply(tree_dat_sa$prob, sample_distributions)),
-              vals = unlist(
-                lapply(tree_dat_sa$vals, sample_distributions))),
+              prob = map_dbl(tree_dat_sa$prob, ~sample_distributions),
+              vals = map_dbl(tree_dat_sa$vals, ~sample_distributions)),
           fill_probs = TRUE,
           fill_edges = FALSE)
     }

@@ -5,10 +5,12 @@
 #' @param val_col default prob
 #'
 #' @return transition matrix
+#' @import dplyr
+#' @importFrom reshape2 dcast
+#' @importFrom stats setNames
 #' @export
 #'
 #' @examples
-#'
 #' dat <- data.frame(from = c(NA,1, 1),
 #'                   to = c(1, 2, 3),
 #'                   prob = c(NA, 0.5, 0.5),
@@ -29,15 +31,15 @@ long_to_transmat <- function(dat,
              names(dat))
 
   dat <-
-    dat %>%
-    rbind(missing_rows) %>%
+    dat |>
+    rbind(missing_rows) |>
     dplyr::arrange(from)
 
   suppressMessages(
     reshape2::dcast(formula = from ~ to,
-                    data = dat)[, -1] %>%  # remove from column
-      data.frame("1" = NA, .,
-                 check.names = FALSE))
+                    data = dat) |>
+      select(-.data$from) |>
+      mutate("1" = NA, .before = "2"))
 }
 
 
