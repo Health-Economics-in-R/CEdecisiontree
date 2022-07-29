@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Build decision tree from components • CEdecisiontree</title>
+<title>Building a decision tree from components • CEdecisiontree</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Build decision tree from components">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Building a decision tree from components">
 <meta property="og:description" content="CEdecisiontree">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">CEdecisiontree</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
@@ -47,7 +49,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -59,15 +61,20 @@
     <li>
       <a href="../articles/other-input-formats.html">Using other input formats</a>
     </li>
-    <li class="divider">
     <li>
+      <a href="../articles/building-a-decision-tree-from-components.html">Building a decision tree from components</a>
+    </li>
+    <li class="divider">
+    </li>
+<li>
       <a href="../articles/probability-sensitivity-analysis.html">Probability Sensitivity Analysis (PSA)</a>
     </li>
     <li>
       <a href="../articles/scenario-sensitivity-analysis.html">Scenario Sensitivity Analysis</a>
     </li>
     <li class="divider">
-    <li>
+    </li>
+<li>
       <a href="../articles/comparison-with-other-packages.html">Comparison with other packages</a>
     </li>
   </ul>
@@ -78,8 +85,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Health-Economics-in-R/CEdecisiontree/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/Health-Economics-in-R/CEdecisiontree/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -93,103 +100,250 @@
 
       
 
-      </header><script src="build_tree_files/header-attrs-2.5/header-attrs.js"></script><link href="build_tree_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="build_tree_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Build decision tree from components</h1>
+      <h1 data-toc-skip>Building a decision tree from components</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Health-Economics-in-R/CEdecisiontree/blob/master/vignettes/build_tree.Rmd"><code>vignettes/build_tree.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Health-Economics-in-R/CEdecisiontree/blob/HEAD/vignettes/build_tree.Rmd" class="external-link"><code>vignettes/build_tree.Rmd</code></a></small>
       <div class="hidden name"><code>build_tree.Rmd</code></div>
 
     </div>
 
     
     
-<div id="introduction" class="section level2">
-<h2 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h2>
-<p>For small decision trees it is simple to directly write down the path through the tree. For larger trees this may become unwieldy and error prone. We can take advantage of some of the characteristics:</p>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<p>For small decision trees it is simple to directly write down
+structure of the tree and its values.</p>
+<p>However, for larger trees this may become unwieldy and error prone.
+We can take advantage of some of the tree characteristics though:</p>
 <ul>
-<li><p>Sections of the tree are repeated</p></li>
-<li><p>A unit cost or health measure is used on multiple edges</p></li>
-<li><p>Multiple trees use the same cost and health values</p></li>
-<li><p>Tree structure and labelling remain the same but values assigned change e.g. in sensitivity analysis or alternative interventions</p></li>
+<li><p>Sections of the tree may be repeated</p></li>
+<li><p>A particular unit cost or health measure may be used on multiple
+edges</p></li>
+<li><p>Multiple trees may use the same cost and health values</p></li>
+<li><p>Tree structure and labeling may remain the same but values
+assigned change e.g. in sensitivity analysis or alternative
+interventions</p></li>
 </ul>
-<p>Thus, we separate the structure of the tree, the labelling of edges and the values assigned to those labels. In this way we have flexibility in modify any one of these and better adhere to the DRY principle and the benefits it offers.</p>
+<p>Thus, we can separate the <em>structure</em> of the tree, the
+<em>labeling</em> of edges and the <em>values</em> assigned to those
+labels. In this way we have flexibility in modify any one of these and
+better adhere to the DRY principle and the benefits it offers.</p>
+<p>For instance, we can think of the value assignment like a relational
+table with key-value pairs where the key is <code>Label</code>. For the
+decision tree tree with cost values, edges are labeled as follows:</p>
+<table class="table">
+<thead><tr class="header">
+<th>Label</th>
+<th>From node</th>
+<th>To node</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>vaccinate</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>disease</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>disease</td>
+<td>3</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p>and joined with the values table:</p>
+<table class="table">
+<thead><tr class="header">
+<th>Label</th>
+<th>Cost</th>
+<th>Prob</th>
+<th>Health</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>vaccinate</td>
+<td>10</td>
+<td>0.7</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>vacc_disease</td>
+<td>-</td>
+<td>0.1</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>disease</td>
+<td>100</td>
+<td>0.9</td>
+<td>0.5</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">CEdecisiontree</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></pre></div>
-<p>First, we define the structure of the tree without any additional information.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="va">tree_struc</span> <span class="op">&lt;-</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-    <span class="st">'1'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>,
-    <span class="st">'2'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span>,
-    <span class="st">'3'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6</span>,<span class="fl">7</span><span class="op">)</span><span class="op">)</span></pre></div>
-<p>Now we can add labels and values. Define the set of cost, health values and probabilities, independent of the tree.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="va">label_cost</span> <span class="op">&lt;-</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-    <span class="st">"vaccinate"</span> <span class="op">=</span> <span class="fl">10</span>,
-    <span class="st">"disease"</span> <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
-
-<span class="va">label_probs</span> <span class="op">&lt;-</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-    <span class="st">"vaccinate"</span> <span class="op">=</span> <span class="fl">0.7</span>,
-    <span class="st">"vacc_disease"</span> <span class="op">=</span> <span class="fl">0.1</span>,
-    <span class="st">"disease"</span> <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span>
-
-<span class="va">label_health</span> <span class="op">&lt;-</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-    <span class="st">"disease"</span> <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></pre></div>
-<p>Next, assign labels to particular branches.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="va">cost_label_branch</span> <span class="op">&lt;-</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind.data.frame</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"vaccinate"</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"disease"</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"disease"</span>, <span class="fl">3</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"name"</span>, <span class="st">"from"</span>, <span class="st">"to"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">prob_label_branch</span> <span class="op">&lt;-</span> 
-    <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind.data.frame</a></span><span class="op">(</span>
-      <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"vaccinate"</span>, <span class="fl">1</span> , <span class="fl">2</span><span class="op">)</span>,
-      <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"vacc_disease"</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>,
-      <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"disease"</span>, <span class="fl">3</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"name"</span>, <span class="st">"from"</span>, <span class="st">"to"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">health_label_branch</span> <span class="op">&lt;-</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind.data.frame</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"disease"</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"disease"</span>, <span class="fl">3</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"name"</span>, <span class="st">"from"</span>, <span class="st">"to"</span><span class="op">)</span><span class="op">)</span></pre></div>
-<p>Finally, we can pull it all together and create a single decision tree long format data frame.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-
-<span class="va">tree_dat</span> <span class="op">&lt;-</span>
-  <span class="fu"><a href="../reference/create_ce_tree_long_df.html">create_ce_tree_long_df</a></span><span class="op">(</span>
-    tree_list <span class="op">=</span> <span class="va">tree_struc</span>,
-    label_probs <span class="op">=</span> <span class="va">label_probs</span>,
-    label_costs <span class="op">=</span> <span class="va">label_cost</span>,
-    label_health <span class="op">=</span> <span class="va">label_health</span>,
-    pname_from_to <span class="op">=</span> <span class="va">prob_label_branch</span>,
-    cname_from_to <span class="op">=</span> <span class="va">cost_label_branch</span>,
-    hname_from_to <span class="op">=</span> <span class="va">health_label_branch</span><span class="op">)</span>
-
-<span class="va">tree_dat</span>
-<span class="co">#&gt;   from to name.cost cost    name.prob prob name.health health</span>
-<span class="co">#&gt; 1    1  2 vaccinate   10    vaccinate  0.7        &lt;NA&gt;     NA</span>
-<span class="co">#&gt; 2    1  3      &lt;NA&gt;   NA         &lt;NA&gt;  0.3        &lt;NA&gt;     NA</span>
-<span class="co">#&gt; 3    2  4   disease  100 vacc_disease  0.1     disease    0.5</span>
-<span class="co">#&gt; 4    2  5      &lt;NA&gt;   NA         &lt;NA&gt;  0.9        &lt;NA&gt;     NA</span>
-<span class="co">#&gt; 5    3  6   disease  100      disease  0.9     disease    0.5</span>
-<span class="co">#&gt; 6    3  7      &lt;NA&gt;   NA         &lt;NA&gt;  0.1        &lt;NA&gt;     NA</span></pre></div>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
+<p>Let us demonstrate this approach using a simple tree.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">CEdecisiontree</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre></div>
+<p>First, we define the structure of the tree in list format without any
+additional information. Let’s make a two-step binary tree.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tree_struc</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    <span class="st">'1'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>,</span>
+<span>    <span class="st">'2'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span>,</span>
+<span>    <span class="st">'3'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6</span>,<span class="fl">7</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>Now we can add labels and values to this tree. Define the set of
+cost, health values and probabilities, independent of the tree
+structure.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">label_cost</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    <span class="st">"vaccinate"</span> <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>    <span class="st">"disease"</span> <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">label_probs</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    <span class="st">"vaccinate"</span> <span class="op">=</span> <span class="fl">0.7</span>,</span>
+<span>    <span class="st">"vacc_disease"</span> <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>    <span class="st">"disease"</span> <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">label_health</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    <span class="st">"disease"</span> <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
+<p>Next, assign cost, probability and health labels to particular
+branches.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cost_label_branch</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html" class="external-link">tribble</a></span><span class="op">(</span><span class="op">~</span><span class="va">name</span>,      <span class="op">~</span><span class="va">from</span>, <span class="op">~</span><span class="va">to</span>,</span>
+<span>          <span class="st">"vaccinate"</span>, <span class="fl">1</span>,    <span class="fl">2</span>,</span>
+<span>          <span class="st">"disease"</span>,   <span class="fl">2</span>,    <span class="fl">4</span>,</span>
+<span>          <span class="st">"disease"</span>,   <span class="fl">3</span>,    <span class="fl">6</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">prob_label_branch</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html" class="external-link">tribble</a></span><span class="op">(</span><span class="op">~</span><span class="va">name</span>,      <span class="op">~</span><span class="va">from</span>, <span class="op">~</span><span class="va">to</span>,</span>
+<span>          <span class="st">"vaccinate"</span>,    <span class="fl">1</span>,  <span class="fl">2</span>,</span>
+<span>          <span class="st">"vacc_disease"</span>, <span class="fl">2</span>,  <span class="fl">4</span>,</span>
+<span>          <span class="st">"disease"</span>,      <span class="fl">3</span>,  <span class="fl">6</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">health_label_branch</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html" class="external-link">tribble</a></span><span class="op">(</span><span class="op">~</span><span class="va">name</span>,     <span class="op">~</span><span class="va">from</span>, <span class="op">~</span><span class="va">to</span>,</span>
+<span>          <span class="st">"disease"</span>, <span class="fl">2</span>,     <span class="fl">4</span>,</span>
+<span>          <span class="st">"disease"</span>, <span class="fl">3</span>,     <span class="fl">6</span><span class="op">)</span></span></code></pre></div>
+<p>Finally, we can pull it all together and create a single decision
+tree long format data frame.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="ot">&lt;-</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">create_ce_tree_long_df</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">tree_list =</span> tree_struc,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">label_probs =</span> label_probs,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">label_costs =</span> label_cost,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">label_health =</span> label_health,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">pname_from_to =</span> prob_label_branch,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">cname_from_to =</span> cost_label_branch,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">hname_from_to =</span> health_label_branch)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>tree_dat</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span>   from to name.cost cost    name.prob prob name.health health</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="dv">1</span>    <span class="dv">1</span>  <span class="dv">2</span> vaccinate   <span class="dv">10</span>    vaccinate  <span class="fl">0.7</span>        <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>     <span class="cn">NA</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="dv">2</span>    <span class="dv">1</span>  <span class="dv">3</span>      <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>   <span class="cn">NA</span>         <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>  <span class="fl">0.3</span>        <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>     <span class="cn">NA</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="dv">3</span>    <span class="dv">2</span>  <span class="dv">4</span>   disease  <span class="dv">100</span> vacc_disease  <span class="fl">0.1</span>     disease    <span class="fl">0.5</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="dv">4</span>    <span class="dv">2</span>  <span class="dv">5</span>      <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>   <span class="cn">NA</span>         <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>  <span class="fl">0.9</span>        <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>     <span class="cn">NA</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="dv">5</span>    <span class="dv">3</span>  <span class="dv">6</span>   disease  <span class="dv">100</span>      disease  <span class="fl">0.9</span>     disease    <span class="fl">0.5</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="dv">6</span>    <span class="dv">3</span>  <span class="dv">7</span>      <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>   <span class="cn">NA</span>         <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>  <span class="fl">0.1</span>        <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>     <span class="cn">NA</span></span></code></pre></div>
+<p>The above example may seem a little over-elaborate. This demonstrates
+an example where all of the components are defined separately and then
+combined to obtain a single object with all the input values.
+Alternatively, we could define the label look up table and the values
+look up table outside of R and simply read this in and join to obtain an
+equivalent object.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/reshape" class="external-link">reshape2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">label_branch_tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"data-raw/label-branch table.csv"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">label_branch_tab</span></span>
+<span><span class="co">#&gt;     unit        label from to</span></span>
+<span><span class="co">#&gt; 1   cost    vaccinate    1  2</span></span>
+<span><span class="co">#&gt; 2   cost      disease    2  4</span></span>
+<span><span class="co">#&gt; 3   cost      disease    3  6</span></span>
+<span><span class="co">#&gt; 4   prob    vaccinate    1  2</span></span>
+<span><span class="co">#&gt; 5   prob vacc_disease    2  4</span></span>
+<span><span class="co">#&gt; 6   prob      disease    3  6</span></span>
+<span><span class="co">#&gt; 7 health      disease    2  4</span></span>
+<span><span class="co">#&gt; 8 health      disease    3  6</span></span>
+<span></span>
+<span><span class="va">label_val_tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"data-raw/label-val table.csv"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">label_val_tab</span></span>
+<span><span class="co">#&gt;     unit        label   val</span></span>
+<span><span class="co">#&gt; 1   cost    vaccinate  10.0</span></span>
+<span><span class="co">#&gt; 2   cost      disease 100.0</span></span>
+<span><span class="co">#&gt; 3   prob    vaccinate   0.7</span></span>
+<span><span class="co">#&gt; 4   prob vacc_disease   0.1</span></span>
+<span><span class="co">#&gt; 5   prob      disease   0.9</span></span>
+<span><span class="co">#&gt; 6 health      disease   0.5</span></span>
+<span></span>
+<span><span class="va">tree_dat2</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="../reference/create_ce_tree_df.html">create_ce_tree_df</a></span><span class="op">(</span><span class="va">label_branch_tab</span>,</span>
+<span>                    <span class="va">label_val_tab</span>,</span>
+<span>                    <span class="va">tree_struc</span><span class="op">)</span></span>
+<span><span class="va">tree_dat2</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 5</span></span></span>
+<span><span class="co">#&gt;   from     to  cost health  prob</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1         2    10   <span style="color: #BB0000;">NA</span>     0.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 1         3    <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>     0.3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2         4   100    0.5   0.1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2         5    <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>     0.9</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 3         6   100    0.5   0.9</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 3         7    <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>     0.1</span></span></code></pre></div>
+<p>This data frame can now be used in the main cost-effectiveness
+analysis.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tree_costs</span> <span class="op">&lt;-</span> <span class="va">tree_dat2</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">tree_costs</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">tree_costs</span><span class="op">)</span> <span class="op">==</span> <span class="st">"cost"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"vals"</span></span>
+<span></span>
+<span><span class="va">treemod</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/define_model.html">define_model</a></span><span class="op">(</span>dat_long <span class="op">=</span> <span class="va">tree_costs</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Removing column(s) health</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/dectree_expected_values.html">dectree_expected_values</a></span><span class="op">(</span>model <span class="op">=</span> <span class="va">treemod</span><span class="op">)</span></span>
+<span><span class="co">#&gt; vals used for calculation.</span></span>
+<span><span class="co">#&gt;   1   2   3   4   5   6   7   8 </span></span>
+<span><span class="co">#&gt;  41  20  90 100   0 100   0   0</span></span></code></pre></div>
+<p>We can run both the cost and health analyses together.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/run_cedectree.html">run_cedectree</a></span><span class="op">(</span><span class="va">tree_dat2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; vals used for calculation.</span></span>
+<span><span class="co">#&gt; vals used for calculation.</span></span>
+<span><span class="co">#&gt; $cost</span></span>
+<span><span class="co">#&gt; $cost$ev_point</span></span>
+<span><span class="co">#&gt;   1   2   3   4   5   6   7   8 </span></span>
+<span><span class="co">#&gt;  41  20  90 100   0 100   0   0 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $cost$term_pop_point</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $health</span></span>
+<span><span class="co">#&gt; $health$ev_point</span></span>
+<span><span class="co">#&gt;    1    2    3    4    5    6    7    8 </span></span>
+<span><span class="co">#&gt; 0.17 0.05 0.45 0.50 0.00 0.50 0.00 0.00 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $health$term_pop_point</span></span>
+<span><span class="co">#&gt; NULL</span></span></code></pre></div>
 </div>
   </div>
 
@@ -204,11 +358,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Nathan Green.</p>
+  <p></p>
+<p>Developed by Nathan Green.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -216,6 +372,8 @@
 
   
 
+
+  
 
   </body>
 </html>

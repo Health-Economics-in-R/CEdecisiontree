@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">CEdecisiontree</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
@@ -47,7 +49,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -59,15 +61,20 @@
     <li>
       <a href="../articles/other-input-formats.html">Using other input formats</a>
     </li>
-    <li class="divider">
     <li>
+      <a href="../articles/building-a-decision-tree-from-components.html">Building a decision tree from components</a>
+    </li>
+    <li class="divider">
+    </li>
+<li>
       <a href="../articles/probability-sensitivity-analysis.html">Probability Sensitivity Analysis (PSA)</a>
     </li>
     <li>
       <a href="../articles/scenario-sensitivity-analysis.html">Scenario Sensitivity Analysis</a>
     </li>
     <li class="divider">
-    <li>
+    </li>
+<li>
       <a href="../articles/comparison-with-other-packages.html">Comparison with other packages</a>
     </li>
   </ul>
@@ -78,8 +85,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Health-Economics-in-R/CEdecisiontree/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/Health-Economics-in-R/CEdecisiontree/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -93,180 +100,191 @@
 
       
 
-      </header><script src="other-input-formats_files/header-attrs-2.5/header-attrs.js"></script><link href="other-input-formats_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="other-input-formats_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Using other input formats</h1>
-                        <h4 class="author">Nathan Green</h4>
+                        <h4 data-toc-skip class="author">Nathan
+Green</h4>
             
-            <h4 class="date">2021-04-03</h4>
+            <h4 data-toc-skip class="date">2022-07-29</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/Health-Economics-in-R/CEdecisiontree/blob/master/vignettes/other-input-formats.Rmd"><code>vignettes/other-input-formats.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Health-Economics-in-R/CEdecisiontree/blob/HEAD/vignettes/other-input-formats.Rmd" class="external-link"><code>vignettes/other-input-formats.Rmd</code></a></small>
       <div class="hidden name"><code>other-input-formats.Rmd</code></div>
 
     </div>
 
     
     
-<p>The main aim of the CEdecisiontree package is to provide a bridge to models that would be otherwise build in Excel. Because of this the transition matrix format for input arguments is the primary format. However, this is not necessarily the easiest to define, manipulate or compute with. Here we give some examples alternative formats.</p>
-<div id="setup" class="section level2">
-<h2 class="hasAnchor">
-<a href="#setup" class="anchor"></a>Setup</h2>
+<p>The main aim of the CEdecisiontree package is to provide a bridge to
+models that would be otherwise build in Excel. Because of this the
+transition matrix format for input arguments is the primary format.
+However, this is not necessarily the easiest to define, manipulate or
+compute with. Here we give some examples alternative formats.</p>
+<div class="section level2">
+<h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
+</h2>
 <p>Quietly load libraries.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">CEdecisiontree</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/reshape">reshape2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">assertthat</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">CEdecisiontree</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/reshape" class="external-link">reshape2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">assertthat</span><span class="op">)</span></span></code></pre></div>
 <p>Load example data from the package.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"cost"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"probs"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"cost"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"probs"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="tree-structure" class="section level2">
-<h2 class="hasAnchor">
-<a href="#tree-structure" class="anchor"></a>Tree structure</h2>
-<p>Generally, we can specify a tree by who the children are for each parent node. This can be more compuationally efficient.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="va">tree</span> <span class="op">&lt;-</span>
- <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"1"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>,
-      <span class="st">"2"</span> <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span>,
-      <span class="st">"3"</span> <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6</span>,<span class="fl">7</span><span class="op">)</span>,
-      <span class="st">"4"</span> <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span>,
-      <span class="st">"5"</span> <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span>,
-      <span class="st">"6"</span> <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span>,
-      <span class="st">"7"</span> <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="va">dat</span> <span class="op">&lt;-</span>
- <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>node <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">7</span>,
-            prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">0.2</span>, <span class="fl">0.8</span>, <span class="fl">0.2</span>, <span class="fl">0.8</span>, <span class="fl">0.2</span>, <span class="fl">0.8</span><span class="op">)</span>,
-            vals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">10</span>,<span class="fl">1</span>,<span class="fl">10</span>,<span class="fl">1</span>,<span class="fl">10</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span>
-<span class="va">tree</span>
-<span class="co">#&gt; $`1`</span>
-<span class="co">#&gt; [1] 2 3</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`2`</span>
-<span class="co">#&gt; [1] 4 5</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`3`</span>
-<span class="co">#&gt; [1] 6 7</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`4`</span>
-<span class="co">#&gt; NULL</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`5`</span>
-<span class="co">#&gt; NULL</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`6`</span>
-<span class="co">#&gt; NULL</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`7`</span>
-<span class="co">#&gt; NULL</span>
-<span class="va">dat</span>
-<span class="co">#&gt;   node prob vals</span>
-<span class="co">#&gt; 1    1   NA    0</span>
-<span class="co">#&gt; 2    2  0.2   10</span>
-<span class="co">#&gt; 3    3  0.8    1</span>
-<span class="co">#&gt; 4    4  0.2   10</span>
-<span class="co">#&gt; 5    5  0.8    1</span>
-<span class="co">#&gt; 6    6  0.2   10</span>
-<span class="co">#&gt; 7    7  0.8    1</span>
-
-<span class="fu"><a href="../reference/dectree_expected_recursive.html">dectree_expected_recursive</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">tree</span>, <span class="va">dat</span><span class="op">)</span>
-<span class="co">#&gt; [1] 5.6</span></pre></div>
-<p>We can obtain the list of children from the probability matrix (or any other structure defining transition matrix).</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="../reference/transmat_to_child_list.html">transmat_to_child_list</a></span><span class="op">(</span><span class="va">probs</span><span class="op">)</span>
-<span class="co">#&gt; $`1`</span>
-<span class="co">#&gt; [1] 2 3</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`2`</span>
-<span class="co">#&gt; [1] 4 5</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`3`</span>
-<span class="co">#&gt; [1] 6 7</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`4`</span>
-<span class="co">#&gt; integer(0)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`5`</span>
-<span class="co">#&gt; integer(0)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`6`</span>
-<span class="co">#&gt; integer(0)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`7`</span>
-<span class="co">#&gt; integer(0)</span></pre></div>
+<div class="section level2">
+<h2 id="tree-structure">Tree structure<a class="anchor" aria-label="anchor" href="#tree-structure"></a>
+</h2>
+<p>Generally, we can specify a tree by who the children are for each
+parent node. This can be more compuationally efficient.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tree</span> <span class="op">&lt;-</span></span>
+<span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"1"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>,</span>
+<span>      <span class="st">"2"</span> <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span>,</span>
+<span>      <span class="st">"3"</span> <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6</span>,<span class="fl">7</span><span class="op">)</span>,</span>
+<span>      <span class="st">"4"</span> <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>      <span class="st">"5"</span> <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>      <span class="st">"6"</span> <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>      <span class="st">"7"</span> <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">dat</span> <span class="op">&lt;-</span></span>
+<span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>node <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">7</span>,</span>
+<span>            prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">0.2</span>, <span class="fl">0.8</span>, <span class="fl">0.2</span>, <span class="fl">0.8</span>, <span class="fl">0.2</span>, <span class="fl">0.8</span><span class="op">)</span>,</span>
+<span>            vals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">10</span>,<span class="fl">1</span>,<span class="fl">10</span>,<span class="fl">1</span>,<span class="fl">10</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">tree</span></span>
+<span><span class="co">#&gt; $`1`</span></span>
+<span><span class="co">#&gt; [1] 2 3</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`2`</span></span>
+<span><span class="co">#&gt; [1] 4 5</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`3`</span></span>
+<span><span class="co">#&gt; [1] 6 7</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`4`</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`5`</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`6`</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`7`</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="va">dat</span></span>
+<span><span class="co">#&gt;   node prob vals</span></span>
+<span><span class="co">#&gt; 1    1   NA    0</span></span>
+<span><span class="co">#&gt; 2    2  0.2   10</span></span>
+<span><span class="co">#&gt; 3    3  0.8    1</span></span>
+<span><span class="co">#&gt; 4    4  0.2   10</span></span>
+<span><span class="co">#&gt; 5    5  0.8    1</span></span>
+<span><span class="co">#&gt; 6    6  0.2   10</span></span>
+<span><span class="co">#&gt; 7    7  0.8    1</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/dectree_expected_recursive.html">dectree_expected_recursive</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">tree</span>, <span class="va">dat</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 5.6</span></span></code></pre></div>
+<p>We can obtain the list of children from the probability matrix (or
+any other structure defining transition matrix).</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/transmat_to_child_list.html">transmat_to_child_list</a></span><span class="op">(</span><span class="va">probs</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $`1`</span></span>
+<span><span class="co">#&gt; [1] 2 3</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`2`</span></span>
+<span><span class="co">#&gt; [1] 4 5</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`3`</span></span>
+<span><span class="co">#&gt; [1] 6 7</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`4`</span></span>
+<span><span class="co">#&gt; integer(0)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`5`</span></span>
+<span><span class="co">#&gt; integer(0)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`6`</span></span>
+<span><span class="co">#&gt; integer(0)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`7`</span></span>
+<span><span class="co">#&gt; integer(0)</span></span></code></pre></div>
 </div>
-<div id="single-long-array" class="section level2">
-<h2 class="hasAnchor">
-<a href="#single-long-array" class="anchor"></a>Single long array</h2>
-<p>If we keep with flat arrays then clearly, as the size of the tree increased the sparse matrices become impractical. We can provide a long format array to address this. Let us transform the wide array used previously to demonstrate the structure and space saving.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="va">probs_long</span> <span class="op">&lt;-</span>
-  <span class="va">probs</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="st">'from'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/reshape2/man/melt.html">melt</a></span><span class="op">(</span>id.vars <span class="op">=</span> <span class="st">"from"</span>,
-       variable.name <span class="op">=</span> <span class="st">'to'</span>,
-       value.name <span class="op">=</span> <span class="st">'prob'</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">to</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">cost_long</span> <span class="op">&lt;-</span>
-  <span class="va">cost</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="st">'from'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/reshape2/man/melt.html">melt</a></span><span class="op">(</span>id.vars <span class="op">=</span> <span class="st">"from"</span>,
-       variable.name <span class="op">=</span> <span class="st">'to'</span>,
-       value.name <span class="op">=</span> <span class="st">'vals'</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">to</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">dat_long</span> <span class="op">&lt;-</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span><span class="op">(</span><span class="va">probs_long</span>,
-        <span class="va">cost_long</span><span class="op">)</span>
-
-<span class="va">dat_long</span>
-<span class="co">#&gt;   from to prob vals</span>
-<span class="co">#&gt; 1    1  2  0.2   10</span>
-<span class="co">#&gt; 2    1  3  0.8    1</span>
-<span class="co">#&gt; 3    2  4  0.2   10</span>
-<span class="co">#&gt; 4    2  5  0.8    1</span>
-<span class="co">#&gt; 5    3  6  0.2   10</span>
-<span class="co">#&gt; 6    3  7  0.8    1</span></pre></div>
-<p>We can use the long array as the input argument instead of the separate transition matrices. Internally, we simple convert back to a matrix using <code><a href="../reference/long_to_transmat.html">long_to_transmat()</a></code> so for larger trees this may be inefficient.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="fu"><a href="../reference/dectree_expected_values.html">dectree_expected_values</a></span><span class="op">(</span>
-  <span class="fu"><a href="../reference/define_model.html">define_model</a></span><span class="op">(</span>dat_long <span class="op">=</span> <span class="va">dat_long</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; vals used for calculation.</span>
-<span class="co">#&gt;    1    2    3    4    5    6    7    8 </span>
-<span class="co">#&gt;  5.6 12.8  3.8 10.0  1.0 10.0  1.0  0.0</span></pre></div>
+<div class="section level2">
+<h2 id="single-long-array">Single long array<a class="anchor" aria-label="anchor" href="#single-long-array"></a>
+</h2>
+<p>If we keep with flat arrays then clearly, as the size of the tree
+increased the sparse matrices become impractical. We can provide a long
+format array to address this. Let us transform the wide array used
+previously to demonstrate the structure and space saving.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">probs_long</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">probs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="st">'from'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/reshape2/man/melt.html" class="external-link">melt</a></span><span class="op">(</span>id.vars <span class="op">=</span> <span class="st">"from"</span>,</span>
+<span>       variable.name <span class="op">=</span> <span class="st">'to'</span>,</span>
+<span>       value.name <span class="op">=</span> <span class="st">'prob'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">to</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html" class="external-link">na.omit</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cost_long</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">cost</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="st">'from'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/reshape2/man/melt.html" class="external-link">melt</a></span><span class="op">(</span>id.vars <span class="op">=</span> <span class="st">"from"</span>,</span>
+<span>       variable.name <span class="op">=</span> <span class="st">'to'</span>,</span>
+<span>       value.name <span class="op">=</span> <span class="st">'vals'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">to</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html" class="external-link">na.omit</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dat_long</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/merge.html" class="external-link">merge</a></span><span class="op">(</span><span class="va">probs_long</span>,</span>
+<span>        <span class="va">cost_long</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dat_long</span></span>
+<span><span class="co">#&gt;   from to prob vals</span></span>
+<span><span class="co">#&gt; 1    1  2  0.2   10</span></span>
+<span><span class="co">#&gt; 2    1  3  0.8    1</span></span>
+<span><span class="co">#&gt; 3    2  4  0.2   10</span></span>
+<span><span class="co">#&gt; 4    2  5  0.8    1</span></span>
+<span><span class="co">#&gt; 5    3  6  0.2   10</span></span>
+<span><span class="co">#&gt; 6    3  7  0.8    1</span></span></code></pre></div>
+<p>We can use the long array as the input argument instead of the
+separate transition matrices. Internally, we simple convert back to a
+matrix using <code><a href="../reference/long_to_transmat.html">long_to_transmat()</a></code> so for larger trees this
+may be inefficient.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dectree_expected_values.html">dectree_expected_values</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="../reference/define_model.html">define_model</a></span><span class="op">(</span>dat_long <span class="op">=</span> <span class="va">dat_long</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; vals used for calculation.</span></span>
+<span><span class="co">#&gt;    1    2    3    4    5    6    7    8 </span></span>
+<span><span class="co">#&gt;  5.6 12.8  3.8 10.0  1.0 10.0  1.0  0.0</span></span></code></pre></div>
 </div>
-<div id="computation-speed" class="section level2">
-<h2 class="hasAnchor">
-<a href="#computation-speed" class="anchor"></a>Computation speed</h2>
-<p>We can compare the computation times for the recursive and non-recursive formulations.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="fu">microbenchmark</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu"><a href="../reference/dectree_expected_values.html">dectree_expected_values</a></span><span class="op">(</span><span class="fu"><a href="../reference/define_model.html">define_model</a></span><span class="op">(</span>dat_long <span class="op">=</span> <span class="va">dat_long</span><span class="op">)</span><span class="op">)</span>,
-                               <span class="fu"><a href="../reference/dectree_expected_recursive.html">dectree_expected_recursive</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">tree</span>, <span class="va">dat</span><span class="op">)</span>, times <span class="op">=</span> <span class="fl">100L</span><span class="op">)</span>
-<span class="co">#&gt; Unit: microseconds</span>
-<span class="co">#&gt;                                                        expr    min      lq</span>
-<span class="co">#&gt;  dectree_expected_values(define_model(dat_long = dat_long)) 6294.1 6626.25</span>
-<span class="co">#&gt;       dectree_expected_recursive(names(tree)[1], tree, dat)   59.4   62.10</span>
-<span class="co">#&gt;      mean  median      uq     max neval cld</span>
-<span class="co">#&gt;  7175.504 6952.35 7275.50 10739.1   100   b</span>
-<span class="co">#&gt;    72.836   73.10   80.75   118.4   100  a</span></pre></div>
-<p>For this example the recursive formulation is much quicker. Change in memory before and after running the functions.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/mem_change.html">mem_change</a></span><span class="op">(</span><span class="fu"><a href="../reference/dectree_expected_values.html">dectree_expected_values</a></span><span class="op">(</span>  <span class="fu"><a href="../reference/define_model.html">define_model</a></span><span class="op">(</span>dat_long <span class="op">=</span> <span class="va">dat_long</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; Registered S3 method overwritten by 'pryr':</span>
-<span class="co">#&gt;   method      from</span>
-<span class="co">#&gt;   print.bytes Rcpp</span>
-<span class="co">#&gt; vals used for calculation.</span>
-<span class="co">#&gt; -3.68 kB</span>
-<span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/mem_change.html">mem_change</a></span><span class="op">(</span><span class="fu"><a href="../reference/dectree_expected_recursive.html">dectree_expected_recursive</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">tree</span>, <span class="va">dat</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; 528 B</span></pre></div>
+<div class="section level2">
+<h2 id="computation-speed">Computation speed<a class="anchor" aria-label="anchor" href="#computation-speed"></a>
+</h2>
+<p>We can compare the computation times for the recursive and
+non-recursive formulations.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">microbenchmark</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html" class="external-link">microbenchmark</a></span><span class="op">(</span><span class="fu"><a href="../reference/dectree_expected_values.html">dectree_expected_values</a></span><span class="op">(</span><span class="fu"><a href="../reference/define_model.html">define_model</a></span><span class="op">(</span>dat_long <span class="op">=</span> <span class="va">dat_long</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                               <span class="fu"><a href="../reference/dectree_expected_recursive.html">dectree_expected_recursive</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">tree</span>, <span class="va">dat</span><span class="op">)</span>, times <span class="op">=</span> <span class="fl">100L</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Unit: microseconds</span></span>
+<span><span class="co">#&gt;                                                        expr       min</span></span>
+<span><span class="co">#&gt;  dectree_expected_values(define_model(dat_long = dat_long)) 11518.701</span></span>
+<span><span class="co">#&gt;       dectree_expected_recursive(names(tree)[1], tree, dat)    28.101</span></span>
+<span><span class="co">#&gt;          lq        mean    median        uq     max neval cld</span></span>
+<span><span class="co">#&gt;  11959.7505 12680.14607 12188.701 13193.002 17677.0   100   b</span></span>
+<span><span class="co">#&gt;     29.6005    41.65397    42.501    44.551   228.9   100  a</span></span></code></pre></div>
+<p>For this example the recursive formulation is much quicker. Change in
+memory before and after running the functions.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/mem_change.html" class="external-link">mem_change</a></span><span class="op">(</span><span class="fu"><a href="../reference/dectree_expected_values.html">dectree_expected_values</a></span><span class="op">(</span>  <span class="fu"><a href="../reference/define_model.html">define_model</a></span><span class="op">(</span>dat_long <span class="op">=</span> <span class="va">dat_long</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; vals used for calculation.</span></span>
+<span><span class="co">#&gt; -3.69 kB</span></span>
+<span><span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/mem_change.html" class="external-link">mem_change</a></span><span class="op">(</span><span class="fu"><a href="../reference/dectree_expected_recursive.html">dectree_expected_recursive</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">tree</span>, <span class="va">dat</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 528 B</span></span></code></pre></div>
 </div>
   </div>
 
@@ -281,11 +299,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Nathan Green.</p>
+  <p></p>
+<p>Developed by Nathan Green.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -293,6 +313,8 @@
 
   
 
+
+  
 
   </body>
 </html>
