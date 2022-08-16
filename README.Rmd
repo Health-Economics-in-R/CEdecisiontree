@@ -8,9 +8,9 @@ always_allow_html: yes
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/Health-Economics-in-R/CEdecisiontree/workflows/R-CMD-check/badge.svg)](https://github.com/Health-Economics-in-R/CEdecisiontree/actions)
-[![Coverage status](https://codecov.io/gh/Health-Economics-in-R/CEdecisiontree/branch/master/graph/badge.svg)](https://codecov.io/github/Health-Economics-in-R/CEdecisiontree?branch=master)
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 [![R-CMD-check](https://github.com/Health-Economics-in-R/CEdecisiontree/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Health-Economics-in-R/CEdecisiontree/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/Health-Economics-in-R/CEdecisiontree/branch/dev/graph/badge.svg)](https://app.codecov.io/gh/Health-Economics-in-R/CEdecisiontree?branch=dev)
 <!-- badges: end -->
 
 
