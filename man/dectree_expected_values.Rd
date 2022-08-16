@@ -2,13 +2,24 @@
 % Please edit documentation in R/dectree_expected_values_S3.R
 \name{dectree_expected_values}
 \alias{dectree_expected_values}
+\alias{dectree_expected_values.tree_dat}
+\alias{dectree_expected_values.transmat}
+\alias{dectree_expected_values.dat_long}
 \title{Cost-effectiveness decision tree expected values}
 \usage{
-dectree_expected_values(model)
+dectree_expected_values(model, ...)
+
+\method{dectree_expected_values}{tree_dat}(model, ...)
+
+\method{dectree_expected_values}{transmat}(model, ...)
+
+\method{dectree_expected_values}{dat_long}(model, ...)
 }
 \arguments{
 \item{model}{Object of \code{define_model()} consisting of output of type
 \code{tree_dat}, \code{transmat} or \code{dat_long}}
+
+\item{...}{Additional parameters}
 }
 \value{
 Expected value at each node

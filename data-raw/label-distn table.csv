@@ -1,0 +1,7 @@
+unit,label,val
+cost,vaccinate,"rnorm(10,1)"
+cost,disease,"rnorm(100,5)"
+prob,vaccinate,"rbeta(7,3)"
+prob,vacc_disease,"rbeta(1,9)"
+prob,disease,"rbeta(9,1)"
+health,disease,"rbeta(5,5)"

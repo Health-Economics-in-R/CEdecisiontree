@@ -9,16 +9,15 @@ long_to_transmat(dat, val_col = "prob")
 \arguments{
 \item{dat}{array of from, to, prob, vals}
 
-\item{val_col}{default prob}
+\item{val_col}{Name of value column; default prob (string)}
 }
 \value{
-transition matrix
+Transition matrix
 }
 \description{
 Long format to transition matrix
 }
 \examples{
-
 dat <- data.frame(from = c(NA,1, 1),
                   to = c(1, 2, 3),
                   prob = c(NA, 0.5, 0.5),

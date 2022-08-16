@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_ce_tree_df.R
 \name{create_ce_tree_df}
 \alias{create_ce_tree_df}
-\title{create_ce_tree_df}
+\title{Create cost-effectiveness decision tree data frame input}
 \usage{
 create_ce_tree_df(label_branch_tab, label_val_tab, tree_struc)
 }

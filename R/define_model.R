@@ -1,11 +1,12 @@
 
-#' Define Model
+#' Define decision tree model
 #'
-#' Basic constructor for decision tree classes for different data formats.
+#' Basic constructor for decision tree classes for
+#' different data formats.
 #'
-#' @param transmat Transition probability matrix (from-to node)
-#' @param tree_dat Hierarchical tree structure of parents and children
-#' @param dat_long Long dataframe with from, to, prob, vals columns
+#' @template args-transmat
+#' @template args-tree_dat
+#' @template args-dat_long
 #' @param ... additional arguments
 #'
 #' @return transmat, tree_dat or dat_long class object

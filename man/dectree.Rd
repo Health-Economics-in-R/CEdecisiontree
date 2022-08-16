@@ -2,10 +2,10 @@
 % Please edit documentation in R/dectree.R
 \name{dectree}
 \alias{dectree}
-\title{Decision Tree}
+\title{Decision tree estimation}
 \usage{
 dectree(
-  tree_dat,
+  dat_long,
   label_probs_distns = NULL,
   label_vals_distns = NULL,
   state_list = NULL,
@@ -14,7 +14,7 @@ dectree(
 )
 }
 \arguments{
-\item{tree_dat}{Decision tree data in `dat_long` format}
+\item{dat_long}{Long format data frame with from, to, prob, vals columns.}
 
 \item{label_probs_distns}{Probability distribution names}
 
@@ -38,7 +38,7 @@ Single edge value (e.g. cost or QALY) wrapper.
 library(purrr)
 library(tibble)
 
-tree_dat <-
+dat_long <-
  tribble(
    ~from, ~to, ~vals, ~prob,
    1,  2,   10,   0.7,
@@ -48,7 +48,7 @@ tree_dat <-
    3,  6,  100,   0.9,
    3,  7,   NA,   0.1)
 
-dectree(tree_dat,
+dectree(dat_long,
    state_list = list(all = c(4,5,6,7)))
 
 }

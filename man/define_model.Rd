@@ -2,16 +2,16 @@
 % Please edit documentation in R/define_model.R
 \name{define_model}
 \alias{define_model}
-\title{Define Model}
+\title{Define decision tree model}
 \usage{
 define_model(transmat, tree_dat, dat_long, ...)
 }
 \arguments{
-\item{transmat}{Transition probability matrix (from-to node)}
+\item{transmat}{Transition probability matrix. Rows are from nodes and columns are to nodes.}
 
-\item{tree_dat}{Hierarchical tree structure of parents and children}
+\item{tree_dat}{Hierarchical tree structure of parents and children in a list of vectors with integer values.}
 
-\item{dat_long}{Long dataframe with from, to, prob, vals columns}
+\item{dat_long}{Long format data frame with from, to, prob, vals columns.}
 
 \item{...}{additional arguments}
 }
@@ -19,7 +19,8 @@ define_model(transmat, tree_dat, dat_long, ...)
 transmat, tree_dat or dat_long class object
 }
 \description{
-Basic constructor for decision tree classes for different data formats.
+Basic constructor for decision tree classes for
+different data formats.
 }
 \examples{
 

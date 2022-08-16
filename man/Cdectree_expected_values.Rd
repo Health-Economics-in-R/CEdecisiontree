@@ -6,6 +6,11 @@
 \usage{
 Cdectree_expected_values(vals, p)
 }
+\arguments{
+\item{vals}{Values}
+
+\item{p}{Probabilities}
+}
 \description{
 Cdectree_expected_values
 }

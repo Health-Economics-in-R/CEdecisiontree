@@ -5,7 +5,7 @@
 \title{Run Cost-effectiveness Decision Tree}
 \usage{
 run_cedectree(
-  tree_dat,
+  dat_long,
   label_probs_distns = NULL,
   label_costs_distns = NULL,
   label_health_distns = NULL,
@@ -14,7 +14,7 @@ run_cedectree(
 )
 }
 \arguments{
-\item{tree_dat}{Decision tree data in `dat_long` format}
+\item{dat_long}{Long format data frame with from, to, prob, vals columns.}
 
 \item{label_probs_distns}{Probability distribution names}
 

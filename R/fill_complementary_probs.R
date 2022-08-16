@@ -9,7 +9,7 @@
 #'
 #' Only works for binary trees or when one of n is missing.
 #'
-#' @param dat_tree Long format tree object
+#' @template args-dat_long
 #'
 #' @return Long format tree object
 #' @export
@@ -24,12 +24,12 @@
 #'                        3,  7,  0.8,    1)
 #' fill_complementary_probs(dat)
 #'
-fill_complementary_probs <- function(dat_tree) {
+fill_complementary_probs <- function(dat_long) {
 
-  dat_tree %>%
-    group_by(from) %>%
+  dat_long |>
+    group_by(.data$from) |>
     mutate(prob = ifelse(is.na(prob),
                          1 - sum(prob, na.rm = TRUE),
-                         prob)) %>%
+                         prob)) |>
     ungroup()
 }

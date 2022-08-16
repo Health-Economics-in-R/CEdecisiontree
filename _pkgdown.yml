@@ -6,6 +6,11 @@ reference:
   - '`Cdectree_expected_values`'
   - '`dectree_expected_recursive`'
   - '`dectree_expected_values`'
+  - '`dectree`'
+  - '`dectree_expected_default`'
+  - '`dectree_expected_recursive`'
+  - '`dectree_expected_recursive2`'
+  - '`run_cedectree`'
 - title: Transform between formats
   desc: Functions for switching between matrix, long or tree representations of a decision tree.
   contents:
@@ -17,13 +22,26 @@ reference:
   desc: Miscellaneous tools for manipulating tree values and probabilities.
   contents:
   - '`branch_joint_probs`'
+  - '`create_ce_tree_df`'
+  - '`create_ce_tree_long_df`'
+  - '`create_psa_inputs`'
   - '`define_model`'
   - '`fill_complementary_probs`'
   - '`insert_to_transmat`'
   - '`is_prob_matrix`'
   - '`match_branchlabel_to_prob`'
   - '`match_branch_to_label`'
+  - '`new_models`'
+  - '`terminal_pop`'
   - '`trans_binarytree`'
+  - '`validation`'
+- title: Data
+  contents:
+  - '`bcg_cost`'
+  - '`bcg_probs`'
+  - '`bcg_utility`'
+  - '`cost`'
+  - '`probs`'
 
 navbar:
   structure:

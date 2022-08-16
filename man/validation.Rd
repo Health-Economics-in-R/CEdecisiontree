@@ -13,6 +13,20 @@ validate_tree_dat(tree_dat)
 
 validate_dat_long(dat_long)
 }
+\arguments{
+\item{transmat}{Transition probability matrix. Rows are from nodes and columns are to nodes.}
+
+\item{tree_dat}{Hierarchical tree structure of parents and children in a list of vectors with integer values.}
+
+\item{dat_long}{Long format data frame with from, to, prob, vals columns.}
+}
+\value{
+transmat
+
+tree_dat
+
+dat_long
+}
 \description{
 New Model Validation
 }

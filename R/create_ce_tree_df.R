@@ -1,5 +1,5 @@
 
-#' create_ce_tree_df
+#' Create cost-effectiveness decision tree data frame input
 #'
 #' Using look up table, rather than separate lists,
 #' of values and labels.
@@ -10,6 +10,8 @@
 #' @param tree_struc List of parent child branches
 #'
 #' @return tibble in long format
+#' @importFrom stats setNames
+#' @import dplyr
 #' @export
 #'
 create_ce_tree_df <- function(label_branch_tab,

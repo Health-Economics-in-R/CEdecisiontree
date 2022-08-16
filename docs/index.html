@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">CEdecisiontree</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
@@ -47,7 +49,7 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -59,15 +61,20 @@
     <li>
       <a href="articles/other-input-formats.html">Using other input formats</a>
     </li>
-    <li class="divider">
     <li>
+      <a href="articles/building-a-decision-tree-from-components.html">Building a decision tree from components</a>
+    </li>
+    <li class="divider">
+    </li>
+<li>
       <a href="articles/probability-sensitivity-analysis.html">Probability Sensitivity Analysis (PSA)</a>
     </li>
     <li>
       <a href="articles/scenario-sensitivity-analysis.html">Scenario Sensitivity Analysis</a>
     </li>
     <li class="divider">
-    <li>
+    </li>
+<li>
       <a href="articles/comparison-with-other-packages.html">Comparison with other packages</a>
     </li>
   </ul>
@@ -78,8 +85,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Health-Economics-in-R/CEdecisiontree/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/Health-Economics-in-R/CEdecisiontree/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -95,193 +102,206 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="cedecisiontree-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#cedecisiontree-" class="anchor"></a>CEdecisiontree <img src="imgfile.png" height="139" align="right">
+<div class="section level1">
+<div class="page-header"><h1 id="cedecisiontree-">CEdecisiontree <img src="reference/figures/hexbadge.png" height="139" align="right"><a class="anchor" aria-label="anchor" href="#cedecisiontree-"></a>
 </h1></div>
+<!-- badges: start -->
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+<blockquote>
 <p>An R package for lightweight cost-effectiveness analysis using decision trees.</p>
-<p>Requests and comments welcome; please use <a href="https://github.com/n8thangreen/CEdecisiontree/issues">Issues</a>.</p>
-<div id="installing-cedecisiontree" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installing-cedecisiontree" class="anchor"></a>Installing CEdecisiontree</h2>
+</blockquote>
+<p>Requests and comments welcome; please use <a href="https://github.com/n8thangreen/CEdecisiontree/issues" class="external-link">Issues</a>.</p>
+<div class="section level2">
+<h2 id="installing-cedecisiontree">Installing CEdecisiontree<a class="anchor" aria-label="anchor" href="#installing-cedecisiontree"></a>
+</h2>
 <p>To install the development version from github:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span>
-<span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"Health-Economics-in-R/CEdecisiontree"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Health-Economics-in-R/CEdecisiontree"</span><span class="op">)</span></span></code></pre></div>
 <p>Then, to load the package, use:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">CEdecisiontree</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">CEdecisiontree</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="motivation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#motivation" class="anchor"></a>Motivation</h2>
+<div class="section level2">
+<h2 id="motivation">Motivation<a class="anchor" aria-label="anchor" href="#motivation"></a>
+</h2>
 <p>Decisions trees can be modelled as special cases of more general models using available packages in R e.g. heemod, mstate or msm. Further, full probability models could be fit using a Bayesian model with e.g. Stan, jags or WinBUGS. However, simple decision tree models are often built in Excel, using statistics from literature or expert knowledge. This package is a analogue to these, such that models can be specified in a very similar and simple way.</p>
 </div>
-<div id="calculation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#calculation" class="anchor"></a>Calculation</h2>
-<p>A decision tree is defined by parent-child pairs, i.e. from-to connections, and the probability and associated value (e.g. cost) of traversing each of the connections. Denote the probability of transitioning from node <embed src="https://ibm.codecogs.com/png.latex?i" title="i"></embed> to <embed src="https://ibm.codecogs.com/png.latex?j" title="j"></embed> as <embed src="https://ibm.codecogs.com/png.latex?p_%7Bij%7D" title="p_{ij}"></embed> and the cost attributable to node <embed src="https://ibm.codecogs.com/png.latex?i" title="i"></embed> as <embed src="https://ibm.codecogs.com/png.latex?c_i" title="c_i"></embed>. Where no connection exists between two nodes we shall say that the parent’s set of children is the empty set <embed src="https://ibm.codecogs.com/png.latex?%5Cemptyset" title="\emptyset"></embed>. Denote the set of children by <embed src="https://ibm.codecogs.com/png.latex?child%28%5Ccdot%29" title="child(\cdot)"></embed>. Clearly, there are no <embed src="https://ibm.codecogs.com/png.latex?p_%7Bij%7D" title="p_{ij}"></embed> or <embed src="https://ibm.codecogs.com/png.latex?c_j" title="c_j"></embed> in this case but for computational purposes we will assume that <embed src="https://ibm.codecogs.com/png.latex?p_%7Bij%7D%20%3D%20NA" title="p_{ij} = NA"></embed> and <embed src="https://ibm.codecogs.com/png.latex?c_j%20%3D%200" title="c_j = 0"></embed>.</p>
-<p>The expected value at each node <embed src="https://ibm.codecogs.com/png.latex?i%20%5Cin%20S" title="i \in S"></embed> is calculated by ‘folding back’ using the recursive formula</p>
-<p><embed src="https://ibm.codecogs.com/png.latex?%5Chat%7Bc%7D_i%20%3D%20c_i%20%2B%20%5Csum_%7Bj%20%5Cin%20child%28i%29%7D%20p_%7Bij%7D%20%5Chat%7Bc%7D_j" title="\hat{c}_i = c_i + \sum_{j \in child(i)} p_{ij} \hat{c}_j"></embed></p>
+<div class="section level2">
+<h2 id="calculation">Calculation<a class="anchor" aria-label="anchor" href="#calculation"></a>
+</h2>
+<p>A decision tree is defined by parent-child pairs, i.e. from-to connections, and the probability and associated value (e.g. cost) of traversing each of the connections. Denote the probability of transitioning from node <img src="https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&amp;space;%5Cbg_white&amp;space;i" title="i" alt="i"> to <img src="https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&amp;space;%5Cbg_white&amp;space;j" title="j" alt="j"> as <img src="https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&amp;space;%5Cbg_white&amp;space;p_%7Bij%7D" title="p_{ij}" alt="p_{ij}"> and the cost attributable to node <img src="https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&amp;space;%5Cbg_white&amp;space;i" title="i" alt="i"> as <img src="https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&amp;space;%5Cbg_white&amp;space;c_i" title="c_i" alt="c_i">. Where no connection exists between two nodes we shall say that the parent’s set of children is the empty set <img src="https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&amp;space;%5Cbg_white&amp;space;%5Cemptyset" title="\emptyset" alt="">. Denote the set of children by <img src="https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&amp;space;%5Cbg_white&amp;space;child%28%5Ccdot%29" title="child(\cdot)" alt="child()">. Clearly, there are no <img src="https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&amp;space;%5Cbg_white&amp;space;p_%7Bij%7D" title="p_{ij}" alt="p_{ij}"> or <img src="https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&amp;space;%5Cbg_white&amp;space;c_j" title="c_j" alt="c_j"> in this case but for computational purposes we will assume that <img src="https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&amp;space;%5Cbg_white&amp;space;p_%7Bij%7D%20%3D%20NA" title="p_{ij} = NA" alt="p_{ij} = NA"> and <img src="https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&amp;space;%5Cbg_white&amp;space;c_j%20%3D%200" title="c_j = 0" alt="c_j = 0">.</p>
+<p>The expected value at each node <img src="https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&amp;space;%5Cbg_white&amp;space;i%20%5Cin%20S" title="i \in S" alt="i S"> is calculated by ‘folding back’ using the recursive formula</p>
+<p><img src="https://latex.codecogs.com/svg.image?%5Chat%7Bc%7D_i&amp;space;=&amp;space;c_i&amp;space;&amp;plus;&amp;space;%5Csum_%7Bj&amp;space;%5Cin&amp;space;child(i)%7D&amp;space;p_%7Bij%7D&amp;space;%5Chat%7Bc%7D_j" title="\hat{c}_i = c_i + \sum_{j \in child(i)} p_{ij} \hat{c}_j"></p>
 <p>with boundary values at the terminal nodes</p>
-<p><embed src="https://ibm.codecogs.com/png.latex?%5Chat%7Bc%7D_i%20%3D%20c_i%20%5Cmbox%7B%20for%20%7D%20i%20%3D%20%5C%7B%20S%3A%20child%28s%29%20%3D%20%5Cemptyset%20%5C%7D." title="\hat{c}_i = c_i \mbox{ for } i = { S: child(s) = \emptyset }."></embed></p>
+<p><img src="https://latex.codecogs.com/svg.image?%5Chat%7Bc%7D_i&amp;space;=&amp;space;c_i&amp;space;%5Cmbox%7B&amp;space;for&amp;space;%7D&amp;space;i&amp;space;=&amp;space;%5C%7B&amp;space;S:&amp;space;child(s)&amp;space;=&amp;space;%5Cemptyset&amp;space;%5C%7D" title="\hat{c}_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}"></p>
 </div>
-<div id="basic-example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#basic-example" class="anchor"></a>Basic example</h2>
+<div class="section level2">
+<h2 id="basic-example">Basic example<a class="anchor" aria-label="anchor" href="#basic-example"></a>
+</h2>
 <p>Quietly load libraries.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">CEdecisiontree</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/reshape">reshape2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">assertthat</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">CEdecisiontree</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/reshape" class="external-link">reshape2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">assertthat</span><span class="op">)</span></span></code></pre></div>
 <p>We will consider a simple 7 node binary tree. Numeric labels are shown above each node. Probabilities and costs are show above and below each branch, respectively.</p>
 <p><img src="https://raw.githubusercontent.com/Health-Economics-in-R/CEdecisiontree/dev/man/figures/README_decisiontree_silverdecisions.png" width="400px"></p>
 <p>So if we were to write out the expected cost in full this would give</p>
-<p><embed src="https://ibm.codecogs.com/png.latex?p_%7B12%7D%28c_%7B12%7D%20%2B%20p_%7B24%7Dc_%7B24%7D%20%2B%20p_%7B25%7Dc_%7B25%7D%29%20%2B%20p_%7B13%7D%28c_%7B13%7D%20%2B%20p_%7B36%7Dc_%7B36%7D%20%2B%20p_%7B37%7Dc_%7B37%7D%29" title="p_{12}(c_{12} + p_{24}c_{24} + p_{25}c_{25}) + p_{13}(c_{13} + p_{36}c_{36} + p_{37}c_{37})"></embed></p>
+<p><img src="https://latex.codecogs.com/svg.image?p_%7B12%7D(c_%7B12%7D&amp;space;&amp;plus;&amp;space;p_%7B24%7Dc_%7B24%7D&amp;space;&amp;plus;&amp;space;p_%7B25%7Dc_%7B25%7D)&amp;space;&amp;plus;&amp;space;p_%7B13%7D(c_%7B13%7D&amp;space;&amp;plus;&amp;space;p_%7B36%7Dc_%7B36%7D&amp;space;&amp;plus;&amp;space;p_%7B37%7Dc_%7B37%7D)" title="p_{12}(c_{12} + p_{24}c_{24} + p_{25}c_{25}) + p_{13}(c_{13} + p_{36}c_{36} + p_{37}c_{37})"></p>
 <p>Load example data from the package.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"cost"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"probs"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"cost"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"probs"</span><span class="op">)</span></span></code></pre></div>
 <p>The cost and probability matrices we will use in this example are sparse arrays indicating the edge values (rows=from node, columns=to node). There are therefore the same dimensions and have the same entry pattern. Empty cells have <code>NA</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="va">cost</span>
-<span class="co">#&gt; # A tibble: 3 x 7</span>
-<span class="co">#&gt;     `1`   `2`   `3`   `4`   `5`   `6`   `7`</span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt; 1    NA    10     1    NA    NA    NA    NA</span>
-<span class="co">#&gt; 2    NA    NA    NA    10     1    NA    NA</span>
-<span class="co">#&gt; 3    NA    NA    NA    NA    NA    10     1</span></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="va">probs</span>
-<span class="co">#&gt; # A tibble: 3 x 7</span>
-<span class="co">#&gt;     `1`   `2`   `3`   `4`   `5`   `6`   `7`</span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    NA   0.2   0.8  NA    NA    NA    NA  </span>
-<span class="co">#&gt; 2    NA  NA    NA     0.2   0.8  NA    NA  </span>
-<span class="co">#&gt; 3    NA  NA    NA    NA    NA     0.2   0.8</span></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cost</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 7</span></span>
+<span><span class="co">#&gt;     `1`   `2`   `3`   `4`   `5`   `6`   `7`</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1    NA    10     1    NA    NA    NA    NA</span></span>
+<span><span class="co">#&gt; 2    NA    NA    NA    10     1    NA    NA</span></span>
+<span><span class="co">#&gt; 3    NA    NA    NA    NA    NA    10     1</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">probs</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 7</span></span>
+<span><span class="co">#&gt;     `1`   `2`   `3`   `4`   `5`   `6`   `7`</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1    NA   0.2   0.8  NA    NA    NA    NA  </span></span>
+<span><span class="co">#&gt; 2    NA  NA    NA     0.2   0.8  NA    NA  </span></span>
+<span><span class="co">#&gt; 3    NA  NA    NA    NA    NA     0.2   0.8</span></span></code></pre></div>
 <p><code>probs</code> is a probability transition matrix. This is like <code>pmatrix.msm</code> in the <code>msm</code> package, or <code>define_transition</code> in the <code>heemod</code> package.</p>
 <p>The <code>transMat()</code> function in the <code>mstate</code> package creates a closely related multi-state model transition matrix. Copying this package, we can create a decision tree transition matrix to use with this.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="fu">CEdecisiontree</span><span class="fu">:::</span><span class="fu"><a href="reference/trans_binarytree.html">trans_binarytree</a></span><span class="op">(</span>depth <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
-<span class="co">#&gt;     to</span>
-<span class="co">#&gt; from  1  2  3  4  5  6  7</span>
-<span class="co">#&gt;    1 NA  1  2 NA NA NA NA</span>
-<span class="co">#&gt;    2 NA NA NA  3  4 NA NA</span>
-<span class="co">#&gt;    3 NA NA NA NA NA  5  6</span></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">CEdecisiontree</span><span class="fu">:::</span><span class="fu"><a href="reference/trans_binarytree.html">trans_binarytree</a></span><span class="op">(</span>depth <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     to</span></span>
+<span><span class="co">#&gt; from  1  2  3  4  5  6  7</span></span>
+<span><span class="co">#&gt;    1 NA  1  2 NA NA NA NA</span></span>
+<span><span class="co">#&gt;    2 NA NA NA  3  4 NA NA</span></span>
+<span><span class="co">#&gt;    3 NA NA NA NA NA  5  6</span></span></code></pre></div>
 <p>The expected value at each node is calculate as follows.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="va">my_model</span> <span class="op">&lt;-</span>
-  <span class="fu"><a href="reference/define_model.html">define_model</a></span><span class="op">(</span>
-    transmat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>vals <span class="op">=</span> <span class="va">cost</span>,
-                    prob <span class="op">=</span> <span class="va">probs</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu"><a href="reference/dectree_expected_values.html">dectree_expected_values</a></span><span class="op">(</span>model <span class="op">=</span> <span class="va">my_model</span><span class="op">)</span>
-<span class="co">#&gt;    1    2    3    4    5    6    7 </span>
-<span class="co">#&gt;  5.6 12.8  3.8 10.0  1.0 10.0  1.0</span></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_model</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="reference/define_model.html">define_model</a></span><span class="op">(</span></span>
+<span>    transmat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vals <span class="op">=</span> <span class="va">cost</span>,</span>
+<span>                    prob <span class="op">=</span> <span class="va">probs</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/dectree_expected_values.html">dectree_expected_values</a></span><span class="op">(</span>model <span class="op">=</span> <span class="va">my_model</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    1    2    3    4    5    6    7 </span></span>
+<span><span class="co">#&gt;  5.6 12.8  3.8 10.0  1.0 10.0  1.0</span></span></code></pre></div>
 <p>There is also an Rcpp version of this function.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="fu"><a href="reference/Cdectree_expected_values.html">Cdectree_expected_values</a></span><span class="op">(</span>vals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">cost</span><span class="op">)</span>,
-                         p <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">probs</span><span class="op">)</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/Cdectree_expected_values.html">Cdectree_expected_values</a></span><span class="op">(</span>vals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">cost</span><span class="op">)</span>,</span>
+<span>                         p <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">probs</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="other-tree-statistics" class="section level2">
-<h2 class="hasAnchor">
-<a href="#other-tree-statistics" class="anchor"></a>Other tree statistics</h2>
+<div class="section level2">
+<h2 id="other-tree-statistics">Other tree statistics<a class="anchor" aria-label="anchor" href="#other-tree-statistics"></a>
+</h2>
 <p>For additional information, including for the purposes of model checking we can calculate other tree statistics. We can obtain the contributing cost as weighted by the chance of occurrence. This can be thought of as a trade-off between the raw, original cost and branch position.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="va">wcost</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/branch_joint_probs.html">branch_joint_probs</a></span><span class="op">(</span><span class="va">my_model</span><span class="op">)</span> <span class="op">*</span> <span class="va">cost</span>
-<span class="va">wcost</span>
-<span class="co">#&gt;    1  2   3   4    5   6    7</span>
-<span class="co">#&gt; 1 NA  2 0.8  NA   NA  NA   NA</span>
-<span class="co">#&gt; 2 NA NA  NA 0.4 0.16  NA   NA</span>
-<span class="co">#&gt; 3 NA NA  NA  NA   NA 1.6 0.64</span></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">wcost</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/branch_joint_probs.html">branch_joint_probs</a></span><span class="op">(</span><span class="va">my_model</span><span class="op">)</span> <span class="op">*</span> <span class="va">cost</span></span>
+<span><span class="va">wcost</span></span>
+<span><span class="co">#&gt;    1  2   3   4    5   6    7</span></span>
+<span><span class="co">#&gt; 1 NA  2 0.8  NA   NA  NA   NA</span></span>
+<span><span class="co">#&gt; 2 NA NA  NA 0.4 0.16  NA   NA</span></span>
+<span><span class="co">#&gt; 3 NA NA  NA  NA   NA 1.6 0.64</span></span></code></pre></div>
 <p>We can check that this sums to the same total expected cost.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">wcost</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; [1] 5.6</span></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">wcost</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 5.6</span></span></code></pre></div>
 <p>We can also calculate the joint probabilities of traversing to each terminal state using <code>branch_joint_probs</code>. This is useful when an alternative model set-up is used such that total costs and health values are assigned to these terminal nodes only. Here we assume node labelling order from root such that terminal nodes are last.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit">
-<span class="va">n_from_nodes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">probs</span><span class="op">)</span>
-<span class="va">n_to_nodes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">probs</span><span class="op">)</span>
-<span class="va">terminal_states</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">n_from_nodes</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span><span class="op">:</span><span class="va">n_to_nodes</span>
-
-<span class="va">p_terminal_state</span> <span class="op">&lt;-</span>
-  <span class="fu"><a href="reference/branch_joint_probs.html">branch_joint_probs</a></span><span class="op">(</span><span class="va">my_model</span><span class="op">)</span><span class="op">[</span> ,<span class="va">terminal_states</span><span class="op">]</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span>na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="va">p_terminal_state</span>
-<span class="co">#&gt;    4    5    6    7 </span>
-<span class="co">#&gt; 0.04 0.16 0.16 0.64</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">p_terminal_state</span><span class="op">)</span>
-<span class="co">#&gt; [1] 1</span></pre></div>
-<p>See package <a href="https://health-economics-in-r.github.io/CEdecisiontree/articles/">vignettes</a> for more details and examples.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">n_from_nodes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">probs</span><span class="op">)</span></span>
+<span><span class="va">n_to_nodes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">probs</span><span class="op">)</span></span>
+<span><span class="va">terminal_states</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">n_from_nodes</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span><span class="op">:</span><span class="va">n_to_nodes</span></span>
+<span></span>
+<span><span class="va">p_terminal_state</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="reference/branch_joint_probs.html">branch_joint_probs</a></span><span class="op">(</span><span class="va">my_model</span><span class="op">)</span><span class="op">[</span> ,<span class="va">terminal_states</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span>na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">p_terminal_state</span></span>
+<span><span class="co">#&gt;    4    5    6    7 </span></span>
+<span><span class="co">#&gt; 0.04 0.16 0.16 0.64</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">p_terminal_state</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1</span></span></code></pre></div>
+<p>See package <a href="https://health-economics-in-r.github.io/CEdecisiontree/articles/" class="external-link">vignettes</a> for more details and examples.</p>
 </div>
-<div id="code-of-conduct" class="section level2">
-<h2 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
-<p>Please note that the CEdecisiontree project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<div class="section level2">
+<h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
+</h2>
+<p>Please note that the CEdecisiontree project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
-<div id="license" class="section level2">
-<h2 class="hasAnchor">
-<a href="#license" class="anchor"></a>License</h2>
-<p>GPL-3 ©</p>
+<div class="section level2">
+<h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
+</h2>
+<p><a href="https://www.gnu.org/licenses/gpl-3.0" class="external-link"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3"></a></p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/Health-Economics-in-R/CEdecisiontree/">https://​github.com/​Health-Economics-in-R/​CEdecisiontree/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/Health-Economics-in-R/CEdecisiontree/issues">https://​github.com/​Health-Economics-in-R/​CEdecisiontree/​issues</a>
-</li>
+<li><a href="https://github.com/Health-Economics-in-R/CEdecisiontree/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/Health-Economics-in-R/CEdecisiontree/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Nathan Green <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-2745-1736" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing CEdecisiontree</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://travis-ci.org/Health-Economics-in-R/CEdecisiontree"><img src="https://travis-ci.org/Health-Economics-in-R/CEdecisiontree.svg?branch=master" alt="Build Status"></a></li>
-<li><a href="https://ci.appveyor.com/project/Health-Economics-in-R/CEdecisiontree"><img src="https://ci.appveyor.com/api/projects/status/github/Health-Economics-in-R/CEdecisiontree?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
-<li><a href="https://codecov.io/github/Health-Economics-in-R/CEdecisiontree?branch=master"><img src="https://codecov.io/gh/Health-Economics-in-R/CEdecisiontree/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
-<li><a href="http://github.com/badges/stability-badges"><img src="http://badges.github.io/stability-badges/dist/experimental.svg" alt="experimental"></a></li>
+<li>Nathan Green <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-2745-1736" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/Health-Economics-in-R/CEdecisiontree/actions" class="external-link"><img src="https://github.com/Health-Economics-in-R/CEdecisiontree/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://codecov.io/github/Health-Economics-in-R/CEdecisiontree?branch=master" class="external-link"><img src="https://codecov.io/gh/Health-Economics-in-R/CEdecisiontree/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
+<li><a href="http://github.com/badges/stability-badges" class="external-link"><img src="http://badges.github.io/stability-badges/dist/experimental.svg" alt="experimental"></a></li>
+<li><a href="https://github.com/Health-Economics-in-R/CEdecisiontree/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/Health-Economics-in-R/CEdecisiontree/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Nathan Green.</p>
+  <p></p>
+<p>Developed by Nathan Green.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -289,6 +309,8 @@
 
   
 
+
+  
 
   </body>
 </html>

@@ -4,8 +4,8 @@
 #' Insert values into a transition matrix
 #' from a long array of \code{from}, \code{to} values
 #'
-#' @param dat long from-to-vals array. Either cost or prob.
-#' @param mat transition matrix
+#' @param dat Long from-to-vals array. Either cost or prob.
+#' @param mat Transition matrix
 #'
 #' @return matrix
 #' @export
@@ -38,6 +38,7 @@ insert_to_transmat <- function(dat,
 #' from a long array of \code{from}, \code{to} values
 #'
 #' @rdname insert_to_transmat
+#' @return transition matrix
 #' @export
 #'
 insert_to_costmat <- function(dat,
@@ -52,6 +53,7 @@ insert_to_costmat <- function(dat,
 #' from a long array of \code{from}, \code{to} values
 #'
 #' @rdname insert_to_transmat
+#' @return Probability matrix
 #' @export
 #'
 insert_to_probmat <- function(dat,

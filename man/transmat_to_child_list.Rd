@@ -7,7 +7,7 @@
 transmat_to_child_list(transmat)
 }
 \arguments{
-\item{transmat}{from-to matrix with \code{NA} for missing values.}
+\item{transmat}{Transition probability matrix. Rows are from nodes and columns are to nodes.}
 }
 \value{
 list
@@ -19,7 +19,7 @@ Create tree children list by parents from a transition matrix.
 
 transmat <-
   list(prob = matrix(data = c(NA, 0.5, 0.5), nrow = 1),
-         vals = matrix(data = c(NA, 1, 2), nrow = 1)
+       vals = matrix(data = c(NA, 1, 2), nrow = 1)
        )
 transmat_to_child_list(transmat$prob)
 

@@ -34,7 +34,7 @@ dectree_expected_default <- function(vals,
   if (!any(is.na(dat))) {
 
     p <- long_to_transmat(dat[, c("from", "to", "prob")])
-    vals <- long_to_transmat(select(dat, -prob))
+    vals <- long_to_transmat(select(.data$dat, -.data$prob))
   }
 
   assert_that(is_prob_matrix(p))

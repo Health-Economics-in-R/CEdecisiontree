@@ -5,7 +5,9 @@ NULL
 
 
 #' @rdname validation
+#' @template args-transmat
 #' @importFrom assertthat assert_that
+#' @return transmat
 #' @export
 #'
 validate_transmat <- function(transmat) {
@@ -25,6 +27,8 @@ validate_transmat <- function(transmat) {
 
 
 #' @rdname validation
+#' @template args-tree_dat
+#' @return tree_dat
 #' @export
 #'
 validate_tree_dat <- function(tree_dat) {
@@ -51,6 +55,8 @@ validate_tree_dat <- function(tree_dat) {
 
 
 #' @rdname validation
+#' @template args-dat_long
+#' @return dat_long
 #' @export
 #'
 validate_dat_long <- function(dat_long) {
