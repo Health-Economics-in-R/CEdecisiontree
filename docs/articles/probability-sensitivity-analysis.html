@@ -62,7 +62,7 @@
       <a href="../articles/other-input-formats.html">Using other input formats</a>
     </li>
     <li>
-      <a href="../articles/building-a-decision-tree-from-components.html">Building a decision tree from components</a>
+      <a href="../articles/build_tree.html">Building a decision tree from components</a>
     </li>
     <li class="divider">
     </li>
@@ -107,7 +107,7 @@
                         <h4 data-toc-skip class="author">Nathan
 Green</h4>
             
-            <h4 data-toc-skip class="date">2022-07-29</h4>
+            <h4 data-toc-skip class="date">2022-08-16</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/Health-Economics-in-R/CEdecisiontree/blob/HEAD/vignettes/probability-sensitivity-analysis.Rmd" class="external-link"><code>vignettes/probability-sensitivity-analysis.Rmd</code></a></small>
       <div class="hidden name"><code>probability-sensitivity-analysis.Rmd</code></div>
@@ -142,35 +142,46 @@ distributions rather than point values.</p>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>child <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"1"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>,</span>
 <span>                    <span class="st">"2"</span> <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>                    <span class="st">"3"</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>,</span>
-<span>       dat <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>node <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,</span>
-<span>                    prob <span class="op">=</span></span>
-<span>                      <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>                        <span class="cn">NA_real_</span>,</span>
-<span>                        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>distn <span class="op">=</span> <span class="st">"unif"</span>, params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>                        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>distn <span class="op">=</span> <span class="st">"unif"</span>, params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>                    vals <span class="op">=</span></span>
-<span>                      <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>                        <span class="fl">0L</span>,</span>
-<span>                        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>distn <span class="op">=</span> <span class="st">"unif"</span>, params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>                        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>distn <span class="op">=</span> <span class="st">"unif"</span>, params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span>       dat <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
+<span>         node <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,</span>
+<span>         prob <span class="op">=</span></span>
+<span>           <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>             <span class="cn">NA_real_</span>,</span>
+<span>             <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>distn <span class="op">=</span> <span class="st">"unif"</span>, params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>             <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>distn <span class="op">=</span> <span class="st">"unif"</span>, params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>         vals <span class="op">=</span></span>
+<span>           <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>             <span class="fl">0L</span>,</span>
+<span>             <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>distn <span class="op">=</span> <span class="st">"unif"</span>, params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>             <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>distn <span class="op">=</span> <span class="st">"unif"</span>, params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tree_dat</span></span>
+<span><span class="co">#&gt; $child</span></span>
+<span><span class="co">#&gt; $child$`1`</span></span>
+<span><span class="co">#&gt; [1] 2 3</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $child$`2`</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $child$`3`</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $dat</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 x 3</span></span></span>
+<span><span class="co">#&gt;    node prob             vals            </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="color: #949494;">&lt;int [1]&gt;</span>       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 <span style="color: #949494;">&lt;named list [2]&gt;</span> <span style="color: #949494;">&lt;named list [2]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 <span style="color: #949494;">&lt;named list [2]&gt;</span> <span style="color: #949494;">&lt;named list [2]&gt;</span></span></span></code></pre></div>
 <p>We can now loop over this tree and generate samples of values for the
 given distributions. We use the <code><a href="https://rdrr.io/pkg/treeSimR/man/sample_distributions.html" class="external-link">sample_distributions()</a></code>
-function from my <code>treeSimR</code> package.</p>
+function from my <code>treeSimR</code> package. This is all wrapped up
+in the convenience function <code>create_psa_inputs</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tree_dat_sa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">1000</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  </span>
-<span>  <span class="va">tree_dat_sa</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span></span>
-<span>    <span class="fu"><a href="../reference/define_model.html">define_model</a></span><span class="op">(</span></span>
-<span>      tree_dat <span class="op">=</span></span>
-<span>        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>child <span class="op">=</span> <span class="va">tree_dat</span><span class="op">$</span><span class="va">child</span>,</span>
-<span>             dat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span>               node <span class="op">=</span> <span class="va">tree_dat</span><span class="op">$</span><span class="va">dat</span><span class="op">$</span><span class="va">node</span>,</span>
-<span>               prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">tree_dat</span><span class="op">$</span><span class="va">dat</span><span class="op">$</span><span class="va">prob</span>, <span class="va">sample_distributions</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>               vals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">tree_dat</span><span class="op">$</span><span class="va">dat</span><span class="op">$</span><span class="va">vals</span>, <span class="va">sample_distributions</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span>        <span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
+<span><span class="va">tree_dat_sa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_psa_inputs.html">create_psa_inputs</a></span><span class="op">(</span><span class="va">tree_dat</span>, n <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span></code></pre></div>
 <p>This results in a list of trees.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">tree_dat_sa</span>, <span class="fl">2</span><span class="op">)</span></span>
@@ -187,10 +198,10 @@ function from my <code>treeSimR</code> package.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $dat</span></span>
-<span><span class="co">#&gt;   node      prob       vals</span></span>
-<span><span class="co">#&gt; 1    1        NA 0.00000000</span></span>
-<span><span class="co">#&gt; 2    2 0.9334824 0.07452986</span></span>
-<span><span class="co">#&gt; 3    3 0.2542425 0.21609465</span></span>
+<span><span class="co">#&gt;   node      prob      vals</span></span>
+<span><span class="co">#&gt; 1    1        NA 0.0000000</span></span>
+<span><span class="co">#&gt; 2    2 0.5061730 0.2655445</span></span>
+<span><span class="co">#&gt; 3    3 0.9863127 0.5095075</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; attr(,"class")</span></span>
 <span><span class="co">#&gt; [1] "tree_dat" "list"    </span></span>
@@ -210,8 +221,8 @@ function from my <code>treeSimR</code> package.</p>
 <span><span class="co">#&gt; $dat</span></span>
 <span><span class="co">#&gt;   node      prob      vals</span></span>
 <span><span class="co">#&gt; 1    1        NA 0.0000000</span></span>
-<span><span class="co">#&gt; 2    2 0.3631451 0.6693821</span></span>
-<span><span class="co">#&gt; 3    3 0.4954635 0.3845573</span></span>
+<span><span class="co">#&gt; 2    2 0.4715692 0.8568481</span></span>
+<span><span class="co">#&gt; 3    3 0.1998396 0.4517609</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; attr(,"class")</span></span>
 <span><span class="co">#&gt; [1] "tree_dat" "list"</span></span></code></pre></div>
@@ -220,7 +231,7 @@ the total expected values</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_dbl</a></span><span class="op">(</span><span class="va">tree_dat_sa</span>, <span class="va">dectree_expected_values</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.124512750 0.433616891 0.639253947 0.614326569 0.184407948 0.003488664</span></span>
+<span><span class="co">#&gt; [1] 0.636945168 0.494342871 0.009278172 0.917668129 0.819395738 0.633485088</span></span>
 <span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">res</span>, breaks <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div>
@@ -259,7 +270,7 @@ to the Task Force</span>.”</span> <em>Value in Health 15</em> 15:
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

@@ -62,7 +62,7 @@
       <a href="../articles/other-input-formats.html">Using other input formats</a>
     </li>
     <li>
-      <a href="../articles/building-a-decision-tree-from-components.html">Building a decision tree from components</a>
+      <a href="../articles/build_tree.html">Building a decision tree from components</a>
     </li>
     <li class="divider">
     </li>
@@ -107,7 +107,7 @@
                         <h4 data-toc-skip class="author">Nathan
 Green</h4>
             
-            <h4 data-toc-skip class="date">2022-07-29</h4>
+            <h4 data-toc-skip class="date">2022-08-16</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/Health-Economics-in-R/CEdecisiontree/blob/HEAD/vignettes/other-input-formats.Rmd" class="external-link"><code>vignettes/other-input-formats.Rmd</code></a></small>
       <div class="hidden name"><code>other-input-formats.Rmd</code></div>
@@ -271,18 +271,18 @@ non-recursive formulations.</p>
 <code class="sourceCode R"><span><span class="fu">microbenchmark</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html" class="external-link">microbenchmark</a></span><span class="op">(</span><span class="fu"><a href="../reference/dectree_expected_values.html">dectree_expected_values</a></span><span class="op">(</span><span class="fu"><a href="../reference/define_model.html">define_model</a></span><span class="op">(</span>dat_long <span class="op">=</span> <span class="va">dat_long</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>                               <span class="fu"><a href="../reference/dectree_expected_recursive.html">dectree_expected_recursive</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">tree</span>, <span class="va">dat</span><span class="op">)</span>, times <span class="op">=</span> <span class="fl">100L</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Unit: microseconds</span></span>
-<span><span class="co">#&gt;                                                        expr       min</span></span>
-<span><span class="co">#&gt;  dectree_expected_values(define_model(dat_long = dat_long)) 11518.701</span></span>
-<span><span class="co">#&gt;       dectree_expected_recursive(names(tree)[1], tree, dat)    28.101</span></span>
-<span><span class="co">#&gt;          lq        mean    median        uq     max neval cld</span></span>
-<span><span class="co">#&gt;  11959.7505 12680.14607 12188.701 13193.002 17677.0   100   b</span></span>
-<span><span class="co">#&gt;     29.6005    41.65397    42.501    44.551   228.9   100  a</span></span></code></pre></div>
+<span><span class="co">#&gt;                                                        expr     min       lq</span></span>
+<span><span class="co">#&gt;  dectree_expected_values(define_model(dat_long = dat_long)) 12610.1 12961.40</span></span>
+<span><span class="co">#&gt;       dectree_expected_recursive(names(tree)[1], tree, dat)    31.0    34.95</span></span>
+<span><span class="co">#&gt;       mean  median       uq     max neval cld</span></span>
+<span><span class="co">#&gt;  14068.313 13681.2 14796.60 18593.5   100   b</span></span>
+<span><span class="co">#&gt;     41.459    42.1    46.05    60.8   100  a</span></span></code></pre></div>
 <p>For this example the recursive formulation is much quicker. Change in
 memory before and after running the functions.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/mem_change.html" class="external-link">mem_change</a></span><span class="op">(</span><span class="fu"><a href="../reference/dectree_expected_values.html">dectree_expected_values</a></span><span class="op">(</span>  <span class="fu"><a href="../reference/define_model.html">define_model</a></span><span class="op">(</span>dat_long <span class="op">=</span> <span class="va">dat_long</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; vals used for calculation.</span></span>
-<span><span class="co">#&gt; -3.69 kB</span></span>
+<span><span class="co">#&gt; -3.9 kB</span></span>
 <span><span class="fu">pryr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pryr/man/mem_change.html" class="external-link">mem_change</a></span><span class="op">(</span><span class="fu"><a href="../reference/dectree_expected_recursive.html">dectree_expected_recursive</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">tree</span>, <span class="va">dat</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 528 B</span></span></code></pre></div>
 </div>
@@ -305,7 +305,7 @@ memory before and after running the functions.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

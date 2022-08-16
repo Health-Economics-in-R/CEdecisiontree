@@ -62,7 +62,7 @@
       <a href="../articles/other-input-formats.html">Using other input formats</a>
     </li>
     <li>
-      <a href="../articles/building-a-decision-tree-from-components.html">Building a decision tree from components</a>
+      <a href="../articles/build_tree.html">Building a decision tree from components</a>
     </li>
     <li class="divider">
     </li>
@@ -227,6 +227,7 @@ structure.</p>
 branches.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: package 'tibble' was built under R version 4.1.3</span></span>
 <span></span>
 <span><span class="va">cost_label_branch</span> <span class="op">&lt;-</span> </span>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html" class="external-link">tribble</a></span><span class="op">(</span><span class="op">~</span><span class="va">name</span>,      <span class="op">~</span><span class="va">from</span>, <span class="op">~</span><span class="va">to</span>,</span>
@@ -301,7 +302,7 @@ equivalent object.</p>
 <span>                    <span class="va">label_val_tab</span>,</span>
 <span>                    <span class="va">tree_struc</span><span class="op">)</span></span>
 <span><span class="va">tree_dat2</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 5</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 x 5</span></span></span>
 <span><span class="co">#&gt;   from     to  cost health  prob</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1         2    10   <span style="color: #BB0000;">NA</span>     0.7</span></span>
@@ -364,7 +365,7 @@ analysis.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>
