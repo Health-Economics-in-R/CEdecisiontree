@@ -4,10 +4,10 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/Health-Economics-in-R/CEdecisiontree/workflows/R-CMD-check/badge.svg)](https://github.com/Health-Economics-in-R/CEdecisiontree/actions)
-[![Coverage
-status](https://codecov.io/gh/Health-Economics-in-R/CEdecisiontree/branch/master/graph/badge.svg)](https://codecov.io/github/Health-Economics-in-R/CEdecisiontree?branch=master)
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 [![R-CMD-check](https://github.com/Health-Economics-in-R/CEdecisiontree/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Health-Economics-in-R/CEdecisiontree/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/Health-Economics-in-R/CEdecisiontree/branch/dev/graph/badge.svg)](https://app.codecov.io/gh/Health-Economics-in-R/CEdecisiontree?branch=dev)
 <!-- badges: end -->
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -119,7 +119,7 @@ Empty cells have `NA`.
 
 ``` r
 cost
-#> # A tibble: 3 × 7
+#> # A tibble: 3 x 7
 #>     `1`   `2`   `3`   `4`   `5`   `6`   `7`
 #>   <dbl> <int> <int> <int> <int> <int> <int>
 #> 1    NA    10     1    NA    NA    NA    NA
@@ -129,7 +129,7 @@ cost
 
 ``` r
 probs
-#> # A tibble: 3 × 7
+#> # A tibble: 3 x 7
 #>     `1`   `2`   `3`   `4`   `5`   `6`   `7`
 #>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #> 1    NA   0.2   0.8  NA    NA    NA    NA  
