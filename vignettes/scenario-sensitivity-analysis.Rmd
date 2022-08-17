@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-Deterministic or scenario sensitivity analysis is a common part of any cost-effectiveness analysis [@Briggs2012].
+Scenario (or deterministic) sensitivity analysis is a common part of any cost-effectiveness analysis [@Briggs2012].
 Here we will carry this out for a simple decision tree.
 This involves explicitly specifying values for particular branch probability and/or values and calculating the total expected value.
 

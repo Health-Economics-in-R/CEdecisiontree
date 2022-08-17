@@ -4,7 +4,7 @@ output:
 always_allow_html: yes
 ---
 
-# CEdecisiontree <img src="man/figures/hexbadge.png" height="139" align="right"/>
+# CEdecisiontree <img src="man/figures/hexbadge.png" style="float:right; height:200px;">
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/Health-Economics-in-R/CEdecisiontree/workflows/R-CMD-check/badge.svg)](https://github.com/Health-Economics-in-R/CEdecisiontree/actions)
