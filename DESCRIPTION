@@ -2,12 +2,13 @@ Package: CEdecisiontree
 Type: Package
 Title: Cost-effectiveness decision tree analysis
 Version: 0.1.0
-Authors@R: person("Nathan", "Green", , "n.green@ucl.ac.uk", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0003-2745-1736"))
-Maintainer: Nathan Green <ngreen1@ic.ac.uk>
+Authors@R: person("Nathan", "Green", , "n.green@ucl.ac.uk",
+                  role = c("aut", "cre"),
+                  comment = c(ORCID = "0000-0003-2745-1736"))
+Maintainer: Nathan Green <n.green@ucl.ac.uk>
 Description: A minimal cost-effectiveness decision tree analysis package.
-              Designed specifically for building and running decision trees with several helper functions and
-              simple interfaces.
+              Designed specifically for building and running decision trees
+              with several helper functions and simple interfaces.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

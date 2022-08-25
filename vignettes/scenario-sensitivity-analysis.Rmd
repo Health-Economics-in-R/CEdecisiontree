@@ -29,7 +29,6 @@ This involves explicitly specifying values for particular branch probability and
 ```{r warning=FALSE, message=FALSE}
 library(CEdecisiontree, quietly = TRUE)
 library(assertthat, quietly = TRUE)
-library(treeSimR, quietly = TRUE)
 library(tibble, quietly = TRUE)
 library(tidyverse, quietly = TRUE)
 library(purrr, quietly = TRUE)

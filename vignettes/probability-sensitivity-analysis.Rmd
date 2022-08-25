@@ -30,7 +30,6 @@ This involves repeatedly sampling from a distribution for each branch probabilit
 ```{r warning=FALSE, message=FALSE}
 library(CEdecisiontree, quietly = TRUE)
 library(assertthat, quietly = TRUE)
-library(treeSimR, quietly = TRUE)
 library(tibble, quietly = TRUE)
 library(tidyverse, quietly = TRUE)
 library(purrr, quietly = TRUE)
@@ -61,7 +60,7 @@ tree_dat
 ```
 
 We can now loop over this tree and generate samples of values for the given distributions.
-We use the `sample_distributions()` function from my `treeSimR` package.
+We use the `sample_distributions()` function to do this.
 This is all wrapped up in the convenience function `create_psa_inputs`.
 
 ```{r warning=FALSE}
