@@ -1,5 +1,5 @@
 
-# CEdecisiontree <img src="man/figures/hexbadge.png" height="139" align="right"/>
+# CEdecisiontree <img src="man/figures/hexbadge.png" style="float:right; height:200px;">
 
 <!-- badges: start -->
 
@@ -119,7 +119,7 @@ Empty cells have `NA`.
 
 ``` r
 cost
-#> # A tibble: 3 x 7
+#> # A tibble: 3 × 7
 #>     `1`   `2`   `3`   `4`   `5`   `6`   `7`
 #>   <dbl> <int> <int> <int> <int> <int> <int>
 #> 1    NA    10     1    NA    NA    NA    NA
@@ -129,7 +129,7 @@ cost
 
 ``` r
 probs
-#> # A tibble: 3 x 7
+#> # A tibble: 3 × 7
 #>     `1`   `2`   `3`   `4`   `5`   `6`   `7`
 #>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #> 1    NA   0.2   0.8  NA    NA    NA    NA  

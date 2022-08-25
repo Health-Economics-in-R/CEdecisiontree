@@ -3,7 +3,7 @@
 #'
 #' @param tree_dat parent-child and data format but with distributions
 #' @param n Number of samples
-#'
+#' @importFrom purrr map_dbl
 #' @return tree_dat realisations
 #' @export
 #'
