@@ -88,8 +88,8 @@ dectree <- function(dat_long,
             data.frame(
               from = dat_long_sa$from,
               to   = dat_long_sa$to,
-              prob = map_dbl(dat_long_sa$prob, ~sample_distributions),
-              vals = map_dbl(dat_long_sa$vals, ~sample_distributions)),
+              prob = map_dbl(dat_long_sa$prob, ~sample_distributions(.)),
+              vals = map_dbl(dat_long_sa$vals, ~sample_distributions(.))),
           fill_probs = TRUE,
           fill_edges = FALSE)
     }

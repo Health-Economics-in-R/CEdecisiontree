@@ -84,7 +84,7 @@ sample_distributions <- function(param.distns){
                      none = param_vals$mean)
   }
 
-  return(setNames(out, names(param.distns)))
+  return(setNames(unlist(out), names(param.distns)))
 }
 
 
