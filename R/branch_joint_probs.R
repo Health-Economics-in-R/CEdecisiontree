@@ -104,8 +104,10 @@ branch_joint_probs.dat_long <- function(model,
 
   out <- list()
 
+  terminal_node <- model$from[is.na(model$prob)]
+
   if (is.na(nodes)) {
-    nodes <- model$from[is.na(model$prob)]
+    nodes <- terminal_node
   }
 
   if (!all(nodes %in% model$to))
@@ -130,7 +132,7 @@ branch_joint_probs.dat_long <- function(model,
     } else {p_total}
   }
 
-  return(out)
+  return(setNames(out, terminal_node))
 }
 
 
