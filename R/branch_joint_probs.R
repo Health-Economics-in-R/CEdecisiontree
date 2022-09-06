@@ -58,7 +58,7 @@
 #'
 #' branch_joint_probs(mod, nodes = 3)[[1]] |> cumprod()
 #'
-branch_joint_probs <- function(model, ...)
+branch_joint_probs <- function(model, nodes = NA, ...)
   UseMethod("branch_joint_probs", model)
 
 
@@ -68,6 +68,9 @@ branch_joint_probs <- function(model, ...)
 #'
 branch_joint_probs.transmat <- function(model,
                                         nodes = NA, ...) {
+  if (is.na(nodes)) {
+    nodes <- model$from[is.na(model$prob)]
+  }
 
   probs <- as.matrix(model$prob)
   assert_that(is_prob_matrix(probs))
@@ -96,9 +99,14 @@ branch_joint_probs.transmat <- function(model,
 #' @export
 #'
 branch_joint_probs.dat_long <- function(model,
-                                        nodes, ...) {
+                                        nodes = NA,
+                                        cumul = FALSE, ...) {
 
   out <- list()
+
+  if (is.na(nodes)) {
+    nodes <- model$from[is.na(model$prob)]
+  }
 
   if (!all(nodes %in% model$to))
     stop("Node not present in model", call. = FALSE)
@@ -117,7 +125,9 @@ branch_joint_probs.dat_long <- function(model,
       to_node <- model$from[model$to == to_node]
     }
 
-    out[[i]] <- p_total
+    out[[i]] <-
+      if (cumul) {cumprod(p_total)
+    } else {p_total}
   }
 
   return(out)
