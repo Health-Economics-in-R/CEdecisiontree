@@ -68,7 +68,7 @@ branch_joint_probs <- function(model, nodes = NA, ...)
 #'
 branch_joint_probs.transmat <- function(model,
                                         nodes = NA, ...) {
-  if (is.na(nodes)) {
+  if (any(is.na(nodes))) {
     nodes <- model$from[is.na(model$prob)]
   }
 
@@ -106,7 +106,7 @@ branch_joint_probs.dat_long <- function(model,
 
   terminal_node <- model$from[is.na(model$prob)]
 
-  if (is.na(nodes)) {
+  if (any(is.na(nodes))) {
     nodes <- terminal_node
   }
 
