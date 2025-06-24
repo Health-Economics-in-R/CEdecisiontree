@@ -2,7 +2,7 @@
 #' Create PSA inputs
 #'
 #' @param tree_dat parent-child and data format but with distributions
-#' @param n Number of samples
+#' @param n Number of samples; default 1000
 #' @importFrom purrr map_dbl
 #' @return tree_dat realisations
 #' @export
@@ -12,7 +12,7 @@ create_psa_inputs <- function(tree_dat, n = 1000) {
   tree_dat_sa <- list()
   dat <- tree_dat$dat
 
-  for (i in 1:1000) {
+  for (i in seq_len(n)) {
 
     tree_dat_sa[[i]] <-
       define_model(

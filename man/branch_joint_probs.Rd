@@ -7,20 +7,20 @@
 \alias{branch_joint_probs.default}
 \title{Branch Joint Probabilities}
 \usage{
-branch_joint_probs(model, ...)
+branch_joint_probs(model, nodes = NA, ...)
 
 \method{branch_joint_probs}{transmat}(model, nodes = NA, ...)
 
-\method{branch_joint_probs}{dat_long}(model, nodes, ...)
+\method{branch_joint_probs}{dat_long}(model, nodes = NA, cumul = FALSE, ...)
 
 \method{branch_joint_probs}{default}(model, nodes, ...)
 }
 \arguments{
 \item{model}{Branch conditional probabilities (matrix)}
 
-\item{...}{Additional parameters}
-
 \item{nodes}{Which nodes to return; default to all}
+
+\item{...}{Additional parameters}
 }
 \value{
 Transition matrix with joint probabilities

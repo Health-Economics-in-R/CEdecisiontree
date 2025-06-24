@@ -1,4 +1,3 @@
-context("branch_joint_probs")
 
 library(readr)
 library(dplyr)
@@ -6,7 +5,7 @@ library(reshape2)
 library(tidyr)
 library(assertthat)
 
-data("bcg_probs", package = 'CEdecisiontree')
+data(bcg_probs, package = 'CEdecisiontree')
 
 test_that("folding back vs terminal probabilities only", {
 
@@ -44,15 +43,17 @@ test_that("basic", {
       prob = c(0.1,0.5,0.9),
       vals = c(1,2,3))
 
-  expect_equal(
-    unlist(branch_joint_probs.dat_long(df, 4)),
+  # the first element is always 1
+
+  expect_equivalent(
+    unlist(branch_joint_probs.dat_long(df, nodes = 4)),
     c(1, 0.9))
 
-  expect_equal(
+  expect_equivalent(
     unlist(branch_joint_probs.dat_long(df, 3)),
     c(1, 0.5, 0.1))
 
-  expect_equal(branch_joint_probs.dat_long(df, c(3,4)),
+  expect_equivalent(branch_joint_probs.dat_long(df, c(3,4)),
                list(c(1, 0.5, 0.1),
                     c(1, 0.9)))
 
@@ -63,7 +64,7 @@ test_that("basic", {
       prob = c(0.1,0.5,0.9,NA),
       vals = c(1,2,3,0))
 
-  expect_equal(
+  expect_equivalent(
     unlist(branch_joint_probs.dat_long(df, 5)),
     c(1, NA, 0.1))
 })
