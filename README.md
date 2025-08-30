@@ -1,4 +1,3 @@
-
 # CEdecisiontree <img src="man/figures/hexbadge.png" style="float:right; height:200px;">
 
 <!-- badges: start -->
