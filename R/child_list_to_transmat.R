@@ -21,10 +21,15 @@ child_list_to_transmat <- function(tree) {
   out <- matrix(NA, nrow = n_nodes, ncol = n_nodes)
 
   for (i in seq_along(tree)) {
-
-    n_to <- length(tree[[i]])
-    out[i, tree[[i]][1]] <- 1/n_to
-    out[i, tree[[i]][2]] <- 1/n_to
+    children <- tree[[i]]
+    n_to <- length(children)
+    if (n_to > 0) {
+      for (child in children) {
+        if (!is.na(child)) {
+          out[i, child] <- 1/n_to
+        }
+      }
+    }
   }
 
   return(data.frame(out, check.names = FALSE))

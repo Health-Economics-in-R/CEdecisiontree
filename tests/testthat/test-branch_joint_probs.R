@@ -68,3 +68,40 @@ test_that("basic", {
     unlist(branch_joint_probs.dat_long(df, 5)),
     c(1, NA, 0.1))
 })
+
+test_that("custom nodes and terminal_pop don't crash", {
+  df <-
+    data.frame(
+      from = c(1,2,1),
+      to = c(2,3,4),
+      prob = c(0.1,0.5,0.9),
+      vals = c(1,2,3))
+  mod <- define_model(dat_long = df)
+
+  # Check custom nodes
+  res <- branch_joint_probs(mod, nodes = 4)
+  expect_length(res, 1)
+  expect_named(res, "4")
+  expect_equivalent(res[[1]], c(1, 0.9))
+
+  # Check terminal_pop
+  term <- terminal_pop(mod, state_list = c(3, 4))
+  expect_length(term, 2)
+  expect_equivalent(term[[1]], 0.05)
+  expect_equivalent(term[[2]], 0.9)
+})
+
+test_that("sample_distributions for beta and gamma works", {
+  # Test beta distribution
+  res_beta <- sample_distributions(param.distns = list(distn = "beta", params = c(a = 2, b = 5)))
+  expect_type(res_beta, "double")
+  expect_length(res_beta, 1)
+  expect_true(res_beta >= 0 && res_beta <= 1)
+
+  # Test gamma distribution
+  res_gamma <- sample_distributions(param.distns = list(distn = "gamma", params = c(shape = 2, scale = 2)))
+  expect_type(res_gamma, "double")
+  expect_length(res_gamma, 1)
+  expect_true(res_gamma >= 0)
+})
+

@@ -30,17 +30,12 @@ sample_distributions <- function(param.distns){
   }
 
   if (is.numeric(param.distns) & length(param.distns) == 1) {
-    if (param.distns <= 1 & param.distns >= 0) {
-    warning("Probability point value supplied instead of distribution.")
     return(param.distns)
-    }else{
-      stop("Single number supplied is not a probability.")
-    }
   }
 
   if (!is.list(param.distns)) stop("Distributions not specified in a list.")
 
-  if (vec_depth(param.distns) <= 2)
+  if (purrr::pluck_depth(param.distns) <= 2)
     param.distns <- list(param.distns)
 
   n.distns <- length(param.distns)
@@ -205,3 +200,52 @@ rpert <- function(n,
 
   return(rbeta(n, v, w) * x.range + x.min)
 }
+
+
+#' Helper function for Beta distribution sampling with alternative parameters
+rbeta_more_params <- function(mean = NA,
+                              sd = NA,
+                              a = NA,
+                              b = NA,
+                              shape1 = NA,
+                              shape2 = NA,
+                              ...) {
+  if (!is.na(shape1)) a <- shape1
+  if (!is.na(shape2)) b <- shape2
+
+  if (!is.na(mean) && !is.na(sd)) {
+    params <- MoM_beta(mean, sd^2)
+    a <- params$a
+    b <- params$b
+  }
+  rbeta(1, shape1 = a, shape2 = b)
+}
+
+
+#' Helper function for Gamma distribution sampling with alternative parameters
+rgamma_more_params <- function(mean = NA,
+                               sd = NA,
+                               var = NA,
+                               shape = NA,
+                               scale = 1,
+                               rate = NA,
+                               ...) {
+  if (!is.na(mean)) {
+    if (is.na(var) && !is.na(sd)) {
+      var <- sd^2
+    }
+    if (!is.na(var)) {
+      params <- MoM_gamma(mean, var)
+      shape <- params$shape
+      scale <- params$scale
+      rate <- 1/scale
+    }
+  }
+
+  if (!is.na(rate)) {
+    rgamma(1, shape = shape, rate = rate)
+  } else {
+    rgamma(1, shape = shape, scale = scale)
+  }
+}
+

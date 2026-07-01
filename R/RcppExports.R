@@ -7,6 +7,6 @@
 #' @param vals Values
 #' @param p Probabilities
 Cdectree_expected_values <- function(vals, p) {
-    .Call('_CEdecisiontree_Cdectree_expected_values', PACKAGE = 'CEdecisiontree', vals, p)
+    .Call(`_CEdecisiontree_Cdectree_expected_values`, vals, p)
 }
 

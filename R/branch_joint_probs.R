@@ -68,10 +68,6 @@ branch_joint_probs <- function(model, nodes = NA, ...)
 #'
 branch_joint_probs.transmat <- function(model,
                                         nodes = NA, ...) {
-  if (any(is.na(nodes))) {
-    nodes <- model$from[is.na(model$prob)]
-  }
-
   probs <- as.matrix(model$prob)
   assert_that(is_prob_matrix(probs))
 
@@ -98,6 +94,8 @@ branch_joint_probs.transmat <- function(model,
 #'
 #' @export
 #'
+#' @class dat_long
+#'
 branch_joint_probs.dat_long <- function(model,
                                         nodes = NA,
                                         cumul = FALSE, ...) {
@@ -113,8 +111,8 @@ branch_joint_probs.dat_long <- function(model,
   if (!all(nodes %in% model$to))
     stop("Node not present in model", call. = FALSE)
 
-  # remove NULL terminal nodes
-  model <- model[!is.null(model$to), ]
+  # remove NA terminal nodes
+  model <- model[!is.na(model$to), ]
 
   for (i in seq_along(nodes)) {
 
@@ -132,7 +130,7 @@ branch_joint_probs.dat_long <- function(model,
     } else {p_total}
   }
 
-  return(setNames(out, terminal_node))
+  return(setNames(out, nodes))
 }
 
 

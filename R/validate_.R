@@ -62,6 +62,8 @@ validate_tree_dat <- function(tree_dat) {
 validate_dat_long <- function(dat_long) {
 
   if (!is.data.frame(dat_long)) stop("dat_long must be a dataframe")
+  if (!("from" %in% names(dat_long))) stop("Require from column")
+  if (!("to" %in% names(dat_long))) stop("Require to column")
   if (!("prob" %in% names(dat_long))) stop("Require prob column")
   if (!("vals" %in% names(dat_long))) stop("Require vals column")
 

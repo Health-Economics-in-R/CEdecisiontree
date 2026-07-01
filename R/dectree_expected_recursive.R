@@ -36,23 +36,21 @@ dectree_expected_recursive <- function(node,
     return(0)
   }
 
+  dat$prob[is.na(dat$prob)] <- 0
+
   c_node <- dat$vals[dat$node == node]
 
-  child <- tree[[node]]
+  child_idx <- tree[[node]]
 
-  if (is.null(child)) {
+  if (is.null(child_idx)) {
     return(c_node)
   } else {
+    Ec <-
+      purrr::map_dbl(
+        child_idx,
+        ~dat$prob[dat$node == .]*dectree_expected_recursive(., tree, dat))
 
-    pL <- dat$prob[dat$node == child[1]]
-    pR <- dat$prob[dat$node == child[2]]
-
-    if (any(is.na(pL))) pL <- 0
-    if (any(is.na(pR))) pR <- 0
-
-    return(c_node +
-             pL*dectree_expected_recursive(child[1], tree, dat) +
-             pR*dectree_expected_recursive(child[2], tree, dat))
+    return(c_node + sum(Ec))
   }
 }
 

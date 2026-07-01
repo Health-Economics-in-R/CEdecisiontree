@@ -26,19 +26,19 @@ long_to_transmat <- function(dat,
   # include missing from nodes so that transmat
   # has the right number of rows/square
   missing_nodes <- setdiff(1:max(dat$to), dat$from)
-  missing_rows <-
-    setNames(data.frame(missing_nodes, 2, NA),
-             names(dat))
+  if (length(missing_nodes) > 0) {
+    missing_rows <-
+      setNames(data.frame(missing_nodes, 2, NA),
+               names(dat))
+    dat <- rbind(dat, missing_rows)
+  }
 
-  dat <-
-    dat |>
-    rbind(missing_rows) |>
-    dplyr::arrange(from)
+  dat <- dplyr::arrange(dat, from)
 
   suppressMessages(
     reshape2::dcast(formula = from ~ to,
                     data = dat) |>
-      select(-.data$from) |>
+      select(-from) |>
       mutate("1" = NA, .before = "2"))
 }
 

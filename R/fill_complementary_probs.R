@@ -26,10 +26,19 @@
 #'
 fill_complementary_probs <- function(dat_long) {
 
+  # Check if any from node has more than 1 NA probability branch
+  na_counts <- dat_long |>
+    group_by(.data$from) |>
+    summarise(na_count = sum(is.na(.data$prob)), .groups = "drop")
+
+  if (any(na_counts$na_count > 1)) {
+    warning("More than one branch has an NA probability for a given 'from' node. Complementary probabilities cannot be uniquely determined.")
+  }
+
   dat_long |>
     group_by(.data$from) |>
-    mutate(prob = ifelse(is.na(prob),
-                         1 - sum(prob, na.rm = TRUE),
-                         prob)) |>
+    mutate(prob = ifelse(is.na(.data$prob),
+                         1 - sum(.data$prob, na.rm = TRUE),
+                         .data$prob)) |>
     ungroup()
 }

@@ -45,9 +45,15 @@ dectree_expected_values <- function(model, ...)
 #'
 dectree_expected_values.tree_dat <- function(model, ...) {
 
-  dectree_expected_recursive(names(model$child)[1],
-                             model$child,
-                             model$dat)
+  nodes <- as.character(model$dat$node)
+
+  res <- purrr::map_dbl(
+    nodes,
+    ~dectree_expected_recursive(., model$child, model$dat)
+  )
+
+  names(res) <- nodes
+  res
 }
 
 #' @rdname dectree_expected_values
@@ -69,7 +75,7 @@ dectree_expected_values.dat_long <- function(model, ...) {
   message(paste(val_name, "used for calculation."))
 
   model <-
-    list(probs = long_to_transmat(model, "prob"),
+    list(prob = long_to_transmat(model, "prob"),
          vals = long_to_transmat(model, val_name))
 
   class(model) <- append("transmat", class(model))
