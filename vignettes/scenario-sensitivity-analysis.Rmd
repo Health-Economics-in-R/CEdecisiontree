@@ -89,7 +89,7 @@ tree_dat_sa[[1]]
 Now, it is straightforward to map over each of these trees to obtain the total expected values.
 
 ```{r}
-res <- map_dbl(tree_dat_sa, dectree_expected_values)
+res <- map_dbl(tree_dat_sa, ~dectree_expected_values(.)[1])
 res
 ```
 

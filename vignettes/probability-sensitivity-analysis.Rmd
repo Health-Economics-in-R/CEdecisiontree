@@ -85,7 +85,7 @@ Doing this explicitly can be a good idea because we can save and reuse the same 
 # # a single run
 # res1 <- dectree_expected_values(tree_dat_sa[[1]])
 
-res <- map_dbl(tree_dat_sa, dectree_expected_values)
+res <- map_dbl(tree_dat_sa, ~dectree_expected_values(.)[1])
 head(res)
 ```
 

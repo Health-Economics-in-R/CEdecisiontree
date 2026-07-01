@@ -41,7 +41,7 @@ dectree_expected_recursive2(node = root, tree, dat)
 \seealso{
 CEdecisiontree
 
-Other CEdecisiontree: 
-\code{\link{dectree_expected_recursive}()}
+Other CEdecisiontree:
+\code{\link[=dectree_expected_recursive]{dectree_expected_recursive()}}
 }
 \concept{CEdecisiontree}

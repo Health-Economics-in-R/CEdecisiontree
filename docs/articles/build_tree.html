@@ -5,77 +5,53 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="CEdecisiontree">
 <title>Building a decision tree from components • CEdecisiontree</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Building a decision tree from components">
-<meta property="og:description" content="CEdecisiontree">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Building a decision tree from components">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
-    
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">CEdecisiontree</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../index.html"><span class="fa fa-home fa-lg"></span></a></li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="active nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/Using_function_dispatch.html">Using function dispatch</a>
-    <a class="dropdown-item" href="../articles/other-input-formats.html">Using other input formats</a>
-    <a class="dropdown-item" href="../articles/build_tree.html">Building a decision tree from components</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="../articles/probability-sensitivity-analysis.html">Probability Sensitivity Analysis (PSA)</a>
-    <a class="dropdown-item" href="../articles/scenario-sensitivity-analysis.html">Scenario Sensitivity Analysis</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="../articles/comparison-with-other-packages.html">Comparison with other packages</a>
-  </div>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="../articles/Using_function_dispatch.html">Using function dispatch</a></li>
+    <li><a class="dropdown-item" href="../articles/other-input-formats.html">Using other input formats</a></li>
+    <li><a class="dropdown-item" href="../articles/build_tree.html">Building a decision tree from components</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/probability-sensitivity-analysis.html">Probability Sensitivity Analysis (PSA)</a></li>
+    <li><a class="dropdown-item" href="../articles/scenario-sensitivity-analysis.html">Scenario Sensitivity Analysis</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/comparison-with-other-packages.html">Comparison with other packages</a></li>
+  </ul>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav">
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/Health-Economics-in-R/CEdecisiontree/" aria-label="github">
-    <span class="fab fa fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/Health-Economics-in-R/CEdecisiontree/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
-    
+
   </div>
 </nav><div class="container template-article">
 
@@ -84,7 +60,8 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="" class="logo" alt=""><h1>Building a decision tree from components</h1>
+
+      <h1>Building a decision tree from components</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/Health-Economics-in-R/CEdecisiontree/blob/HEAD/vignettes/build_tree.Rmd" class="external-link"><code>vignettes/build_tree.Rmd</code></a></small>
@@ -96,26 +73,16 @@
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>For small decision trees it is simple to directly write down
-structure of the tree and its values.</p>
-<p>However, for larger trees this may become unwieldy and error prone.
-We can take advantage of some of the tree characteristics though:</p>
+<p>For small decision trees it is simple to directly write down structure of the tree and its values.</p>
+<p>However, for larger trees this may become unwieldy and error prone. We can take advantage of some of the tree characteristics though:</p>
 <ul>
 <li><p>Sections of the tree may be repeated</p></li>
-<li><p>A particular unit cost or health measure may be used on multiple
-edges</p></li>
+<li><p>A particular unit cost or health measure may be used on multiple edges</p></li>
 <li><p>Multiple trees may use the same cost and health values</p></li>
-<li><p>Tree structure and labeling may remain the same but values
-assigned change e.g. in sensitivity analysis or alternative
-interventions</p></li>
+<li><p>Tree structure and labeling may remain the same but values assigned change e.g. in sensitivity analysis or alternative interventions</p></li>
 </ul>
-<p>Thus, we can separate the <em>structure</em> of the tree, the
-<em>labeling</em> of edges and the <em>values</em> assigned to those
-labels. In this way we have flexibility in modify any one of these and
-better adhere to the DRY principle and the benefits it offers.</p>
-<p>For instance, we can think of the value assignment like a relational
-table with key-value pairs where the key is <code>Label</code>. For the
-decision tree tree with cost values, edges are labeled as follows:</p>
+<p>Thus, we can separate the <em>structure</em> of the tree, the <em>labeling</em> of edges and the <em>values</em> assigned to those labels. In this way we have flexibility in modify any one of these and better adhere to the DRY principle and the benefits it offers.</p>
+<p>For instance, we can think of the value assignment like a relational table with key-value pairs where the key is <code>Label</code>. For the decision tree tree with cost values, edges are labeled as follows:</p>
 <table class="table">
 <thead><tr class="header">
 <th>Label</th>
@@ -177,17 +144,14 @@ decision tree tree with cost values, edges are labeled as follows:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">CEdecisiontree</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre></div>
-<p>First, we define the structure of the tree in list format without any
-additional information. Let’s make a two-step binary tree.</p>
+<p>First, we define the structure of the tree in list format without any additional information. Let’s make a two-step binary tree.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tree_struc</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>    <span class="st">'1'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>,</span>
 <span>    <span class="st">'2'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span>,</span>
 <span>    <span class="st">'3'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6</span>,<span class="fl">7</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>Now we can add labels and values to this tree. Define the set of
-cost, health values and probabilities, independent of the tree
-structure.</p>
+<p>Now we can add labels and values to this tree. Define the set of cost, health values and probabilities, independent of the tree structure.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">label_cost</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
@@ -203,10 +167,10 @@ structure.</p>
 <span><span class="va">label_health</span> <span class="op">&lt;-</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>    <span class="st">"disease"</span> <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
-<p>Next, assign cost, probability and health labels to particular
-branches.</p>
+<p>Next, assign cost, probability and health labels to particular branches.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: package 'tibble' was built under R version 4.5.3</span></span>
 <span></span>
 <span><span class="va">cost_label_branch</span> <span class="op">&lt;-</span> </span>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html" class="external-link">tribble</a></span><span class="op">(</span><span class="op">~</span><span class="va">name</span>,      <span class="op">~</span><span class="va">from</span>, <span class="op">~</span><span class="va">to</span>,</span>
@@ -224,8 +188,7 @@ branches.</p>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html" class="external-link">tribble</a></span><span class="op">(</span><span class="op">~</span><span class="va">name</span>,     <span class="op">~</span><span class="va">from</span>, <span class="op">~</span><span class="va">to</span>,</span>
 <span>          <span class="st">"disease"</span>, <span class="fl">2</span>,     <span class="fl">4</span>,</span>
 <span>          <span class="st">"disease"</span>, <span class="fl">3</span>,     <span class="fl">6</span><span class="op">)</span></span></code></pre></div>
-<p>Finally, we can pull it all together and create a single decision
-tree long format data frame.</p>
+<p>Finally, we can pull it all together and create a single decision tree long format data frame.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="ot">&lt;-</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">create_ce_tree_long_df</span>(</span>
@@ -245,16 +208,12 @@ tree long format data frame.</p>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="dv">4</span>    <span class="dv">2</span>  <span class="dv">5</span>      <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>   <span class="cn">NA</span>         <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>  <span class="fl">0.9</span>        <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>     <span class="cn">NA</span></span>
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="dv">5</span>    <span class="dv">3</span>  <span class="dv">6</span>   disease  <span class="dv">100</span>      disease  <span class="fl">0.9</span>     disease    <span class="fl">0.5</span></span>
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="dv">6</span>    <span class="dv">3</span>  <span class="dv">7</span>      <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>   <span class="cn">NA</span>         <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>  <span class="fl">0.1</span>        <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>     <span class="cn">NA</span></span></code></pre></div>
-<p>The above example may seem a little over-elaborate. This demonstrates
-an example where all of the components are defined separately and then
-combined to obtain a single object with all the input values.
-Alternatively, we could define the label look up table and the values
-look up table outside of R and simply read this in and join to obtain an
-equivalent object.</p>
+<p>The above example may seem a little over-elaborate. This demonstrates an example where all of the components are defined separately and then combined to obtain a single object with all the input values. Alternatively, we could define the label look up table and the values look up table outside of R and simply read this in and join to obtain an equivalent object.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/reshape" class="external-link">reshape2</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: package 'reshape2' was built under R version 4.5.3</span></span>
 <span></span>
-<span><span class="va">label_branch_tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"data-raw/label-branch table.csv"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">label_branch_tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"data-raw/label-branch table.csv"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">label_branch_tab</span></span>
 <span><span class="co">#&gt;     unit        label from to</span></span>
 <span><span class="co">#&gt; 1   cost    vaccinate    1  2</span></span>
@@ -266,7 +225,7 @@ equivalent object.</p>
 <span><span class="co">#&gt; 7 health      disease    2  4</span></span>
 <span><span class="co">#&gt; 8 health      disease    3  6</span></span>
 <span></span>
-<span><span class="va">label_val_tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"data-raw/label-val table.csv"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">label_val_tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"data-raw/label-val table.csv"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">label_val_tab</span></span>
 <span><span class="co">#&gt;     unit        label   val</span></span>
 <span><span class="co">#&gt; 1   cost    vaccinate  10.0</span></span>
@@ -290,8 +249,7 @@ equivalent object.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2         5    <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>     0.9</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 3         6   100    0.5   0.9</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 3         7    <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>     0.1</span></span></code></pre></div>
-<p>This data frame can now be used in the main cost-effectiveness
-analysis.</p>
+<p>This data frame can now be used in the main cost-effectiveness analysis.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tree_costs</span> <span class="op">&lt;-</span> <span class="va">tree_dat2</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">tree_costs</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">tree_costs</span><span class="op">)</span> <span class="op">==</span> <span class="st">"cost"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"vals"</span></span>
@@ -325,28 +283,26 @@ analysis.</p>
 <span><span class="co">#&gt; $health$term_pop_point</span></span>
 <span><span class="co">#&gt; NULL</span></span></code></pre></div>
 </div>
-  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
 
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p>
-<p>Developed by Nathan Green.</p>
+  <p>Developed by Nathan Green.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>
 </div>
 
-  
 
-  
+
+
 
   </body>
 </html>

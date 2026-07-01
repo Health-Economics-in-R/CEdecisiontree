@@ -75,11 +75,11 @@ The expected value at each node
 ![i \in S](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;i%20%5Cin%20S "i \in S")
 is calculated by ‘folding back’ using the recursive formula
 
-<img src="https://latex.codecogs.com/svg.image?\hat{c}_i&space;=&space;c_i&space;&plus;&space;\sum_{j&space;\in&space;child(i)}&space;p_{ij}&space;\hat{c}_j" title="\hat{c}_i = c_i + \sum_{j \in child(i)} p_{ij} \hat{c}_j" />
+![\hat{c}_i = c_i + \sum_{j \in child(i)} p_{ij} \hat{c}_j](https://latex.codecogs.com/svg.image?\hat{c}_i&space;=&space;c_i&space;&plus;&space;\sum_{j&space;\in&space;child(i)}&space;p_{ij}&space;\hat{c}_j)
 
 with boundary values at the terminal nodes
 
-<img src="https://latex.codecogs.com/svg.image?\hat{c}_i&space;=&space;c_i&space;\mbox{&space;for&space;}&space;i&space;=&space;\{&space;S:&space;child(s)&space;=&space;\emptyset&space;\}" title="\hat{c}_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}" />
+![\hat{c}_i = c_i \mbox{ for } i = \{ S: child(s) = \emptyset \}](https://latex.codecogs.com/svg.image?\hat{c}_i&space;=&space;c_i&space;\mbox{&space;for&space;}&space;i&space;=&space;\{&space;S:&space;child(s)&space;=&space;\emptyset&space;\})
 
 ## Basic example
 
@@ -102,7 +102,7 @@ branch, respectively.
 
 So if we were to write out the expected cost in full this would give
 
-<img src="https://latex.codecogs.com/svg.image?p_{12}(c_{12}&space;&plus;&space;p_{24}c_{24}&space;&plus;&space;p_{25}c_{25})&space;&plus;&space;p_{13}(c_{13}&space;&plus;&space;p_{36}c_{36}&space;&plus;&space;p_{37}c_{37})" title="p_{12}(c_{12} + p_{24}c_{24} + p_{25}c_{25}) + p_{13}(c_{13} + p_{36}c_{36} + p_{37}c_{37})" />
+![p_{12}(c_{12} + p_{24}c_{24} + p_{25}c_{25}) + p_{13}(c_{13} + p_{36}c_{36} + p_{37}c_{37})](https://latex.codecogs.com/svg.image?p_{12}(c_{12}&space;&plus;&space;p_{24}c_{24}&space;&plus;&space;p_{25}c_{25})&space;&plus;&space;p_{13}(c_{13}&space;&plus;&space;p_{36}c_{36}&space;&plus;&space;p_{37}c_{37}))
 
 Load example data from the package.
 

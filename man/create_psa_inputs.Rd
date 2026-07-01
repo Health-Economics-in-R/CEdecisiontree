@@ -9,7 +9,7 @@ create_psa_inputs(tree_dat, n = 1000)
 \arguments{
 \item{tree_dat}{parent-child and data format but with distributions}
 
-\item{n}{Number of samples}
+\item{n}{Number of samples; default 1000}
 }
 \value{
 tree_dat realisations
