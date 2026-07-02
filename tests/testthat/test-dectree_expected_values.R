@@ -42,3 +42,13 @@ test_that("dectree_expected_values.dat_long works", {
   expect_length(ev, 8)
   expect_equivalent(ev[1], 5.6)
 })
+
+test_that("C and C++ versions give identical results", {
+  res_r <- dectree_expected_values(mod)
+  res_c <- dectree_expected_values_C(as.matrix(cost), as.matrix(probs))
+  res_cpp <- Cdectree_expected_values(as.matrix(cost), as.matrix(probs))
+
+  expect_equal(as.numeric(res_r), as.numeric(res_c))
+  expect_equal(as.numeric(res_r), as.numeric(res_cpp))
+})
+

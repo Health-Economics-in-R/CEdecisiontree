@@ -15,20 +15,30 @@ NumericVector Cdectree_expected_values(NumericMatrix vals,
 
   NumericVector c_hat(num_to_nodes);
 
+  for (int j = 0; j < num_to_nodes; j++) {
+    double col_sum = 0.0;
+    for (int i = 0; i < num_from_nodes; i++) {
+      if (!NumericVector::is_na(vals(i, j))) {
+        col_sum += vals(i, j);
+      }
+    }
+    c_hat[j] = col_sum;
+  }
+
   for (int i = 0; i < num_from_nodes; i++) {
 
     double total = 0;
-    double k = num_from_nodes - i - 1;
+    int k = num_from_nodes - i - 1;
 
     for (int j = 0; j < num_to_nodes; j++) {
 
-      if (!NumericVector::is_na(vals(k,j))) {
+      if (!NumericVector::is_na(p(k,j))) {
 
-        total += p(k,j)*(vals(k,j) + c_hat[j]);
+        total += p(k,j)*c_hat[j];
       }
     }
 
-    c_hat[k] = total;
+    c_hat[k] += total;
   }
 
   return c_hat;

@@ -9,7 +9,7 @@ dectree_expected_values_C <- function(vals,
   num_from_nodes <- nrow(vals)
   num_to_nodes <- ncol(vals)
 
-  c_hat <- rep(0, num_to_nodes)
+  c_hat <- colSums(vals, na.rm = TRUE)
 
   for (i in num_from_nodes:1) {
 
@@ -17,13 +17,13 @@ dectree_expected_values_C <- function(vals,
 
     for (j in 1:num_to_nodes) {
 
-      if (!is.na(vals[i,j])) {
+      if (!is.na(p[i,j])) {
 
-        total <- total + p[i,j]*(vals[i,j] + c_hat[j])
+        total <- total + p[i,j]*c_hat[j]
       }
     }
 
-    c_hat[i] <- total
+    c_hat[i] <- total + c_hat[i]
   }
 
   return(c_hat)
